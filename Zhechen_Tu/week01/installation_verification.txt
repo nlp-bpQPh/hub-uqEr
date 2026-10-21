@@ -1,0 +1,33 @@
+WEEK 01 | Zhechen Tu | Installation and verification
+$ conda --version
+conda 26.9.3
+
+$ code --version
+1.138.0
+7debcd0e2acdea1c52de81bf9ee1620444407dda
+arm64
+
+$ codex --version
+codex-cli 0.162.1
+
+$ codex login status
+Logged in using ChatGPT
+
+$ python -m pip check
+No broken requirements found.
+
+$ python environment_check.py
+Week 01 | Development environment verification
+Platform: Darwin arm64
+Python: 3.12.15 (64-bit)
+[PASS] numpy          1.26.4
+[PASS] pandas         2.2.2
+[PASS] matplotlib     3.9.2
+[PASS] torch          2.6.0
+[PASS] gensim         4.4.0
+[PASS] scikit-learn   1.5.1
+[PASS] peft           0.15.0
+[PASS] transformers   4.55.0
+[PASS] NumPy / Pandas / Matplotlib / Torch / Gensim / sklearn smoke checks
+[PASS] Tiny BERT + LoRA forward pass (no model download)
+ALL ENVIRONMENT CHECKS PASSED
