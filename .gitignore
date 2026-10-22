@@ -1,0 +1,5 @@
+# VS Code 配置目录
+.vscode/
+
+# macOS 目录元数据
+.DS_Store
