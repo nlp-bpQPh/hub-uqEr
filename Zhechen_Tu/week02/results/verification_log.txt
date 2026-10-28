@@ -1,0 +1,7 @@
+WEEK 02 | Independent artifact verification
+[PASS] Labels match the rule; no duplicated rows across the three splits
+[PASS] Reloaded checkpoint exactly reproduces test metrics: 99.60%
+[PASS] Error CSV includes all 40 incorrect test predictions
+[PASS] Positive scaling / translation invariance; clear examples for all five classes
+[PASS] Invalid shape / NaN / infinity rejected; zero and large finite vectors remain finite
+ALL ARTIFACT CHECKS PASSED
