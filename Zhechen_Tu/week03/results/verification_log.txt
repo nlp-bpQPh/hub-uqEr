@@ -1,0 +1,8 @@
+PASS: all 12 classes balanced; no shared articles, aligned sentence IDs, or normalized duplicate text.
+PASS: reloaded weights reproduce test metrics: 100.0000%; predictions match error log.
+PASS: empty and non-linguistic inputs rejected.
+Diagnostic: first 5 characters accuracy=80.3288%
+Diagnostic: first 10 characters accuracy=87.7834%
+Diagnostic: first 20 characters accuracy=95.7483%
+Illustrative handwritten examples: 12/12 correct (not a statistical test set).
+ALL ARTIFACT CHECKS PASSED
