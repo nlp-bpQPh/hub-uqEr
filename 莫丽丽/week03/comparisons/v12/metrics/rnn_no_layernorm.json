@@ -1,0 +1,31 @@
+{
+  "model_type": "rnn",
+  "use_layernorm": false,
+  "use_dropout": true,
+  "num_parameters": 218764,
+  "train_seconds": 6.6765,
+  "epochs": 8,
+  "seed": 42,
+  "num_classes": 12,
+  "train_size": 9600,
+  "dev_size": 1200,
+  "test_size": 1800,
+  "dev_accuracy": 0.9583333333333334,
+  "test_accuracy": 0.9605555555555556,
+  "macro_f1": 0.9608631482840115,
+  "per_class_accuracy": {
+    "ar": 1.0,
+    "en": 0.9133333333333333,
+    "es": 0.84,
+    "hi": 1.0,
+    "ja": 0.9866666666666667,
+    "ko": 0.9866666666666667,
+    "pt": 0.86,
+    "ru": 1.0,
+    "th": 1.0,
+    "tr": 0.94,
+    "vi": 1.0,
+    "zh": 1.0
+  },
+  "model_path": "models\\rnn_no_layernorm.pt"
+}
