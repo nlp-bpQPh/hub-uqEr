@@ -1,0 +1,51 @@
+数据目录：F:\ML\0项目训练\八斗\作业\week03\data\langid\v12
+  训练 9600 条 / 验证 1200 条 / 测试 1800 条
+  类别 12 个：ar en es hi ja ko pt ru th tr vi zh
+  字符表 3276 个字符（来自 F:\ML\0项目训练\八斗\作业\week03\data\langid\vocab\vocab_v12.txt）
+  随机猜的准确率基准：8.3%
+  模型结构：rnn / LayerNorm=True / Dropout=False
+  模型参数量：218,892
+
+Epoch  1/8  loss=0.8900  dev_acc=0.9158
+Epoch  2/8  loss=0.2233  dev_acc=0.9425
+Epoch  3/8  loss=0.1346  dev_acc=0.9567
+Epoch  4/8  loss=0.1001  dev_acc=0.9650
+Epoch  5/8  loss=0.0782  dev_acc=0.9575
+Epoch  6/8  loss=0.0662  dev_acc=0.9575
+Epoch  7/8  loss=0.0547  dev_acc=0.9600
+Epoch  8/8  loss=0.0442  dev_acc=0.9725
+
+训练耗时：7 秒（8 个 epoch，1 线程）
+
+验证集：accuracy = 0.9725
+测试集：accuracy = 0.9628   macro-F1 = 0.9632
+  最常混淆的组合（真实 → 预测）：
+    es → pt: 25 条
+    pt → es: 15 条
+    en → es: 7 条
+    tr → en: 4 条
+    tr → pt: 3 条
+
+  各语种准确率：
+    ar: 150/150 = 1.000
+    en: 143/150 = 0.953
+    es: 125/150 = 0.833
+    hi: 150/150 = 1.000
+    ja: 149/150 = 0.993
+    ko: 148/150 = 0.987
+    pt: 132/150 = 0.880
+    ru: 150/150 = 1.000
+    th: 150/150 = 1.000
+    tr: 139/150 = 0.927
+    vi: 147/150 = 0.980
+    zh: 150/150 = 1.000
+
+--- 推理示例 ---
+  [hi 1.00]  यह सूटकेस लीजिए।
+  [es 0.93]  Es la mujer de mis sueños.
+  [th 1.00]  ขอบคุณที่รอ
+  [ar 1.00]  هل أنجزت جميع فروضك؟
+
+模型已保存：F:\ML\0项目训练\八斗\作业\week03\comparisons\v12\models\rnn_no_dropout.pt
+指标已保存：F:\ML\0项目训练\八斗\作业\week03\comparisons\v12\metrics\rnn_no_dropout.json
+[0m

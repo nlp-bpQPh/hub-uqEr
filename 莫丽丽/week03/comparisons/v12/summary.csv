@@ -1,0 +1,6 @@
+﻿name,display_name,model_type,layernorm,dropout,num_parameters,epochs,train_size,dev_size,test_size,train_seconds,dev_accuracy,test_accuracy,macro_f1,model_path
+rnn_baseline,RNN 基线,rnn,True,True,218892,8,9600,1200,1800,7.0082,0.9683333333333334,0.955,0.9556111015537154,models\rnn_baseline.pt
+lstm,单向 LSTM,lstm,True,True,243852,8,9600,1200,1800,12.6503,0.9641666666666666,0.9716666666666667,0.9719655766871781,models\lstm.pt
+bilstm,双向 LSTM,bilstm,True,True,278028,8,9600,1200,1800,41.1228,0.9708333333333333,0.9716666666666667,0.9718222213557036,models\bilstm.pt
+rnn_no_layernorm,RNN（去掉 LayerNorm）,rnn,False,True,218764,8,9600,1200,1800,6.6765,0.9583333333333334,0.9605555555555556,0.9608631482840115,models\rnn_no_layernorm.pt
+rnn_no_dropout,RNN（去掉 Dropout）,rnn,True,False,218892,8,9600,1200,1800,6.8119,0.9725,0.9627777777777777,0.9632120160501169,models\rnn_no_dropout.pt

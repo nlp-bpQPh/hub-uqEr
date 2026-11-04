@@ -1,0 +1,98 @@
+[
+  {
+    "text": "أتعلم البرمجة وأحب قراءة الكتب الجديدة.",
+    "expected": "arb_Arab",
+    "label": "arb_Arab",
+    "language": "阿拉伯语",
+    "softmax_score": 0.9911094903945923,
+    "correct": true
+  },
+  {
+    "text": "Ich lerne Programmieren und lese gerne neue Bücher.",
+    "expected": "deu_Latn",
+    "label": "deu_Latn",
+    "language": "德语",
+    "softmax_score": 0.9312912821769714,
+    "correct": true
+  },
+  {
+    "text": "I am learning to program and enjoy reading new books.",
+    "expected": "eng_Latn",
+    "label": "eng_Latn",
+    "language": "英语",
+    "softmax_score": 0.9471669793128967,
+    "correct": true
+  },
+  {
+    "text": "J'apprends à programmer et j'aime lire de nouveaux livres.",
+    "expected": "fra_Latn",
+    "label": "fra_Latn",
+    "language": "法语",
+    "softmax_score": 0.990153968334198,
+    "correct": true
+  },
+  {
+    "text": "मैं प्रोग्रामिंग सीख रहा हूँ और नई किताबें पढ़ना पसंद करता हूँ।",
+    "expected": "hin_Deva",
+    "label": "hin_Deva",
+    "language": "印地语",
+    "softmax_score": 0.9961077570915222,
+    "correct": true
+  },
+  {
+    "text": "Sto imparando a programmare e mi piace leggere nuovi libri.",
+    "expected": "ita_Latn",
+    "label": "ita_Latn",
+    "language": "意大利语",
+    "softmax_score": 0.9838500022888184,
+    "correct": true
+  },
+  {
+    "text": "私はプログラミングを学んでいて、新しい本を読むのが好きです。",
+    "expected": "jpn_Jpan",
+    "label": "jpn_Jpan",
+    "language": "日语",
+    "softmax_score": 0.9940208792686462,
+    "correct": true
+  },
+  {
+    "text": "저는 프로그래밍을 배우고 있으며 새로운 책을 읽는 것을 좋아합니다.",
+    "expected": "kor_Hang",
+    "label": "kor_Hang",
+    "language": "韩语",
+    "softmax_score": 0.9967008233070374,
+    "correct": true
+  },
+  {
+    "text": "Estou aprendendo a programar e gosto de ler novos livros.",
+    "expected": "por_Latn",
+    "label": "por_Latn",
+    "language": "葡萄牙语",
+    "softmax_score": 0.9246608018875122,
+    "correct": true
+  },
+  {
+    "text": "Я учусь программировать и люблю читать новые книги.",
+    "expected": "rus_Cyrl",
+    "label": "rus_Cyrl",
+    "language": "俄语",
+    "softmax_score": 0.9933023452758789,
+    "correct": true
+  },
+  {
+    "text": "Estoy aprendiendo a programar y me gusta leer libros nuevos.",
+    "expected": "spa_Latn",
+    "label": "spa_Latn",
+    "language": "西班牙语",
+    "softmax_score": 0.9185083508491516,
+    "correct": true
+  },
+  {
+    "text": "我正在学习编程，也喜欢阅读新书。",
+    "expected": "zho_Hans",
+    "label": "zho_Hans",
+    "language": "简体中文",
+    "softmax_score": 0.9709831476211548,
+    "correct": true
+  }
+]
