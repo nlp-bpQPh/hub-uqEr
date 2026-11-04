@@ -1,0 +1,12 @@
+Dataset: Tiny Shakespeare
+Text author: William Shakespeare
+Distribution / preprocessing source: Andrej Karpathy, char-rnn repository.
+Repository: https://github.com/karpathy/char-rnn
+File: https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
+Downloaded for this assignment on 2026-11-04 (America/Chicago).
+The source describes this as a subset of Shakespeare's works.
+The included input.txt is byte-for-byte unchanged from the downloaded file.
+SHA-256: 86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed
+Original literary works are by Shakespeare; no modern translation is used.
+The source repository does not supply a LICENSE file; no additional source license is asserted here.
+The Transformer implementation in this assignment is separate from the source repository's RNN code.
