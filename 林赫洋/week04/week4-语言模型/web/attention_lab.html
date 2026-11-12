@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BERT 注意力实验室</title>
+<style>
+  :root{
+    --navy:#1E3A5F; --teal:#2E86AB; --dark:#2D2D2D; --gray:#666666;
+    --code-bg:#F5F5F5; --border:#DEDEDE; --lt-teal:#EBF4FA;
+    --red:#C0392B; --green:#217B45; --orange:#D4720A; --purple:#6C4FA1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:#F0F2F5;color:var(--dark);margin:0;
+    font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",-apple-system,sans-serif;
+    font-size:14px;line-height:1.5;padding:14px 18px 34px;
+  }
+  .wrap{max-width:1660px;margin:0 auto;}
+  .head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
+  .head h1{font-size:22px;color:var(--navy);margin:0;font-weight:700;letter-spacing:.5px;}
+  .head .sub{font-size:12.5px;color:var(--gray);}
+  .badge{margin-left:auto;font-size:11.5px;color:var(--navy);background:var(--lt-teal);
+    border:1px solid #CFE3EF;border-radius:20px;padding:3px 12px;white-space:nowrap;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;}
+  .card-h{padding:8px 13px;border-bottom:1px solid var(--border);font-size:13.5px;font-weight:700;
+    color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .card-h .hint{font-size:11.5px;color:var(--gray);font-weight:400;}
+  .card-b{padding:11px 13px;}
+
+  .bar{background:#fff;border:1px solid var(--border);border-left:4px solid var(--teal);
+    border-radius:8px;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:12px;}
+  .field{display:flex;align-items:center;gap:7px;}
+  .field>label{font-size:12.5px;color:var(--gray);white-space:nowrap;}
+  select{font-size:13px;padding:5px 8px;border:1px solid var(--border);border-radius:5px;background:#fff;
+    color:var(--dark);max-width:520px;}
+  input[type=range]{width:180px;accent-color:var(--teal);}
+  .val{font-family:Consolas,monospace;font-size:13px;font-weight:700;color:var(--teal);}
+  button{font-family:inherit;font-size:12.5px;padding:5px 12px;border-radius:5px;border:1px solid var(--border);
+    background:#fff;color:var(--dark);cursor:pointer;transition:.12s;white-space:nowrap;}
+  button:hover{background:var(--lt-teal);border-color:var(--teal);}
+  button.on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600;}
+
+  .grid{display:grid;grid-template-columns:58fr 42fr;gap:12px;}
+  .grid2{display:grid;grid-template-columns:50fr 50fr;gap:12px;margin-top:12px;}
+  .col{display:flex;flex-direction:column;gap:12px;min-width:0;}
+
+  /* token 条 */
+  .tokens{display:flex;flex-wrap:wrap;gap:4px;align-items:flex-start;}
+  .tok{
+    border:1px solid var(--border);border-radius:5px;padding:3px 7px;cursor:pointer;
+    font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:18px;line-height:1.25;
+    background:#fff;transition:.1s;text-align:center;min-width:30px;
+  }
+  .tok:hover{border-color:var(--teal);background:#F7FBFD;}
+  .tok.special{background:#F2F4F6;color:var(--gray);font-size:12px;font-family:Consolas,monospace;padding:6px 7px;min-width:auto;}
+  .tok.sel{border-color:var(--red);background:#FDF3F2;box-shadow:0 0 0 2px #F3D0CC inset;}
+  .tok .id{display:block;font-family:Consolas,monospace;font-size:9.5px;color:#9AA5AE;font-weight:400;}
+
+  .heads{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
+  .hbtn{font-family:Consolas,monospace;font-size:11.5px;padding:3px 8px;border-radius:4px;
+    border:1px solid var(--border);background:#fff;cursor:pointer;}
+  .hbtn.on{background:var(--teal);border-color:var(--teal);color:#fff;}
+
+  canvas{display:block;width:100%;}
+  .legend{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--gray);margin-top:6px;flex-wrap:wrap;}
+  .legend .sw{width:64px;height:10px;border-radius:2px;display:inline-block;}
+
+  .topbars{display:flex;flex-direction:column;gap:4px;}
+  .tb{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .tb .t{font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:17px;width:26px;text-align:center;}
+  .tb .bg{flex:1;height:13px;background:#EEF1F4;border-radius:4px;overflow:hidden;}
+  .tb .bar{height:100%;background:linear-gradient(90deg,#A8CBE0,var(--teal));}
+  .tb .v{font-family:Consolas,monospace;font-size:11.5px;color:var(--navy);width:52px;text-align:right;}
+
+  .mini{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .mini .m{border:1px solid var(--border);border-radius:5px;padding:3px;cursor:pointer;background:#fff;}
+  .mini .m:hover{border-color:var(--teal);}
+  .mini .m.on{border-color:var(--red);box-shadow:0 0 0 2px #F3D0CC inset;}
+  .mini .m canvas{border-radius:3px;display:block;width:100%;height:auto;image-rendering:pixelated;}
+  .mini .m .cap{font-size:10px;color:var(--gray);text-align:center;font-family:Consolas,monospace;margin-top:2px;}
+
+  .mlm-list{display:flex;flex-direction:column;gap:4px;}
+  .mlm-row{display:flex;align-items:center;gap:8px;font-size:13.5px;}
+  .mlm-row .t{font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:18px;width:30px;text-align:center;}
+  .mlm-row .bg{flex:1;height:14px;background:#EEF1F4;border-radius:4px;overflow:hidden;}
+  .mlm-row .bar{height:100%;background:linear-gradient(90deg,#A8CBE0,var(--teal));}
+  .mlm-row.hit .bar{background:linear-gradient(90deg,#9FC7B4,var(--green));}
+  .mlm-row.hit .t{color:var(--green);font-weight:700;}
+  .mlm-row .v{font-family:Consolas,monospace;font-size:11.5px;color:var(--navy);width:64px;text-align:right;}
+
+  table.plain{border-collapse:collapse;width:100%;font-size:12px;font-family:Consolas,monospace;}
+  table.plain th,table.plain td{border:1px solid var(--border);padding:2px 5px;text-align:right;}
+  table.plain th{background:var(--lt-teal);color:var(--navy);font-weight:700;text-align:center;}
+  table.plain td.rowh{background:#F7F9FB;color:var(--navy);font-weight:700;text-align:center;}
+  .scrollx{overflow-x:auto;}
+
+  .note{font-size:12.5px;color:var(--gray);line-height:1.8;}
+  .note b{color:var(--navy);}
+  .note em{color:var(--red);font-style:normal;font-weight:700;}
+  .note code{font-family:Consolas,monospace;background:var(--code-bg);border:1px solid var(--border);
+    border-radius:4px;padding:0 4px;color:var(--teal);}
+
+  .kv{display:flex;gap:6px 18px;flex-wrap:wrap;font-size:12px;color:var(--gray);}
+  .kv b{color:var(--navy);font-family:Consolas,monospace;}
+
+  #tip{position:fixed;pointer-events:none;background:rgba(30,58,95,.95);color:#fff;font-size:12px;
+    padding:4px 8px;border-radius:5px;display:none;z-index:99;white-space:nowrap;
+    font-family:Consolas,monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <h1>BERT 注意力实验室</h1>
+    <div class="sub">真实的 bert-base-chinese：12 层 × 12 头注意力、遮字预测、上下文向量——都是真算出来的权重</div>
+    <div class="badge">数据：tools/export_bert_viz.py 现场跑出</div>
+  </div>
+
+  <div class="bar">
+    <div class="field">
+      <label>例句</label>
+      <select id="sent"></select>
+    </div>
+    <div class="field">
+      <label>层</label>
+      <input type="range" id="layer" min="1" max="12" value="1">
+      <span class="val" id="layerv">L1</span>
+    </div>
+    <div class="field">
+      <label>头</label>
+      <span class="heads" id="heads" style="margin:0"></span>
+    </div>
+    <div class="kv" id="kv"></div>
+  </div>
+
+  <!-- token 条 -->
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-h"><span>输入分词（WordPiece）与特殊 token</span>
+      <span class="hint">点任意字 → 看它把注意力分给谁 / 遮住它让 BERT 猜</span></div>
+    <div class="card-b">
+      <div class="tokens" id="tokens"></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span>① 注意力热力图 <span id="matTitle" style="font-weight:400;color:var(--gray);font-size:12px"></span></span>
+          <span class="hint">行 = 谁在看，列 = 看谁；每行 softmax 后和为 1</span></div>
+        <div class="card-b">
+          <canvas id="heat" height="420"></canvas>
+          <div class="legend">
+            <span>权重 0</span><span class="sw" id="sw"></span><span>最大权重（颜色按 √权重 映射）</span>
+            <span id="rowsum" style="margin-left:10px"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>② 这个字在看谁</span>
+          <span class="hint">选中字那一行，按权重排序</span></div>
+        <div class="card-b"><div class="topbars" id="topbars"></div></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span>③ 12 个头各关注什么</span>
+          <span class="hint">同一层、同一句话，不同的头看不同的位置</span></div>
+        <div class="card-b">
+          <div class="mini" id="mini"></div>
+          <div class="note" style="margin-top:8px" id="miniNote"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>④ 遮住一个字，BERT 猜什么</span>
+          <span class="hint">MLM：左右两边都能看</span></div>
+        <div class="card-b">
+          <div class="note" style="margin-bottom:8px" id="mlmHead"></div>
+          <div class="mlm-list" id="mlm"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-h"><span>⑤ Q/K/V → 分数 → softmax：真实的数</span>
+        <span class="hint">第 1 层第 1 头，未归一化分数矩阵</span></div>
+      <div class="card-b">
+        <div class="note" style="margin-bottom:8px">
+          <code>scores = Q·Kᵀ / √d_k</code>（d_k=64）→ <code>weights = softmax(scores)</code> → 权重。
+          下表的数值就是热力图里每一行做 softmax 之前的样子。
+        </div>
+        <div class="scrollx"><div id="scoreTbl"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><span>⑥ 上下文向量 vs 静态字向量</span>
+        <span class="hint">同一个字在不同句子里，向量一样吗？</span></div>
+      <div class="card-b">
+        <div class="field" style="margin-bottom:8px">
+          <label>选一个字</label>
+          <select id="polyTok"></select>
+        </div>
+        <div id="poly"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <div class="card-b note">
+      <b>课上可以这样用：</b>先看点第 ③ 块——12 个头、12 层排列组合，注意力模式完全不同，这是「多头」最直观的证据；
+      再打开第 ④ 块遮住一句话中间的字，模型经常能一次猜中，因为它同时看了左右两边（对比 GPT 只能看左边）；
+      第 ⑥ 块用真实余弦相似度说明 BERT 的输出是<em>上下文相关</em>的：静态字向量里两个「苹果」完全相同（cos=1.00），
+      但 BERT 在「吃苹果」和「苹果手机」里给出的是不同向量。
+    </div>
+  </div>
+
+</div>
+<div id="tip"></div>
+
+<script src="bert_data.js"></script>
+<script>
+(function () {
+  "use strict";
+  if (!window.BERT_DATA) {
+    document.body.insertAdjacentHTML("afterbegin",
+      '<div style="background:#FDEDEC;border:1px solid #C0392B;color:#C0392B;padding:10px 14px;border-radius:6px;margin-bottom:10px">' +
+      '找不到 bert_data.js —— 请确认它和本页面放在同一个文件夹里（先运行 tools/export_bert_viz.py 生成）。</div>');
+    return;
+  }
+  const D = window.BERT_DATA;
+  const META = D.meta;
+  const LAYERS = META.layers, HEADS = META.heads;
+  const $ = (id) => document.getElementById(id);
+
+  const S = { si: 0, layer: 0, head: 0, q: 1 };
+
+  // ───────── 解码 ─────────
+  function b64bin(b64) {
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  function halfToFloat(h) {
+    const s = h & 0x8000 ? -1 : 1, e = (h & 0x7c00) >> 10, f = h & 0x03ff;
+    if (e === 0) return s * Math.pow(2, -14) * (f / 1024);
+    if (e === 31) return f ? NaN : s * Infinity;
+    return s * Math.pow(2, e - 15) * (1 + f / 1024);
+  }
+  function decodeVectors(b64, n) {
+    const bin = b64bin(b64);
+    const out = new Float32Array(n);
+    const dv = new DataView(bin.buffer);
+    for (let i = 0; i < n; i++) out[i] = halfToFloat(dv.getUint16(i * 2, true));
+    return out;
+  }
+  const cos = (a, b, n) => {
+    let dot = 0, na = 0, nb = 0;
+    for (let i = 0; i < n; i++) { dot += a[i] * b[i]; na += a[i] * a[i]; nb += b[i] * b[i]; }
+    return dot / (Math.sqrt(na) * Math.sqrt(nb) + 1e-12);
+  };
+
+  // 每句按需解码并缓存
+  const cache = new Map();
+  function sent(i) {
+    if (cache.has(i)) return cache.get(i);
+    const s = D.sentences[i];
+    const L = s.tokens.length;
+    // 每层存的是 heads × L × L 的展平数组
+    const attn = s.attn.map((b) => {
+      const u = b64bin(b);
+      const n = HEADS * L * L;
+      if (u.length !== n * 2) throw new Error(`注意力长度不符: ${u.length} != ${n * 2}`);
+      const dv = new DataView(u.buffer);
+      const arr = new Float32Array(n);
+      for (let k = 0; k < n; k++) arr[k] = dv.getUint16(k * 2, true) / 65535;
+      return arr;
+    });
+    const obj = {
+      text: s.text, tokens: s.tokens, ids: s.ids, mlm: s.mlm, L, attn,
+      hidden: decodeVectors(s.hidden, L * META.hidden),
+      static: decodeVectors(s.static, L * META.hidden),
+      scores: s.scores,
+    };
+    cache.set(i, obj);
+    return obj;
+  }
+
+  function isSpecial(t) { return t === "[CLS]" || t === "[SEP]" || t === "[PAD]"; }
+
+  // ───────── 颜色 ─────────
+  function heatColor(a, max) {
+    // 开方压缩动态范围：一个 0.9 的格子不会把其余格子全压成白色
+    const t = Math.sqrt(Math.min(1, max > 0 ? a / max : 0));
+    // 白 → 青蓝 → 深蓝
+    const stop = [[247, 251, 253], [46, 134, 171], [30, 58, 95]];
+    const seg = t < 0.5 ? 0 : 1;
+    const u = t < 0.5 ? t / 0.5 : (t - 0.5) / 0.5;
+    const c0 = stop[seg], c1 = stop[seg + 1];
+    return `rgb(${Math.round(c0[0] + (c1[0] - c0[0]) * u)},${Math.round(c0[1] + (c1[1] - c0[1]) * u)},${Math.round(c0[2] + (c1[2] - c0[2]) * u)})`;
+  }
+
+  // ───────── 顶部选择器 ─────────
+  const selSent = $("sent");
+  D.sentences.forEach((s, i) => {
+    const o = document.createElement("option");
+    o.value = i;
+    o.textContent = `${i + 1}. ${s.text}`;
+    selSent.appendChild(o);
+  });
+
+  const headsBox = $("heads");
+  function buildHeads() {
+    headsBox.innerHTML = `<button class="hbtn" data-h="-1">多头平均</button>` +
+      Array.from({ length: HEADS }, (_, h) => `<button class="hbtn" data-h="${h}">H${h + 1}</button>`).join("");
+    headsBox.querySelectorAll(".hbtn").forEach((b) => {
+      b.addEventListener("click", () => { S.head = Number(b.dataset.h); syncHeadBtns(); render(); });
+    });
+    syncHeadBtns();
+  }
+  function syncHeadBtns() {
+    headsBox.querySelectorAll(".hbtn").forEach((b) => b.classList.toggle("on", Number(b.dataset.h) === S.head));
+  }
+
+  // ───────── token 条 ─────────
+  function renderTokens() {
+    const s = sent(S.si);
+    $("tokens").innerHTML = s.tokens.map((t, i) => {
+      const cls = "tok" + (isSpecial(t) ? " special" : "") + (i === S.q ? " sel" : "");
+      return `<div class="${cls}" data-i="${i}">${escapeHtml(t)}<span class="id">${s.ids[i]}</span></div>`;
+    }).join("");
+    $("tokens").querySelectorAll(".tok").forEach((n) => {
+      n.addEventListener("click", () => { S.q = Number(n.dataset.i); render(); });
+    });
+  }
+
+  function headSlice(s, h) {
+    const L = s.L;
+    const off = h * L * L;
+    return s.attn[S.layer].subarray(off, off + L * L);
+  }
+  function rowOf(s) {
+    // 当前选中头（-1 = 平均）的 L×L 注意力
+    const L = s.L;
+    if (S.head >= 0) return headSlice(s, S.head);
+    const out = new Float32Array(L * L);
+    for (let h = 0; h < HEADS; h++) {
+      const a = headSlice(s, h);
+      for (let k = 0; k < L * L; k++) out[k] += a[k];
+    }
+    for (let k = 0; k < L * L; k++) out[k] /= HEADS;
+    return out;
+  }
+
+  // ───────── 热力图 ─────────
+  function renderHeat() {
+    const s = sent(S.si);
+    const mat = rowOf(s);
+    const L = s.L;
+    const cvs = $("heat"), ctx = cvs.getContext("2d");
+    const wrapW = cvs.parentElement.clientWidth - 26;
+    const labelW = 66, topH = 60;
+    const cell = Math.max(9, Math.min(30, Math.floor((wrapW - labelW) / L)));
+    const W = labelW + cell * L, H = topH + cell * L + 6;
+    const dpr = window.devicePixelRatio || 1;
+    cvs.width = W * dpr; cvs.height = H * dpr;
+    cvs.style.width = W + "px"; cvs.style.height = H + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+
+    let max = 0;
+    for (let i = 0; i < L * L; i++) if (mat[i] > max) max = mat[i];
+
+    // 列标签
+    ctx.font = "11px 'Microsoft YaHei'"; ctx.textAlign = "left";
+    s.tokens.forEach((t, j) => {
+      ctx.save();
+      ctx.translate(labelW + j * cell + cell / 2, topH - 6);
+      ctx.rotate(-Math.PI / 2.6);
+      ctx.fillStyle = isSpecial(t) ? "#9AA5AE" : "#2D2D2D";
+      ctx.fillText(t, 0, 0);
+      ctx.restore();
+    });
+    // 行标签
+    s.tokens.forEach((t, i) => {
+      ctx.fillStyle = isSpecial(t) ? "#9AA5AE" : "#2D2D2D";
+      ctx.textAlign = "right";
+      ctx.fillText(t, labelW - 5, topH + i * cell + cell * 0.72);
+    });
+    // 矩阵
+    for (let i = 0; i < L; i++) {
+      for (let j = 0; j < L; j++) {
+        ctx.fillStyle = heatColor(mat[i * L + j], max);
+        ctx.fillRect(labelW + j * cell, topH + i * cell, cell - 0.6, cell - 0.6);
+      }
+    }
+    // 选中行描边
+    ctx.strokeStyle = "#C0392B"; ctx.lineWidth = 2;
+    ctx.strokeRect(labelW - 1, topH + S.q * cell - 1, cell * L + 2, cell + 1);
+
+    // hover
+    cvs.onmousemove = (ev) => {
+      const r = cvs.getBoundingClientRect();
+      const x = ev.clientX - r.left, y = ev.clientY - r.top;
+      const j = Math.floor((x - labelW) / cell), i = Math.floor((y - topH) / cell);
+      const tip = $("tip");
+      if (i >= 0 && i < L && j >= 0 && j < L) {
+        const v = mat[i * L + j];
+        tip.style.display = "block";
+        tip.style.left = ev.clientX + 12 + "px";
+        tip.style.top = ev.clientY + 12 + "px";
+        tip.textContent = `${s.tokens[i]} → ${s.tokens[j]} : ${v.toFixed(4)}`;
+      } else tip.style.display = "none";
+    };
+    cvs.onmouseleave = () => { $("tip").style.display = "none"; };
+    cvs.onclick = (ev) => {
+      const r = cvs.getBoundingClientRect();
+      const i = Math.floor((ev.clientY - r.top - topH) / cell);
+      if (i >= 0 && i < L) { S.q = i; render(); }
+    };
+
+    const sw = $("sw");
+    sw.style.background = `linear-gradient(90deg,rgb(247,251,253),rgb(46,134,171),rgb(30,58,95))`;
+    // 行和校验
+    let rs = 0;
+    for (let j = 0; j < L; j++) rs += mat[S.q * L + j];
+    $("rowsum").innerHTML = `选中行「${s.tokens[S.q]}」权重之和 = <b>${rs.toFixed(3)}</b>`;
+    $("matTitle").textContent = `— L${S.layer + 1} · ${S.head < 0 ? "多头平均" : "H" + (S.head + 1)}`;
+  }
+
+  // ───────── 看谁 ─────────
+  function renderTopbars() {
+    const s = sent(S.si);
+    const mat = rowOf(s);
+    const L = s.L;
+    const row = [];
+    for (let j = 0; j < L; j++) row.push({ j, v: mat[S.q * L + j], tok: s.tokens[j] });
+    row.sort((a, b) => b.v - a.v);
+    const top = row.slice(0, 6);
+    const max = top[0].v || 1;
+    $("topbars").innerHTML = top.map((r) => `
+      <div class="tb"><span class="t">${escapeHtml(r.tok)}</span>
+        <span class="bg"><span class="bar" style="width:${Math.max(2, r.v / max * 100)}%"></span></span>
+        <span class="v">${(r.v * 100).toFixed(1)}%</span></div>`).join("");
+    // 顺带打印注意力熵，说明"集中还是分散"
+    let ent = 0;
+    for (let j = 0; j < L; j++) { const p = mat[S.q * L + j]; if (p > 1e-9) ent -= p * Math.log(p); }
+    $("topbars").insertAdjacentHTML("beforeend",
+      `<div class="note" style="margin-top:6px">「${escapeHtml(s.tokens[S.q])}」的注意力分布熵 = <b>${ent.toFixed(2)}</b>（上限 ln${L}=${Math.log(L).toFixed(2)}，越小越集中在一个字上）</div>`);
+  }
+
+  // ───────── 12 头缩略图 ─────────
+  function renderMini() {
+    const s = sent(S.si);
+    const a = s.attn[S.layer];
+    const L = s.L;
+    const box = $("mini");
+    box.innerHTML = "";
+    const notes = [];
+    for (let h = 0; h < HEADS; h++) {
+      const cvs = document.createElement("canvas");
+      cvs.width = L; cvs.height = L;
+      const c = cvs.getContext("2d");
+      let max = 0;
+      const off = h * L * L;
+      for (let k = 0; k < L * L; k++) if (a[off + k] > max) max = a[off + k];
+      for (let i = 0; i < L; i++) {
+        for (let j = 0; j < L; j++) {
+          c.fillStyle = heatColor(a[off + i * L + j], max || 1);
+          c.fillRect(j, i, 1, 1);
+        }
+      }
+      const d = document.createElement("div");
+      d.className = "m" + (h === S.head ? " on" : "");
+      d.appendChild(cvs);
+      d.insertAdjacentHTML("beforeend", `<div class="cap">H${h + 1}</div>`);
+      d.addEventListener("click", () => { S.head = h; syncHeadBtns(); render(); });
+      box.appendChild(d);
+
+      // 每个头"最关注谁"：取整张矩阵里权重最大的格子（除自己看自己）
+      let best = { v: -1, i: 0, j: 0 };
+      for (let i = 0; i < L; i++) {
+        for (let j = 0; j < L; j++) {
+          if (i === j) continue;
+          const v = a[off + i * L + j];
+          if (v > best.v) best = { v, i, j };
+        }
+      }
+      notes.push({ h: h + 1, i: best.i, j: best.j, v: best.v });
+    }
+    notes.sort((x, y) => y.v - x.v);
+    $("miniNote").innerHTML = "最强关联（每个头取非自身最大的一格）：" + notes.slice(0, 4).map((n) =>
+      `<b>H${n.h}</b>「${escapeHtml(s.tokens[n.i])}→${escapeHtml(s.tokens[n.j])}」${(n.v * 100).toFixed(0)}%`).join("　") +
+      `<br>同一个字在不同头里被关注的程度不同 —— 这就是「多头子空间」的可视化。`;
+  }
+
+  // ───────── MLM ─────────
+  function renderMLM() {
+    const s = sent(S.si);
+    const rec = s.mlm.find((m) => m.pos === S.q);
+    if (!rec) {
+      $("mlmHead").innerHTML = `「${escapeHtml(s.tokens[S.q])}」是特殊 token，不参与遮字预测。`;
+      $("mlm").innerHTML = "";
+      return;
+    }
+    $("mlmHead").innerHTML = `把「<b>${escapeHtml(rec.original)}</b>」替换成 [MASK] 后，模型在原位置的预测（原字排名 <b>${rec.original_rank + 1}</b>）：`;
+    const max = rec.top[0].p || 1;
+    $("mlm").innerHTML = rec.top.map((t) => `
+      <div class="mlm-row ${t.token === rec.original ? "hit" : ""}">
+        <span class="t">${escapeHtml(t.token)}</span>
+        <span class="bg"><span class="bar" style="width:${Math.max(1, t.p / max * 100)}%"></span></span>
+        <span class="v">${(t.p * 100).toFixed(2)}%</span>
+      </div>`).join("");
+  }
+
+  // ───────── QKV 分数表 ─────────
+  function renderScores() {
+    const s = sent(S.si);
+    const L = s.L;
+    const m = s.scores.matrix;
+    const n = Math.min(L, 9);
+    let html = `<table class="plain"><tr><th>Q↓ K→</th>` +
+      s.tokens.slice(0, n).map((t) => `<th>${escapeHtml(t)}</th>`).join("") + `</tr>`;
+    for (let i = 0; i < n; i++) {
+      html += `<tr><td class="rowh">${escapeHtml(s.tokens[i])}</td>`;
+      for (let j = 0; j < n; j++) {
+        const v = m[i * L + j];
+        html += `<td style="background:${heatColor(v, 6)};color:${v > 3.2 ? "#fff" : "#2D2D2D"}">${v.toFixed(2)}</td>`;
+      }
+      html += `</tr>`;
+    }
+    html += `</table>`;
+    $("scoreTbl").innerHTML = html + `<div class="note" style="margin-top:6px">只显示前 ${n}×${n} 格；分数范围通常在 ±10，可以大于 1 也可能为负，softmax 之后才变成「每行和为 1 的权重」。</div>`;
+  }
+
+  // ───────── 多义词 ─────────
+  function buildPolySelect() {
+    // 找出所有句子中重复出现的非特殊 token
+    const pos = new Map();
+    const cjk = /^[\u4e00-\u9fa5]$/;   // 只挑汉字，标点/字母没有「多义」可讲
+    D.sentences.forEach((s, si) => s.tokens.forEach((t, i) => {
+      if (isSpecial(t) || !cjk.test(t)) return;
+      if (!pos.has(t)) pos.set(t, []);
+      pos.get(t).push([si, i]);
+    }));
+    const repeated = [...pos.entries()].filter(([, v]) => {
+      const sentSet = new Set(v.map((x) => x[0]));
+      return sentSet.size >= 2;
+    });
+    const sel = $("polyTok");
+    sel.innerHTML = "";
+    repeated.forEach(([t]) => {
+      const o = document.createElement("option");
+      o.value = t; o.textContent = t;
+      sel.appendChild(o);
+    });
+    if (!sel.options.length) {
+      $("poly").innerHTML = '<div class="note">这组句子中没有跨句重复的字。</div>';
+      return;
+    }
+    const prefer = ["苹", "果", "北", "京", "银", "行"];
+    const target = prefer.find((p) => repeated.some(([t]) => t === p)) || repeated[0][0];
+    sel.value = target;
+    sel.onchange = () => renderPoly(sel.value, repeated);
+    renderPoly(target, repeated);
+  }
+
+  function renderPoly(tok, repeated) {
+    const occ = repeated.find(([t]) => t === tok)[1];
+    const H = META.hidden;
+    const rows = occ.map(([si, i]) => {
+      const s = sent(si);
+      return { si, i, sent: s.text, ctx: s.hidden.subarray(i * H, i * H + H), stat: s.static.subarray(i * H, i * H + H) };
+    });
+    let html = `<div class="note" style="margin-bottom:8px">「<b>${escapeHtml(tok)}</b>」共出现在 ${rows.length} 个句子里。</div>`;
+    html += `<table class="plain"><tr><th>句子</th><th>BERT 上下文 cos</th><th>静态字向量 cos</th></tr>`;
+    for (let a = 0; a < rows.length; a++) {
+      for (let b = a + 1; b < rows.length; b++) {
+        const ch = cos(rows[a].ctx, rows[b].ctx, H);
+        const cs = cos(rows[a].stat, rows[b].stat, H);
+        html += `<tr><td style="text-align:left;font-family:inherit;font-size:12px">` +
+          `${escapeHtml(rows[a].sent.slice(0, 14))}… ↔ ${escapeHtml(rows[b].sent.slice(0, 14))}…</td>` +
+          `<td style="font-weight:700;color:${ch < 0.95 ? "#C0392B" : "#217B45"}">${ch.toFixed(3)}</td>` +
+          `<td style="color:#666">${cs.toFixed(3)}</td></tr>`;
+      }
+    }
+    html += `</table><div class="note" style="margin-top:6px">
+      静态字向量（word_embedding）里同一个字永远是同一个向量（cos=1.000），
+      而 BERT 的输出向量随上下文变化 —— 这正是「上下文相关表示」的含义，多义词消歧靠的就是它。</div>`;
+    $("poly").innerHTML = html;
+  }
+
+  // ───────── 渲染 ─────────
+  function render() {
+    renderTokens();
+    renderHeat();
+    renderTopbars();
+    renderMini();
+    renderMLM();
+    renderScores();
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  // 初始化
+  buildHeads();
+  $("sent").addEventListener("change", (e) => { S.si = Number(e.target.value); S.q = 1; render(); });
+  $("layer").max = LAYERS;
+  $("layer").addEventListener("input", (e) => {
+    S.layer = Number(e.target.value) - 1;
+    $("layerv").textContent = "L" + (S.layer + 1);
+    render();
+  });
+  $("kv").innerHTML = `<span>模型 <b>${META.model}</b></span><span>层 <b>${LAYERS}</b></span>
+    <span>头 <b>${HEADS}</b></span><span>隐藏维 <b>${META.hidden}</b></span><span>句数 <b>${D.sentences.length}</b></span>`;
+  buildPolySelect();
+  render();
+})();
+</script>
+</body>
+</html>

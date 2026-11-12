@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>拼音输入法 · 语言模型实验室</title>
+<style>
+  :root{
+    --navy:#1E3A5F; --teal:#2E86AB; --dark:#2D2D2D; --gray:#666666;
+    --code-bg:#F5F5F5; --border:#DEDEDE; --lt-teal:#EBF4FA;
+    --red:#C0392B; --green:#217B45; --orange:#D4720A; --purple:#6C4FA1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:#F0F2F5; color:var(--dark); margin:0;
+    font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",-apple-system,sans-serif;
+    font-size:14px; line-height:1.5; padding:14px 18px 34px;
+  }
+  .wrap{max-width:1660px;margin:0 auto;}
+
+  .head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
+  .head h1{font-size:22px;color:var(--navy);margin:0;font-weight:700;letter-spacing:.5px;}
+  .head .sub{font-size:12.5px;color:var(--gray);}
+  .badge{
+    margin-left:auto;font-size:11.5px;color:var(--navy);background:var(--lt-teal);
+    border:1px solid #CFE3EF;border-radius:20px;padding:3px 12px;white-space:nowrap;
+  }
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;}
+  .card-h{
+    padding:8px 13px;border-bottom:1px solid var(--border);
+    font-size:13.5px;font-weight:700;color:var(--navy);
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .card-h .hint{font-size:11.5px;color:var(--gray);font-weight:400;}
+  .card-b{padding:11px 13px;}
+
+  /* 输入栏 */
+  .bar{
+    background:#fff;border:1px solid var(--border);border-left:4px solid var(--teal);
+    border-radius:8px;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:center;
+    gap:10px 18px;margin-bottom:12px;
+  }
+  .field{display:flex;align-items:center;gap:7px;}
+  .field>label{font-size:12.5px;color:var(--gray);white-space:nowrap;}
+  input[type=text]{
+    font-family:Consolas,Monaco,monospace;font-size:17px;color:var(--navy);font-weight:600;
+    border:1px solid var(--border);border-radius:6px;padding:6px 11px;width:230px;background:var(--code-bg);
+  }
+  input[type=text]:focus{outline:2px solid var(--teal);outline-offset:-1px;background:#fff;}
+  input[type=range]{width:92px;accent-color:var(--teal);vertical-align:middle;}
+  .val{font-family:Consolas,monospace;font-size:13px;font-weight:700;color:var(--teal);min-width:30px;text-align:right;display:inline-block;}
+  button{
+    font-family:inherit;font-size:12.5px;padding:5px 13px;border-radius:5px;border:1px solid var(--border);
+    background:#fff;color:var(--dark);cursor:pointer;transition:.12s;white-space:nowrap;
+  }
+  button:hover{background:var(--lt-teal);border-color:var(--teal);}
+  button.primary{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600;}
+  button.primary:hover{background:#162C49;}
+  button.mini{font-size:11.5px;padding:3px 9px;}
+  .presets{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+  .presets .lbl{font-size:12px;color:var(--gray);}
+  .chipbtn{
+    font-family:Consolas,monospace;font-size:12px;padding:3px 9px;border-radius:14px;
+    border:1px solid #CFE3EF;background:#F7FBFD;color:var(--teal);cursor:pointer;
+  }
+  .chipbtn:hover{background:var(--lt-teal);}
+
+  /* 布局 */
+  .grid{display:grid;grid-template-columns:40fr 60fr;gap:12px;}
+  .grid2{display:grid;grid-template-columns:56fr 44fr;gap:12px;margin-top:12px;}
+  .scroll{overflow:auto;}
+  .scroll::-webkit-scrollbar{width:8px;height:8px;}
+  .scroll::-webkit-scrollbar-thumb{background:#CBD5DB;border-radius:4px;}
+  .col{display:flex;flex-direction:column;gap:12px;min-width:0;}
+
+  /* 音节 & 候选 */
+  .syl-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .syl{border:1px solid var(--border);border-radius:7px;overflow:hidden;background:#fcfcfd;}
+  .syl-h{
+    background:var(--lt-teal);border-bottom:1px solid #CFE3EF;padding:3px 10px;
+    font-family:Consolas,monospace;font-size:12.5px;font-weight:700;color:var(--navy);
+    display:flex;justify-content:space-between;gap:8px;
+  }
+  .syl-h .n{font-weight:400;color:var(--gray);font-size:11px;}
+  .syl-b{padding:6px 9px;display:flex;flex-direction:column;gap:3px;min-width:132px;}
+  .cand{display:flex;align-items:center;gap:6px;font-size:15px;}
+  .cand .ch{font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:19px;width:22px;text-align:center;}
+  .cand .barbg{flex:1;height:7px;background:#EEF1F4;border-radius:4px;overflow:hidden;min-width:44px;}
+  .cand .bar{height:100%;background:linear-gradient(90deg,#8FBBD0,var(--teal));border-radius:4px;}
+  .cand .v{font-family:Consolas,monospace;font-size:11px;color:var(--gray);min-width:42px;text-align:right;}
+  .cand.pick .ch{color:var(--red);font-weight:700;}
+  .cand.pick .bar{background:linear-gradient(90deg,#E9A79F,var(--red));}
+  .cand.pick .v{color:var(--red);font-weight:700;}
+
+  /* 结果 */
+  .res{display:flex;flex-direction:column;gap:6px;}
+  .res-row{
+    display:flex;align-items:center;gap:10px;padding:6px 10px;border:1px solid var(--border);
+    border-radius:6px;cursor:pointer;transition:.1s;background:#fff;
+  }
+  .res-row:hover{border-color:var(--teal);background:#F7FBFD;}
+  .res-row .idx{
+    font-family:Consolas,monospace;font-size:11.5px;color:#fff;background:var(--gray);
+    width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .res-row.top .idx{background:var(--red);}
+  .res-row.top{border-color:#E9C6C1;background:#FDF6F5;}
+  .res-row .txt{font-size:19px;font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;letter-spacing:2px;flex:none;}
+  .res-row .txt .prefix{color:#9AA5AE;font-size:19px;}
+  .res-row .sc{margin-left:auto;font-family:Consolas,monospace;font-size:11.5px;color:var(--gray);text-align:right;line-height:1.35;}
+  .res-row .sc b{color:var(--navy);font-size:13.5px;}
+  .empty{color:var(--gray);font-size:12.5px;padding:6px 0;}
+
+  /* 下一步分布 */
+  .dist{display:flex;flex-direction:column;gap:5px;}
+  .dist-row{display:flex;align-items:center;gap:8px;}
+  .dist-row .ch{font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:20px;width:24px;text-align:center;}
+  .dist-row .barbg{flex:1;height:16px;background:#EEF1F4;border-radius:4px;overflow:hidden;position:relative;}
+  .dist-row .bar{height:100%;background:linear-gradient(90deg,#A8CBE0,var(--teal));border-radius:4px;transition:width .18s;}
+  .dist-row .p{font-family:Consolas,monospace;font-size:12.5px;color:var(--navy);width:58px;text-align:right;}
+  .dist-row .lp{font-family:Consolas,monospace;font-size:11px;color:var(--gray);width:60px;text-align:right;}
+  .dist-row.mark .ch{color:var(--red);font-weight:700;}
+  .dist-row.mark .bar{background:linear-gradient(90deg,#E9A79F,var(--red));}
+
+  .ctxline{
+    font-size:13px;color:var(--dark);background:var(--lt-teal);border:1px solid #CFE3EF;
+    border-radius:6px;padding:6px 10px;margin-bottom:9px;line-height:1.6;
+  }
+  .ctxline b{font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:17px;color:var(--navy);}
+  .ctxline code{font-family:Consolas,monospace;color:var(--teal);font-size:12.5px;}
+
+  .formula{
+    font-family:Consolas,monospace;font-size:12px;color:var(--gray);background:var(--code-bg);
+    border:1px solid var(--border);border-radius:5px;padding:6px 9px;margin-top:8px;line-height:1.7;
+  }
+  .formula b{color:var(--navy);}
+
+  /* 束搜索 */
+  .steps{display:flex;flex-direction:column;gap:8px;}
+  .step{border:1px solid var(--border);border-radius:7px;overflow:hidden;opacity:.35;transition:.2s;}
+  .step.on{opacity:1;}
+  .step-h{
+    display:flex;align-items:center;gap:9px;background:#F7F9FB;border-bottom:1px solid var(--border);
+    padding:4px 10px;font-size:12px;color:var(--gray);
+  }
+  .step-h .sy{
+    font-family:Consolas,monospace;font-weight:700;color:#fff;background:var(--navy);
+    border-radius:4px;padding:1px 8px;font-size:12.5px;
+  }
+  .step-h .arrow{color:var(--teal);font-weight:700;}
+  .step-b{padding:6px 10px;display:flex;flex-direction:column;gap:4px;}
+  .pathrow{display:flex;align-items:center;gap:8px;font-size:12px;}
+  .pathrow .pt{font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:16px;min-width:60px;}
+  .pathrow .barwrap{flex:1;height:9px;background:#EEF1F4;border-radius:4px;overflow:hidden;}
+  .pathrow .bar{height:100%;background:linear-gradient(90deg,#B9D6E6,var(--teal));}
+  .pathrow.keep .bar{background:linear-gradient(90deg,#9FC7B4,var(--green));}
+  .pathrow .sv{font-family:Consolas,monospace;font-size:11px;color:var(--gray);min-width:56px;text-align:right;}
+  .pruned{
+    display:flex;gap:5px;flex-wrap:wrap;font-size:11.5px;color:var(--gray);
+    border-top:1px dashed var(--border);padding-top:5px;margin-top:2px;
+  }
+  .pruned .x{background:#F3F4F6;border:1px solid var(--border);border-radius:4px;padding:0 6px;
+    text-decoration:line-through;font-family:"KaiTi",sans-serif;font-size:13px;color:#9AA5AE;}
+  .flag{font-size:10.5px;border-radius:9px;padding:0 7px;font-weight:700;}
+  .flag.keep{background:#E4F2EB;color:var(--green);}
+  .flag.cut{background:#FDEDEC;color:var(--red);}
+
+  canvas{display:block;width:100%;}
+  .legend{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--gray);margin-top:5px;flex-wrap:wrap;}
+  .legend .sw{width:26px;height:9px;border-radius:2px;display:inline-block;vertical-align:middle;}
+  .gateleg{display:flex;gap:12px;font-size:11.5px;color:var(--gray);flex-wrap:wrap;margin-top:4px;}
+  .gateleg i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:4px;}
+
+  .note{font-size:12.5px;color:var(--gray);line-height:1.75;}
+  .note b{color:var(--navy);}
+  .note em{color:var(--red);font-style:normal;font-weight:700;}
+
+  .typed{
+    font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:26px;color:var(--navy);
+    letter-spacing:3px;min-height:38px;word-break:break-all;
+  }
+  .typing-panel{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .typing-panel .caret{display:inline-block;width:2px;height:24px;background:var(--teal);animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .kv{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12px;color:var(--gray);margin-top:6px;}
+  .kv b{color:var(--navy);font-family:Consolas,monospace;}
+  .switch{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--dark);cursor:pointer;}
+  .switch input{accent-color:var(--teal);width:15px;height:15px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <h1>拼音输入法 · 语言模型实验室</h1>
+    <div class="sub">浏览器里真跑一个字符级 LSTM：拼音切分 → 候选字 → 语言模型打分 → 束搜索解码</div>
+    <div class="badge" id="badge">模型加载中…</div>
+  </div>
+
+  <!-- ───────────── 输入栏 ───────────── -->
+  <div class="bar">
+    <div class="field">
+      <label>拼音输入</label>
+      <input type="text" id="py" value="wo ai ni" spellcheck="false" autocomplete="off">
+      <button class="primary" id="go">转换</button>
+      <button class="mini" id="clear">清空上文</button>
+    </div>
+    <div class="field">
+      <label>束宽</label>
+      <input type="range" id="beam" min="1" max="20" value="10">
+      <span class="val" id="beamv">10</span>
+    </div>
+    <div class="field">
+      <label>温度 τ</label>
+      <input type="range" id="temp" min="20" max="200" value="100">
+      <span class="val" id="tempv">1.00</span>
+    </div>
+    <label class="switch"><input type="checkbox" id="lmon" checked> 用语言模型打分</label>
+    <div class="presets">
+      <span class="lbl">示例</span>
+      <button class="chipbtn" data-py="wo ai ni">wo ai ni</button>
+      <button class="chipbtn" data-py="jin tian tian qi">jin tian tian qi</button>
+      <button class="chipbtn" data-py="wo xiang chi ping guo">wo xiang chi ping guo</button>
+      <button class="chipbtn" data-py="ming tian qu gong yuan">ming tian qu gong yuan</button>
+      <button class="chipbtn" data-py="wo xi huan ni">wo xi huan ni</button>
+      <button class="chipbtn" data-py="ni hao">ni hao</button>
+    </div>
+  </div>
+
+  <!-- ───────────── 第一行 ───────────── -->
+  <div class="grid">
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span>① 音节切分 → 候选字 → 语言模型打分</span>
+          <span class="hint">分数 = log P(这个字 | 上文)，越接近 0 越可能</span></div>
+        <div class="card-b scroll" style="max-height:190px"><div class="syl-row" id="sylRow"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>③ 候选结果（点击或回车采用第 1 条）</span>
+          <span class="hint">总分 = 各字 log 概率之和</span></div>
+        <div class="card-b">
+          <div class="typing-panel">
+            <span style="font-size:12.5px;color:var(--gray)">已输入</span>
+            <div class="typed" id="typed"><span class="caret"></span></div>
+          </div>
+          <div class="res scroll" id="res" style="max-height:212px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span>② 语言模型此刻在想什么：下一个字</span>
+          <span class="hint">这就是语言模型输出的全部内容</span></div>
+        <div class="card-b">
+          <div class="ctxline" id="ctxline"></div>
+          <div class="dist" id="dist"></div>
+          <div class="formula" id="formula"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>④ 对照：把语言模型关掉会怎样</span>
+          <span class="hint">只按字频挑每个音节的第一个字</span></div>
+        <div class="card-b" id="noLM"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────── 第二行 ───────────── -->
+  <div class="grid2">
+    <div class="col">
+      <div class="card">
+        <div class="card-h">
+          <span>⑤ 束搜索：每一步展开 → 打分 → 剪枝</span>
+          <span style="display:flex;gap:6px;align-items:center">
+            <span class="hint" id="beamStat"></span>
+            <button class="mini" id="replay">回放</button>
+          </span>
+        </div>
+        <div class="card-b scroll" style="max-height:330px"><div class="steps" id="steps"></div></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span>⑥ LSTM 内部：隐状态与门控</span>
+          <span class="hint" id="heatHint"></span></div>
+        <div class="card-b">
+          <canvas id="heat" height="150"></canvas>
+          <div class="legend">
+            <span>弱</span>
+            <span class="sw" style="background:linear-gradient(90deg,#2C5F8A,#FFFFFF,#B4472F)"></span>
+            <span>强</span>
+            <span style="margin-left:8px">每行 = 读完一个字后的 256 维隐状态（按行归一化）</span>
+          </div>
+          <canvas id="gates" height="96" style="margin-top:8px"></canvas>
+          <div class="gateleg">
+            <span><i style="background:#2E86AB"></i>输入门 i（新信息写入比例）</span>
+            <span><i style="background:#C0392B"></i>遗忘门 f（旧记忆保留比例）</span>
+            <span><i style="background:#D4720A"></i>输出门 o（暴露给下一层）</span>
+            <span style="color:#9AA5AE">门控值 = 该步 256 个单元的平均</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <div class="card-b note">
+      <b>看什么：</b>输入法做的事 = 枚举拼音对应的候选字（①），再用语言模型给每条路径打分（②⑤），最后保留分数最高的一批（⑤）。
+      语言模型本身只会算 <em>P(下一个字 | 上文)</em>（②），一个字的拼音往往对应十几个候选，
+      是「上文决定概率」把 <em>我爱拟</em> 这种读音正确、语义不通的组合压了下去。
+      关掉语言模型（④）后每个音节只能各挑各的字，这是 N-gram 之前的原始做法。
+      <div class="kv" id="kv"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="ime_model.js"></script>
+<script src="ime_engine.js"></script>
+<script>
+(function () {
+  "use strict";
+  if (!window.IME_MODEL) {
+    document.body.insertAdjacentHTML("afterbegin",
+      '<div style="background:#FDEDEC;border:1px solid #C0392B;color:#C0392B;padding:10px 14px;border-radius:6px;margin-bottom:10px">' +
+      '找不到 ime_model.js —— 请确认它和本页面放在同一个文件夹里（先运行 tools/export_ime_model.py 生成）。</div>');
+    return;
+  }
+  const eng = new window.IME_ENGINE.CharLSTM(window.IME_MODEL);
+  const meta = eng.meta;
+
+  const $ = (id) => document.getElementById(id);
+  const el = {
+    py: $("py"), go: $("go"), clear: $("clear"), beam: $("beam"), beamv: $("beamv"),
+    temp: $("temp"), tempv: $("tempv"), lmon: $("lmon"), sylRow: $("sylRow"), res: $("res"),
+    typed: $("typed"), ctxline: $("ctxline"), dist: $("dist"), formula: $("formula"),
+    noLM: $("noLM"), steps: $("steps"), replay: $("replay"), beamStat: $("beamStat"),
+    heat: $("heat"), gates: $("gates"), heatHint: $("heatHint"), kv: $("kv"), badge: $("badge"),
+  };
+
+  const S = { confirmed: "", beam: 10, temp: 1, useLM: true, stepIndex: -1 };
+
+  eng.badge = null;
+  el.badge.textContent = `模型：${meta.model.toUpperCase()} 2 层 × ${meta.hidden_dim} 维 · 字表 ${meta.vocab_size} · 纯前端推理`;
+
+  const fmt = (v, d) => (v >= 0 ? "+" : "") + v.toFixed(d === undefined ? 2 : d);
+  const pct = (p) => (p >= 0.1 ? (p * 100).toFixed(1) : p >= 0.01 ? (p * 100).toFixed(1) : (p * 100).toFixed(2)) + "%";
+
+  // ───────────────────────── 主流程 ─────────────────────────
+
+  function recompute() {
+    const raw = el.py.value;
+    const syllables = eng.segment(raw);
+    const prefix = S.confirmed;
+
+    if (!syllables.length) {
+      renderEmpty(syllables);
+      return;
+    }
+
+    const out = eng.beamSearch(syllables, prefix, {
+      beam: S.beam, useLM: S.useLM, temperature: S.temp,
+    });
+    const best = out.results[0];
+    const bestText = best ? best.text : "";
+
+    renderSyllables(syllables, prefix, bestText);
+    renderResults(out, prefix);
+    renderNextDist(prefix, bestText);
+    renderNoLM(syllables, prefix, best, out);
+    renderSteps(out);
+    renderStates(prefix + bestText);
+    renderTyped();
+    el.beamStat.textContent = `${syllables.length} 个音节 · 束宽 ${S.beam} · 覆盖 ${(S.confirmed + bestText).length} 字上下文`;
+  }
+
+  function renderEmpty(syllables) {
+    el.sylRow.innerHTML = '<div class="empty">输入拼音（支持连写 woaini 或空格分隔 wo ai ni）</div>';
+    el.res.innerHTML = '<div class="empty">—</div>';
+    el.dist.innerHTML = '<div class="empty">—</div>';
+    el.noLM.innerHTML = '<div class="empty">—</div>';
+    el.steps.innerHTML = '<div class="empty">—</div>';
+    renderNextDist(S.confirmed, "");
+    renderStates(S.confirmed);
+    renderTyped();
+  }
+
+  // ① 音节 + 候选字（用「截至该音节的上文」给每个候选字打分）
+  function renderSyllables(syllables, prefix, bestText) {
+    let ctx = prefix;
+    const html = [];
+    for (let i = 0; i < syllables.length; i++) {
+      const syl = syllables[i];
+      const cands = eng.candidates(syl).filter((c) => eng.char2id.has(c));
+      const logp = ctx.length
+        ? window.IME_ENGINE.logSoftmaxArr(eng.logits(eng.run(ctx, { temperature: S.temp }).state), S.temp)
+        : eng.unigramLogp();   // 没有上文 → 字频先验，和束搜索同一个口径
+      const scored = cands
+        .map((c) => ({ ch: c, lp: logp[eng.char2id.get(c)] }))
+        .sort((a, b) => b.lp - a.lp)
+        .slice(0, 6);
+      if (!scored.length) {
+        html.push(`<div class="syl"><div class="syl-h">${syl}<span class="n">无候选</span></div><div class="syl-b"><div class="empty">—</div></div></div>`);
+        continue;
+      }
+      const picked = bestText[i] || scored[0].ch;
+      const top = scored[0].lp;
+      const low = scored[scored.length - 1].lp;
+      const span = Math.max(0.5, top - low);
+      const rows = scored.map((s) => {
+        const w = 8 + 92 * (1 - (top - s.lp) / span);
+        return `<div class="cand ${s.ch === picked ? "pick" : ""}">
+            <span class="ch">${s.ch}</span>
+            <span class="barbg"><span class="bar" style="width:${w}%"></span></span>
+            <span class="v">${fmt(s.lp)}</span></div>`;
+      }).join("");
+      html.push(`<div class="syl">
+          <div class="syl-h">${syl}<span class="n">${cands.length} 个候选</span></div>
+          <div class="syl-b">${rows}</div></div>`);
+      ctx += picked;
+    }
+    el.sylRow.innerHTML = html.join("");
+  }
+
+  // ③ 候选结果
+  function renderResults(out, prefix) {
+    const list = out.results.slice(0, 6);
+    if (!list.length) {
+      el.res.innerHTML = '<div class="empty">没有可用候选（拼音无法切分成已知音节）</div>';
+      return;
+    }
+    el.res.innerHTML = list.map((r, i) => `
+      <div class="res-row ${i === 0 ? "top" : ""}" data-i="${i}">
+        <span class="idx">${i + 1}</span>
+        <span class="txt">${prefix ? `<span class="prefix">${escapeHtml(prefix)}</span>` : ""}${escapeHtml(r.text)}</span>
+        <span class="sc">
+          总分 <b>${r.score.toFixed(2)}</b><br>
+          每字平均 ${r.avgLogp.toFixed(2)} · 困惑度 ${r.ppl.toFixed(1)}
+        </span>
+      </div>`).join("");
+    el.res.querySelectorAll(".res-row").forEach((row) => {
+      row.addEventListener("click", () => adopt(Number(row.dataset.i)));
+    });
+  }
+
+  function adopt(i) {
+    const text = el.res.querySelector(`.res-row[data-i="${i}"] .txt`);
+    if (!text) return;
+    const node = el.res.querySelector(`.res-row[data-i="${i}"]`);
+    // 结果文本里可能包含上文（灰色部分），只取新转换出来的部分
+    const full = node.querySelector(".txt").textContent;
+    const added = full.slice(S.confirmed.length);
+    S.confirmed += added;
+    el.py.value = "";
+    recompute();
+    el.py.focus();
+  }
+
+  // ② 下一个字分布
+  function renderNextDist(prefix, bestText) {
+    const context = prefix + (bestText || "");
+    const run = eng.run(context, { temperature: S.temp });
+    const dist = eng.nextDist(run.state, 8, S.temp);
+    const nextGuess = bestText ? null : null;
+    el.ctxline.innerHTML = context
+      ? `上文：<b>${escapeHtml(context)}</b> &nbsp;→&nbsp; 模型要回答 <code>P(下一个字 | 上文)</code>`
+      : `上文为空 → 模型只能给出「无条件的字频分布」（相当于 unigram）`;
+    el.dist.innerHTML = dist.entries.map((e) => `
+      <div class="dist-row">
+        <span class="ch">${e.char}</span>
+        <span class="barbg"><span class="bar" style="width:${Math.max(1, e.p * 100)}%"></span></span>
+        <span class="p">${pct(e.p)}</span>
+        <span class="lp">${fmt(e.logp)}</span>
+      </div>`).join("");
+    el.formula.innerHTML = `
+      <b>softmax</b>(W·h<sub>t</sub> + b) / τ &nbsp;→&nbsp; ${dist.total} 个字上的概率分布 &nbsp;·&nbsp;
+      τ=${S.temp.toFixed(2)}（τ 越小越「贪心」，越大越「随机」）<br>
+      最高概率 ${pct(dist.entries[0].p)}，说明模型对下一个字的把握程度；熵越低越确定。`;
+  }
+
+  // ④ 无语言模型对照
+  function renderNoLM(syllables, prefix, best, out) {
+    const uni = eng.unigramLogp();
+    const picks = [];
+    for (const syl of syllables) {
+      let bestC = null;
+      for (const c of eng.candidates(syl)) {
+        const id = eng.char2id.get(c);
+        if (id === undefined) continue;
+        if (!bestC || uni[id] > bestC.lp) bestC = { ch: c, id, lp: uni[id] };
+      }
+      if (bestC) picks.push(bestC);
+    }
+    const text = picks.map((p) => p.ch).join("");
+    if (!text) {
+      el.noLM.innerHTML = '<div class="empty">—</div>';
+      return;
+    }
+    // 用同一个语言模型给「字频方案」的结果打分，与束搜索最优结果对比
+    // traces[i-1].logp 才是「读完前 i-1 个字后，对第 i 个字」的分布
+    const full = prefix + text;
+    const ids = eng.ids(full);
+    const runRes = eng.run(full, { temperature: S.temp });
+    let logpSum = 0;
+    for (let i = prefix.length; i < ids.length; i++) {
+      logpSum += i === 0 ? uni[ids[i]] : runRes.traces[i - 1].logp[ids[i]];
+    }
+    const uniSum = picks.reduce((a, p) => a + p.lp, 0);
+    const better = best ? best.text : "";
+    el.noLM.innerHTML = `
+      <div class="res-row" style="cursor:default">
+        <span class="txt" style="font-size:20px">${escapeHtml(prefix)}<span style="color:#9AA5AE">${escapeHtml(prefix ? "" : "")}</span>${escapeHtml(text)}</span>
+        <span class="sc">只按字频<br>字频总分 <b>${uniSum.toFixed(2)}</b></span>
+      </div>
+      <div class="note" style="margin-top:8px">
+        同一个语言模型给它的打分：<b>${logpSum.toFixed(2)}</b>
+        ${better ? `　|　束搜索结果「<b>${escapeHtml(better)}</b>」得分：<b>${(best.score).toFixed(2)}</b>` : ""}<br>
+        ${better && better !== text
+          ? `两种方式结果<em>不同</em>：语言模型把「${escapeHtml(text)}」改成了「${escapeHtml(better)}」。`
+          : `本例两种方式给出的字相同 —— 但字频方案是「每个音节各挑各的」，一旦遇到多候选歧义（试试 <code>ming tian qu gong yuan</code>）就会暴露它不知道上下文。`}
+      </div>`;
+  }
+
+  // ⑤ 束搜索过程
+  function renderSteps(out) {
+    const steps = out.steps || [];
+    if (!steps.length) {
+      el.steps.innerHTML = '<div class="empty">—</div>';
+      return;
+    }
+    S.stepIndex = -1;
+    el.steps.innerHTML = steps.map((st, si) => {
+      if (st.skipped) {
+        return `<div class="step on"><div class="step-h"><span class="sy">${st.syllable}</span>
+          <span>该音节没有可用候选，跳过</span></div></div>`;
+      }
+      const scores = st.kept.map((k) => k.score);
+      const top = Math.max.apply(null, scores);
+      const low = Math.min.apply(null, scores);
+      const span = Math.max(0.6, top - low);
+      const rows = st.kept.slice(0, 6).map((k, i) => {
+        const w = 8 + 92 * (1 - (top - k.score) / span);
+        return `<div class="pathrow keep">
+          <span class="pt">${escapeHtml(k.text)}</span>
+          <span class="barwrap"><span class="bar" style="width:${w}%"></span></span>
+          <span class="sv">${k.score.toFixed(2)}</span></div>`;
+      }).join("");
+      const cuts = st.kept.length < st.expanded
+        ? `<div class="pruned"><span class="flag cut">剪掉 ${st.expanded - st.kept.length} 条</span></div>`
+        : "";
+      return `<div class="step" data-si="${si}">
+        <div class="step-h">
+          <span class="sy">${st.syllable}</span>
+          <span class="arrow">→</span>
+          <span>${st.candidates.length} 个候选字 × ${st.beamsIn.length} 条路径 = ${st.expanded} 条</span>
+          <span class="flag keep" style="margin-left:auto">保留前 ${st.kept.length}</span>
+        </div>
+        <div class="step-b">${rows}${cuts}</div>
+      </div>`;
+    }).join("");
+    replay();
+  }
+
+  function replay() {
+    const nodes = el.steps.querySelectorAll(".step");
+    nodes.forEach((n) => n.classList.remove("on"));
+    let i = 0;
+    clearInterval(replay._t);
+    replay._t = setInterval(() => {
+      if (i >= nodes.length) { clearInterval(replay._t); return; }
+      nodes[i].classList.add("on");
+      i++;
+    }, 380);
+  }
+
+  // ⑥ LSTM 状态热力图 + 门控
+  function renderStates(text) {
+    const run = eng.run(text, { temperature: S.temp });
+    const traces = run.traces;
+    const cvs = el.heat, ctx = cvs.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const W = cvs.clientWidth || 600, Hc = 150;
+    cvs.width = W * dpr; cvs.height = Hc * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, Hc);
+    el.heatHint.textContent = traces.length ? `${traces.length} 步 × ${meta.hidden_dim} 维` : "";
+
+    if (!traces.length) {
+      ctx.fillStyle = "#9AA5AE"; ctx.font = "12px sans-serif";
+      ctx.fillText("先输入一些文字", 8, 24);
+      drawGates([]);
+      return;
+    }
+    const rows = traces.length;
+    const rowH = Math.min(22, Math.max(9, (Hc - 18) / rows));
+    const labelW = 26;
+    const cellW = (W - labelW) / meta.hidden_dim;
+    traces.forEach((t, r) => {
+      ctx.fillStyle = "#666"; ctx.font = "11px Consolas,monospace"; ctx.textAlign = "right";
+      ctx.fillText(t.char, labelW - 5, 12 + r * rowH + rowH * 0.62);
+      // 按该行最大绝对值归一化：模型隐状态整体幅值偏小，不归一化只有一片浅色
+      let rowMax = 1e-6;
+      for (let d = 0; d < meta.hidden_dim; d++) rowMax = Math.max(rowMax, Math.abs(t.layer2[d]));
+      for (let d = 0; d < meta.hidden_dim; d++) {
+        const v = Math.max(-1, Math.min(1, t.layer2[d] / rowMax));
+        const a = Math.abs(v);
+        const base = v >= 0 ? [44, 95, 138] : [180, 71, 47];
+        const c2 = base.map((c) => Math.round(255 - (255 - c) * a));
+        ctx.fillStyle = `rgb(${c2[0]},${c2[1]},${c2[2]})`;
+        ctx.fillRect(labelW + d * cellW, 4 + r * rowH, Math.max(cellW, 0.6), rowH - 1.2);
+      }
+    });
+    cvs.onmousemove = (ev) => {
+      const rect = cvs.getBoundingClientRect();
+      const x = ev.clientX - rect.left, y = ev.clientY - rect.top;
+      const r = Math.floor((y - 4) / rowH);
+      const d = Math.floor((x - labelW) / cellW);
+      if (r >= 0 && r < traces.length && d >= 0 && d < meta.hidden_dim) {
+        el.heatHint.textContent = `第 ${r + 1} 步「${traces[r].char}」 第 ${d} 维 = ${traces[r].layer2[d].toFixed(3)}`;
+      }
+    };
+    drawGates(traces);
+  }
+
+  function drawGates(traces) {
+    const cvs = el.gates, ctx = cvs.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const W = cvs.clientWidth || 600, Hc = 96;
+    cvs.width = W * dpr; cvs.height = Hc * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, Hc);
+    const pad = { l: 26, r: 8, t: 8, b: 14 };
+    const w = W - pad.l - pad.r, h = Hc - pad.t - pad.b;
+    ctx.strokeStyle = "#E6E9ED"; ctx.lineWidth = 1;
+    [0, 0.5, 1].forEach((v) => {
+      const y = pad.t + h * (1 - v);
+      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
+      ctx.fillStyle = "#9AA5AE"; ctx.font = "10px Consolas,monospace"; ctx.textAlign = "right";
+      ctx.fillText(v.toFixed(1), pad.l - 4, y + 3);
+    });
+    if (!traces.length) return;
+    const series = [
+      { key: "i", color: "#2E86AB" },
+      { key: "f", color: "#C0392B" },
+      { key: "o", color: "#D4720A" },
+    ];
+    const lastLayer = (t) => t.gates[t.gates.length - 1];
+    series.forEach((s) => {
+      ctx.beginPath();
+      traces.forEach((t, i) => {
+        const arr = lastLayer(t)[s.key];
+        let sum = 0;
+        for (let k = 0; k < arr.length; k++) sum += arr[k];
+        const mean = sum / arr.length;
+        const x = pad.l + (traces.length === 1 ? w / 2 : (w * i) / (traces.length - 1));
+        const y = pad.t + h * (1 - mean);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.strokeStyle = s.color; ctx.lineWidth = 2; ctx.stroke();
+      // 点
+      traces.forEach((t, i) => {
+        const arr = lastLayer(t)[s.key];
+        let sum = 0;
+        for (let k = 0; k < arr.length; k++) sum += arr[k];
+        const mean = sum / arr.length;
+        const x = pad.l + (traces.length === 1 ? w / 2 : (w * i) / (traces.length - 1));
+        const y = pad.t + h * (1 - mean);
+        ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fillStyle = s.color; ctx.fill();
+      });
+    });
+  }
+
+  function renderTyped() {
+    el.typed.innerHTML = S.confirmed
+      ? `${escapeHtml(S.confirmed)}<span class="caret"></span>`
+      : `<span style="color:#B9C2C9;font-size:16px;font-family:inherit">（还没采用任何字）</span>`;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  // ───────────────────────── 事件 ─────────────────────────
+
+  let timer = null;
+  const debounce = (fn) => { clearTimeout(timer); timer = setTimeout(fn, 180); };
+
+  el.py.addEventListener("input", () => debounce(recompute));
+  el.py.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); adopt(0); }
+  });
+  el.go.addEventListener("click", () => { recompute(); el.py.focus(); });
+  el.clear.addEventListener("click", () => { S.confirmed = ""; recompute(); el.py.focus(); });
+  el.beam.addEventListener("input", () => { S.beam = Number(el.beam.value); el.beamv.textContent = S.beam; recompute(); });
+  el.temp.addEventListener("input", () => {
+    S.temp = Number(el.temp.value) / 100; el.tempv.textContent = S.temp.toFixed(2); recompute();
+  });
+  el.lmon.addEventListener("change", () => { S.useLM = el.lmon.checked; recompute(); });
+  el.replay.addEventListener("click", replay);
+  document.querySelectorAll(".chipbtn[data-py]").forEach((b) => {
+    b.addEventListener("click", () => { el.py.value = b.dataset.py; recompute(); el.py.focus(); });
+  });
+  window.addEventListener("resize", () => { clearTimeout(window._rz); window._rz = setTimeout(recompute, 150); });
+
+  const kv = el.kv;
+  if (kv && meta) {
+    kv.innerHTML = `<span>字表 <b>${meta.vocab_size}</b></span>
+      <span>embed <b>${meta.embed_dim}</b></span>
+      <span>hidden <b>${meta.hidden_dim}</b></span>
+      <span>层数 <b>${meta.num_layers}</b></span>
+      <span>权重精度 <b>${meta.dtype}</b></span>`;
+  }
+
+  recompute();
+})();
+</script>
+</body>
+</html>

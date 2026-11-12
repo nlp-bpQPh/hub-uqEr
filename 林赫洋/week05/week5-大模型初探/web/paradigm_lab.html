@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三种架构范式实验室</title>
+<style>
+  :root{
+    --navy:#1E3A5F; --teal:#2E86AB; --dark:#2D2D2D; --gray:#666666;
+    --code-bg:#F5F5F5; --border:#DEDEDE; --lt-teal:#EBF4FA;
+    --red:#C0392B; --green:#217B45; --orange:#D4720A; --purple:#6C4FA1;
+  }
+  *{box-sizing:border-box;}
+  body{background:#F0F2F5;color:var(--dark);margin:0;
+    font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",-apple-system,sans-serif;
+    font-size:14px;line-height:1.5;padding:14px 18px 34px;}
+  .wrap{max-width:1600px;margin:0 auto;}
+  .head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
+  .head h1{font-size:22px;color:var(--navy);margin:0;font-weight:700;letter-spacing:.5px;}
+  .head .sub{font-size:12.5px;color:var(--gray);}
+  .badge{margin-left:auto;font-size:11.5px;color:var(--navy);background:var(--lt-teal);
+    border:1px solid #CFE3EF;border-radius:20px;padding:3px 12px;white-space:nowrap;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;min-width:0;}
+  .card-h{padding:8px 13px;border-bottom:1px solid var(--border);font-size:13.5px;font-weight:700;
+    color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .card-h .hint{font-size:11.5px;color:var(--gray);font-weight:400;}
+  .card-b{padding:11px 13px;}
+
+  .bar{background:#fff;border:1px solid var(--border);border-left:4px solid var(--teal);
+    border-radius:8px;padding:9px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;margin-bottom:12px;}
+  .field{display:flex;align-items:center;gap:7px;}
+  .field>label{font-size:12.5px;color:var(--gray);white-space:nowrap;}
+  button{font-family:inherit;font-size:12.5px;padding:5px 12px;border-radius:5px;border:1px solid var(--border);
+    background:#fff;color:var(--dark);cursor:pointer;transition:.12s;white-space:nowrap;}
+  button:hover{background:var(--lt-teal);border-color:var(--teal);}
+  button.primary{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600;}
+  button.primary:hover{background:#162C49;}
+  button.on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600;}
+  .seg{display:flex;flex-wrap:wrap;}
+  .seg button{border-radius:0;border-right-width:0;}
+  .seg button:first-child{border-radius:5px 0 0 5px;}
+  .seg button:last-child{border-radius:0 5px 5px 0;border-right-width:1px;}
+
+  .grid{display:grid;grid-template-columns:58fr 42fr;gap:12px;align-items:start;}
+  .col{display:flex;flex-direction:column;gap:12px;min-width:0;}
+
+  /* 结构图 */
+  .flow{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;}
+  .node{flex:1 1 0;min-width:96px;border:1.5px solid var(--border);border-radius:7px;background:#fff;
+    padding:8px 6px;text-align:center;transition:.18s;position:relative;}
+  .node .t{font-size:12px;font-weight:700;color:var(--navy);}
+  .node .s{font-size:10.5px;color:var(--gray);margin-top:2px;line-height:1.35;}
+  .node.active{border-color:var(--teal);background:#F3FAFD;box-shadow:0 0 0 3px #DDEEF6 inset;}
+  .node.active .t{color:var(--teal);}
+  .node.enc{border-color:#BFD8E6;}
+  .node.dec{border-color:#F0CFA6;}
+  .node.hit{border-color:var(--orange);background:#FDF3E3;box-shadow:0 0 0 3px #F7E3C7 inset;}
+  .arrow{display:flex;align-items:center;color:#9FB9CC;font-size:15px;}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .cross{display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--gray);margin-top:6px;}
+  .cross .ln{flex:1;height:1px;background:#C7D2DA;position:relative;}
+  .cross .ln:after{content:"";position:absolute;right:0;top:-3px;border:4px solid transparent;border-left:5px solid #C7D2DA;}
+
+  /* 输出 token */
+  .out{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;min-height:32px;align-items:center;}
+  .tok{border:1px solid var(--border);border-radius:5px;padding:2px 8px;font-size:16px;
+    font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;background:#fff;}
+  .tok.prompt{background:#EEF3F7;border-color:#C9D9E4;color:#4A6070;}
+  .tok.new{border-color:var(--orange);background:#FDF3E3;box-shadow:0 0 0 2px #F6D9B3 inset;}
+
+  /* mask 网格 */
+  .tokrow{display:flex;gap:4px;margin-left:64px;margin-bottom:4px;}
+  .tokrow .c{width:28px;text-align:center;font-size:12px;color:var(--gray);font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;}
+  .mgrid{display:flex;gap:6px;align-items:flex-start;}
+  .rowlbl{display:flex;flex-direction:column;gap:4px;width:58px;}
+  .rowlbl .c{height:28px;display:flex;align-items:center;justify-content:flex-end;font-size:11px;color:var(--gray);
+    font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;padding-right:4px;}
+  .hcell{text-align:center;font-size:11px;color:var(--gray);font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;}
+  .cells{display:grid;gap:4px;}
+  .cell{width:28px;height:28px;border:1px solid #B9CFE0;border-radius:3px;background:#E8F2F8;
+    display:flex;align-items:center;justify-content:center;font-family:Consolas,monospace;font-size:10px;
+    color:#5B7285;transition:.12s;}
+  .cell.off{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .cell.hl{box-shadow:0 0 0 2px var(--orange) inset;}
+  .cell.dim{opacity:.35;}
+  .legend{display:flex;gap:14px;font-size:11px;color:var(--gray);margin-top:8px;flex-wrap:wrap;align-items:center;}
+  .sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px;}
+
+  .tasks{display:flex;flex-wrap:wrap;gap:6px;}
+
+  /* 层与张量形状 */
+  .trow{display:flex;align-items:stretch;gap:5px;margin-bottom:7px}
+  .trow:last-child{margin-bottom:0}
+  .tname{width:132px;flex:0 0 132px;border-left:3px solid var(--teal);padding:3px 8px;background:#FAFCFD;border-radius:0 5px 5px 0}
+  .tname .a{font-size:11.5px;font-weight:700;line-height:1.25}
+  .tname .b{font-size:9.5px;color:var(--gray);line-height:1.25;margin-top:2px}
+  .tcell{flex:1 1 0;min-width:0;background:#fff;border:1px solid var(--border);border-radius:6px;padding:4px 5px;text-align:center}
+  .tcell .tt{font-size:10.5px;font-weight:700;color:var(--navy);line-height:1.25}
+  .tcell .ts{font-family:Consolas,monospace;font-size:9.2px;font-weight:700;margin-top:2px;line-height:1.2;white-space:nowrap}
+  .tcell .tx{font-size:8.8px;color:var(--gray);line-height:1.2;margin-top:1px}
+  .tarrow{display:flex;align-items:center;color:#9FB9CC;font-size:12px;flex:0 0 auto}
+  .task{font-size:12px;padding:3px 10px;border-radius:14px;border:1px solid #CFE3EF;background:#F7FBFD;
+    color:var(--teal);cursor:pointer;}
+  .task:hover{background:var(--lt-teal);}
+  .task.on{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+  .tip{background:#F7FBFD;border:1px solid #D6E8F2;border-radius:6px;padding:7px 10px;font-size:12px;color:#2F5266;margin-top:8px;}
+  .note{font-size:12.5px;color:#33444F;}
+  ul.take{margin:0;padding-left:18px;font-size:12.5px;color:#33444F;}
+  ul.take li{margin:3px 0;}
+  code{font-family:Consolas,monospace;font-size:11.5px;background:var(--code-bg);padding:1px 5px;border-radius:3px;}
+  .step-log{font-size:12px;color:#33444F;margin-top:8px;min-height:38px;background:var(--code-bg);
+    border:1px solid var(--border);border-radius:6px;padding:6px 10px;}
+  .step-log b{color:var(--teal);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>三种架构范式实验室</h1>
+    <span class="sub">同一张 L×L 可见性表：全可见 = 理解，下三角 = 生成，两个叠加 = 翻译 / 摘要</span>
+    <span class="badge">Week 5 · 从 BERT 到生成模型</span>
+  </div>
+
+  <div class="bar">
+    <div class="field"><label>范式</label>
+      <div class="seg" id="segP">
+        <button class="on" data-p="enc">Encoder-only</button>
+        <button data-p="dec">Decoder-only</button>
+        <button data-p="encdec">Encoder-Decoder</button>
+        <button data-p="prefix">Prefix LM</button>
+      </div>
+    </div>
+    <button class="primary" id="stepBtn">演示一步</button>
+    <button id="reset">重置</button>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span id="flowTitle">结构：Encoder-only</span><span class="hint">点「演示一步」看数据怎么流</span></div>
+        <div class="card-b">
+          <div class="flow" id="flow"></div>
+          <div id="crossRow"></div>
+          <div class="out" id="out"></div>
+          <div class="step-log" id="log">选择左侧范式与右侧任务，点「演示一步」开始。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>层结构与张量维度（跟随上方范式切换）</span><span class="hint">B=批大小，Ls/Lt=源/目标序列长，d=隐藏维，h=头数，V=词表，C=类别数</span></div>
+        <div class="card-b">
+          <div id="tensorFlow"></div>
+          <div class="note" style="margin-top:2px">注意力内部（三种范式完全一样）：X [B, L, d] → Q / K / V [B, h, L, d/h] → scores [B, h, L, L] → 输出 [B, L, d]；<b>唯一的区别就是 scores 上加的 mask 不同</b>（见右侧）。Encoder-Decoder 里，Decoder 每一层的 K/V 都来自编码器输出 features（[B, h, Ls, d/h]），Q 来自解码器自身（[B, h, Lt, d/h]），所以在图里是一条红线从 features 分发到每一层。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span>当前范式的 mask</span><span class="hint" id="maskHint">鼠标悬停一个格子，看「谁能看见谁」</span></div>
+        <div class="card-b">
+          <div id="maskArea"></div>
+          <div class="legend">
+            <span><i class="sw" style="background:#E8F2F8;border:1px solid #B9CFE0"></i>1 = 可见</span>
+            <span><i class="sw" style="background:var(--navy)"></i>0 = 屏蔽（-∞）</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>这个任务该选谁</span><span class="hint">点一个任务看推荐</span></div>
+        <div class="card-b">
+          <div class="tasks" id="tasks" style="margin-bottom:8px"></div>
+          <div id="fitText" class="note">选一个任务，这里会给出推荐范式和理由。</div>
+          <div class="tip" id="fitTip">判断标准：<b>输出需不需要「生成」</b>。需要 → 解码器；只需打分/打标签 → 编码器；输入输出要严格对齐（翻译 / ASR）→ 编码器 + 解码器。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>三个要点</span></div>
+        <div class="card-b">
+          <ul class="take">
+            <li><b>范式 = mask 的组合方式</b>，不是三套不同的网络。</li>
+            <li><b>Encoder-Decoder 多了一个 cross-attention</b>：解码器每一步都要回看编码器的输出。</li>
+            <li><b>今天的主流是 Decoder-only</b>：训练信号最密、一个目标统一所有任务、工程最省。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* 三种架构范式实验室（单文件离线演示）
+   全页只想说明一件事：四种范式的网络几乎一样，差别只在注意力 scores 上加的 mask 不同。
+   全课统一记号：mask 网格里 1 = 可见，0 = 屏蔽（softmax 前填 -∞）。
+   这个下标以前讲反过，所以下面生成 mask 的函数和格子配色都严格按 1=可见 来写。 */
+(function(){
+  // 演示固定的 6 个 token；mask 网格的行列标题都按这个顺序排列
+  const TOKENS = ["我","爱","学","习","NLP","。"];
+  // p = 当前范式；step = 「演示一步」走到流程图的第几个节点（也当下标去取日志）；
+  // out = 已经采样出来的 token（只有生成式范式会用到，Encoder-only 永远是空）
+  const state = { p: "enc", step: 0, out: [] };
+
+  // 全页 DOM 一律按 id 取，不引任何框架——单文件双击就能离线跑
+  const $ = (id) => document.getElementById(id);
+
+  // 左上方结构流程图的节点。cls 只影响配色（enc 蓝 / dec 橙），不参与任何逻辑；
+  // 四种范式共用同一套渲染，这里只描述「这一格显示什么」。
+  const PARADIGMS = {
+    enc: { name: "Encoder-only", flow: [
+      { t: "输入 tokens", s: "我 爱 学 习 NLP 。", cls: "enc" },
+      { t: "Encoder × L", s: "自注意力：全可见", cls: "enc" },
+      { t: "每个位置的表示", s: "768 维向量", cls: "enc" },
+      { t: "任务头", s: "分类 / 实体 / 相似度", cls: "enc" },
+    ]},
+    dec: { name: "Decoder-only", flow: [
+      { t: "prompt", s: "今天天气", cls: "dec" },
+      { t: "Decoder × L", s: "自注意力：下三角", cls: "dec" },
+      { t: "下一个 token 概率", s: "vocab 维 logits", cls: "dec" },
+      { t: "采样 → 拼回 → 再算", s: "循环直到 EOS", cls: "dec" },
+    ]},
+    encdec: { name: "Encoder-Decoder", flow: [
+      { t: "源文本", s: "我爱 NLP", cls: "enc" },
+      { t: "Encoder", s: "源端全可见", cls: "enc" },
+      { t: "Decoder", s: "目标端下三角 + cross-attn", cls: "dec" },
+      { t: "输出", s: "I love NLP", cls: "dec" },
+    ]},
+    prefix: { name: "Prefix LM（变体）", flow: [
+      { t: "前缀 prompt", s: "把下面这句译成英文：", cls: "enc" },
+      { t: "Decoder × L", s: "前缀双向 + 后缀因果", cls: "dec" },
+      { t: "输出", s: "I love NLP", cls: "dec" },
+    ]},
+  };
+
+  // 右下方「这个任务该选谁」的题库：w 是按钮文字，p 是推荐的范式（点了会直接切 tab），
+  // why 是给学生看的判断理由——第一判据是「输出要不要生成」。
+  const TASKS = [
+    { w: "文本分类", p: "enc", why: "输出是一个标签，不需要生成 → Encoder-only 微调最省。" },
+    { w: "NER 抽实体", p: "enc", why: "每个 token 打一个 BIO 标签，编码器 + 线性头就够。" },
+    { w: "抽取式问答", p: "enc", why: "答案在原文里，只要预测起止位置 → Encoder-only。" },
+    { w: "机器翻译", p: "encdec", why: "输入输出长度不同、要严格对齐 → Encoder-Decoder 最自然。" },
+    { w: "语音识别", p: "encdec", why: "声学特征序列 → 文本序列，是典型的 seq2seq。" },
+    { w: "多轮对话", p: "dec", why: "任意文本进、文本出，还要多轮 → Decoder-only。" },
+    { w: "代码补全", p: "dec", why: "本质是续写，且要低延迟 → Decoder-only。" },
+    { w: "前缀条件生成", p: "prefix", why: "前缀要双向理解、后半段继续生成 → Prefix LM（GLM 路线）。" },
+  ];
+
+  // 四种 mask 的生成规则。i = 查询位置（网格的行），j = 被看位置（网格的列），
+  // 返回 true 就是 1 = 可见。注意力矩阵天然是「行看列」，所以这函数直接对应那张方格表。
+  function maskRule(p, i, j){
+    // Encoder-only：全 1，双向注意力。每个位置都能看整句 → 只能做理解，不能续写。
+    if (p === "enc") return true;
+    // Decoder-only：下三角。只允许 j 走到 i（含自己），看不到未来 → 因果，才能自回归生成。
+    if (p === "dec") return j <= i;
+    // Prefix LM：前 2 个 token 是「前缀」，等价于这两列全 1——任何一行都能看见它们；
+    // 其余部分仍按因果走，所以第 3 行起只能看前缀 + 自己及之前（前缀双向、后缀因果）。
+    if (p === "prefix") return j < 2 || j <= i;
+    // 只剩 Encoder-Decoder：这里给的是 Decoder 自注意力那张下三角。
+    // 它对源端的 cross-attention 是另一张「每行全 1、宽度 = 源长度」的表，在 renderMask 里单独画。
+    return j <= i;
+  }
+
+  // ---------- 结构图 ----------
+  // 重绘左上流程图：节点少，每次 innerHTML 清空重建最省心，不做增量更新。
+  // state.step 指向的节点加 active 高亮，和下方步骤日志保持同一个节奏。
+  function renderFlow(){
+    const box = $("flow");
+    box.innerHTML = "";
+    const nodes = PARADIGMS[state.p].flow;
+    nodes.forEach((n, i) => {
+      const d = document.createElement("div");
+      d.className = "node " + n.cls + (state.step === i ? " active" : "");
+      d.innerHTML = '<div class="t">' + n.t + '</div><div class="s">' + n.s + '</div>';
+      box.appendChild(d);
+      if (i < nodes.length - 1){
+        const a = document.createElement("div");
+        a.className = "arrow"; a.textContent = "→";
+        box.appendChild(a);
+      }
+    });
+    $("flowTitle").textContent = "结构：" + PARADIGMS[state.p].name;
+
+    // cross-attention 示意
+    // 只有 Encoder-Decoder 多出这一条：解码每个时刻都要回看编码器输出，其余范式的信息只沿一条链走。
+    const cr = $("crossRow");
+    cr.innerHTML = "";
+    if (state.p === "encdec"){
+      cr.innerHTML = '<div class="cross"><span>源端表示</span><span class="ln"></span><span>cross-attention（每个解码步都回看）</span></div>';
+    }
+
+    // 输出 token
+    // Encoder-only 没有生成环节，所以这块留空；其余范式先放一个灰底 prompt，
+    // 再把 state.out 里已生成的 token 依次拼上，最后一个高亮表示「刚采出来的」。
+    const out = $("out");
+    out.innerHTML = "";
+    if (state.p === "dec" || state.p === "encdec" || state.p === "prefix"){
+      const pre = document.createElement("span");
+      pre.className = "tok prompt";
+      pre.textContent = state.p === "encdec" ? "我爱 NLP" : state.p === "prefix" ? "前缀：把下面这句译成英文" : "今天天气";
+      out.appendChild(pre);
+      state.out.forEach((w, i) => {
+        const s = document.createElement("span");
+        s.className = "tok" + (i === state.out.length - 1 ? " new" : "");
+        s.textContent = w;
+        out.appendChild(s);
+      });
+    }
+  }
+
+  // ---------- mask 可视化 ----------
+  // 通用 n×n mask 网格构造器：第 i 行第 j 列调用 rule(i, j) 决定显示 1 还是 0。
+  // opts.size 格子边长（Encoder-Decoder 要并排画两张表，所以调小到 32）；
+  // opts.tokens 用来当行列标题；opts.colHeader === false 时不画列头。
+  function buildGrid(n, rule, opts){
+    opts = opts || {};
+    const size = opts.size || 28;
+    const box = document.createElement("div");
+
+    if (opts.colHeader !== false){
+      const hdr = document.createElement("div");
+      hdr.style.display = "grid";
+      hdr.style.gridTemplateColumns = "repeat(" + n + ", " + size + "px)";
+      hdr.style.gap = "4px";
+      hdr.style.marginLeft = "62px";
+      hdr.style.marginBottom = "4px";
+      for (let j = 0; j < n; j++){
+        const c = document.createElement("div");
+        c.className = "hcell";
+        c.textContent = opts.tokens ? opts.tokens[j] : String(j + 1);
+        hdr.appendChild(c);
+      }
+      box.appendChild(hdr);
+    }
+
+    const wrap = document.createElement("div");
+    wrap.className = "mgrid";
+    const labels = document.createElement("div");
+    labels.className = "rowlbl";
+    for (let i = 0; i < n; i++){
+      const c = document.createElement("div");
+      c.className = "c";
+      c.style.height = size + "px";
+      c.textContent = opts.tokens ? opts.tokens[i] : String(i + 1);
+      labels.appendChild(c);
+    }
+    wrap.appendChild(labels);
+
+    const cells = document.createElement("div");
+    cells.className = "cells";
+    cells.style.gridTemplateColumns = "repeat(" + n + ", " + size + "px)";
+    // 这里把「1=可见 / 0=屏蔽」落到 DOM：vis 真 → 写 1、浅底；vis 假 → 加 off、深底、写 0。
+    // 悬停时把同一行同一列之外压暗，方便学生顺着行读「这个位置能看见谁」。
+    for (let i = 0; i < n; i++){
+      for (let j = 0; j < n; j++){
+        const d = document.createElement("div");
+        const vis = rule(i, j);
+        d.className = "cell" + (vis ? "" : " off");
+        d.style.width = size + "px";
+        d.style.height = size + "px";
+        d.textContent = vis ? "1" : "0";
+        d.dataset.i = i; d.dataset.j = j;
+        d.addEventListener("mouseenter", () => highlight(i, j, vis, cells));
+        d.addEventListener("mouseleave", () => clearHL(cells));
+        cells.appendChild(d);
+      }
+    }
+    wrap.appendChild(cells);
+    box.appendChild(wrap);
+    return box;
+  }
+
+  // 悬停一个格子：同行同列的格子保持清晰、其余变淡，右上角提示同步说明
+  // 「第 i 个 token 能不能看见第 j 个」——vis 直接来自这一格是 1 还是 0。
+  function highlight(i, j, vis, cells){
+    Array.from(cells.children).forEach(d => d.classList.add("dim"));
+    Array.from(cells.children).forEach(d => {
+      if (d.dataset.i === String(i) || d.dataset.j === String(j)) d.classList.remove("dim");
+    });
+    $("maskHint").textContent = "第 " + (i + 1) + " 个 token " + (vis ? "可以" : "不能") + "看见第 " + (j + 1) + " 个";
+  }
+  function clearHL(cells){
+    Array.from(cells.children).forEach(d => d.classList.remove("dim"));
+    $("maskHint").textContent = "鼠标悬停一个格子，看「谁能看见谁」";
+  }
+
+  // 右上 mask 卡片。切 tab 时由 reset 调到这里，先清空 #maskArea 再整块重建，
+  // 只在这一个函数里生成 mask 的 DOM，别处不要再往里塞东西。
+  function renderMask(){
+    const area = $("maskArea");
+    area.innerHTML = "";
+    const note = document.createElement("div");
+    note.className = "note";
+
+    if (state.p === "encdec"){
+      // Encoder-Decoder 要并排两张表：左表是源端编码器的全 1（双向），右表是目标端解码器
+      // 的自注意力下三角（因果）。真正的 cross-attention 不画成方格——它对每一行都是
+      // 「源端全部 token」，等价于每行接一张全 1 的 Ls 宽表，用一句文字说明更直观。
+      const two = document.createElement("div");
+      two.style.display = "grid";
+      two.style.gridTemplateColumns = "1fr 1fr";
+      two.style.gap = "12px";
+      const a = document.createElement("div");
+      a.innerHTML = '<div style="font-size:11.5px;color:var(--gray);margin-bottom:4px">源端 4 个 token（全可见）</div>';
+      a.appendChild(buildGrid(4, () => true, { tokens: ["我", "爱", "NLP", "。"], size: 32 }));
+      const b = document.createElement("div");
+      b.innerHTML = '<div style="font-size:11.5px;color:var(--gray);margin-bottom:4px">目标端 4 个 token（下三角）</div>';
+      b.appendChild(buildGrid(4, (i, j) => j <= i, { tokens: ["I", "love", "NLP", "."], size: 32 }));
+      two.appendChild(a); two.appendChild(b);
+      area.appendChild(two);
+      note.style.marginTop = "10px";
+      note.innerHTML = "解码每一步：目标端自己的下三角注意力（不看未来）<b>+</b> 对源端全部 token 的 cross-attention（看全部）。";
+      area.appendChild(note);
+    } else {
+      // 其余三种范式一张 6×6 表就够：行 = 查询 token，列 = 被看的 token，规则统一走 maskRule。
+      // 下方的解释文字按范式三选一，讲清这张表为什么长这样。
+      const flex = document.createElement("div");
+      flex.style.display = "flex";
+      flex.style.gap = "18px";
+      flex.style.alignItems = "flex-start";
+      flex.style.flexWrap = "wrap";
+      flex.appendChild(buildGrid(6, (i, j) => maskRule(state.p, i, j), { tokens: TOKENS, size: 36 }));
+      note.style.flex = "1";
+      note.style.minWidth = "220px";
+      note.innerHTML = state.p === "enc"
+        ? "每一行都是全 1：<b>双向注意力</b>，每个位置都能看完整句子 → 适合理解，不能续写。"
+        : state.p === "dec"
+        ? "每行只到对角线：<b>因果注意力</b>，只能看自己和自己之前 → 适合续写，但看不到后文。"
+        : "前 2 个是前缀，前两行整块为 1（前缀内部双向）；从第 3 行起只能看前缀 + 自己及之前 → 前缀理解 + 后缀生成。";
+      flex.appendChild(note);
+      area.appendChild(flex);
+    }
+  }
+
+  // ---------- 层结构与张量维度（SVG，跟随范式切换） ----------
+  // 四个箭头 marker：灰=普通、蓝=Encoder、橙=Decoder、红=cross-attention。
+  // SVG 的 marker 不继承线条颜色，所以每种颜色都单独定义一个。
+  const SVG_DEFS = '<defs>'
+    + '<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5D7688"/></marker>'
+    + '<marker id="ahT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E86AB"/></marker>'
+    + '<marker id="ahO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D4720A"/></marker>'
+    + '<marker id="ahC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C0392B"/></marker>'
+    + '</defs>';
+
+  // 下面几个都是「拼字符串」的 SVG 小工具：返回字符串，样式参数 o 可选，
+  // 最后统一 join 再塞进 innerHTML。用字符串而不是 DOM API，是为了让整张图的代码读起来像在画图。
+  // sPath 专门画曲线，唯一的用处是 Decoder 那条「新 token 拼回输入」的回环。
+  function sRect(x, y, w, h, o) {
+    o = o || {};
+    return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + (o.rx == null ? 7 : o.rx)
+      + '" fill="' + (o.fill || '#fff') + '" stroke="' + (o.stroke || '#9FB9CC') + '" stroke-width="' + (o.sw || 1.4)
+      + '"' + (o.dash ? ' stroke-dasharray="6 4"' : '') + '/>';
+  }
+  function sText(x, y, s, o) {
+    o = o || {};
+    const rot = o.rotate ? ' transform="rotate(' + o.rotate + ' ' + x + ' ' + y + ')"' : '';
+    return '<text x="' + x + '" y="' + y + '" font-size="' + (o.size || 12)
+      + '" font-family="' + (o.mono ? 'Consolas,monospace' : 'Microsoft YaHei,PingFang SC,sans-serif')
+      + '" fill="' + (o.fill || '#2D2D2D') + '" font-weight="' + (o.bold ? 700 : 400)
+      + '" text-anchor="' + (o.anchor || 'middle') + '"' + rot + '>' + s + '</text>';
+  }
+  function sArrow(x1, y1, x2, y2, o) {
+    o = o || {};
+    return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + (o.stroke || '#5D7688')
+      + '" stroke-width="' + (o.sw || 1.6) + '"' + (o.dash ? ' stroke-dasharray="6 4"' : '')
+      + ' marker-end="url(#' + (o.marker || 'ah') + ')"/>';
+  }
+  function sLine(x1, y1, x2, y2, o) {
+    o = o || {};
+    return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + (o.stroke || '#5D7688')
+      + '" stroke-width="' + (o.sw || 1.4) + '"' + (o.dash ? ' stroke-dasharray="6 4"' : '') + '/>';
+  }
+  function sPath(d, o) {
+    o = o || {};
+    return '<path d="' + d + '" fill="none" stroke="' + (o.stroke || '#5D7688') + '" stroke-width="' + (o.sw || 1.5)
+      + '"' + (o.dash ? ' stroke-dasharray="6 4"' : '') + ' marker-end="url(#' + (o.marker || 'ah') + ')"/>';
+  }
+
+  // 一列层堆叠：返回各层顶部 y 坐标
+  // 关键点：每层都是 (L, d) 进、(L, d) 出——自注意力不改变张量形状，所以 4 个层框画得一样大，
+  // 变化的是「内容被逐层混合、更抽象」。ys 是固定好的 4 个 y 坐标，返回给调用方画
+  // 「输入→底层」「顶层→输出」的箭头，以及 Encoder-Decoder 的 K/V 分发线。
+  // accent 决定这一列用蓝色（Encoder）还是橙色（Decoder）。
+  function drawStack(P, cx, accent, title, label) {
+    const bw = 170, bh = 40, ys = [114, 174, 234, 294];
+    P.push(sRect(cx - 105, 96, 210, 252, { rx: 16, fill: '#FBFDFE', stroke: accent + '55', sw: 1.2 }));
+    P.push(sText(cx - 85, 24, title, { anchor: 'start', size: 10, fill: accent, bold: true }));
+    ys.forEach((y, i) => {
+      P.push(sRect(cx - bw / 2, y, bw, bh, { fill: '#fff', stroke: accent + '88', sw: 1.4 }));
+      P.push(sText(cx, y + 25, label, { size: 12.5, bold: true, fill: '#1E3A5F' }));
+      if (i > 0) P.push(sArrow(cx, ys[i], cx, ys[i - 1] + bh, { stroke: accent, marker: accent === '#D4720A' ? 'ahO' : 'ahT' }));
+    });
+    return ys;
+  }
+
+  // 把拼好的片段包进统一画布：高度固定 452、宽度按范式给（W 不同），宽度用 100% 自适应卡片，
+  // 这样四个 tab 切来切去时卡片高度不跳。
+  function svgWrap(inner, w) {
+    return '<svg viewBox="0 0 ' + (w || 900) + ' 452" width="100%" style="display:block" xmlns="http://www.w3.org/2000/svg">'
+      + SVG_DEFS + inner + '</svg>';
+  }
+
+  // 全页最核心的图：随范式切换的竖排层堆叠。数据从底部 y≈370 的输入框进来，
+  // 往上穿过 4 个层框（drawStack 画），顶部出 features 或 logits。
+  // 读图口诀：自注意力层形状不变，所以每层都标 [B, L, d] → [B, L, d]，
+  // 真正变化的是 token 数 L（生成时 L 变长）和 d 这个隐藏维（由模型决定，演示里固定）。
+  function renderDiagram() {
+    const P = [];
+    const p = state.p;
+    let W = 900;
+    const TEAL = '#2E86AB', ORANGE = '#D4720A', GRAY = '#666666';
+
+    // 底部输入框：label 写这一格是什么，dim 写它进网络的形状（ids 是整数 id，emb 是向量）；
+    // dimY 允许把维度文字挪一行，避免和旁边别的标注打架。
+    function inputBox(cx, label, dim, dimY) {
+      P.push(sRect(cx - 85, 370, 170, 40, { fill: '#F4F8FA', stroke: '#9FB9CC', sw: 1.3 }));
+      P.push(sText(cx, 395, label, { size: 12, bold: true, fill: '#1E3A5F' }));
+      P.push(sText(cx, dimY || 428, dim, { mono: true, size: 10, fill: TEAL, bold: true }));
+    }
+    // 顶部输出框只画标题，维度由调用方自己写——因为不同范式要标的维度不是同一个。
+    function topBox(cx, label, dim) {
+      P.push(sRect(cx - 85, 30, 170, 40, { fill: '#F4F8FA', stroke: '#9FB9CC', sw: 1.3 }));
+      P.push(sText(cx, 55, label, { size: 12, bold: true, fill: '#1E3A5F' }));
+    }
+
+    if (p === 'enc') {
+      // Encoder-only 一列到底：ids [B, L] → embedding [B, L, d] → N 层编码器 → features [B, L, d]；
+      // 右侧再接 [CLS] 池化 [B, d] 和任务头 [B, C]，就是 BERT 做分类的典型接法（C = 类别数）。
+      W = 760;
+      const cx = 330;
+      const ys = drawStack(P, cx, TEAL, 'Encoder × N（双向自注意力）', 'Encoder');
+      inputBox(cx, 'Inputs（源文本）', 'ids [B, L]');
+      P.push(sArrow(cx, 370, cx, ys[3] + 40, { stroke: TEAL, marker: 'ahT' }));
+      P.push(sText(cx - 100, 356, 'emb [B, L, d]', { mono: true, size: 9, fill: TEAL, anchor: 'end' }));
+      P.push(sText(cx - 112, 210, '每层输出 [B, L, d]', { mono: true, size: 9, fill: GRAY, anchor: 'end' }));
+      P.push(sArrow(cx, ys[0], cx, 70, { stroke: TEAL, marker: 'ahT' }));
+      topBox(cx, 'features', '');
+      P.push(sText(cx + 95, 86, '[B, L, d]', { mono: true, size: 9.5, fill: TEAL, bold: true, anchor: 'start' }));
+      P.push(sArrow(cx + 85, 50, cx + 115, 50, { marker: 'ahT', stroke: TEAL }));
+      P.push(sRect(cx + 115, 30, 120, 40, { fill: '#fff', stroke: TEAL + '88', sw: 1.3 }));
+      P.push(sText(cx + 175, 49, '池化 [CLS]', { size: 10.5, bold: true, fill: '#1E3A5F' }));
+      P.push(sText(cx + 175, 63, '[B, d]', { mono: true, size: 9, fill: TEAL, bold: true }));
+      P.push(sArrow(cx + 235, 50, cx + 265, 50, { marker: 'ahT', stroke: TEAL }));
+      P.push(sRect(cx + 265, 30, 110, 40, { fill: '#fff', stroke: TEAL + '88', sw: 1.3 }));
+      P.push(sText(cx + 320, 49, '任务头', { size: 10.5, bold: true, fill: '#1E3A5F' }));
+      P.push(sText(cx + 320, 63, '[B, C]', { mono: true, size: 9, fill: TEAL, bold: true }));
+    }
+
+    if (p === 'dec' || p === 'prefix') {
+      // Decoder-only 和 Prefix LM 结构完全一样（都是解码器堆叠），区别只在 mask，
+      // 所以共用这一段绘图，靠标题和输入框文案区分。
+      // 顶部 logits 是 [B, L, V]：每个位置对全词表打分，生成时只取最后一个位置去采样；
+      // 右侧那道虚线回环表示「把新 token 拼回输入再前向一次」，就是自回归的循环。
+      W = 800;
+      const cx = 420;
+      const title = p === 'dec' ? 'Decoder × N（因果自注意力）' : 'Decoder × N（前缀双向 + 后缀因果）';
+      const ys = drawStack(P, cx, ORANGE, title, 'Decoder');
+      inputBox(cx, p === 'dec' ? 'Inputs（prompt + 已生成）' : 'Inputs（前缀 + 已生成）', 'ids [B, L]');
+      P.push(sArrow(cx, 370, cx, ys[3] + 40, { stroke: ORANGE, marker: 'ahO' }));
+      P.push(sText(cx - 100, 356, 'emb [B, L, d]', { mono: true, size: 9, fill: ORANGE, anchor: 'end' }));
+      P.push(sText(cx - 112, 210, '每层输出 [B, L, d]', { mono: true, size: 9, fill: GRAY, anchor: 'end' }));
+      P.push(sArrow(cx, ys[0], cx, 70, { stroke: ORANGE, marker: 'ahO' }));
+      topBox(cx, 'Outputs（logits）', '');
+      P.push(sText(cx + 95, 86, 'logits [B, L, V]', { mono: true, size: 9.5, fill: TEAL, bold: true, anchor: 'start' }));
+      P.push(sPath('M' + (cx + 85) + ',50 C' + (cx + 260) + ',50 ' + (cx + 260) + ',390 ' + (cx + 85) + ',390',
+        { stroke: '#9FB9CC', marker: 'ah', dash: true }));
+      P.push(sText(cx + 272, 222, '把新 token 拼回输入，再前向一次', { size: 9, fill: GRAY, rotate: 90 }));
+    }
+
+    if (p === 'encdec') {
+      // 左右两列：源端与目标端。源长度记 Ls、目标长度记 Lt——翻译时两者本来就不等长，
+      // 这一点是 Encoder-Decoder 与另外三种单序列范式最直观的区别。
+      W = 870;
+      const cxL = 250, cxR = 650;
+      const ysL = drawStack(P, cxL, TEAL, 'Encoder × N（源端全可见）', 'Encoder');
+      const ysR = drawStack(P, cxR, ORANGE, 'Decoder × N（目标端下三角）', 'Decoder');
+
+      inputBox(cxL, 'Inputs（源文本）', 'ids [B, Ls]');
+      P.push(sArrow(cxL, 370, cxL, ysL[3] + 40, { stroke: TEAL, marker: 'ahT' }));
+      P.push(sText(cxL - 100, 356, 'emb [B, Ls, d]', { mono: true, size: 9, fill: TEAL, anchor: 'end' }));
+      P.push(sText(cxL - 112, 210, '每层 [B, Ls, d]', { mono: true, size: 9, fill: GRAY, anchor: 'end' }));
+      P.push(sArrow(cxL, ysL[0], cxL, 70, { stroke: TEAL, marker: 'ahT' }));
+      topBox(cxL, 'features', '');
+      P.push(sText(cxL + 95, 86, '[B, Ls, d]', { mono: true, size: 9.5, fill: TEAL, bold: true, anchor: 'start' }));
+
+      inputBox(cxR, 'Inputs（目标前缀）', 'ids [B, Lt]');
+      P.push(sArrow(cxR, 370, cxR, ysR[3] + 40, { stroke: ORANGE, marker: 'ahO' }));
+      P.push(sText(cxR + 100, 356, 'emb [B, Lt, d]', { mono: true, size: 9, fill: ORANGE, anchor: 'start' }));
+      P.push(sText(cxR + 112, 210, '每层 [B, Lt, d]', { mono: true, size: 9, fill: GRAY, anchor: 'start' }));
+      P.push(sArrow(cxR, ysR[0], cxR, 70, { stroke: ORANGE, marker: 'ahO' }));
+      topBox(cxR, 'Outputs', '');
+      P.push(sText(cxR + 95, 86, 'logits [B, Lt, V]', { mono: true, size: 9.5, fill: TEAL, bold: true, anchor: 'start' }));
+
+      // 所有 Decoder 层的 K/V 都来自 features（编码器输出），先汇成总线再分发到每一层
+      // 注意起点是左上 features（y=50），不是底部输入框：Decoder 每层要用的是编码器加工过的
+      // 上下文表示（K/V），不是原始词嵌入 ids；从输入拉线就绕过了编码器，等于没有源端信息。
+      // 先拉一根竖总线再横向分发，对应实现里「同一份 K/V 被每层 cross-attention 复用」。
+      const busX = 450, lastY = ysR[ysR.length - 1] + 20;
+      P.push(sLine(cxL + 85, 50, busX, 50, { stroke: '#C0392B', sw: 1.3 }));
+      P.push(sLine(busX, 50, busX, lastY, { stroke: '#C0392B', sw: 1.3 }));
+      ysR.forEach((y) => {
+        P.push(sArrow(busX, y + 20, cxR - 105, y + 20, { stroke: '#C0392B', marker: 'ahC', sw: 1.3 }));
+      });
+      P.push(sText(cxL + 92, 44, 'K/V', { size: 9, fill: '#C0392B', bold: true, anchor: 'start' }));
+    }
+
+    $("tensorFlow").innerHTML = svgWrap(P.join(""), W);
+  }
+
+  // ---------- 任务 ----------
+  // 生成右下「这个任务该选谁」的按钮。点一个任务 = 切到它推荐的范式 + 写推荐理由，
+  // 复用 setParadigm，保证和点顶部 tab 走的是同一条路径，两边状态不会不同步。
+  function renderTasks(){
+    const box = $("tasks");
+    box.innerHTML = "";
+    TASKS.forEach(t => {
+      const b = document.createElement("span");
+      b.className = "task";
+      b.textContent = t.w;
+      b.addEventListener("click", () => {
+        document.querySelectorAll(".task").forEach(x => x.classList.remove("on"));
+        b.classList.add("on");
+        setParadigm(t.p);
+        $("fitText").innerHTML = "<b>" + t.w + " → " + PARADIGMS[t.p].name + "</b><br>" + t.why;
+        $("fitTip").style.display = "none";
+      });
+      box.appendChild(b);
+    });
+  }
+
+  // ---------- 演示 ----------
+  // 「演示一步」：先把高亮推到下一个节点；走完一轮（step 越界）就回到第一步，
+  // 并——只有生成式范式——让输出多一个 token。这里的 token 是写死的假数据，
+  // 只为了让页面动起来，不代表真实采样；攒够 8 个就清空重来，方便课上反复点。
+  // Encoder-only 没有生成环节，所以它永远不会往 state.out 里加东西。
+  function step(){
+    const nodes = PARADIGMS[state.p].flow;
+    state.step += 1;
+    if (state.step >= nodes.length){
+      if (state.p === "dec" || state.p === "encdec" || state.p === "prefix"){
+        state.out.push(state.p === "encdec" ? ["I","love","NLP","。"][state.out.length % 4]
+                     : state.p === "prefix" ? ["I","love","NLP","。"][state.out.length % 4]
+                     : ["真","好","，","适合","出门","。"][state.out.length % 6]);
+        if (state.out.length > 8) state.out = [];
+      }
+      state.step = 0;
+    }
+    renderFlow();
+    logStep();
+  }
+
+  // 每个范式的四步解说，跟着 state.step 走；step 超界时夹到最后一条（Math.min），
+  // 避免刚重置那一瞬间取到 undefined。
+  function logStep(){
+    const logs = {
+      enc: [
+        "① 输入 token 过 embedding，得到 L×768 的矩阵。",
+        "② 12 层 Encoder，每层注意力都是全可见 —— 每个位置都能看完整句。",
+        "③ 得到每个位置的上下文表示；[CLS] 汇总整句。",
+        "④ 顶部接任务头：分类 / 实体 / 句子向量。没有生成环节。",
+      ],
+      dec: [
+        "① prompt 进模型，算出下一个 token 的概率分布。",
+        "② 12~N 层 Decoder，每层注意力只到对角线 —— 看不到未来。",
+        "③ 取 logits，按温度 / top-k / top-p 选一个 token。",
+        "④ 把新 token 拼回输入，再前向一次 → 循环，直到 EOS。",
+      ],
+      encdec: [
+        "① 源文本过 Encoder，全程双向，得到源端表示。",
+        "② 目标端已生成部分进 Decoder，自己做因果注意力。",
+        "③ 解码器每一步再用 cross-attention 回看源端全部表示。",
+        "④ 采样出下一个目标 token，拼回目标端继续。",
+      ],
+      prefix: [
+        "① 前缀（指令 + 输入）进模型，前缀内部是双向的。",
+        "② 后缀部分按因果方式生成，但每一步都能看完整前缀。",
+        "③ 采样出下一个 token —— 兼顾「理解输入」与「生成输出」。",
+      ],
+    };
+    const arr = logs[state.p];
+    $("log").innerHTML = "<b>" + PARADIGMS[state.p].name + "</b>　" + arr[Math.min(state.step, arr.length - 1)];
+  }
+
+  // 切 tab 后的统一重绘入口：清进度、清输出，然后把所有依赖范式的 DOM 全部重画一遍——
+  // 左上流程图、右上 mask 网格、下方层堆叠 SVG、底部步骤日志。四处缺一处就会留下上一个范式的残影。
+  // （「这个任务该选谁」的推荐文字不在 reset 里，由点任务时单独写入。）
+  function reset(){
+    state.step = 0;
+    state.out = [];
+    renderFlow();
+    renderMask();
+    renderDiagram();
+    logStep();
+  }
+
+  // 切换范式只走这里：先同步顶部四个按钮的选中态，再交给 reset 统一重绘。
+  // 别处不要直接改 state.p，否则按钮高亮和右侧图表会不同步。
+  function setParadigm(p){
+    state.p = p;
+    document.querySelectorAll("#segP button").forEach(b => b.classList.toggle("on", b.dataset.p === p));
+    reset();
+  }
+
+  // ---------- 绑定 ----------
+  // 事件绑定很薄：tab 走 setParadigm，「演示一步」走 step，「重置」走 reset。
+  // 最后先建任务按钮，再 reset 一次做首屏渲染（默认 Encoder-only）。
+  document.querySelectorAll("#segP button").forEach(b => {
+    b.addEventListener("click", () => setParadigm(b.dataset.p));
+  });
+  $("stepBtn").addEventListener("click", step);
+  $("reset").addEventListener("click", reset);
+
+  renderTasks();
+  reset();
+})();
+</script>
+</body>
+</html>
