@@ -1,0 +1,10 @@
+# 模型权重太大，不进 git（换机器时第一次运行会自动重新下载）
+model/
+out/
+
+# 生成的数据，随时可以重新跑 build_sft_data.py
+data/sft_data.jsonl
+data/general_zh.txt
+
+__pycache__/
+*.pyc
