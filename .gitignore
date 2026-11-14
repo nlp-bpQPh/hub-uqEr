@@ -10,3 +10,13 @@ __pycache__/
 
 # 原始大语料：只保留抽样后的小样本
 苏新朋/week5/sft_train/firefly-train-1.1M.jsonl
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+.env.local
+.DS_Store
+.env.bak.*
+*.tar.gz
+*.log
+.vscode/
