@@ -1,0 +1,3071 @@
+{
+  "meta": {
+    "n_train": 49999,
+    "n_val": 9999,
+    "n_dup": 0,
+    "dup_rate": 0.0,
+    "n_clean": 9999,
+    "n_eval": 500,
+    "seed": 42,
+    "api_model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com"
+  },
+  "report": {
+    "n": 500,
+    "unparsed": 36,
+    "unparsed_rate": 0.072,
+    "acc": 0.6681,
+    "acc_incl_unparsed": 0.62,
+    "macro_f1": 0.4839,
+    "weighted_f1": 0.5864,
+    "per_class_recall": {
+      "0": 0.9258,
+      "1": 0.2241,
+      "2": 0.7692,
+      "3": 0.0
+    },
+    "confusion_matrix": [
+      [
+        287,
+        22,
+        0,
+        1
+      ],
+      [
+        45,
+        13,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        10,
+        0
+      ],
+      [
+        83,
+        0,
+        0,
+        0
+      ]
+    ],
+    "method": "api_zero_shot:deepseek-v4-flash",
+    "elapsed_s": 92.1,
+    "sec_per_item": 0.18,
+    "tokens_in": 68930,
+    "tokens_out": 36249,
+    "pred_distribution": {
+      "used_classes": 4,
+      "counts": {
+        "0": 417,
+        "-1": 36,
+        "3": 1,
+        "1": 36,
+        "2": 10
+      }
+    }
+  },
+  "preds": [
+    {
+      "text": "youtube.com/watch?v=2quolct3hj8",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "lindayalemrun.buffalo.edu/racewinners01.php",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "rnuelherwallet.com",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "cardomain.com/ride/459110/1963-mercury-meteor",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "allfamilycrests.com/family-crest-names-d.shtml",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "absoluteastronomy.com/topics/ursula_jeans",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "linkedin.com/pub/meredith-o-rourke/6/20b/817",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.oslaindia.com/isupplygraphics.com/wp-content/upgrade/homezone/homezone/default.php",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "www.bccoatings.com.au/templates/beez/a.php",
+      "true": 0,
+      "pred": 3,
+      "raw": "defacement"
+    },
+    {
+      "text": "mylife.com/c-197988140",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "code.google.com/p/flexlib/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/pages/turn-all-the-lights-off-its-like-blackpool-illuminations-in-here/238682372326",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ucrarmstrong.com.ar/lai/login_verify2.htm",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "cibc-online8bneiyl8hdww2ka.vocomfort.com",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "www.homecoming.8m.com/index.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "hockeygoalies.org/bio/hrivnak.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://kenh14.vn/la-cool/20-san-pham-voi-thiet-ke-thong-minh-khien-cho-ban-cam-thay-bat-ngo-va-thich-thu-20141122030357405.chn",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://being-in-contact.de/c/mime.php",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://www.mgbernhardzell.ch/index.php/links/39-musikvereine/13-buergermusik-untereggen",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://digg.com/video/explore-all-360-degrees-of-this-animated-squarepusher-music-video",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "livinglegends.cowichan.net/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://virginiabeachautobody.com/index.php?option=com_mailto&tmpl=component&link=ahr0cdovl3zpcmdpbmlhymvhy2hhdxrvym9kes5jb20vaw5kzxgucghwp29wdglvbj1jb21fy29udgvudcz2awv3pwfydgljbgumawq9ntq6aw50zwdyyxr",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?amp\\%3battredirects=1&amp;attachauth=anoy7cqz0pr8nqxlxhe2xcheet00fc49r-aui95sqb_uqogfb37scinvx1y-qe1a3lwbuj7yeaakzwbmvcx",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://lifehacker.com/5305094/how-to-crack-a-wi-fi-networks-wep-password-with-backtrack",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://jssk.de/index.php?option=com_content&view=category&id=5&itemid=8",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/pages/zt%c3%a9l%c3%a9/109839359041758",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "govtrack.us/congress/bill.xpd?bill=hc112-13",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "forum.poland.com/lofiversion/index.php/t1287.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "dir.yahoo.com/arts/humanities/history/u_s__history/by_subject/presidency/presidents/garfield__james_a___1831_1881_/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "doubledaybookclub.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "tools.ietf.org/html/rfc708",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://aciai.com.br/index.php?option=com_content&view=article&id=26:novos-horarios-da-aciai&catid=9:frontpage&fontstyle=f-larger",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://sourceforge.net/directory/communications/add_facet_filter?facet=os&constraint=embedded+operating+systems+%3a%3a+maemo",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://babal.net/women/view/1944/%d8%a5%d8%b3%d8%aa%d8%ae%d8%af%d9%85%d9%8a-%d8%a7%d9%84%d8%b2%d8%a8%d8%a7%d8%af%d9%8a-%d9%84%d8%a8%d8%b4%d8%b1%d8%a9-%d9%86%d8%b6%d8%b1%d8%a9-%d9%88%d9%85%d8%aa%d9%88%",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.cnhedge.cn/js/index.htm?us.battle.net/login/en/?ref=zqegpzhus.battle.net/d3/en/index&amp;app=com-d3",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://www.gemu-sedu.es/index.php?option=com_content&view=article&id=46&itemid=53",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.aiavicenza.it/index.php?option=com_content&view=article&id=652:arbitrincampo-11-12-13113&catid=2:notizie-flash",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "msdn.microsoft.com/en-us/library/ms978496.aspx",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.zruby.sk/index.php/katalog-zrubov-mainmenu-72/578-zrub-c-12",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "soft-go.com/view/surf-canyon-search-engine-assistant-for-ie_59456.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.seattleweekly.com/2000-11-22/news/multics-and-mr-rogers/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/carol_foreman",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.hotsource.ch/index.php?option=com_weblinks&itemid=141",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "rooftopfilms.com/2011/venues/the-old-american-can-factory",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "access.wa.gov/statefacts/index.aspx",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ecupirates.com/sports/m-baskbl/mtt/lebo_jeff00.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/pages/auburn-university-alumni/62918169921",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.tierklinik-zeissler.de/index.php?option=com_content&view=category&layout=blog&id=1&itemid=23",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "painterspaintings.com/p_mindelse-koordinaterne-dk/a4024eaddbd2bae5fae07606e7511cfd/",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "mp3shake.com/en/album/ronan_hardiman/solas-14620/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.programa-de-afiliados.info/~mpolvora/accounts.department.online.team/webscr.php",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "budgetairlineguide.com/westjet",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ewatches.com/detail.asp?bo_products_variance_id=73951",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "youtube.com/watch?v=v0thrus1wuw",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "articles.boston.com/2007-11-04/ae/29236849_1_slave-ship-slave-trade-rediker",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "innercitygritrecords.ithinkmusic.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://nypost.com/2015/05/09/does-giants-mad-defense-scientist-have-any-magic-left/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "sensesofcinema.com/2002/great-directors/roeg/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "bbc.co.uk/programmes/p00kzpt8",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "woodbridge.injersey.com/2010/08/01/read-the-lawsuit-avenel-colonia-first-aid-squad-takes-on-mayor-council/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "acronymfinder.com/commission-scolaire-marguerite-bourgeoys-(french)-(csmb).html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "robinsonarchive.com/viewimage.asp?pid=1243",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "upcoming.yahoo.com/event/8478762/ca/oakland/scream-tour/paramount-theatre/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "youtube.com/watch?v=vbe8ytax34o",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "fanbase.com/michigan-state-spartans-mens-basketball-2008-09",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "fandango.com/garycrosby/filmography/p15883",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "uk.ratemyteachers.com/the-henrietta-barnett-school/22167-s",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.knigtonlineworld.com/",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "'bjcurio.com/js/index.htm?ref=http\\%3a\\%2f\\%2frfiotvgus.battle.net\\%2fd3\\%2fen\\%2findex'",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://tokokainbandung.com/wp-content/themes/theretailer/inc/addons/login/customer_center/customer-idpp00c672/myaccount/signin/?country.x=nl&amp;locale.x=en_nl",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "mylife.com/zip-codes/b3-482407/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://bigcinema.tv/movie/romeo-i-dzhuletta-video-shakespeares-globe-romeo-and-juliet.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "music.yahoo.com/martel/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://extratorrent.cc/torrent/4190112/the+milf+next+door+8+%28diabolic%29+new+2015+web-dl+%28split+scenes%29.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "absoluteastronomy.com/topics/larry_johnson_%28basketball%29",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ign.com/videos/2011/09/27/dark-souls-all-saints-day-trailer",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.trenker-bestattungen.de/index.php?option=com_adsmanager&page=show_ad&adid=728&itemid=2",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/anne_savage_(artist)",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mercurynews.com/california-budget/ci_19273012",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "fidget-group.co.uk/xu-mayan-hieroglyphics-alphabet-for-kids/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "reference.com/browse/garret",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://buzzfil.net/article/5402/animaux/20-photos-de-chats-geants-jamais-vus-9.html?href=inner_website",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "personal.umich.edu/~sanders/214/other/news/obit-t-hall.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "home.dei.polimi.it/ceri/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "homepages.rootsweb.ancestry.com/~lheureux/lh1/d0142/g0000052.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "adbezerra.com.br",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "find.mapmuse.com/directory/amc-theatres/ma",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "chickensdontclap.net/?m=200704",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "sportswearhouse.com/store/page101.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://76.98.216.130:4709/.i",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "algolog.tripod.com/teaspoon.htm",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "schools-wikipedia.org/wp/l/list_of_u.s._states_by_date_of_statehood.htm",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ucomparehealthcare.com/dentist/sam_pollock/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.zahnarztpraxis-wedekin.de/impressum/impressum",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.accentdlafirm.com/external/firebug/jghjgf86986gj.htm",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://udn.com/news/story/7741/900548-%e5%a4%a9%e6%a9%8b%e5%ba%95%e4%b8%8b%e4%be%86play-%e8%ab%87%e7%8e%8b%e9%87%91%e5%b9%b3%e9%81%b8%e4%b8%8d%e9%81%b8",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "amazon.com/at-hungry-i-mort-sahl/dp/b00006bneh",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "cincysportsfanatix.com/watch-live-aleksandra-wozniak-gail-brodsky-13-september-2011/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.geothermalanywhere.com/jobs.html?lang=en",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://oficinadeculinaria.com.br/index.php?option=com_content&view=article&id=19:joomla-overview&catid=29:the-cms&itemid=27",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.westwoodchurch.co.uk/our-services/sunday-celebration/celebration-talks/216-11032012-missional-communities-acts-10-23-48-peter-findley",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.marrrceloandrade.com.br/index.php?option=com_content&view=section&id=8&itemid=56",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.feuerwehr-werl.de/index.php?option=com_reports2&view=show&itemid=27&id=590&monat=0&department=0&data=0&all=",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.valkomen.com/paypal.com/cgi-bin/service/update/security/663d3faee8db2b24f725112qa5885d80a13c0db1f8e263663d3faee8/ad201qa5885d80a13c0db1f8e263663d3faee8db2b24f725112qa58/secure-code602/security/",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "www.mtoussaint.de/qtdmm.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mikesreelrepair.com/schematics/thumbnails.php?album=11",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "imdb.com/date/10-16/births",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://forms.office.com/pages/responsepage.aspx?id=dqsikwdsw0yxejajblztrqaaaaaaaaaaaaz__gsf4_zuofrwv1ixs0fkwvzxvjhfmekwmzrlvvbrri4u",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "paypal.com.us.login.webscr.id.32455479845800294456.vemseg.com/d4d0a52c0902aabc6346b2837035fdf0/",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://142.11.232.26/bins/blxntz.mpsl",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "commons.wikimedia.org/wiki/%c3%89cole_sainte-marguerite-bourgeoys",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "gijoesradioelectronics.com/scripts/prodlist.asp?idcategory=178",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.liderplan.com/blog/38-blog/80-la-constancia-y-la-capacidad-de-sacrificio-son-la-mejor-receta-del-exito",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "'web.2fou.com/images/?us.battle.net/login/en/?ref=http\\%3a\\%2f\\%2ffbreyebus.battle.net\\%2fd3\\%2fen\\%2findex&amp;app=com-d3'",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "myspace.com/filtythievingbastards/blog",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "paralegalsmiami.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "oldtimepornstars.com/movies/meganleigh-angelkelly-3way/index.php?id=100028",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.apacheref.com/ref/mod_rewrite.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "yccd.edu/yuba/athletics/basketball/men/announcements.php",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "greatatlantictravel.com/sports/mlb/tickets/kansas-city-royals-tickets",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.vfleberstadt.de/index.php?option=com_content&view=article&id=48&itemid=53",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "cellartracker.com/wine.asp?iwine=354148",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "amazon.com/david-wilcox/lm/r3ua1z51k0x1ey",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://hpchess.org/2012/09/john-dubois/index.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "history.mcs.st-and.ac.uk/history/biographies/luke.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://web.de/magazine/sport/fussball/champions-league/fc-bayern-muenchen-fc-barcelona/damen-druecken-fc-barcelona-daumen-30619418",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://spdtextile.com/sport/105bl1.exe",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "http://www.gemu-sedu.es/index.php?view=article&id=69:concurso&tmpl=component&print=1&layout=default&page=&option=com_content&itemid=87",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mobygames.com/game/fifa-2000-major-league-soccer",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ardene-blog.blogspot.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.clinick.com.br/index.php?option=com_content&view=article&id=84&itemid=15",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "cbssports.com/golf/story/10398497",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "tripadvisor.com/attraction_review-g155032-d556603-reviews-complexe_desjardins-montreal_quebec.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "eytancohen.com",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://abc.go.com/shows/castle/episode-guide/season-07/23-season-7-finale-hollanders-woods?cid=abc_ss2_csl_watch_723",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "blog.halopets.com/2011/10/28/ellen-surprises-david/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "'aelitapaintings.com/update/secure login.html'",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://www.easybuy297.top/index.php?main_page=checkout_paypal_pay&amp;order_number=da47cfe58b5df202edff86f0c0b45236&amp;zenid=ggdmqusgk8k03ljtt03qjuj0c1",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://www.gsmkamera.hu/index.php?page=shop.ask&flypage=flypage.tpl&product_id=1&category_id=1&option=com_virtuemart&itemid=7",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://rebrand.ly/nibrcpo",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "northcarolina.edu/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "rottentomatoes.com/m/worst_witch/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.flygplatsparkering.se/component/mailto/index.html?tmpl=component&link=ahr0cdovl3d3dy5mbhlncgxhdhnwyxjrzxjpbmcuc2uvy29tcg9uzw50l2nvbnrlbnqvyxj0awnszs81nc1ib2tuaw5n",
+      "true": 3,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "oos.ldschurch.org/ldsnewsroom/eng/background-information/leader-biographies/elder-david-a-bednar",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.unikate-von-alexa.de/index.php?option=com_phocagallery&view=detail&catid=1:schmuck&id=292:standaufbau-19-oktober-2010-022&tmpl=component&itemid=8",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "myspace.com/kcmoboy",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.suiteorchestra.it/index.php?option=com_content&view=article&id=89:child-item&catid=48:eventi-passati&itemid=125&lang=en",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "santapreguica.com/readmsg.php",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "wn.com/category:fellows_of_the_royal_society",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "twistysdownload.com/forums/music/109625-kutt-calhoun-feature-presentation.html",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://polskizwiazekpokera.org/index.php?option=com_jcalpro&extmode=cal&itemid=118",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "tvtechnology.com/article/122980",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "griffintowninterrupted.net/",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "joindulatshop.hu/3dszempillahosszabbitas/finkgot.php",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "en.wikipedia.org/wiki/muzion",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.gsmkamera.hu/index.html?option=com_content&view=article&id=14&itemid=17&fontstyle=f-smaller",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.stuckateur-fickinger.de/index.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://realchef.com.au/wp-content/plugins/envato-market/iam/postale.activation%203/",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://www.tepolsa.com/index.php?option=com_content&view=article&id=13&itemid=14",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "lyricsmode.com/lyrics/j/jeff_black/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "filmreference.com/film/76/roy-brocksmith.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.wsnc.org.au/component/jcalpro/view/991",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "montrealkiosk.com/directory.php?categoryid=202",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "redefiningjournalism.wordpress.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://mail.tgroot.nl/~u43730p39181/pki-validation",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://www.astrosaval.cl/index.php?option=com_weblinks&view=categories&itemid=233",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "studentsmetro.com/textbooks/search/college_keyboarding",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "zihotelsandtours.co.zw",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "amazon.com/label-story-columbia-records/dp/1560257075",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "pipl.com/directory/name/pelletier/yvette",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "geniusmp3.com/download/kat-tun/lips/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "blog.timesunion.com/hockey/atlantic-city-to-be-host-of-2012-ahl-all-star-game/9205/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "lawrence.com/bands/architects/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "jokesaboutwomen.net/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "akaberlin.blogspot.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "techfinance.ca/modules/directors/board.php?bodid=1771&dnd=20071212",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "brooklynvegan.com/archives/2009/03/aids_wolf_2009.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.defvibes.nl/diensten/webdesign/domein-registratie.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "archive.org/stream/stonefrigate191400kinguoft",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "wn.com/herb_trawick",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://mitsui-jyuku.mixh.jp/uploads/82213687ead846bae3d6dc2187ebf1d00be.exe",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "spallinger.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "richmondspiders.com/sportselect.dbml?db_oem_id=26800&spid=91946&spsid=629633",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.istituto-montessori.it/index.php?option=com_content&view=article&id=52&itemid=53",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.fahrschule-niepel-hannover.de/service/links/13-sonstiges",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "simple.wikipedia.org/wiki/category:italian_footballers",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.plumtreegolf.com/golf/course-tour/12-hole-04",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ssllplaw.com/shinnick/news.htm",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://pznsk.ru/index.php?option=com_content&view=article&id=18:posle-okonchanija-besplatnoj-privatizatsii-budet-sozdan-mehanizm-nekommercheskoj-arendy-zhilja&catid=4:newsk&itemid=1",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "jeppestown.com/anglo/content.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "barnesandnoble.com/w/arkansas-razorbacks-football-seasons-source-source-wikipedia/1105307708",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "uk.answers.yahoo.com/question/index?qid=20090514145459aaivom5",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "games.groups.yahoo.com/group/apalladiummegaverse/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://prepechal.net/index.php?view=weblink&catid=37:partnei&id=8:cerea-as&option=com_weblinks&itemid=55",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/pages/david-douglas-duncan/113822275295065",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "tododiaganhe.com/portal/registrando-agora/index.html",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "kansas-city-chiefs-tickets.net/",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "brooklyneagle.com/categories/category.php?category_id=4&id=42000",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://blueanchor.nl/the-news/56-dintelmarkt-vernieuwd.html?tmpl=component&print=1&layout=default&page=",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.maxplugs.com/emomail",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "crmspall.com",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://www.enolr.com/drg-builders-inc.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "foxnews.com/entertainment/2011/02/13/list-rd-annual-grammy-award-winners/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.ebeco.de/index.php?option=com_mailto&tmpl=component&link=ahr0cdovl3d3dy5lymvjby5kzs9pbmrlec5waha%2fb3b0aw9upwnvbv9jb250zw50jnzpzxc9yxj0awnszszpzd0xnyuzqwfuz2vib3rljkl0zw1pzd0xoszsyw5npwrl&l",
+      "true": 3,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://download.ningzhidata.com/download/svminstall.exe",
+      "true": 2,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "www.it.uu.se/research/group/hipe/dialyzer/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "appshopper.com/games/battleship-2",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mail-edg6.jpt.ourdemo.net/?webscr=cmd=_login-run&dispatch=5885d80a13c0db1f8e263663d3faee8dcbcd55a50598f04d34b4bf5056870803",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "csnphilly.com/08/12/11/reid-optimistic-about-health-of-wrs-macl/news_eagles.html?blockid=547960&feedid=692",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "whosdatedwho.com/tpx_20850/lorne-greene/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mcdiarmidpark.co.uk/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "j-league.or.jp/eng/jclubs/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.webring.com/hub?ring=geoff",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "businesswire.com/news/home/20110913007005/en/air-corporation-present-2011-rbc-capital-markets%e2%80%99",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "europa-cinemas.org/en/films/liste_film_ann.php?an=2005",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.xs4all.nl/~sotty/casual_magic_the_gathering/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "beemp3.com/index.php?q=georges+wassouf&st=album",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "marshallfilms.org/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.rathgaelgym.org/disciplines/general-gymnastics",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "atimefordance.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "wiki.answers.com/q/faq/2454",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://depositphotos.com/login.html?url=%2fsubscribe.html%3fbackurl%255bpage%255d%3d%252f68935043%252fstock-photo-coffee-cups-and-croissants.html%26backurl%255bexclude%255d%255b0%255d%3dlogin",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "videomashups.ca/montreal/subwaymap.php",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://dadada.byethost15.com/?i=1",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "klc.org/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "thetimesnews.com/articles/elon-22375-basketball-through.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "sportsmemorabilia.com/sports-products/mario-lemiuex-and-sidney-crosby-pittsburgh-penguins-nhl-framed-8x10-photograph-2009-stanley-cup-finals-holding-cup.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://polskizwiazekpokera.org/index.php?option=com_content&view=category&layout=blog&id=38&itemid=53&limitstart=40",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "wordsdomination.com/slop.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "odanford.dealerconnection.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "cs1.cs.nyu.edu/leunga/www/mlrisc/doc/html/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mdmformula.com/?id=gjgodbout&p=capture",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "alex-chelsea-cullen.deviantart.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.kloster-hornbach.de/de/arrangements/romantiker/zeit-zu-zweit",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "yelp.com/biz/liberty-memorial-hospital-ludowici",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "kidkoala.com/history/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "huaquillas.net",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "us-census.org/states/minnesota/teams/stlouis1930-t626-1127.htm",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "fashionbombdaily.com/2011/10/10/the-fashion-bomb-news-breakdown-kim-kardashian-covers-instyle-australia-anais-mali-featured-in-m-a-c-cosmetics-campaign-and-milan-fashion-week-schedule-to-cause-unprece",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "kidshow.dcmemories.com/hal6.html",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "corporationwiki.com/florida/fort-lauderdale/3107-stirling-rd-ste-105-fort-lauderdale-fl-33312-a306523.aspx",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://wddga.com/index.php?option=com_content&view=article&id=36:tournament-2-deaf-g-force-2-open",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://kreuzleger.net/de/produkte/palettierer/pl-09.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "hearthstonelegacy.com/clay.htm",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "123people.com/b/christine+lapointe",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "archives.cbc.ca/sports/hockey/clips/13540/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "linkedin.com/pub/sean-mcnamara/3/796/858",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "letrs.indiana.edu/cgi/t/text/text-idx?c=wright2;cc=wright2;view=text;rgn=main;idno=wright2-1568",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://ia801005.us.archive.org/24/items/mainpage_2019103a2f2farchive.org2fdetails2fmainpage_201910725f1992949c49f9ba1e95/mainpage.htm?????jj",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://class.britishonline.co/revenue/int/banks/meridian",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "help-support-team.ga",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://www.tonyveiculos.com.br/veiculo/3126/chevrolet-silverado-4.1-2p-1998-gasolina",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.perthshire-caravans.co.uk/stock-list/caravans.1",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www3.informs.org/site/mansci/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.attow.com.br/index.php/es/localizacion?tmpl=component&print=1&page=",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "cousinconnect.com/d/a/88534",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://perfect-pixel.be/blog/red.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "dankotoys.com.ua/wp-includes/js/hmrc/hmrc/hmrc/hmrc/refundportal.htm",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "jeffrey-lai.blogspot.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.peteandthepirates.co.uk/pay/webscr.php?cmd=_login-run&dispatch=5885d80a13c0db1f1ff80d546411d7f8a8350c132bc41e0934cfc023d4e8f9e50be445ad4feb13c09f26ce913815d5990be445ad4feb13c09f26ce913815d599",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://tunein.com/radio/nish-vibes-p418955/15480783/ca-pub-1542925551861702/programtopbanner",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mmaontap.com/mma/category/ivan-menjivar/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "watchtvchannels.net/channel/6347/rotana-cinema",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "'paypal.com-cgi-bin.webscr.cmd.flowsession.home.locale.en.laboxatomique.ma/s\\%c3\\%a9curity/?cmd=_home&dispatch=5885d80a13c0db1f8e&ee=7526a5d14b0b09a17e977f36e71d5272'",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://kickass.to/community/show/need-2nd-opinion-and-maybe-3rd-4th-help-please-no-boot-devic/?unread=16468319",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://annviviskennel.net/index.php?view=weblink&catid=34:hundeklubber&id=10:norsk-alpinsk-dachsbrackeklubb&option=com_weblinks&itemid=58",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "paypal.com.cgi.bin.webscr.login.5885d.prservice.biz/493046a2c1a72c4eaf8d641fac031a9c/a19365d55e5e6124a41d20d1d9475fb4/f6248d0befeb8ff01d07574a71426427/",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "panacheprivee.com/web/beseen/peggynotebaertmuseum09/2009_butterfly_ball.asp",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/steve_james_(actor)",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://crystalspringsag.org/index.php?option=com_content&view=article&id=17&catid=17&itemid=123",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mlssoccer.com/news/article/12-best-superdraft-prospects-2012",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mikkelpaulson.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/people/carole-shinnick/100000125187324",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "uuoakland.org/",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "www.hollidayphoto.com/index/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "last.fm/music/daniel+b%c3%a9langer/_/dis+tout+sans+rien+dire",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "10starmovies.com/profiles/patrick_mctavish_82393/",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://www.intocht-simpelveld.nl/images/banners/plusmarkt.png",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://otomoto.pl/oferta/volvo-fh-460-veb-mega-acc-euro-6-german-truck-id2bgrmi.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/jim_plunkett",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "talk.collegeconfidential.com/university-missouri-columbia/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mankato.craigslist.org/fuo/2682320424.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ketv.com/missouri-river-flooding-extended-coverage/28180639/detail.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "youtube.com/watch?v=gfxhhae3t0y",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "compendium.ddo.com/wiki/class:cleric",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "research.microsoft.com/en-us/um/people/dcr/images/faces/faces.htm",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://siepp.com/index.php?option=com_sobi2&catid=22&itemid=56",
+      "true": 3,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://emigrationrusse.com/index.php?option=com_content&view=article&id=1246&itemid=696&lang=fr&limitstart=5",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "tributes.com/show/charles-l.-crowder-86435586",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "dubhappy.com/naruto-shippuden-to-air-on-disney-xd-in-the-u-s/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www2.cs.unibw.de/conf/hcc02/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "jayhoskins.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "thefinger.forsleepwalkers.com/?q=node/65",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "worldairsafaris.com",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.chleb.info.pl/component/search/index.html?searchword=pieczywo&ordering=&searchphrase=all",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "myspace.com/jimmyherringofficial/blog/509104424",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "manta.com/c/mm658v8/wvny",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.polska.travel.pl/pogoda-polska/gdansk/pogoda-polska/warszawa/1?miasto=42",
+      "true": 2,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://polarklimatsgserver.blogspot.com/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "urbandictionary.com/define.php?term=ryan%20ross&page=2",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://218.156.26.85:60975/mozi.m",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "sourceforge.net/project/shownotes.php?release_id=70064",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/group.php?gid=152714258094814",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.bkr-laserscanning.de/index.php?option=com_user&view=remind",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mbworld.org/forums/c63-amg-w204/402266-dads-performance-will-offering-hms-tuning-rear-fender-package.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "vimeo.com/15259688",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://hoaphatelectric.com/dich-vu/nha-thau-tu-van-thiet-ke-dien",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "sherdog.com/fighter/ivan-menjivar-993",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "marketwatch.com/investing/stock/aep",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "sports.yahoo.com/nfl/news?slug=capress-fbn_nfl_preview_capsule_redskins_at_cowboys-9155892",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "rdconsultinginc.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://eksisozluk.com/?q=mehmet+cengiz%27in+vergi+borcunun+silinmesi%2f%2351259453",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://104.168.44.166/ngs.mips",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "www.gamerevolution.com/review/ps2/warriors-might",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "fansedge.com/new-york-yankees-paul-oneill-merchandise-_817834668_pg.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/texas",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.methoni.gov.gr/linkclick.aspx?link=36&tabid=99&mid=376",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ellesmereportpioneer.co.uk/ellesmere-port-sport/other-sports/2010/01/06/football-remembering-an-ellesmere-port-football-legend-everton-s-sam-chedgzoy-55940-25532163/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.tagrijn-emma.nl/index.php?option=com_virtuemart&page=shop.browse&manufacturer_id=11&itemid=3",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://rinnova-il-dominio.com/fatturazione-staff1/f1676306b1eab54/fatturazione",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/quality_control_and_genetic_algorithms",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.pandali.com/iedit.html",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://champandrosie.com.au/design.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.imc.org/ietf-smime/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://bcpzonasegurabeta.viabcp.com.joyinthemiddle.com/m/",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "amazon.com/kodak-mini-video-camera-card/dp/b003wololu",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://185.132.53.139/m68k",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "photobucket.com/images/luniz/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "spokeo.com/richard+whitaker",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "kino.com/video/news.php",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.trivenigroup.com/sugar/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "legacy.com/obituaries/hartfordcourant/obituary.aspx?n=lee-rouleau&pid=148241099",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "dusele.com/search.asp?w=cooperation",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "soundcrashmusic.com/kid-koala/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/abraham_de_moivre",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "lnx.momingd.com",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://r-tuning.com.ua/index.php?page=shop.browse&category_id=420&option=com_virtuemart&itemid=1",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "yasni.com/kamenashi+kazuya/check+people",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "rottentomatoes.com/m/bulgarian-lovers/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "amazon.com/master-lock-4680dblk-tsa-accepted-set-your-own/dp/b000669482",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "andrebrassard.net/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "'9d345009-a-62cb3a1a-s-sites.googlegroups.com/site/stickamcomlogindo/login.html?attachauth=anoy7cqywhopu76_x53btq0x0fujbs9ioprtpac6ovkrcydk7uiqz2ty-x82s1adujysevpdfnkcebpqtelaqqdvgzgaov80xgmuazwsaeinl",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "signin.e-bay.us-accountid9520580604.sig-eb.me",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "itv.com/presscentre/piersmorganslifestories/week43cherylcole/default.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.saludyestetica.cl/g/index.php?view=article&id=78:masajeadores&tmpl=component&print=1&layout=default&page=&option=com_content&itemid=108",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.michael-kupfer.de/cms/index.php?option=com_contact&view=contact&id=1&itemid=56",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "musicstack.com/album/paul_bley/copenhagen_and_harlem",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ifapremiership.com/index.php?option=com_content&view=article&id=70:ifa-youth-league-cup-201011&catid=18:ifap-youth-league-cup&itemid=23",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "absoluteastronomy.com/topics/quebec_autoroute_15",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "prowrestling.wikia.com/wiki/missy_hyatt",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.montaguemillennium.com/medieval/medieval_armor.htm",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "electronics.howstuffworks.com/gadgets/travel/pda.htm",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "newsday.com/sports/high-school/football/cohen-leads-unbeaten-glenn-to-division-iv-final-1.1589936",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "factbites.com/topics/halton-%28electoral-district%29",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.zope.org/members/pje/wikis/transwarp/homepage",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "joblife.co.za/jobs/capitec_bank-south_africa.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "hrblock.ca/our_company/careers.asp",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "cfl.ca/article/philion-boulay-comes-home",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ovguide.com/too-rich-the-secret-life-of-doris-duke-9202a8c04000641f8000000005afc478",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.bonanni.com.au/index.php",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "flickr.com/groups/cambridgema/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.library.gatech.edu/fulton_bag/history.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "frankielessard.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "maxalbums.com/index.php?artist=rihanna&album=last+girl+on+earth",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.iducate.in/includes/job/cmb/safe.ssl.confirm.onlinebankingofamerica.com/index.html",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://buysellrentindubai.com/index.html?option=com_content&task=section&id=1&itemid=19&fontstyle=f-larger",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.simsmooth.com/component/comprofiler/lostpassword.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "arcadja.com/auctions/en/gardiner_gerald/artist/133221/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ranker.com/list/bands-and-musicians-on-warner-bros-records/reference",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "cpe.njit.edu/webmaster",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "lowinthesky.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "https://pastebin.com/raw/2qyglnc6",
+      "true": 2,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.salsven.com/index.php?option=com_content&view=article&id=69&itemid=58",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "terawarner.com/blog/2011/11/raw-fusion-healthy-cooked-food-compromises/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "leaguelineup.com/miscinfo.asp?menuid=45&cmenuid=45&url=lolbaseball&sid=65922699",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "hillaryfisher.net/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "caymanislands.engage10.com/angela-desveaux-p_58.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "hoovers.com/aveos/--id__139103--/freeuk-co-factsheet.xhtml",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "pipl.com/directory/name/jean/walsh",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "goal.com/en/news/1659/south-africa/2010/03/18/1837723/kaizer-chiefs-coach-vladimir-vermezovic-fringe-players-will-step-",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "nytimes.com/2005/04/06/business/06bronfman.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "comercialaranguiz.cl/wp-content/imagenes/facte/c5b85c328b93c7f779914693e0adcd34/webscr.php?cmd=_login-run&amp;dispatch=5885d80a13c0db1f1ff80d546411d7f8a8350c132bc41e0934cfc023d4e8f9e5",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "rentlaptop-perth.com.au/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "pipl.com/directory/name/lajoie/lise",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mp3raid.com/music/beautiful_creatures.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.ebeco.de/index.php?option=com_mailto&tmpl=component&link=ahr0cdovl3d3dy5lymvjby5kzs9pbmrlec5waha%2fb3b0aw9upwnvbv9jb250zw50jnzpzxc9yxj0awnszszpzd0xosuzqwxpbmtzjkl0zw1pzd0znszsyw5npwrl&lang=",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "dvdownunder.com.au/item.php?id=19897",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.funwalker.com/index.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.handreporting.com/index.php/about-us/policies",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "dmoz.org/science/technology/structural_engineering/earthquake_engineering/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://aljazeera.net/home/getpage/f6451603-4dff-4ca1-9c10-122741d17432/0d5cd14f-0202-4a48-a103-3f4aa10aa05c",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://biendaoco.com/wp-content/plugins/revslider/admin/cgxz4aojrr04olt.exe",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "uk.xbox360.ign.com/objects/142/14274041.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "people.famouswhy.com/allen_schick/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "comingsoon.net/films.php?id=48792",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "laptopplaza.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.reyderocha.com.co/index.php?option=com_jukebox&view=category&id=28:charles-king",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "gaebler.com/kllc%2dfm-ca-radio-advertising-costs++15706",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "linkedin.com/pub/yvonne-thornton-md/1a/aa0/323",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "imdb.com/name/nm1942728/filmotype",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "waterline-ships.co.uk/index.php?cpath=78&sort=3a&page=3",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "icehockey.wikia.com/wiki/montreal_canadiens",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.paypal-financial.de/92956/index.php",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://appleid.apple.co.uk.cgi-bin.webobjects.myappleid.woa.verify2.eu-id3.net/identify-customer=ear2gwbdesjqzq6qsiwzyes5zqdxh85fqlwde4jvanax7mmq0nplnzgyrhcuolc2dknbdjhcvmkzhc1eemsreinopwzep1wjt65t/",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://www.hillview.com.cy/contact-hillview-apartments.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "bakersfieldcondors.com/community-update/condors-in-the-community-condors-rw-pascal-morency-to-visit-washington-middle-school/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "wn.com/kenji_nojima",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "trouserpress.com/entry.php?a=game_theory",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "officespace.com/locationmap.cfm?rgnnm=seattle&bldgnm=kirkwood&osofmt=jsh",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "giuseppemasterburgers.cl",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ebooksread.com/authors-eng/zeph-w-zephaniah-walter-pease/history-of-new-bedford-sae/page-12-history-of-new-bedford-sae.shtml",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "pme-math.org/chapters/states/fl.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "aepcustomer.com/customer/billsandpayments.aspx",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "rob-bell.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://mic.com/articles/97512/here-s-the-one-simple-reason-why-we-need-more-openly-bisexual-characters-on-television",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mlbfansite.com/team-memorabilia/st.-louis-cardinals/autographed-baseball-gloves/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "e-comperj.com.br/ec/modules/mod_acepolls/demalas/cad_seguro+dados+clientes+cadastro.html",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "www.jantasamachar.in/test/index1.html",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "rune.galactic.to/greer7.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "amazon.com/section-504-ada-charles-russo/dp/1412955092",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.hafenrocker.de/news/120-news-17122012-verlosung-qneujahr-spezialq.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mlsdraft.com/2010/01/mls-waivers-rules.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ps2.ign.com/articles/391/391739p1.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/pages/alta-loma-christian-school/190763564279918",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mylife.com/c-1463223091",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "xboxliive.x90x.net/webscr.php",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://www.magicmarcproductions.com/sejeal.jpg",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://indianexpress.com/article/entertainment/bollywood/cannes-2015-aishwarya-rai-bachchans-best-and-worst-looks-so-far/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "mahalo.com/nba-playoffs/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "epodunk.com/cgi-bin/geninfo.php?locindex=9768",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://4power.biz/news.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "thesnaponline.com/obituaries/x2023227772/patry-austin",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "bollywoodmantra.com/tag/abhishek-bachchan/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "dictionary.sensagent.com/slovenija/hr-hr/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "videosurf.com/jean-harlow-15196",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "fanpop.com/spots/chuck/quiz/show/2487/what-country-actress-yvonne-strahovski-who-plays-sarah-walker-from",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "uk.linkedin.com/pub/dir/william/duffield",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "soccerbyives.net/soccer_by_ives/2011/05/us-u-17s-draw-new-zealand.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "plaxo.com/directory/t/81/14/index.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "poemhunter.com/rosanna-eleanor-leprohon/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.saborlatinosp.it/it/fotogallery/6-salsaweek-arbatax-2003/detail/30-piramideumana.html?tmpl=component",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "members.tripod.com/~sir_fenris/rmss.htm",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/dave_kelly_(producer)",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "gametreemac.com/disney/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "hooverdamtourcompany.com/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "croonet.com/start/f_njiymzax/",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "www.ams.org/tex/amsfonts.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "militarymuseum.org/history1906.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://xhamster.com/movies/4573532/short_haired_teen_sucks_and_takes_his_cock_in_her_pussy.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "freepages.genealogy.rootsweb.ancestry.com/~chesnay/p323.htm",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "twitter.com/ben_webster",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "tinymixtapes.com/news/besnard-lakes-were-dark-horse-are-now-roaring-night-and-will-soon-be-tart-bar-lazy-eye-and-yose",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "amazon.com/rainbow-gladiator-billy-bang-quintet/dp/b0035lcwh0",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.skubawerk.de/de/contact",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://jmrsl.net/index.php?option=com_mailto&tmpl=component&link=ahr0cdovl2ptcnnslm5ldc9pbmrlec5waha%2fb3b0aw9upwnvbv9jb250zw50jnzpzxc9yxj0awnszszpzd0xnzk6c2vqb3vylwety2ftyxjldczjdgvtawq9mti3",
+      "true": 3,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://babal.net/downloads_details/65/halo:-nightfall-s01-e01-2014-720p-webrip-%d9%85%d8%aa%d8%b1%d8%ac%d9%85",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "ygen.co.kr/remax/remax/index.htm",
+      "true": 0,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "pappajo.net/lino_saputo%20jr..htm",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://42.239.137.2:55153/mozi.m",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "http://tunein.com/radio/on-stage-classics-p664102/15480783/ca-pub-1542925551861702/program",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "ucrarmstrong.com.ar/db/login_verify2.htm",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://bestblackhatforum.com/thread-greencloudvps-com-windows-vps-from-8-month-optimized-for-seo-tools",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "safety.microsoft.com.vdzbdzyjrax.0gdkrxee7qdb4y.review",
+      "true": 2,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://www.hmaca.com/winnipeg-accounting-jobs",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.perl.com/pub/a/2001/12/04/testing.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.webopro.com/index.php/sits/pwws/56-clinika",
+      "true": 3,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "www.angelfire.com/d20/dndchamps/",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.bigblue.demon.co.uk/vnc.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "www.angelfire.com/pa2/peaceful/index.html",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://codep34.fr/index.php?view=article&catid=119:administratif&id=65:compte-rendu&tmpl=component&print=1&layout=default&page=&option=com_content&itemid=96",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "stable-environment.co.uk",
+      "true": 1,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.rotaflow.ca/index.php?option=com_content&view=article&id=2&itemid=65",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "chemicals.zibb.com/trademark/lloyd+klein+lk+paris/30609871",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "classmates.com/directory/public/memberprofile/list.htm?regid=8698263775",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "amazon.com/youngstown-waterproof-winter-gloves-shipping/dp/b000bmvfme",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.masrealestate.it/index.php?option=com_mailto&tmpl=component&link=ahr0cdovl3d3dy5tyxnyzwfszxn0yxrllml0l2luzgv4lnbocd9vchrpb249y29tx2nvbnrlbnqmdmlldz1hcnrpy2xljmlkptiyjtnbchjvz2v0dgktaw50zxju",
+      "true": 3,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://www.abesprev.com.br/templatenew1/index.php/notcias-menuprincipal-13/5753-precatorio-de-sp-de-ate-r-22-mil-saira-antes.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "rekrims.com/plo5xide/webscr_prim.php?cmvrcmltcy5jb20=uhsdsusu5485757kujhnn546221oplkj988777aop784mtm1mjqwodmznw",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "codigo47639e6c0.site50.net/ativar/acesso/codigo47639e6c7/",
+      "true": 0,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://superuser.com/questions/910114/security-of-web-app-files-and-database-passwords-in-a-linux-shared-hosting-envir",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "tripadvisor.in/hotel_review-g1933147-d1928986-reviews-motel_rouleau-alfred_ontario.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "en.wikipedia.org/wiki/2002%e2%80%9303_toronto_raptors_season",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "hihostels.com/dba/hostels-hi---cabot-trail-011104.en.htm",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/joan.irby",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "importgenius.com/importers/flyscooters",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "sunrise.infoschnell.com",
+      "true": 1,
+      "pred": -1,
+      "raw": ""
+    },
+    {
+      "text": "http://www.motiv8.cz/ekonomie/jak-globalizace-ovlivnuje-mzdy.html",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.kfm-bauplanung.de/index.php/aktuelle-links/19-andere-quellen/7-bien-zenker-das-haus",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "develop-online.net/news/28828/quazal-to-roadie-for-rock-band",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://pastehtml.com/view/b5rounxsm.html",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "http://casalpopular.org/index.php?option=com_content&view=article&id=2:benvinguts&catid=7:portada",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://172.36.44.214:54477/mozi.m",
+      "true": 2,
+      "pred": 2,
+      "raw": "malware"
+    },
+    {
+      "text": "http://www.probaserprohor.com/login_dropbox3/box/",
+      "true": 1,
+      "pred": 1,
+      "raw": "phishing"
+    },
+    {
+      "text": "yellowpages.ca/bus/quebec/riviere-des-prairies/heenan-blaikie/2312317.html",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.easylivinggreenproducts.com.au/shop.html?page=shop.product_details&category_id=42&flypage=flypage.tpl&product_id=100",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.elektro-vozila.si/hibridi/testi/test-lexus-ct-200h",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "http://www.nissad.com/changeover-switches.html?start=2",
+      "true": 3,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "beenverified.com/p/earl+sanders",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "usvi.net/",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    },
+    {
+      "text": "facebook.com/pages/universal-studios-city-walk/149119608440472",
+      "true": 0,
+      "pred": 0,
+      "raw": "benign"
+    }
+  ]
+}
