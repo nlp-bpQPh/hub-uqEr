@@ -1,0 +1,52 @@
+[
+  {
+    "method": "NaiveBayes",
+    "runs": 1,
+    "accuracy_mean": 0.8882894736842105,
+    "f1_mean": 0.8878508730591412,
+    "f1_sd": null,
+    "mean_fit_seconds": 0.0036715000169351697,
+    "mean_predict_seconds": 0.001999333966523409,
+    "representative_seed": 0
+  },
+  {
+    "method": "LogisticRegression",
+    "runs": 1,
+    "accuracy_mean": 0.8967105263157895,
+    "f1_mean": 0.896391679879829,
+    "f1_sd": null,
+    "mean_fit_seconds": 0.6378318329807371,
+    "mean_predict_seconds": 0.002028707996942103,
+    "representative_seed": 0
+  },
+  {
+    "method": "LinearSVM",
+    "runs": 1,
+    "accuracy_mean": 0.8989473684210526,
+    "f1_mean": 0.898614754449394,
+    "f1_sd": null,
+    "mean_fit_seconds": 0.09583745896816254,
+    "mean_predict_seconds": 0.0016199999954551458,
+    "representative_seed": 0
+  },
+  {
+    "method": "MeanPool",
+    "runs": 3,
+    "accuracy_mean": 0.8772368421052632,
+    "f1_mean": 0.877032803731856,
+    "f1_sd": 0.004651125811641647,
+    "mean_fit_seconds": 5.847036291651118,
+    "mean_predict_seconds": 0.03864690261737754,
+    "representative_seed": 17
+  },
+  {
+    "method": "TextCNN",
+    "runs": 3,
+    "accuracy_mean": 0.8730701754385964,
+    "f1_mean": 0.872750358333149,
+    "f1_sd": 0.0037897118296363725,
+    "mean_fit_seconds": 8.259202305654375,
+    "mean_predict_seconds": 0.17851616667273143,
+    "representative_seed": 17
+  }
+]

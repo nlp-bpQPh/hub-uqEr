@@ -1,0 +1,13 @@
+{
+  "comparison": "LinearSVM minus LogisticRegression",
+  "accuracy_difference": 0.0022368421052630927,
+  "paired_bootstrap_95_percentile_interval": [
+    -0.0007894736842105263,
+    0.005394736842105263
+  ],
+  "bootstrap_draws": 10000,
+  "svm_only_correct": 83,
+  "lr_only_correct": 66,
+  "mcnemar_exact_two_sided_p": 0.1897585579067378,
+  "note": "Exploratory pair, not adjusted for model comparison multiplicity."
+}
