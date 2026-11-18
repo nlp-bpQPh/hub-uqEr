@@ -6,7 +6,7 @@ homework_langid_12cls.py —— 第三周作业：12 类语种识别分类器
 模型：Embedding → RNN → 掩码 MaxPool → LayerNorm → Dropout → Linear → Softmax
 损失：CrossEntropyLoss      优化器：Adam      数据：字符级（无需分词）
 运行：python3 homework_langid_12cls.py        （CPU，约 6 秒；可选 --data-dir / --vocab）
-
+"""
 
 import os
 import csv
