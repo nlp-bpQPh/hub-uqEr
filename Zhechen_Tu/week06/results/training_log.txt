@@ -1,0 +1,74 @@
+Week 06 | Zhechen Tu | AG News four-class comparison
+Train=12000 val=2000 TF-IDF=40000 features; device=mps
+NaiveBayes: val F1=0.8962, fit 0.00s
+LogisticRegression: val F1=0.8978, fit 0.64s
+LinearSVM: val F1=0.9027, fit 0.10s
+MeanPool seed=17 epoch=01 train CE=1.2836 val F1=0.6244
+MeanPool seed=17 epoch=02 train CE=0.8277 val F1=0.7755
+MeanPool seed=17 epoch=03 train CE=0.5953 val F1=0.8108
+MeanPool seed=17 epoch=04 train CE=0.4852 val F1=0.8351
+MeanPool seed=17 epoch=05 train CE=0.4105 val F1=0.8479
+MeanPool seed=17 epoch=06 train CE=0.3512 val F1=0.8588
+MeanPool seed=17 epoch=07 train CE=0.3096 val F1=0.8668
+MeanPool seed=17 epoch=08 train CE=0.2772 val F1=0.8727
+MeanPool seed=17 epoch=09 train CE=0.2459 val F1=0.8745
+MeanPool seed=17 epoch=10 train CE=0.2164 val F1=0.8787
+MeanPool seed=29 epoch=01 train CE=1.2832 val F1=0.6426
+MeanPool seed=29 epoch=02 train CE=0.8123 val F1=0.7692
+MeanPool seed=29 epoch=03 train CE=0.5738 val F1=0.8174
+MeanPool seed=29 epoch=04 train CE=0.4612 val F1=0.8337
+MeanPool seed=29 epoch=05 train CE=0.4041 val F1=0.8493
+MeanPool seed=29 epoch=06 train CE=0.3416 val F1=0.8572
+MeanPool seed=29 epoch=07 train CE=0.3036 val F1=0.8637
+MeanPool seed=29 epoch=08 train CE=0.2738 val F1=0.8660
+MeanPool seed=29 epoch=09 train CE=0.2423 val F1=0.8704
+MeanPool seed=29 epoch=10 train CE=0.2219 val F1=0.8714
+MeanPool seed=43 epoch=01 train CE=1.2894 val F1=0.6249
+MeanPool seed=43 epoch=02 train CE=0.8096 val F1=0.7909
+MeanPool seed=43 epoch=03 train CE=0.5590 val F1=0.8351
+MeanPool seed=43 epoch=04 train CE=0.4502 val F1=0.8532
+MeanPool seed=43 epoch=05 train CE=0.3835 val F1=0.8637
+MeanPool seed=43 epoch=06 train CE=0.3334 val F1=0.8662
+MeanPool seed=43 epoch=07 train CE=0.2932 val F1=0.8676
+MeanPool seed=43 epoch=08 train CE=0.2645 val F1=0.8705
+MeanPool seed=43 epoch=09 train CE=0.2410 val F1=0.8730
+MeanPool seed=43 epoch=10 train CE=0.2105 val F1=0.8757
+TextCNN seed=17 epoch=01 train CE=1.3451 val F1=0.6342
+TextCNN seed=17 epoch=02 train CE=0.9980 val F1=0.7521
+TextCNN seed=17 epoch=03 train CE=0.7614 val F1=0.8082
+TextCNN seed=17 epoch=04 train CE=0.6290 val F1=0.8217
+TextCNN seed=17 epoch=05 train CE=0.5195 val F1=0.8348
+TextCNN seed=17 epoch=06 train CE=0.4445 val F1=0.8439
+TextCNN seed=17 epoch=07 train CE=0.3800 val F1=0.8558
+TextCNN seed=17 epoch=08 train CE=0.3440 val F1=0.8662
+TextCNN seed=17 epoch=09 train CE=0.3056 val F1=0.8655
+TextCNN seed=17 epoch=10 train CE=0.2694 val F1=0.8716
+TextCNN seed=29 epoch=01 train CE=1.3192 val F1=0.6678
+TextCNN seed=29 epoch=02 train CE=0.9801 val F1=0.7489
+TextCNN seed=29 epoch=03 train CE=0.7581 val F1=0.8030
+TextCNN seed=29 epoch=04 train CE=0.6257 val F1=0.8243
+TextCNN seed=29 epoch=05 train CE=0.5177 val F1=0.8393
+TextCNN seed=29 epoch=06 train CE=0.4357 val F1=0.8471
+TextCNN seed=29 epoch=07 train CE=0.3787 val F1=0.8602
+TextCNN seed=29 epoch=08 train CE=0.3379 val F1=0.8673
+TextCNN seed=29 epoch=09 train CE=0.2900 val F1=0.8682
+TextCNN seed=29 epoch=10 train CE=0.2689 val F1=0.8698
+TextCNN seed=43 epoch=01 train CE=1.3506 val F1=0.5537
+TextCNN seed=43 epoch=02 train CE=0.9835 val F1=0.7410
+TextCNN seed=43 epoch=03 train CE=0.7429 val F1=0.7956
+TextCNN seed=43 epoch=04 train CE=0.5960 val F1=0.8315
+TextCNN seed=43 epoch=05 train CE=0.4991 val F1=0.8443
+TextCNN seed=43 epoch=06 train CE=0.4198 val F1=0.8490
+TextCNN seed=43 epoch=07 train CE=0.3727 val F1=0.8586
+TextCNN seed=43 epoch=08 train CE=0.3377 val F1=0.8654
+TextCNN seed=43 epoch=09 train CE=0.2896 val F1=0.8650
+TextCNN seed=43 epoch=10 train CE=0.2554 val F1=0.8715
+TEST NaiveBayes seed=0 acc=0.8883 macro F1=0.8879
+TEST LogisticRegression seed=0 acc=0.8967 macro F1=0.8964
+TEST LinearSVM seed=0 acc=0.8989 macro F1=0.8986
+TEST MeanPool seed=17 acc=0.8761 macro F1=0.8759
+TEST MeanPool seed=29 acc=0.8734 macro F1=0.8730
+TEST MeanPool seed=43 acc=0.8822 macro F1=0.8821
+TEST TextCNN seed=17 acc=0.8709 macro F1=0.8705
+TEST TextCNN seed=29 acc=0.8708 macro F1=0.8707
+TEST TextCNN seed=43 acc=0.8775 macro F1=0.8771

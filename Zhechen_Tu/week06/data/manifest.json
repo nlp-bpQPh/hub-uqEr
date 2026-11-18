@@ -1,0 +1,46 @@
+{
+  "source": "https://raw.githubusercontent.com/mhjabreel/CharCnn_Keras/master/data/ag_news_csv/",
+  "source_sha256": {
+    "train": "76a0a2d2f92b286371fe4d4044640910a04a803fdd2538e0f3f29a5c6f6b672e",
+    "test": "521465c2428ed7f02f8d6db6ffdd4b5447c1c701962353eb2c40d548c3c85699"
+  },
+  "seed": 20261118,
+  "original_counts": {
+    "train": 120000,
+    "test": 7600
+  },
+  "train_exact_duplicates": 151,
+  "test_exact_duplicates": 0,
+  "train_test_overlap_removed": 10,
+  "eligible_train_pool": 119839,
+  "counts": {
+    "train": 12000,
+    "val": 2000,
+    "test": 7600
+  },
+  "class_counts": {
+    "train": {
+      "1": 3000,
+      "3": 3000,
+      "2": 3000,
+      "0": 3000
+    },
+    "val": {
+      "0": 500,
+      "2": 500,
+      "3": 500,
+      "1": 500
+    },
+    "test": {
+      "2": 1900,
+      "3": 1900,
+      "1": 1900,
+      "0": 1900
+    }
+  },
+  "split_ids_sha256": {
+    "train": "8bade65a0ede47af9681640ed8f70412074d610b6d7f1c75931b955a517f4f9f",
+    "val": "b77383d7ce072b30a220e84879e9a9acb224ad0e4d4166811ec853324f22e5b7",
+    "test": "62e68983f2f1336347a71a94d0e226748e0104f7b9e3efdb3004bf1debe1bc40"
+  }
+}
