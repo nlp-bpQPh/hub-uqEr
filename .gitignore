@@ -20,3 +20,4 @@ __pycache__/
 *.tar.gz
 *.log
 .vscode/
+侯博渊/week06/experiments_thucnews/outputs/*.pt

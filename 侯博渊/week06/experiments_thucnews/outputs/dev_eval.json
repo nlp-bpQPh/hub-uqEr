@@ -1,0 +1,15 @@
+{
+  "rule": {
+    "acc": 0.657,
+    "macro_f1": 0.6416
+  },
+  "tfidf_svc": {
+    "acc": 0.986,
+    "macro_f1": 0.986
+  },
+  "tiny": {
+    "macro_f1": 0.9675,
+    "best_epoch": 2
+  },
+  "n_dev": 1000
+}
