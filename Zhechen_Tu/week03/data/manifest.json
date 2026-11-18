@@ -1,0 +1,41 @@
+{
+  "source": "https://tinyurl.com/flores200dataset",
+  "source_documentation": "https://github.com/facebookresearch/flores/tree/main/flores200",
+  "license": "CC-BY-SA-4.0",
+  "archive_sha256": "b8b0b76783024b85797e5cc75064eb83fc5288b41e9654dabc7be6ae944011f6",
+  "seed": 20261029,
+  "languages": {
+    "arb_Arab": "阿拉伯语",
+    "deu_Latn": "德语",
+    "eng_Latn": "英语",
+    "fra_Latn": "法语",
+    "hin_Deva": "印地语",
+    "ita_Latn": "意大利语",
+    "jpn_Jpan": "日语",
+    "kor_Hang": "韩语",
+    "por_Latn": "葡萄牙语",
+    "rus_Cyrl": "俄语",
+    "spa_Latn": "西班牙语",
+    "zho_Hans": "简体中文"
+  },
+  "original_rows": 24108,
+  "removed_sentence_groups": 2,
+  "split_method": "70/15/15 percent of shuffled unique article URLs; all translations stay together",
+  "counts": {
+    "train": {
+      "rows": 16992,
+      "per_language": 1416,
+      "articles": 393
+    },
+    "val": {
+      "rows": 3564,
+      "per_language": 297,
+      "articles": 84
+    },
+    "test": {
+      "rows": 3528,
+      "per_language": 294,
+      "articles": 85
+    }
+  }
+}

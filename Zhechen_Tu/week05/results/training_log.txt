@@ -1,0 +1,41 @@
+Week 05 | Zhechen Tu | response-only SFT | device=mps | seed=20261112
+Week 04 SHA256: 8410fd04d261b0e40cb7291a98f4302a460f1a4c9172b4d6a269ceed143f015d
+Train: 1701 | Validation: 243 | Base validation response NLL: 3.32889
+Epoch 01 | train response NLL 0.56427 | val 0.20040
+Epoch 02 | train response NLL 0.18487 | val 0.09975
+Epoch 03 | train response NLL 0.08653 | val 0.04558
+Epoch 04 | train response NLL 0.04295 | val 0.02338
+Epoch 05 | train response NLL 0.02755 | val 0.00687
+Epoch 06 | train response NLL 0.02179 | val 0.00473
+Epoch 07 | train response NLL 0.01993 | val 0.00588
+Epoch 08 | train response NLL 0.01328 | val 0.00572
+Epoch 09 | train response NLL 0.01383 | val 0.00195
+Epoch 10 | train response NLL 0.00763 | val 0.00147
+Epoch 11 | train response NLL 0.01034 | val 0.00256
+Epoch 12 | train response NLL 0.00917 | val 0.00053
+Epoch 13 | train response NLL 0.00731 | val 0.00115
+Epoch 14 | train response NLL 0.00519 | val 0.00249
+Epoch 15 | train response NLL 0.00769 | val 0.00088
+Epoch 16 | train response NLL 0.00406 | val 0.00879
+Epoch 17 | train response NLL 0.00349 | val 0.00015
+Epoch 18 | train response NLL 0.00217 | val 0.00012
+Epoch 19 | train response NLL 0.00276 | val 0.00035
+Epoch 20 | train response NLL 0.00127 | val 0.00016
+Epoch 21 | train response NLL 0.00222 | val 0.00478
+Epoch 22 | train response NLL 0.00203 | val 0.00020
+Epoch 23 | train response NLL 0.00078 | val 0.00018
+Epoch 24 | train response NLL 0.00084 | val 0.00011
+Epoch 25 | train response NLL 0.00098 | val 0.00013
+Epoch 26 | train response NLL 0.00051 | val 0.00007
+Epoch 27 | train response NLL 0.00061 | val 0.00070
+Epoch 28 | train response NLL 0.00019 | val 0.00039
+Epoch 29 | train response NLL 0.00022 | val 0.00020
+Epoch 30 | train response NLL 0.00050 | val 0.00007
+Epoch 31 | train response NLL 0.00057 | val 0.00012
+Epoch 32 | train response NLL 0.00056 | val 0.00036
+Epoch 33 | train response NLL 0.00030 | val 0.00017
+Epoch 34 | train response NLL 0.00019 | val 0.00014
+Epoch 35 | train response NLL 0.00026 | val 0.00014
+Epoch 36 | train response NLL 0.00018 | val 0.00013
+BASE TEST | exact: 0/243 (0.00%) | response NLL 3.33058
+SFT TEST | exact: 243/243 (100.00%) | response NLL 0.00005

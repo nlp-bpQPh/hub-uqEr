@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "① 训练 SFT 模型",
+      "type": "process",
+      "command": "D:\\Miniconda3\\envs\\py312\\python.exe",
+      "args": ["sft_train.py"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "env": { "PYTHONIOENCODING": "utf-8" },
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "② 和训练好的模型对话",
+      "type": "process",
+      "command": "D:\\Miniconda3\\envs\\py312\\python.exe",
+      "args": ["chat.py"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "env": { "PYTHONIOENCODING": "utf-8" },
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "③ 和基座模型对话（只会接龙）",
+      "type": "process",
+      "command": "D:\\Miniconda3\\envs\\py312\\python.exe",
+      "args": ["chat.py", "--base"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "env": { "PYTHONIOENCODING": "utf-8" },
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "④ 重新生成指令数据",
+      "type": "process",
+      "command": "D:\\Miniconda3\\envs\\py312\\python.exe",
+      "args": ["build_sft_data.py"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "env": { "PYTHONIOENCODING": "utf-8" },
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    }
+  ]
+}

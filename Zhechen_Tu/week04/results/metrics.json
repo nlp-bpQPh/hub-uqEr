@@ -1,0 +1,51 @@
+{
+  "seed": 20261104,
+  "device": "mps",
+  "torch_version": "2.6.0",
+  "parameters": 430080,
+  "config": {
+    "vocab_size": 66,
+    "context": 128,
+    "width": 128,
+    "heads": 4,
+    "layers": 2,
+    "dropout": 0.1
+  },
+  "steps": 1500,
+  "batch_size": 24,
+  "tokens_seen": 4608000,
+  "best_step": 1500,
+  "initial_validation": {
+    "nll": 4.176382158837543,
+    "perplexity": 65.12979720368219,
+    "accuracy": 0.024673205544298804,
+    "tokens": 55769
+  },
+  "best_validation": {
+    "nll": 1.7940999710484389,
+    "perplexity": 6.014059457597272,
+    "accuracy": 0.4631246749986552,
+    "tokens": 55769
+  },
+  "test": {
+    "nll": 1.8559539263577072,
+    "perplexity": 6.397798369122009,
+    "accuracy": 0.44797288816367514,
+    "tokens": 55769
+  },
+  "baselines": {
+    "uniform": {
+      "nll": 4.189654742026425,
+      "perplexity": 65.99999999999997
+    },
+    "unigram": {
+      "nll": 3.361967810392593,
+      "perplexity": 28.845898324700535
+    },
+    "bigram": {
+      "nll": 2.4895986389556874,
+      "perplexity": 12.056436165414949
+    }
+  },
+  "elapsed_seconds": 33.68305345787667
+}

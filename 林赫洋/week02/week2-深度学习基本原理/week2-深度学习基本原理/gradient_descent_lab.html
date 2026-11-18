@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>梯度下降 · 交互演示</title>
+<style>
+  :root{
+    --navy:#1E3A5F; --teal:#2E86AB; --dark:#2D2D2D; --gray:#666666;
+    --code-bg:#F5F5F5; --border:#DEDEDE; --lt-teal:#EBF4FA;
+    --red:#C0392B; --green:#217B45; --orange:#D4720A;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;overflow-anchor:none;}   /* 关掉滚动锚定：局部重绘时浏览器别自动调滚动条 */
+  body{
+    background:#F0F2F5; color:var(--dark);
+    font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",-apple-system,sans-serif;
+    font-size:14px; line-height:1.5; padding:14px 18px 40px;
+  }
+  .wrap{max-width:1620px;margin:0 auto;}
+
+  /* ---------- 头部 ---------- */
+  .head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;}
+  .head h1{font-size:21px;color:var(--navy);margin:0;font-weight:700;}
+  .head .sub{font-size:12.5px;color:var(--gray);}
+
+  /* ---------- 通用卡片 ---------- */
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;}
+  .card-h{
+    padding:7px 13px;border-bottom:1px solid var(--border);
+    font-size:13px;font-weight:700;color:var(--navy);
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .card-h .hint{font-size:11.5px;color:var(--gray);font-weight:400;}
+  .card-b{padding:11px 13px;}
+
+  /* ---------- 数据栏 ---------- */
+  .databar{
+    background:#fff;border:1px solid var(--border);border-radius:8px;
+    padding:10px 14px;display:flex;flex-wrap:wrap;align-items:center;
+    gap:9px 18px;margin-bottom:12px;border-left:4px solid var(--teal);
+  }
+  .field{display:flex;align-items:center;gap:7px;}
+  .field > label{font-size:12.5px;color:var(--gray);white-space:nowrap;}
+  input[type=text]{
+    font-family:Consolas,Monaco,monospace;font-size:14px;color:var(--navy);
+    border:1px solid var(--border);border-radius:5px;padding:5px 9px;
+    width:190px;background:var(--code-bg);font-weight:600;
+  }
+  input[type=text]:focus{outline:2px solid var(--teal);outline-offset:-1px;background:#fff;}
+  input[type=text].bad{border-color:var(--red);background:#FDEDEC;color:var(--red);}
+  input[type=range]{width:96px;accent-color:var(--teal);vertical-align:middle;}
+  select{
+    font-size:12.5px;padding:4px 6px;border:1px solid var(--border);
+    border-radius:5px;background:#fff;color:var(--dark);
+  }
+  .val{
+    font-family:Consolas,monospace;font-size:13px;font-weight:700;
+    color:var(--teal);min-width:34px;display:inline-block;text-align:right;
+  }
+
+  /* ---------- 按钮 ---------- */
+  button{
+    font-family:inherit;font-size:12.5px;padding:5px 13px;border-radius:5px;
+    border:1px solid var(--border);background:#fff;color:var(--dark);
+    cursor:pointer;transition:.12s;white-space:nowrap;
+  }
+  button:hover{background:var(--lt-teal);border-color:var(--teal);}
+  button.primary{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600;}
+  button.primary:hover{background:#162C49;}
+
+  /* ---------- 布局 ---------- */
+  .cols{display:flex;gap:12px;align-items:flex-start;}
+  .col-l{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:12px;}
+  .col-r{flex:0 0 500px;display:flex;flex-direction:column;gap:12px;}
+
+  canvas{display:block;width:100%;}
+
+  /* ---------- 变量面板 ---------- */
+  .vars{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+  .vbox{
+    border:1px solid var(--border);border-radius:6px;padding:6px 8px;
+    background:#fff;transition:.25s;
+  }
+  .vbox .k{font-size:11px;color:var(--gray);font-family:Consolas,monospace;}
+  .vbox .v{
+    font-size:15.5px;font-weight:700;color:var(--navy);
+    font-family:Consolas,monospace;word-break:break-all;
+  }
+  .vbox.hot{background:#FFF6E5;border-color:var(--orange);}
+  .vbox.hot .v{color:var(--orange);}
+  .vbox.grad .v{color:var(--red);}
+  .vbox.hot-grad{background:#FDEDEC;border-color:var(--red);}
+  .vbox.hot-grad .v{color:var(--red);}
+  .vbox.good{background:#E4F3E9;border-color:var(--green);}
+  .vbox.good .v{color:var(--green);}
+
+  .formula{
+    margin-top:9px;padding:8px 11px;background:var(--lt-teal);
+    border-radius:6px;border-left:3px solid var(--teal);
+    font-family:Consolas,monospace;font-size:13.5px;color:var(--navy);
+    font-weight:600;word-break:break-all;min-height:2.7em;
+  }
+
+  /* ---------- 代码 ---------- */
+  .code{
+    background:var(--code-bg);border-radius:6px;padding:8px 0;
+    font-family:Consolas,Monaco,monospace;font-size:12.5px;line-height:1.62;
+    overflow-x:auto;position:relative;
+  }
+  .code .ln{
+    padding:1px 12px 1px 10px;white-space:pre;color:#3A3A3A;
+    border-left:3px solid transparent;
+  }
+  .code .ln.cmt{color:#8A8A8A;}
+  .code .ln.active{
+    background:#DCEBF6;border-left-color:var(--teal);color:var(--navy);font-weight:700;
+  }
+  .code .ln.active.back{
+    background:#FBE3E0;border-left-color:var(--red);color:var(--red);
+  }
+  .code .ln.active.upd{
+    background:#E4F3E9;border-left-color:var(--green);color:var(--green);
+  }
+
+  /* ---------- 阶段指示 ---------- */
+  .phasebar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+  .pill{
+    padding:4px 12px;border-radius:99px;font-size:12px;font-weight:600;
+    background:#EDEFF2;color:var(--gray);border:1px solid var(--border);
+  }
+  .pill.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .stat{font-family:Consolas,monospace;font-size:12.5px;color:var(--gray);}
+  .stat b{color:var(--navy);}
+
+  /* ---------- 终止条件 ---------- */
+  .stopbox{
+    margin-top:10px;padding-top:9px;border-top:1px dashed var(--border);
+  }
+  .stoprow{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .stopstate{
+    margin-top:7px;font-family:Consolas,monospace;font-size:12.5px;
+    padding:6px 10px;border-radius:6px;background:var(--code-bg);color:var(--gray);
+    line-height:1.55;
+  }
+  .stopstate b{color:var(--navy);}
+  .stopstate.ok{background:#E4F3E9;color:var(--green);}
+  .stopstate.ok b{color:var(--green);}
+  .stopstate.bad{background:#FDEDEC;color:var(--red);}
+
+  .err{
+    display:none;background:#FDEDEC;border:1px solid var(--red);color:var(--red);
+    border-radius:6px;padding:7px 12px;font-size:12.5px;margin-bottom:12px;
+  }
+  .err.on{display:block;}
+
+  .teach{
+    font-size:11.5px;color:var(--gray);padding:6px 11px;background:#fff;
+    border:1px dashed var(--border);border-radius:6px;line-height:1.6;
+  }
+  .teach b{color:var(--teal);}
+  .teach code{
+    font-family:Consolas,monospace;background:var(--code-bg);
+    padding:1px 5px;border-radius:3px;color:var(--navy);font-weight:600;
+  }
+  .legend{display:flex;gap:14px;font-size:11.5px;color:var(--gray);align-items:center;}
+  .legend i{display:inline-block;width:13px;height:3px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <h1>梯度下降 · 交互演示</h1>
+    <span class="sub">写真实规律 → 造数据 → 每点一步，数值跟着变</span>
+  </div>
+
+  <!-- ==================== 数据栏 ==================== -->
+  <div class="databar">
+    <div class="field">
+      <label>真实规律&nbsp;y =</label>
+      <input type="text" id="expr" value="2*x + 3*x**2" spellcheck="false">
+      <button id="btnGen" class="primary">生成数据</button>
+    </div>
+    <div class="field">
+      <label>样本数</label>
+      <input type="range" id="nSamp" min="12" max="90" step="2" value="40">
+      <span class="val" id="nSampV">40</span>
+    </div>
+    <div class="field">
+      <label>噪声</label>
+      <input type="range" id="noise" min="0" max="3" step="0.1" value="0">
+      <span class="val" id="noiseV">0.0</span>
+    </div>
+    <div class="field">
+      <label>x 范围</label>
+      <select id="xrange">
+        <option value="-1,1">[-1, 1]</option>
+        <option value="-2,2" selected>[-2, 2]</option>
+        <option value="-3,3">[-3, 3]</option>
+      </select>
+    </div>
+    <div class="field" id="truthFlag"></div>
+  </div>
+
+  <div class="err" id="err"></div>
+
+  <div class="cols">
+    <!-- ==================== 左栏 ==================== -->
+    <div class="col-l">
+      <div class="card">
+        <div class="card-h">
+          <span>拟合效果</span>
+          <span class="legend">
+            <span><i style="background:#C0392B"></i>数据点</span>
+            <span><i style="background:#2E86AB"></i>模型预测</span>
+            <span><i style="background:#999;opacity:.8"></i>真实规律</span>
+          </span>
+        </div>
+        <div class="card-b"><canvas id="c1fit" height="360"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-h">
+          <span>损失下降曲线</span>
+          <span class="hint">纵轴对数刻度；虚线 = 目标 loss</span>
+        </div>
+        <div class="card-b"><canvas id="c1loss" height="200"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ==================== 右栏 ==================== -->
+    <div class="col-r">
+      <div class="card">
+        <div class="card-h"><span>控制</span><span class="stat" id="p1stat">第 <b>0</b> 步</span></div>
+        <div class="card-b">
+          <div class="phasebar" style="margin-bottom:9px">
+            <span class="pill" id="p1ph0">前向传播</span>
+            <span class="pill" id="p1ph1">求梯度</span>
+            <span class="pill" id="p1ph2">更新权重</span>
+          </div>
+          <div class="field" style="margin-bottom:9px">
+            <label>学习率 lr</label>
+            <input type="range" id="p1lr" min="0.001" max="0.6" step="0.001" value="0.05">
+            <span class="val" id="p1lrV">0.050</span>
+          </div>
+          <div class="field" style="margin-bottom:9px">
+            <label>Batch 大小</label>
+            <select id="p1batch">
+              <option value="0" selected>全部（BGD）</option>
+              <option value="32">32</option>
+              <option value="8">8</option>
+              <option value="4">4</option>
+              <option value="1">1（SGD · 最抖）</option>
+            </select>
+            <span class="stat" id="batchInfo"></span>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="primary" id="p1step">下一步</button>
+            <button id="p1auto">自动</button>
+            <button id="p1reset">重置为 0</button>
+            <button id="p1rand">随机初始化</button>
+            <select id="p1speed" style="margin-left:auto">
+              <option value="slow">慢</option>
+              <option value="mid">中</option>
+              <option value="fast" selected>快</option>
+              <option value="turbo">极快</option>
+              <option value="run">跑完</option>
+            </select>
+          </div>
+
+          <!-- 迭代终止条件 -->
+          <div class="stopbox">
+            <div class="stoprow">
+              <label style="font-size:12.5px;color:var(--gray)">迭代终止条件：当 loss ≤</label>
+              <input type="text" id="target" value="1e-6" style="width:90px" spellcheck="false">
+              <button id="btnTarget">应用</button>
+              <span style="font-size:11.5px;color:var(--gray)">填 0 = 不设目标</span>
+            </div>
+            <div class="stopstate" id="stopState"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>变量数值</span><span class="hint">橙色 = 刚更新，绿色 = 已达标</span></div>
+        <div class="card-b">
+          <div class="vars">
+            <div class="vbox" id="b1w1"><div class="k">w1　x² 的系数</div><div class="v">0.0000</div></div>
+            <div class="vbox" id="b1w2"><div class="k">w2　x 的系数</div><div class="v">0.0000</div></div>
+            <div class="vbox" id="b1w3"><div class="k">w3　常数项</div><div class="v">0.0000</div></div>
+            <div class="vbox" id="b1loss"><div class="k">loss（MSE）</div><div class="v">—</div></div>
+            <div class="vbox grad" id="b1g1"><div class="k">∂L/∂w1</div><div class="v">—</div></div>
+            <div class="vbox grad" id="b1g2"><div class="k">∂L/∂w2</div><div class="v">—</div></div>
+          </div>
+          <div class="vars" style="margin-top:7px;grid-template-columns:repeat(3,1fr)">
+            <div class="vbox grad" id="b1g3"><div class="k">∂L/∂w3</div><div class="v">—</div></div>
+            <div class="vbox" id="b1delta" style="grid-column:span 2"><div class="k">delta = 2·(ŷ − y)　（上游梯度）</div><div class="v">—</div></div>
+          </div>
+          <div class="formula" id="p1formula">ŷ = w1·x² + w2·x + w3</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>对照代码</span><span class="hint">高亮 = 正在执行的阶段</span></div>
+        <div class="card-b" style="padding:0 0 4px">
+          <div class="code" id="p1code"></div>
+        </div>
+      </div>
+
+      <div class="teach">
+        <b>讲法：</b>
+        ①「随机初始化」多按几次，起点都不同，但跑完都会收敛到 <code>w1=3, w2=2, w3=0</code>——因为这座山只有一个谷底。
+        ② 把 Batch 调到 <code>1</code>，loss 曲线立刻变抖 —— 这就是"只问一个人"的代价。
+        ③ 把 lr 拉到 <code>0.5</code> 会发散，这是最好的学习率演示。
+        ④ 目标 loss 设 <code>1e-3</code> 再点「跑完」，让"练到什么时候停"变成看得见的数字。
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==================================================================
+   0. 工具
+   ================================================================== */
+const $ = id => document.getElementById(id);
+
+function fmt(v, d){
+  d = (d === undefined) ? 4 : d;
+  if (v === null || v === undefined || !isFinite(v)) return '—';
+  /* 过小或过大都走科学计数法：既好读，也避免文字过长把版面撑开 */
+  if (v !== 0 && (Math.abs(v) < 1e-4 || Math.abs(v) >= 1e5)) return v.toExponential(2);
+  return v.toFixed(d);
+}
+/* 科学计数法友好：1e-3 / 0.001 / 2.5e-5 都能认 */
+function fmtSci(v){
+  if (v === null || v === undefined || !isFinite(v)) return '—';
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v)));
+  if (e >= -3 && e <= 3) return v.toPrecision(4).replace(/0+$/, '').replace(/\.$/, '');
+  const m = v / Math.pow(10, e);
+  return m.toFixed(2).replace(/0+$/, '').replace(/\.$/, '') + 'e' + e;
+}
+
+let flashTimer = {};
+function setBox(id, text, cls){
+  const el = $(id); if (!el) return;
+  el.querySelector('.v').textContent = text;
+  if (cls){
+    el.classList.add(cls);
+    clearTimeout(flashTimer[id]);
+    flashTimer[id] = setTimeout(() => el.classList.remove(cls), 550);
+  }
+}
+function clearHot(){
+  document.querySelectorAll('.vbox.hot,.vbox.hot-grad').forEach(e => {
+    e.classList.remove('hot'); e.classList.remove('hot-grad');
+  });
+}
+
+function mulberry32(a){
+  return function(){
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function gauss(rnd){
+  let u = 0, v = 0;
+  while (u === 0) u = rnd();
+  while (v === 0) v = rnd();
+  return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+}
+
+/* ==================================================================
+   1. 表达式解析
+   ================================================================== */
+let exprFn = null;
+function compileExpr(src){
+  const s = String(src).trim();
+  if (!s) throw new Error('表达式不能为空');
+  if (!/^[0-9xX+\-*/().\s]+$/.test(s))
+    throw new Error('只允许出现 x、数字和 + - * / ( ) ，例如 2*x + 3*x**2');
+  let fn;
+  try {
+    fn = new Function('x', 'return (' + s.replace(/X/g, 'x') + ');');
+  } catch (e){
+    throw new Error('表达式写错了：' + e.message);
+  }
+  const probe = fn(0.37);
+  if (typeof probe !== 'number' || !isFinite(probe))
+    throw new Error('这个表达式在 x=0.37 处算不出有效数字，请检查');
+  return fn;
+}
+/* 规律若正好是「常数 + x + x²」的线性组合，就把真实系数认出来 */
+function detectQuadratic(f){
+  const c0 = f(0), fp = f(1), fm = f(-1);
+  if (![c0, fp, fm].every(isFinite)) return null;
+  const c1 = (fp - fm) / 2;
+  const c2 = (fp + fm) / 2 - c0;
+  const tests = [-2.3, -1.7, -0.6, 0.4, 1.6, 2.4];
+  for (const t of tests){
+    const real = f(t), approx = c0 + c1 * t + c2 * t * t;
+    if (!isFinite(real)) return null;
+    if (Math.abs(real - approx) > 1e-6 * Math.max(1, Math.abs(real))) return null;
+  }
+  return [c0, c1, c2];
+}
+
+/* ==================================================================
+   2. 共享数据
+   ================================================================== */
+const D = { xs: [], ys: [], truth: null, xlo: -2, xhi: 2 };
+
+function regenerate(){
+  const errBox = $('err');
+  errBox.classList.remove('on');
+  let f;
+  try {
+    f = compileExpr($('expr').value);
+  } catch (e){
+    errBox.textContent = e.message; errBox.classList.add('on');
+    return false;
+  }
+  const n = +$('nSamp').value;
+  const noise = +$('noise').value;
+  const [lo, hi] = $('xrange').value.split(',').map(Number);
+
+  const rnd = mulberry32(20260301);
+  const xs = [], ys = [];
+  for (let i = 0; i < n; i++){
+    const x = lo + (hi - lo) * (n === 1 ? 0 : i / (n - 1));
+    const y = f(x) + (noise > 0 ? gauss(rnd) * noise : 0);
+    if (!isFinite(y)){
+      errBox.textContent = '生成的数据里出现了无效值，请检查表达式';
+      errBox.classList.add('on'); return false;
+    }
+    xs.push(x); ys.push(y);
+  }
+  if (Math.max(...ys.map(Math.abs)) > 1e6){
+    errBox.textContent = '数据数值过大（>1e6），梯度会直接爆掉，请换个温和一点的规律';
+    errBox.classList.add('on'); return false;
+  }
+
+  D.xs = xs; D.ys = ys; D.xlo = lo; D.xhi = hi;
+  exprFn = f;
+  D.truth = detectQuadratic(f);
+
+  const tf = $('truthFlag');
+  if (D.truth){
+    tf.innerHTML = '<label>真实系数</label><span class="val" style="min-width:auto;color:#217B45">'
+      + 'w1*=' + fmt(D.truth[2], 2) + '　w2*=' + fmt(D.truth[1], 2)
+      + '　w3*=' + fmt(D.truth[0], 2) + '</span>';
+  } else {
+    tf.innerHTML = '<label>真实系数</label><span class="val" style="min-width:auto;color:#D4720A">'
+      + '非「常数+x+x²」形式</span>';
+  }
+  return true;
+}
+
+/* ==================================================================
+   3. 画图
+   ================================================================== */
+function prepCanvas(cv){
+  const dpr = window.devicePixelRatio || 1;
+  /* 逻辑高度只在第一次从 HTML 属性读，之后记住。
+     注意：给 cv.height 赋值会同时改写 height 属性，
+     若每次都回读属性，在 dpr≠1（如 Windows 125% 缩放）下
+     画布会一次比一次高，页面被撑长、视口被滚动锚定往下推。 */
+  if (cv.dataset.h === undefined) cv.dataset.h = cv.getAttribute('height');
+  const H = +cv.dataset.h;
+  const W = cv.clientWidth || 600;
+  cv.width = Math.round(W * dpr);
+  cv.height = Math.round(H * dpr);
+  cv.style.height = H + 'px';
+  const g = cv.getContext('2d');
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, W, H);
+  return { g, W, H };
+}
+
+function drawFit(cv){
+  const { g, W, H } = prepCanvas(cv);
+  const pad = { l: 48, r: 14, t: 12, b: 24 };
+  const iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+  const xs = D.xs, ys = D.ys;
+  if (!xs.length) return;
+
+  const NG = 240;
+  const gx = [], gy = [], ty = [];
+  for (let i = 0; i < NG; i++){
+    const x = D.xlo + (D.xhi - D.xlo) * i / (NG - 1);
+    gx.push(x);
+    gy.push(P1.w[0] * x * x + P1.w[1] * x + P1.w[2]);
+    ty.push(exprFn ? exprFn(x) : NaN);
+  }
+
+  let ymin = Math.min(...ys), ymax = Math.max(...ys);
+  const consider = arr => arr.forEach(v => {
+    if (isFinite(v)){ ymin = Math.min(ymin, v); ymax = Math.max(ymax, v); }
+  });
+  consider(ty); consider(gy);
+  if (!isFinite(ymin) || !isFinite(ymax)){ ymin = -1; ymax = 1; }
+  if (ymax - ymin < 1e-9) ymax = ymin + 1;
+  const m = (ymax - ymin) * 0.08; ymin -= m; ymax += m;
+
+  const X = x => pad.l + (x - D.xlo) / (D.xhi - D.xlo) * iw;
+  const Y = y => pad.t + (1 - (y - ymin) / (ymax - ymin)) * ih;
+
+  g.strokeStyle = '#EAEDF0'; g.lineWidth = 1;
+  g.font = '11px Consolas,monospace'; g.fillStyle = '#888';
+  for (let i = 0; i <= 4; i++){
+    const yv = ymin + (ymax - ymin) * i / 4, py = Y(yv);
+    g.beginPath(); g.moveTo(pad.l, py); g.lineTo(pad.l + iw, py); g.stroke();
+    g.textAlign = 'right'; g.textBaseline = 'middle';
+    g.fillText(Math.abs(yv) >= 100 ? yv.toFixed(0) : yv.toFixed(1), pad.l - 6, py);
+  }
+  for (let i = 0; i <= 4; i++){
+    const xv = D.xlo + (D.xhi - D.xlo) * i / 4, px = X(xv);
+    g.beginPath(); g.moveTo(px, pad.t); g.lineTo(px, pad.t + ih); g.stroke();
+    g.textAlign = 'center'; g.textBaseline = 'top';
+    g.fillText(xv.toFixed(1), px, pad.t + ih + 5);
+  }
+  if (ymin < 0 && ymax > 0){
+    g.strokeStyle = '#D5D9DD'; g.beginPath();
+    g.moveTo(pad.l, Y(0)); g.lineTo(pad.l + iw, Y(0)); g.stroke();
+  }
+
+  const line = (arr, color, w, dash) => {
+    g.save(); g.strokeStyle = color; g.lineWidth = w; g.setLineDash(dash || []);
+    g.beginPath();
+    let started = false;
+    for (let i = 0; i < NG; i++){
+      const v = arr[i];
+      if (!isFinite(v)){ started = false; continue; }
+      const px = X(gx[i]), py = Y(v);
+      if (!started){ g.moveTo(px, py); started = true; } else g.lineTo(px, py);
+    }
+    g.stroke(); g.restore();
+  };
+  line(ty, '#999999', 1.6, [6, 4]);
+  line(gy, '#2E86AB', 2.6);
+
+  g.fillStyle = 'rgba(192,57,43,0.72)';
+  for (let i = 0; i < xs.length; i++){
+    g.beginPath(); g.arc(X(xs[i]), Y(ys[i]), 3.1, 0, Math.PI * 2); g.fill();
+  }
+}
+
+/* 损失曲线（对数纵轴）+ 目标 loss 虚线 */
+function drawLoss(cv, hist, target){
+  const { g, W, H } = prepCanvas(cv);
+  const pad = { l: 56, r: 78, t: 10, b: 22 };
+  const iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+  g.font = '11px Consolas,monospace';
+
+  if (!hist.length){
+    g.fillStyle = '#AAA'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.fillText('点「下一步」开始训练，这里会画出 loss 下降曲线', W / 2, H / 2);
+    return;
+  }
+  const logs = hist.map(v => Math.log10(Math.max(v, 1e-16)));
+  let lo = Math.min(...logs), hi = Math.max(...logs);
+  const tlog = (target !== null && target > 0 && isFinite(target)) ? Math.log10(target) : null;
+  /* 让目标线尽量可见，但最多向下多画 8 个数量级，避免曲线被压扁 */
+  if (tlog !== null && tlog < lo) lo = Math.max(tlog, lo - 8);
+  /* 上下各留一点余量，免得曲线/目标线贴着坐标轴、和轴标签打架 */
+  lo -= 0.4; hi += 0.4;
+  if (hi - lo < 1) hi = lo + 1;
+
+  const X = i => pad.l + (hist.length === 1 ? iw : i / (hist.length - 1) * iw);
+  const Y = l => pad.t + (1 - (l - lo) / (hi - lo)) * ih;
+
+  g.strokeStyle = '#EAEDF0'; g.lineWidth = 1;
+  g.fillStyle = '#888'; g.textAlign = 'right'; g.textBaseline = 'middle';
+  for (let k = Math.ceil(lo); k <= Math.floor(hi); k++){
+    const py = Y(k);
+    g.beginPath(); g.moveTo(pad.l, py); g.lineTo(pad.l + iw, py); g.stroke();
+    g.fillText('1e' + k, pad.l - 6, py);
+  }
+  g.textAlign = 'center'; g.textBaseline = 'top';
+  g.fillText('更新步数 →', pad.l + iw / 2, pad.t + ih + 4);
+
+  /* 目标 loss 虚线 */
+  if (tlog !== null && tlog >= lo && tlog <= hi){
+    const py = Y(tlog);
+    g.save();
+    g.strokeStyle = '#217B45'; g.lineWidth = 1.8; g.setLineDash([7, 5]);
+    g.beginPath(); g.moveTo(pad.l, py); g.lineTo(pad.l + iw, py); g.stroke();
+    g.restore();
+    g.fillStyle = '#217B45'; g.textAlign = 'left'; g.textBaseline = 'middle';
+    g.fillText('目标 ' + fmtSci(target), pad.l + iw + 6, py);
+  } else if (tlog !== null && tlog < lo){
+    g.fillStyle = '#217B45'; g.textAlign = 'left'; g.textBaseline = 'middle';
+    g.fillText('目标在下方', pad.l + iw + 6, pad.t + ih - 8);
+  }
+
+  g.save(); g.strokeStyle = '#C0392B'; g.lineWidth = 2.2;
+  g.beginPath();
+  for (let i = 0; i < logs.length; i++){
+    const px = X(i), py = Y(logs[i]);
+    if (i === 0) g.moveTo(px, py); else g.lineTo(px, py);
+  }
+  g.stroke();
+  const li = logs.length - 1;
+  g.fillStyle = '#C0392B';
+  g.beginPath(); g.arc(X(li), Y(logs[li]), 3.4, 0, Math.PI * 2); g.fill();
+  g.restore();
+}
+
+/* ==================================================================
+   4. 代码面板
+   ================================================================== */
+function renderCode(container, lines, activeSet){
+  const set = new Set(Array.isArray(activeSet) ? activeSet : [activeSet]);
+  container.innerHTML = lines.map((L, i) => {
+    let cls = 'ln';
+    if (L[0] === '' || L[0].trim().startsWith('#')) cls += ' cmt';
+    if (set.has(i)) cls += ' active ' + (L[1] || '');
+    const text = L[0] === '' ? '&nbsp;' : L[0].replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    return '<div class="' + cls + '">' + text + '</div>';
+  }).join('');
+}
+
+/* ==================================================================
+   5. 梯度下降引擎
+   ================================================================== */
+const CODE = [
+  ['# 每个 step：抽一批样本 → 前向 → 求梯度 → 更新', null],
+  ['xb, yb = 抽样(batch_size)',                     'fwd'],
+  ['y_hat = w1*xb**2 + w2*xb + w3',                 'fwd'],
+  ['loss  = ((y_hat - yb)**2).mean()',              'fwd'],
+  ['', null],
+  ['delta = 2 * (y_hat - yb)',                      'back'],
+  ['g1 = (delta * xb**2).mean()',                   'back'],
+  ['g2 = (delta * xb).mean()',                      'back'],
+  ['g3 = (delta * 1).mean()',                       'back'],
+  ['', null],
+  ['w1 = w1 - lr * g1',                             'upd'],
+  ['w2 = w2 - lr * g2',                             'upd'],
+  ['w3 = w3 - lr * g3',                             'upd'],
+  ['', null],
+  ['# 另外用全部数据评估：曲线和终止条件都用它',        null],
+  ['loss_all = 全量评估()',                          null],
+  ['if loss_all <= target: break',                  null],
+];
+const LINES = { fwd: [1, 2, 3], back: [5, 6, 7, 8], upd: [10, 11, 12] };
+
+const P1 = {
+  w: [0, 0, 0],
+  lr: 0.05,
+  batch: 0,           /* 0 = 用全部样本（BGD）；否则每步随机抽这么多 */
+  usedBatch: 0,       /* 本次梯度实际用了几个样本 */
+  deltaIdx: 0,        /* delta 框里展示的是哪个样本 */
+  step: 0,
+  phase: 0,           /* 0 前向 / 1 梯度 / 2 更新 */
+  yhat: [],
+  loss: null,
+  initLoss: null,
+  grad: [null, null, null],
+  delta0: null,
+  hist: [],
+  running: false,
+  timer: null,
+  diverged: false,
+  reached: false,
+  target: 1e-6,       /* 迭代终止条件：loss <= target 就停 */
+};
+
+/* 全数据集前向 —— 监控用的 loss、以及画图，都用全量 */
+function p1Forward(){
+  const { xs } = D;
+  const yhat = xs.map(x => P1.w[0] * x * x + P1.w[1] * x + P1.w[2]);
+  P1.yhat = yhat;
+  let s = 0;
+  for (let i = 0; i < xs.length; i++){ const e = yhat[i] - D.ys[i]; s += e * e; }
+  P1.loss = s / xs.length;
+}
+/* 梯度只用「当前 batch」算 —— batch 越小，方向越晃 */
+function p1Grad(){
+  const { xs, ys } = D, yhat = P1.yhat;
+  const n = xs.length;
+  const bs = (P1.batch === 0 || P1.batch >= n) ? n : P1.batch;
+
+  let idx;
+  if (bs >= n){
+    idx = [];
+    for (let i = 0; i < n; i++) idx.push(i);
+  } else {
+    /* 无放回随机抽 bs 个 */
+    const pool = [];
+    for (let i = 0; i < n; i++) pool.push(i);
+    idx = [];
+    for (let k = 0; k < bs; k++){
+      const j = Math.floor(Math.random() * pool.length);
+      idx.push(pool.splice(j, 1)[0]);
+    }
+  }
+
+  /* 局部导数：w1 → x²，w2 → x，w3 → 1 */
+  let g1 = 0, g2 = 0, g3 = 0;
+  for (const i of idx){
+    const d = 2 * (yhat[i] - ys[i]);
+    const x = xs[i];
+    g1 += d * x * x;      /* ∂L/∂w1 */
+    g2 += d * x;          /* ∂L/∂w2 */
+    g3 += d;              /* ∂L/∂w3 */
+  }
+  const m = idx.length;
+  P1.grad = [g1 / m, g2 / m, g3 / m];
+  P1.deltaIdx = idx[0];
+  P1.delta0 = 2 * (yhat[idx[0]] - ys[idx[0]]);
+  P1.usedBatch = m;
+}
+function p1Update(){
+  P1.w = P1.w.map((w, i) => w - P1.lr * P1.grad[i]);
+  P1.step++;
+  /* 梯度已经用掉，清空 —— 面板上显示 "—"，下一步重新算 */
+  P1.grad = [null, null, null];
+  P1.delta0 = null;
+  p1Forward();                       /* 立刻按新权重算一遍，方便看图 */
+  const L = P1.loss;
+  P1.hist.push(isFinite(L) && L < 1e12 ? L : 1e12);
+  if (P1.hist.length > 4000) P1.hist.shift();
+
+  /* 发散判定：用相对阈值，避免「规律本身数值大」被误判 */
+  if (!isFinite(L) || L > 1e6 || (P1.initLoss > 0 && L > P1.initLoss * 1e4)){
+    P1.diverged = true;
+    p1Stop();
+  } else if (P1.target !== null && isFinite(L) && L <= P1.target){
+    /* 达到迭代终止条件 —— 无论自动还是手动，都停下并标记 */
+    P1.reached = true;
+    p1Stop();
+  }
+}
+/* 从一个给定的起点重新开始（「重置为 0」和「随机初始化」共用） */
+function p1Restart(wInit){
+  p1Stop();
+  P1.w = wInit.slice();
+  P1.step = 0; P1.phase = 0;
+  P1.grad = [null, null, null]; P1.delta0 = null; P1.hist = [];
+  P1.diverged = false; P1.reached = false;
+  p1Forward();
+  P1.initLoss = P1.loss;
+  P1.hist.push(P1.loss);             /* 初始 loss 也画上，曲线才完整 */
+  p1Render(true);
+}
+function p1Reset(){ p1Restart([0, 0, 0]); }
+/* 随机初始化：每个参数取 ±1 之间的随机数，模拟「随机空投到山上」 */
+function p1RandInit(){
+  p1Restart([0, 1, 2].map(() => (Math.random() * 2 - 1)));
+}
+/* 是否已经满足终止条件 */
+function targetHit(){
+  return P1.target !== null && !P1.diverged && isFinite(P1.loss) && P1.loss <= P1.target;
+}
+function p1Render(skipFlash, justDid){
+  const w = P1.w;
+  const flashW = (!skipFlash && justDid === 'upd') ? 'hot' : null;
+  const flashG = (!skipFlash && justDid === 'back') ? 'hot-grad' : null;
+  const hit = P1.reached;
+
+  setBox('b1w1', fmt(w[0]), flashW);
+  setBox('b1w2', fmt(w[1]), flashW);
+  setBox('b1w3', fmt(w[2]), flashW);
+  setBox('b1loss', P1.diverged ? '发散了' : fmt(P1.loss));
+  /* 达标标记要常驻，不能被 setBox 的闪烁定时器清掉 */
+  clearTimeout(flashTimer['b1loss']);
+  $('b1loss').classList.toggle('good', hit);
+  setBox('b1g1', P1.grad[0] === null ? '—' : fmt(P1.grad[0]), flashG);
+  setBox('b1g2', P1.grad[1] === null ? '—' : fmt(P1.grad[1]), flashG);
+  setBox('b1g3', P1.grad[2] === null ? '—' : fmt(P1.grad[2]), flashG);
+  setBox('b1delta', P1.delta0 === null ? '—' : fmt(P1.delta0), flashG);
+  /* delta 是「批次里第一个样本」的，标明是哪个样本，避免误以为是全量 */
+  $('b1delta').querySelector('.k').textContent =
+    'delta = 2·(ŷ − y)　（样本 #' + (P1.delta0 === null ? '—' : (P1.deltaIdx + 1)) + '）';
+
+  /* batch 说明：只陈述事实，不夸大效果 ——
+     样本总量本身不大时，只有 batch=1 的抖动是肉眼可见的 */
+  const n = D.xs.length;
+  const bs = (P1.batch === 0 || P1.batch >= n) ? n : P1.batch;
+  $('batchInfo').textContent = (bs >= n)
+    ? '每步用全部 ' + n + ' 个（方向最准，最慢）'
+    : (bs === 1
+       ? '每步只问 1 个样本 → 方向最飘，曲线最抖'
+       : '每步随机抽 ' + bs + ' 个样本');
+
+  const nextName = ['前向传播', '求梯度', '更新权重'][P1.phase];
+  $('p1stat').innerHTML = '第 <b>' + P1.step + '</b> 步 · 下一步：' + nextName;
+  for (let i = 0; i < 3; i++){
+    $('p1ph' + i).className = 'pill' + (i === P1.phase ? ' on' : '');
+  }
+  renderCode($('p1code'), CODE, LINES[['fwd', 'back', 'upd'][P1.phase]]);
+
+  $('p1formula').textContent =
+    'ŷ = ' + fmt(w[0], 4) + '·x² '
+    + (w[1] >= 0 ? '+ ' : '− ') + fmt(Math.abs(w[1]), 4) + '·x '
+    + (w[2] >= 0 ? '+ ' : '− ') + fmt(Math.abs(w[2]), 4);
+
+  renderStopState();
+  drawFit($('c1fit'));
+  drawLoss($('c1loss'), P1.hist, P1.target);
+}
+/* 终止条件面板 */
+function renderStopState(){
+  const el = $('stopState');
+  if (P1.target === null){
+    el.className = 'stopstate';
+    el.innerHTML = '不设目标：用「下一步」手动推进，或用速度选「跑完」跑到收敛（loss &lt; 1e-9）。';
+    return;
+  }
+  if (P1.diverged){
+    el.className = 'stopstate bad';
+    el.innerHTML = '已发散，终止条件永远达不到 —— 请把学习率调小后重置。';
+    return;
+  }
+  if (P1.reached){
+    el.className = 'stopstate ok';
+    el.innerHTML = '<b>已达标，训练停止</b>：第 <b>' + P1.step + '</b> 步时 '
+      + 'loss = <b>' + fmtSci(P1.loss) + '</b> ≤ 目标 ' + fmtSci(P1.target) + '。';
+    return;
+  }
+  el.className = 'stopstate';
+  if (!isFinite(P1.loss) || P1.loss <= 0){
+    el.innerHTML = '当前 loss = <b>' + fmtSci(P1.loss) + '</b>，目标 ' + fmtSci(P1.target) + '。';
+    return;
+  }
+  const gap = Math.log10(P1.loss) - Math.log10(P1.target);
+  el.innerHTML = '当前 loss = <b>' + fmtSci(P1.loss) + '</b>　→　目标 '
+    + fmtSci(P1.target) + '　'
+    + (gap > 0 ? '还差 <b>' + gap.toFixed(1) + '</b> 个数量级' : '已满足');
+}
+
+/* ---------- 播放 ---------- */
+/* phase = 一次一步（看得清阶段高亮）；iter = 一次一整轮；run = 一直跑到达标/收敛 */
+const SPEEDS = {
+  slow:  { mode: 'phase', delay: 170 },
+  mid:   { mode: 'phase', delay: 60 },
+  fast:  { mode: 'iter',  delay: 40 },
+  turbo: { mode: 'iter',  delay: 16, n: 6 },
+  run:   { mode: 'run' },
+};
+function p1Step(silent){
+  clearHot();
+  let did;
+  if (P1.phase === 0){ p1Forward(); did = 'fwd'; }
+  else if (P1.phase === 1){ p1Grad(); did = 'back'; }
+  else { p1Update(); did = 'upd'; }
+  P1.phase = (P1.phase + 1) % 3;
+  if (!silent) p1Render(false, did);
+  return did;
+}
+/* 统一判断"该停了"：发散 / 达标 / 手动模式下不设上限 */
+function shouldStop(){
+  if (P1.diverged || P1.reached) return true;
+  if (P1.target === null && isFinite(P1.loss) && P1.loss < 1e-12) return true;  /* 不设目标时跑到收敛 */
+  return false;
+}
+function p1Start(){
+  if (P1.running) return;
+  if (shouldStop()) return;          /* 已经停了就别再开 */
+  P1.running = true; $('p1auto').textContent = '暂停';
+  const cfg = SPEEDS[$('p1speed').value] || SPEEDS.fast;
+  const limit = (cfg.mode === 'run') ? 4000 : 20000;
+  const tick = () => {
+    if (!P1.running) return;
+    if (cfg.mode === 'phase'){
+      p1Step();
+    } else {
+      const rounds = (cfg.mode === 'run') ? 120 : (cfg.n || 1);
+      for (let i = 0; i < rounds && P1.running; i++){ p1Step(true); p1Step(true); p1Step(true); }
+      p1Render(true);
+    }
+    if (shouldStop() || P1.step >= limit){ p1Stop(); return; }
+    P1.timer = setTimeout(tick, cfg.mode === 'run' ? 0 : cfg.delay);
+  };
+  P1.timer = setTimeout(tick, 0);
+}
+function p1Stop(){
+  P1.running = false;
+  $('p1auto').textContent = '自动';
+  clearTimeout(P1.timer);
+}
+
+/* ---------- 目标 loss 输入 ---------- */
+function applyTarget(){
+  const raw = $('target').value.trim();
+  const box = $('target');
+  if (raw === '' || Number(raw) === 0){
+    P1.target = null;
+    box.classList.remove('bad');
+  } else {
+    const v = Number(raw);
+    if (!isFinite(v) || v < 0){
+      box.classList.add('bad');
+      const el = $('stopState');
+      el.className = 'stopstate bad';
+      el.textContent = '目标 loss 填得不对，请填正数（如 1e-3）或 0（不设目标）';
+      return;
+    }
+    box.classList.remove('bad');
+    P1.target = v;
+  }
+  /* 目标变了，达标状态要重算 */
+  P1.reached = targetHit();
+  p1Render(true);
+}
+
+/* ==================================================================
+   6. 事件绑定 & 初始化
+   ================================================================== */
+function regen(){
+  p1Stop();
+  if (!regenerate()) return;
+  p1Reset();
+}
+
+$('btnGen').addEventListener('click', regen);
+$('expr').addEventListener('keydown', e => { if (e.key === 'Enter') regen(); });
+$('expr').addEventListener('change', regen);
+$('nSamp').addEventListener('input', e => { $('nSampV').textContent = e.target.value; });
+$('nSamp').addEventListener('change', regen);
+$('noise').addEventListener('input', e => { $('noiseV').textContent = (+e.target.value).toFixed(1); });
+$('noise').addEventListener('change', regen);
+$('xrange').addEventListener('change', regen);
+
+$('p1lr').addEventListener('input', e => {
+  P1.lr = +e.target.value; $('p1lrV').textContent = P1.lr.toFixed(3);
+});
+$('p1step').addEventListener('click', () => { p1Stop(); p1Step(); });
+$('p1auto').addEventListener('click', () => { P1.running ? p1Stop() : p1Start(); });
+$('p1reset').addEventListener('click', p1Reset);
+$('p1rand').addEventListener('click', p1RandInit);
+$('p1batch').addEventListener('change', e => {
+  P1.batch = +e.target.value;
+  p1Render(true);     /* 只影响下一步算梯度，不重置训练 */
+});
+$('btnTarget').addEventListener('click', applyTarget);
+$('target').addEventListener('keydown', e => { if (e.key === 'Enter') applyTarget(); });
+$('target').addEventListener('change', applyTarget);
+
+window.addEventListener('resize', () => p1Render(true));
+
+/* 启动 */
+regen();
+applyTarget();
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 5 · 交互演示</title>
+<style>
+  :root{--navy:#1E3A5F;--teal:#2E86AB;--dark:#2D2D2D;--gray:#666;--border:#DEDEDE;--lt-teal:#EBF4FA;}
+  *{box-sizing:border-box}
+  body{margin:0;background:#F0F2F5;color:var(--dark);font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;
+    font-size:14px;line-height:1.55;padding:40px 24px;}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:26px;color:var(--navy);margin:0 0 6px;letter-spacing:.5px}
+  .sub{color:var(--gray);font-size:13px;margin-bottom:26px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  a.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--border);
+    border-radius:10px;padding:18px 18px 16px;transition:.15s;border-top:4px solid var(--teal)}
+  a.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(30,58,95,.10);border-top-color:var(--navy)}
+  .tag{display:inline-block;font-size:11px;color:var(--teal);background:var(--lt-teal);border:1px solid #CFE3EF;
+    border-radius:12px;padding:1px 9px;margin-bottom:8px}
+  .t{font-size:17px;font-weight:700;color:var(--navy);margin:2px 0 6px}
+  .d{font-size:12.5px;color:var(--gray);min-height:56px}
+  .go{font-size:12.5px;color:var(--teal);font-weight:700;margin-top:10px}
+  .note{margin-top:24px;font-size:12px;color:var(--gray)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Week 5 · 交互演示</h1>
+  <div class="sub">双击打开即可，纯离线（无网络、无依赖）。课上切到浏览器讲，PPT 里只留概念页。</div>
+  <div class="grid">
+    <a class="card" href="generation_lab.html">
+      <span class="tag">第一部分</span>
+      <div class="t">文本生成与采样</div>
+      <div class="d">调 temperature / top-k / top-p，看候选分布怎么被切、选中哪个；同一设置跑 5 次看多样性；附温度三联图与 Beam 演示。</div>
+      <div class="go">打开 generation_lab.html →</div>
+    </a>
+    <a class="card" href="paradigm_lab.html">
+      <span class="tag">第三部分</span>
+      <div class="t">三种架构范式</div>
+      <div class="d">切四种范式看结构流动，mask 网格逐格显示「谁能看见谁」；下方层堆叠图标注张量维度；点任务看推荐选型。</div>
+      <div class="go">打开 paradigm_lab.html →</div>
+    </a>
+  </div>
+  <div class="note">KV Cache 用 PPT 里的动图（<code>media/kvcache.gif</code>）讲，不再单独做页面。</div>
+</div>
+</body>
+</html>

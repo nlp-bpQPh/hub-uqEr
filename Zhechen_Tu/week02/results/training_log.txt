@@ -1,0 +1,31 @@
+WEEK 02 | Zhechen Tu | Five-dimensional vector classification
+Python 3.12.12 | PyTorch 2.6.0 | CPU | seed=20261022
+Class = first maximum position (displayed as 1..5)
+MLP: 5 -> 64 -> 32 -> 5 | ReLU | CrossEntropyLoss | Adam
+Train / validation / test: 60000 / 10000 / 10000 (independent seeds)
+Initial validation accuracy: 11.05%
+Epoch 01 | train loss=0.48169 acc=89.07% | val loss=0.12408 acc=98.07%
+Epoch 10 | train loss=0.03435 acc=99.00% | val loss=0.03134 acc=99.16%
+Epoch 20 | train loss=0.02408 acc=99.29% | val loss=0.02591 acc=99.08%
+Epoch 30 | train loss=0.01986 acc=99.43% | val loss=0.02169 acc=99.19%
+Epoch 40 | train loss=0.01678 acc=99.56% | val loss=0.01783 acc=99.46%
+Epoch 50 | train loss=0.01540 acc=99.71% | val loss=0.01577 acc=99.60%
+Epoch 60 | train loss=0.01477 acc=99.78% | val loss=0.01553 acc=99.72%
+Best epoch selected by validation loss: 60
+test      : 9960/10000 | accuracy=99.60% | macro F1=0.9960
+normal    : 4986/5000 | accuracy=99.72% | macro F1=0.9972
+negative  : 4940/5000 | accuracy=98.80% | macro F1=0.9880
+near_tie  : 2842/5000 | accuracy=56.84% | macro F1=0.5675
+Examples: vector -> model class / expected class
+[9.0, 1.0, 2.0, 3.0, 4.0] -> 1 / 1
+[1.0, 9.0, 2.0, 3.0, 4.0] -> 2 / 2
+[1.0, 2.0, 9.0, 3.0, 4.0] -> 3 / 3
+[1.0, 2.0, 3.0, 9.0, 4.0] -> 4 / 4
+[1.0, 2.0, 3.0, 4.0, 9.0] -> 5 / 5
+[-9.0, -7.0, -1.0, -5.0, -3.0] -> 3 / 3
+[1e+100, 2e+100, 5e+100, -3e+100, 0.0] -> 3 / 3
+[3.0, 3.0, 1.0, 0.0, -1.0] -> 1 / 1
+[0.0, 0.0, 0.0, 0.0, 0.0] -> 2 / 1
+Saved: best_model.pt, dataset.npz, metrics.json, CSV logs and two plots
+NOTE: Near ties and exact ties can be misclassified; this is a learned approximation.
+TRAINING AND EVALUATION COMPLETED

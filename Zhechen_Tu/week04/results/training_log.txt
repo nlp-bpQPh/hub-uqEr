@@ -1,0 +1,21 @@
+Week 04 | Zhechen Tu | Causal Transformer language model | seed=20261104
+PyTorch=2.6.0 device=mps parameters=430080 config={'vocab_size': 66, 'context': 128, 'width': 128, 'heads': 4, 'layers': 2, 'dropout': 0.1}
+Data={'train': 1003854, 'val': 55770, 'test': 55770}; vocabulary fitted on train; UNK={'train': 0, 'val': 0, 'test': 0}
+Initial validation NLL=4.17638 perplexity=65.1298
+Step 0100: train_nll=3.08502 val_nll=2.54965 val_ppl=12.8026 elapsed=8.0s
+Step 0200: train_nll=2.49462 val_nll=2.44625 val_ppl=11.5450 elapsed=9.9s
+Step 0300: train_nll=2.42770 val_nll=2.38742 val_ppl=10.8854 elapsed=11.8s
+Step 0400: train_nll=2.33958 val_nll=2.26242 val_ppl=9.6063 elapsed=13.8s
+Step 0500: train_nll=2.21269 val_nll=2.14094 val_ppl=8.5074 elapsed=15.6s
+Step 0600: train_nll=2.10318 val_nll=2.07540 val_ppl=7.9678 elapsed=17.2s
+Step 0700: train_nll=2.02061 val_nll=2.00256 val_ppl=7.4080 elapsed=18.8s
+Step 0800: train_nll=1.95464 val_nll=1.95950 val_ppl=7.0958 elapsed=20.5s
+Step 0900: train_nll=1.90077 val_nll=1.92230 val_ppl=6.8367 elapsed=22.1s
+Step 1000: train_nll=1.86043 val_nll=1.88199 val_ppl=6.5666 elapsed=24.5s
+Step 1100: train_nll=1.82321 val_nll=1.86363 val_ppl=6.4471 elapsed=26.3s
+Step 1200: train_nll=1.79736 val_nll=1.83567 val_ppl=6.2693 elapsed=28.1s
+Step 1300: train_nll=1.78164 val_nll=1.81530 val_ppl=6.1429 elapsed=29.9s
+Step 1400: train_nll=1.76626 val_nll=1.80480 val_ppl=6.0787 elapsed=31.6s
+Step 1500: train_nll=1.75968 val_nll=1.79410 val_ppl=6.0141 elapsed=33.4s
+BEST step=1500 | TEST NLL=1.85595 perplexity=6.3978 next_char_accuracy=44.7973% scored_tokens=55769
+BASELINES {"uniform": {"nll": 4.189654742026425, "perplexity": 65.99999999999997}, "unigram": {"nll": 3.361967810392593, "perplexity": 28.845898324700535}, "bigram": {"nll": 2.4895986389556874, "perplexity": 12.056436165414949}}

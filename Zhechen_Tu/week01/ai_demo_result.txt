@@ -1,0 +1,5 @@
+Learned weight: 1.999999
+Learned bias: 1.000002
+Final MSE: 0.0000000000
+Prediction for x=5: 10.999998
+ALL CHECKS PASSED
