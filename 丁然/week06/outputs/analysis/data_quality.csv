@@ -1,0 +1,11 @@
+metric,value
+train_rows,53360
+val_rows,10000
+train_unique,49726
+val_unique,9765
+train_duplicates,3634
+val_duplicates,235
+train_conflicts,547
+val_conflicts,28
+cross_overlap,924
+cross_conflicts,245

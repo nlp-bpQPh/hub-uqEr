@@ -1,0 +1,10 @@
+{
+  "best_method": "lora",
+  "metrics": {
+    "experiment": "lora",
+    "accuracy": 0.578,
+    "macro_f1": 0.5722718897474723,
+    "weighted_f1": 0.5721344620562396
+  },
+  "note": "ICL 不产生训练权重；best_model 保存的是唯一训练的 LoRA 模型。"
+}
