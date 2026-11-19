@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>DeepSeek 流式 / 非流式 Demo</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: #f6f7f9;
+    color: #222;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #fff;
+    padding: 12px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  header h1 {
+    font-size: 16px;
+    margin: 0;
+    flex: 1;
+  }
+  .mode-switch {
+    display: flex;
+    background: #eef0f3;
+    border-radius: 999px;
+    padding: 3px;
+  }
+  .mode-switch button {
+    border: none;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #555;
+  }
+  .mode-switch button.active {
+    background: #4d6bfe;
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  #chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .msg {
+    display: flex;
+    gap: 10px;
+    max-width: 85%;
+  }
+  .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+  .bubble {
+    padding: 10px 14px;
+    border-radius: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  .msg.user .bubble {
+    background: #4d6bfe;
+    color: #fff;
+  }
+  .msg.assistant .bubble {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+  }
+  .meta {
+    font-size: 11px;
+    color: #999;
+    margin-top: 4px;
+  }
+  .meta .tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: #eef0f3;
+    color: #555;
+    margin-right: 6px;
+  }
+  .meta .tag.stream { background: #e7f0ff; color: #2f54eb; }
+  .meta .tag.nostream { background: #fff3e0; color: #d97706; }
+  .meta .tag.think { background: #f0ebff; color: #6d28d9; }
+  .meta .tag.nothink { background: #e8f5e9; color: #15803d; }
+  .reasoning {
+    background: #faf7ff;
+    border-left: 3px solid #a78bfa;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #5b21b6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.6;
+    font-style: italic;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+  .reasoning-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #7c3aed;
+    margin-bottom: 4px;
+    cursor: pointer;
+    user-select: none;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .reasoning-body.collapsed { display: none; }
+  .reasoning-header .arrow { transition: transform 0.2s; }
+  .reasoning-header.collapsed .arrow { transform: rotate(-90deg); }
+  .cursor::after {
+    content: "▋";
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    color: #999;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  footer {
+    padding: 12px 24px;
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+  }
+  .input-box {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+  }
+  textarea {
+    flex: 1;
+    resize: none;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    min-height: 44px;
+    max-height: 160px;
+    outline: none;
+  }
+  textarea:focus { border-color: #4d6bfe; }
+  button.send {
+    background: #4d6bfe;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0 18px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  button.send:disabled { background: #9aa8d8; cursor: not-allowed; }
+  .hint {
+    font-size: 11px;
+    color: #999;
+    max-width: 900px;
+    margin: 6px auto 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>DeepSeek 聊天 Demo</h1>
+  <span id="modeLabel" style="font-size:12px;color:#666;">流式 · 非思考</span>
+  <div class="mode-switch" title="是否流式">
+    <button id="btnStream" class="active">流式</button>
+    <button id="btnNoStream">非流式</button>
+  </div>
+  <div class="mode-switch" title="是否开启深度思考">
+    <button id="btnNoThink" class="active">非思考</button>
+    <button id="btnThink">思考</button>
+  </div>
+</header>
+
+<div id="chat"></div>
+
+<footer>
+  <div class="input-box">
+    <textarea id="input" placeholder="输入你的问题，Enter 发送，Shift+Enter 换行"></textarea>
+    <button id="send" class="send">发送</button>
+  </div>
+  <div class="hint">提示：模型由后端配置（默认 deepseek-flash）；流式 vs 非流式对比输出方式；思考模式下紫色方块里是模型的思考链，正常回答在下方气泡。</div>
+</footer>
+
+<script>
+// 两个全局开关，组合出四种模式：流式/非流式 × 思考/非思考。
+// 注意 useThink 只是「前端想不想思考」；真正让模型停止思考，要靠后端把它翻译成
+// thinking.type = "disabled" —— DeepSeek 默认就开着深度思考，不显式关闭它是不会停的。
+let useStream = true;
+let useThink = false;
+// history 是下一轮请求要带给模型的上下文，只存 role/content。
+// 思考链（reasoning）刻意不存：它不属于对话内容，发回 API 会污染上下文
+// （模型会把上一轮的思考误当成你说过的话），而且每轮都重发，token 白白翻倍。
+const history = []; // {role, content}  (不保存 reasoning，避免发回 API)
+
+// 一次性取好 DOM 引用集中放在顶部，后面反复用；省得在流式循环里反复查询 DOM。
+const chatEl = document.getElementById("chat");
+const inputEl = document.getElementById("input");
+const sendBtn = document.getElementById("send");
+const btnStream = document.getElementById("btnStream");
+const btnNoStream = document.getElementById("btnNoStream");
+const btnThink = document.getElementById("btnThink");
+const btnNoThink = document.getElementById("btnNoThink");
+const modeLabel = document.getElementById("modeLabel");
+
+// 顶部那行「流式 · 非思考」要和真实状态保持一致，所以两个 setter 最后都调它。
+function refreshModeLabel() {
+  modeLabel.textContent =
+    (useStream ? "流式" : "非流式") + " · " + (useThink ? "思考" : "非思考");
+}
+// 切换模式只改状态 + 按钮高亮；真正影响请求的，是发送时读到的 useStream / useThink。
+function setStreamMode(stream) {
+  useStream = stream;
+  btnStream.classList.toggle("active", stream);
+  btnNoStream.classList.toggle("active", !stream);
+  refreshModeLabel();
+}
+function setThinkMode(think) {
+  useThink = think;
+  btnThink.classList.toggle("active", think);
+  btnNoThink.classList.toggle("active", !think);
+  refreshModeLabel();
+}
+// 两个切换器、各两个按钮：四个组合都能点出来，方便课上现场对比。
+btnStream.onclick = () => setStreamMode(true);
+btnNoStream.onclick = () => setStreamMode(false);
+btnThink.onclick = () => setThinkMode(true);
+btnNoThink.onclick = () => setThinkMode(false);
+
+// 往聊天区插一条消息，并返回后续要用的元素句柄。
+// role=user 只有气泡；role=assistant 且是思考模式时，额外挂一个可折叠的紫色思考面板。
+function addMessage(role, content, modeTag, thinkTag) {
+  const wrap = document.createElement("div");
+  wrap.className = "msg " + role;
+  const box = document.createElement("div");
+
+  // 全程用 DOM API 拼节点、用 textContent 写文字，而不是拼 HTML 字符串：
+  // 模型输出不可信，当纯文本渲染就不会被当成 HTML/脚本执行（防 XSS）。
+  let reasoningEl = null;
+  let reasoningBody = null;
+  if (role === "assistant" && thinkTag) {
+    reasoningEl = document.createElement("div");
+    reasoningEl.className = "reasoning";
+    reasoningEl.style.display = "none"; // 等首个 token 再显示
+    // 标题栏可点击折叠：思考链动辄几百字，面板默认展开但允许收起，免得把正文挤没。
+    const header = document.createElement("div");
+    header.className = "reasoning-header";
+    header.innerHTML = '<span class="arrow">▾</span><span>🧠 思考过程</span><span class="think-timer" style="color:#999;font-weight:normal;"></span>';
+    reasoningBody = document.createElement("div");
+    reasoningBody.className = "reasoning-body";
+    header.onclick = () => {
+      reasoningBody.classList.toggle("collapsed");
+      header.classList.toggle("collapsed");
+    };
+    reasoningEl.appendChild(header);
+    reasoningEl.appendChild(reasoningBody);
+    box.appendChild(reasoningEl);
+  }
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  // 用 textContent 而不是 innerHTML：换行交给 CSS 的 white-space: pre-wrap 处理。
+  bubble.textContent = content;
+  box.appendChild(bubble);
+
+  if (role === "assistant") {
+    // 每条回复下方打两个标签，记录它是哪种模式产生的，课上可以逐条对比四种模式的表现。
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    const tag1 = document.createElement("span");
+    tag1.className = "tag " + (modeTag === "stream" ? "stream" : "nostream");
+    tag1.textContent = modeTag === "stream" ? "流式" : "非流式";
+    meta.appendChild(tag1);
+    const tag2 = document.createElement("span");
+    tag2.className = "tag " + (thinkTag ? "think" : "nothink");
+    tag2.textContent = thinkTag ? "思考" : "非思考";
+    meta.appendChild(tag2);
+    // 计时占位：流式会不断刷新它，非流式在拿到结果后一次性写最终耗时。
+    const time = document.createElement("span");
+    time.className = "timer";
+    time.textContent = "等待中...";
+    meta.appendChild(time);
+    box.appendChild(meta);
+  }
+
+  wrap.appendChild(box);
+  chatEl.appendChild(wrap);
+  // 追加完滚到底部，让人始终看到最新内容。
+  chatEl.scrollTop = chatEl.scrollHeight;
+  // 把内部元素交出去：调用方后面要往思考区/气泡里逐片追加文字，还要改计时文案。
+  return {
+    bubble,
+    timerEl: box.querySelector(".timer"),
+    reasoningEl,
+    reasoningBody,
+    thinkTimerEl: reasoningEl ? reasoningEl.querySelector(".think-timer") : null,
+  };
+}
+
+// 非流式：一次 POST 拿完整结果，中间没有任何反馈。
+// 好处是代码简单、结果完整；坏处是长回答时前端只能干等，也不知道模型是不是卡住了。
+async function sendNonStream(messages, ui, think) {
+  const { bubble, timerEl, reasoningEl, reasoningBody, thinkTimerEl } = ui;
+  // 用 performance.now() 而不是 Date.now()：它单调递增且精度高，适合量耗时（不受系统改时间影响）。
+  const t0 = performance.now();
+  // think 必须显式放进请求体：DeepSeek 默认开思考，前端不说清楚，后端就不知道要不要关，
+  // 「非思考」模式会变成假的 —— 照样思考，只是前端没拿到思考链。
+  const resp = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ messages, think }),
+  });
+  const data = await resp.json();
+  const t1 = performance.now();
+  if (data.error) {
+    // 后端约定：出错时返回 {error}，直接把错误写进气泡，不用 alert 打断整个流程。
+    bubble.textContent = "❌ " + data.error;
+    timerEl.textContent = "失败";
+    return null;
+  }
+  // 非流式是一次性拿到整段思考链，所以整体写进面板即可，不用逐片追加。
+  // 两个条件都要判：没开思考模式时后端根本不会返回 reasoning。
+  if (think && data.reasoning && reasoningEl) {
+    reasoningEl.style.display = "block";
+    reasoningBody.textContent = data.reasoning;
+    if (thinkTimerEl) thinkTimerEl.textContent = "";
+  }
+  // content 可能是空串：思考模式 + max_tokens 偏小时，思考 token 会把预算吃光，
+  // 模型「想完了」却没有额度写正文 —— 这不是 bug，是预算被思考用掉了。
+  bubble.textContent = data.content;
+  // 非流式没有「首字时间」这个概念，只能报一个端到端总耗时。
+  timerEl.textContent = `一次性返回 · 用时 ${((t1 - t0) / 1000).toFixed(2)}s`;
+  // 返回正文文本，由调用方决定要不要写进 history。
+  return data.content;
+}
+
+// 流式：自己读 fetch 返回的 ReadableStream，按 SSE 协议解析后端推来的每一条 data: 事件。
+// 相比非流式，这里能拿到「正文首字时间」（TTFT），这也是流式最直观的体验差异。
+async function sendStream(messages, ui, think) {
+  const { bubble, timerEl, reasoningEl, reasoningBody, thinkTimerEl } = ui;
+  const t0 = performance.now();
+  // 记录两个关键时刻：思考链的第一个字、正文的第一个字。
+  // 两者之差 ≈ 模型「想」了多久；正文首字 - t0 就是用户实际干等的第一屏时间。
+  let firstReasoningAt = null;
+  let firstContentAt = null;
+  let fullContent = "";
+  let fullReasoning = "";
+
+  // 流式走另一个路由（/api/chat/stream），但请求体一样，同样要显式带上 think。
+  const resp = await fetch("/api/chat/stream", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ messages, think }),
+  });
+
+  // resp.ok 为 false 说明后端在开流之前就报错了（比如没配 Key）；
+  // resp.body 为空则根本没东西可读 —— 两种情况都按失败处理。
+  if (!resp.ok || !resp.body) {
+    bubble.textContent = "❌ 请求失败: " + resp.status;
+    timerEl.textContent = "失败";
+    return null;
+  }
+
+  // 加个闪烁光标，表示还在输出。
+  bubble.classList.add("cursor");
+
+  // 自己当解析器：fetch 不会帮你解析 SSE（那本是 EventSource 的活，而 EventSource 只能发 GET，
+  // 这里要 POST JSON，所以只能手写）。
+  const reader = resp.body.getReader();
+  // 网络分片不保证按 SSE 消息边界到达，一个 data: 事件可能被拆成两次 read，
+  // 所以用 TextDecoder 增量解码 + buffer 暂存，攒够一个完整事件再解析。
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    let idx;
+    // SSE 用空行（连续两个换行）分隔消息，所以这里按空行切，而不是按行切。
+    while ((idx = buffer.indexOf("\n\n")) !== -1) {
+      const chunk = buffer.slice(0, idx).trim();
+      buffer = buffer.slice(idx + 2);
+      // 只处理 data: 开头的字段，其他（event/id/注释）忽略。
+      if (!chunk.startsWith("data:")) continue;
+      // "data:" 正好 5 个字符，切掉之后剩下的就是 JSON 文本。
+      const payload = chunk.slice(5).trim();
+      // 收到结束标记就清空 buffer 并跳出内层循环，外层下一次 read 会拿到 done。
+      if (payload === "[DONE]") { buffer = ""; break; }
+      try {
+        const obj = JSON.parse(payload);
+        // 后端把上游错误也包装成了 data: 事件，这里统一显示成 ❌ 并收尾。
+        if (obj.error) {
+          bubble.classList.remove("cursor");
+          bubble.textContent = "❌ " + obj.error;
+          timerEl.textContent = "失败";
+          return null;
+        }
+        // 思考链增量：第一片到达时才让面板显示（避免一开始就挂个空面板），
+        // 之后持续追加，并实时刷新「思考中 N 秒」，让人知道它还在想。
+        if (obj.reasoning && reasoningEl) {
+          if (firstReasoningAt === null) {
+            firstReasoningAt = performance.now();
+            reasoningEl.style.display = "block";
+          }
+          fullReasoning += obj.reasoning;
+          reasoningBody.textContent = fullReasoning;
+          if (thinkTimerEl) {
+            const rt = ((performance.now() - t0) / 1000).toFixed(2);
+            thinkTimerEl.textContent = ` · 思考中 ${rt}s`;
+          }
+          // 思考链可能很长，跟着滚到底部，否则新内容写在看不见的地方。
+          reasoningBody.scrollTop = reasoningBody.scrollHeight;
+        }
+        // 正文增量：思考阶段后端只推 reasoning，一旦开始推 content 就说明思考结束了。
+        if (obj.content) {
+          if (firstContentAt === null) {
+            firstContentAt = performance.now();
+            // 正文首片到达时结算思考耗时，之后这行就不再变，避免数字乱跳。
+            if (thinkTimerEl && firstReasoningAt !== null) {
+              const rt = ((firstContentAt - firstReasoningAt) / 1000).toFixed(2);
+              thinkTimerEl.textContent = ` · 思考完成 ${rt}s`;
+            }
+          }
+          fullContent += obj.content;
+          bubble.textContent = fullContent;
+          const elapsed = ((performance.now() - t0) / 1000).toFixed(2);
+          const ttft = ((firstContentAt - t0) / 1000).toFixed(2);
+          timerEl.textContent = `流式输出中 · 正文首字 ${ttft}s · 已用 ${elapsed}s`;
+          chatEl.scrollTop = chatEl.scrollHeight;
+        }
+      } catch (e) {
+        // 单条解析失败不中断整个回答：打个日志继续，避免一条脏数据让输出从此卡死。
+        console.error("parse error", e, payload);
+      }
+    }
+  }
+
+  // 收尾：去掉光标，把计时文案固化成最终统计。
+  bubble.classList.remove("cursor");
+  const total = ((performance.now() - t0) / 1000).toFixed(2);
+  const ttft = firstContentAt ? ((firstContentAt - t0) / 1000).toFixed(2) : "-";
+  // 这两个数字（正文首字 / 总耗时）正好可以拿去和「非流式」的用时做对比。
+  timerEl.textContent = `流式完成 · 正文首字 ${ttft}s · 总耗时 ${total}s`;
+  return fullContent;
+}
+
+// 发送流程：用户消息先上屏并写进 history，再按当前模式选流式/非流式，
+// 最后把模型回复也写进 history，凑成下一轮要带给模型的上下文。
+async function onSend() {
+  const text = inputEl.value.trim();
+  if (!text) return;
+  inputEl.value = "";
+  // 请求期间禁用发送按钮：否则连点两次会让两条请求的上下文顺序错乱。
+  sendBtn.disabled = true;
+
+  addMessage("user", text);
+  // UI 和 history 都要加：history 才是发给模型的真实上下文，UI 只是给人看的。
+  history.push({ role: "user", content: text });
+
+  const modeTag = useStream ? "stream" : "nostream";
+  // 先插一条空的 assistant 消息占位，拿到它的元素句柄；流式时再一片片往里填。
+  // thinkTag 传当次的 useThink，保证标签记录的是「这条回复产生时」的模式。
+  const ui = addMessage("assistant", "", modeTag, useThink);
+
+  try {
+    const reply = useStream
+      ? await sendStream(history, ui, useThink)
+      : await sendNonStream(history, ui, useThink);
+    // 只有拿到非空回复才写进 history；出错时返回 null，不会把空串塞进上下文。
+    if (reply) history.push({ role: "assistant", content: reply });
+  } catch (e) {
+    // fetch 层面的异常（断网、响应不是 JSON 等）在这里兜底，别让页面白屏。
+    ui.bubble.textContent = "❌ " + e.message;
+    ui.timerEl.textContent = "失败";
+  } finally {
+    // 不管成功失败都要恢复按钮和焦点，否则一次失败之后就再也发不出去。
+    sendBtn.disabled = false;
+    inputEl.focus();
+  }
+}
+
+sendBtn.onclick = onSend;
+inputEl.addEventListener("keydown", (e) => {
+  // Enter 直接发送，Shift+Enter 换行；preventDefault 是为了拦住 Enter 在 textarea 里
+  // 默认的「插入换行」，否则会先换行再发送，内容就多了一个空行。
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    onSend();
+  }
+});
+</script>
+</body>
+</html>

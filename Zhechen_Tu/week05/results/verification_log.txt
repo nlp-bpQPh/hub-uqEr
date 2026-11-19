@@ -1,0 +1,5 @@
+PASS: splits reproduce exactly; 729 unique sentences; no source sentence crosses splits.
+PASS: same architecture/vocabulary; parameters changed; prompt and padding excluded; first answer character and terminator included.
+PASS: base CPU reload: 0/243; response NLL=3.330576.
+PASS: sft CPU reload: 243/243; response NLL=0.000051.
+ALL CHECKS PASSED

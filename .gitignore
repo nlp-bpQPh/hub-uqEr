@@ -1,3 +1,15 @@
+# 模型权重：体积大且可重新下载，不纳入版本库
+苏新朋/week5/Qwen3-0.6B/
+
+# 训练产物：可由脚本重新训练生成
+苏新朋/week5/outputs/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 原始大语料：只保留抽样后的小样本
+苏新朋/week5/sft_train/firefly-train-1.1M.jsonl
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
