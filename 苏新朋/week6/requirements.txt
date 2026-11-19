@@ -1,0 +1,3 @@
+scikit-learn>=1.2
+
+# 可选 BERT 方法需要 torch 与 transformers；二者版本应与本机 CUDA/CPU 环境匹配。

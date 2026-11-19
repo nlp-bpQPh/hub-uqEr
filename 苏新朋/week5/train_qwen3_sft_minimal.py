@@ -24,7 +24,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 # 后面的模型、数据和输出目录都相对当前脚本定位，换工作目录运行也不易找错文件。
 HERE = Path(__file__).resolve().parent
 MODEL_DIR = HERE / "Qwen3-0.6B"
-TRAIN_PATH = HERE / "sft_train" / "firefly_train_small.jsonl"
+TRAIN_PATH = HERE / "sft_train" / "firefly-train-1.1M.jsonl"
 VAL_PATH = HERE / "sft_val" / "firefly_val_small.jsonl"
 OUTPUT_DIR = HERE / "outputs" / "qwen3-firefly-sft"
 
@@ -33,19 +33,45 @@ SEED = 42                 # 固定随机数种子，让随机行为尽量可重�
 MAX_LENGTH = 128          # 每条对话最多允许 128 个 token；超长样本跳过
 LEARNING_RATE = 2e-5      # 学习率：每次更新参数时迈多大的步子
 TRAIN_STEPS = 1           # 只更新一次，验证训练流程能否执行
-MAX_TRAIN_SAMPLES = 4     # 最多准备 4 条训练样本
-MAX_VAL_SAMPLES = 2       # 最多用 2 条验证样本计算 loss
+MAX_TRAIN_SAMPLES = 100000     # 最多准备 4 条训练样本
+MAX_VAL_SAMPLES = 1000       # 最多用 2 条验证样本计算 loss
 
 
-def load_rows(path):
+def load_rows(path, limit):
     """读取 JSONL 数据：每一行都是一条独立的 JSON 训练样本。
 
-    每条样本需要有两个字段：
+    每条样本可使用统一后的字段：
       instruction：用户问题/任务说明
       output：希望模型学习生成的参考回答
+    原始 Firefly 文件则使用 kind/input/target，读取时会自动转换。
+    这里只读最小流程所需的少量行，避免把 1.1M 条原始语料全部载入内存。
     """
+    rows = []
     with path.open(encoding="utf-8") as f:
-        return [json.loads(line) for line in f if line.strip()]
+        for line_number, line in enumerate(f, start=1):
+            if not line.strip():
+                continue
+
+            row = json.loads(line)
+            # 原始 Firefly 数据使用 input/target/kind 字段；
+            # 把它们统一转换成下面训练代码使用的 instruction/output 格式。
+            if "instruction" not in row and "input" in row:
+                task = f"任务类型：{row['kind']}\n" if row.get("kind") else ""
+                row["instruction"] = task + row["input"]
+            if "output" not in row and "target" in row:
+                row["output"] = row["target"]
+
+            # 在读取边界明确指出坏数据所在行，避免后续编码时出现难定位的 KeyError。
+            if "instruction" not in row or "output" not in row:
+                raise ValueError(
+                    f"数据文件 {path} 第 {line_number} 行缺少 instruction/output "
+                    "字段（原始 Firefly 格式应包含 input/target）"
+                )
+            rows.append(row)
+            # 本脚本只做最小流程验证，取够少量样本就停止读取大语料。
+            if len(rows) >= limit:
+                break
+    return rows
 
 
 def encode_example(tokenizer, row):
@@ -163,8 +189,8 @@ def main():
     # 先检查需要的文件，错误时尽早给出清楚提示。
     if not (MODEL_DIR / "model.safetensors").is_file():
         raise FileNotFoundError(f"模型权重不存在：{MODEL_DIR / 'model.safetensors'}")
-    train_rows = load_rows(TRAIN_PATH)
-    val_rows = load_rows(VAL_PATH)
+    train_rows = load_rows(TRAIN_PATH, MAX_TRAIN_SAMPLES)
+    val_rows = load_rows(VAL_PATH, MAX_VAL_SAMPLES)
     if not train_rows or not val_rows:
         raise ValueError("训练集和验证集都必须至少有一条样本")
 
