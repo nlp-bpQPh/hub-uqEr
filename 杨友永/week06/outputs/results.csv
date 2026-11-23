@@ -1,0 +1,11 @@
+run_id,family,loss,params,best_macro_f1,best_epoch,train_s
+bert_cls,bert,ce,102275338,0.9871,3,71.9
+bert_mean,bert,ce,102275338,0.9849,3,71.0
+bert_max,bert,ce,102275338,0.9875,3,68.4
+bert_cls_mean,bert,ce,102283018,0.9871,3,69.0
+bert_cls_fgm,bert,ce,102275338,0.9901,2,112.6
+bert_cls_ls,bert,ls,102275338,0.987,3,71.2
+bert_cls_focal,bert,focal,102275338,0.9883,3,70.3
+llm_lora,llm,sft-ce,600637440,0.8364,2,339.6
+llm_full,llm,sft-ce,596049920,0.8393,1,778.5
+llm_full,llm,sft-ce,596049920,0.8393,1,706.9

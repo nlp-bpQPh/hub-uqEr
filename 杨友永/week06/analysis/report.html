@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>商品分类数据集 · 数据总览</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="/tmp/style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">商品分类数据集 · 数据总览</h1>
+</header>
+<h1 id="商品分类数据集-数据总览报告">商品分类数据集 · 数据总览报告</h1>
+<blockquote>
+<p>数据：<code>product-classification-hiring-demo</code>（ModelScope，CC-BY-NC-SA-4.0）
+任务：商品名 → 10 个品类 由 <code>data_overview.py --report</code>
+自动生成</p>
+</blockquote>
+<h2 id="一基本信息">一、基本信息</h2>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原始训练集 / 测试集</td>
+<td><strong>15,997 / 4,003</strong></td>
+</tr>
+<tr>
+<td>划分后 train / val / test</td>
+<td>14,397 / 1,600 / 4,003</td>
+</tr>
+<tr>
+<td>字段</td>
+<td><code>product_name</code>、<code>category</code></td>
+</tr>
+<tr>
+<td>类别数</td>
+<td><strong>10</strong></td>
+</tr>
+<tr>
+<td>不均衡比</td>
+<td><strong>4.9 : 1</strong>（非冷藏即饮果汁 2504 vs 口香糖 508）</td>
+</tr>
+<tr>
+<td>商品名平均长度</td>
+<td><strong>14.8 字</strong>（P50 14 / P95 21 / max 34）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二类别分布">二、类别分布</h2>
+<figure>
+<img src="figures/class_dist.png" alt="类别分布" />
+<figcaption aria-hidden="true">类别分布</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>train</th>
+<th>val</th>
+<th>test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非冷藏即饮果汁</td>
+<td>2504</td>
+<td>278</td>
+<td>704</td>
+</tr>
+<tr>
+<td>牙膏</td>
+<td>2115</td>
+<td>235</td>
+<td>588</td>
+</tr>
+<tr>
+<td>白酒</td>
+<td>1893</td>
+<td>210</td>
+<td>526</td>
+</tr>
+<tr>
+<td>硬糖</td>
+<td>1698</td>
+<td>189</td>
+<td>472</td>
+</tr>
+<tr>
+<td>即饮茶</td>
+<td>1599</td>
+<td>178</td>
+<td>444</td>
+</tr>
+<tr>
+<td>软糖</td>
+<td>1522</td>
+<td>169</td>
+<td>418</td>
+</tr>
+<tr>
+<td>方便面</td>
+<td>1062</td>
+<td>118</td>
+<td>294</td>
+</tr>
+<tr>
+<td>即饮奶茶</td>
+<td>915</td>
+<td>102</td>
+<td>256</td>
+</tr>
+<tr>
+<td>冷藏即饮果汁</td>
+<td>581</td>
+<td>65</td>
+<td>160</td>
+</tr>
+<tr>
+<td>口香糖</td>
+<td>508</td>
+<td>56</td>
+<td>141</td>
+</tr>
+</tbody>
+</table>
+<p>不均衡 <strong>4.9:1</strong>，属温和区间（对比 TNEWS 的 23:1），
+划分后 val 的比例与 train 一致，说明分层切分生效。</p>
+<h2 id="三文本长度">三、文本长度</h2>
+<figure>
+<img src="figures/length_dist.png" alt="长度分布" />
+<figcaption aria-hidden="true">长度分布</figcaption>
+</figure>
+<p>商品名极短，<strong>96% 在 21 字以内</strong>：</p>
+<ul>
+<li><code>max_len = 32</code> 覆盖全部样本，截断损失可忽略</li>
+<li>序列短，训练与推理都快</li>
+</ul>
+<h2 id="四关键词泄漏">四、关键词泄漏</h2>
+<figure>
+<img src="figures/keyword_hit.png" alt="关键词命中率" />
+<figcaption aria-hidden="true">关键词命中率</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>类别词出现在商品名中的比例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>即饮茶</td>
+<td>99.8%</td>
+</tr>
+<tr>
+<td>方便面</td>
+<td>99.1%</td>
+</tr>
+<tr>
+<td>牙膏</td>
+<td>98.3%</td>
+</tr>
+<tr>
+<td>软糖</td>
+<td>98.0%</td>
+</tr>
+<tr>
+<td>硬糖</td>
+<td>97.9%</td>
+</tr>
+<tr>
+<td>白酒</td>
+<td>91.6%</td>
+</tr>
+<tr>
+<td>即饮奶茶</td>
+<td>78.0%</td>
+</tr>
+<tr>
+<td>口香糖</td>
+<td>49.5%</td>
+</tr>
+<tr>
+<td>非冷藏即饮果汁</td>
+<td>42.7%</td>
+</tr>
+<tr>
+<td>冷藏即饮果汁</td>
+<td>33.7%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>这组数字决定了下限和上限：</strong></p>
+<ul>
+<li>前 6 类（茶、面、牙膏、糖、酒）命中率
+91%~99.8%，<strong>一条关键词规则就能拿 95%+</strong></li>
+<li>果汁两类只有 42.7% / 33.7%，
+商品名通常不写「冷藏/非冷藏」，这是真正的难点</li>
+</ul>
+<h2 id="五数据质量">五、数据质量</h2>
+<table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>训练集重复商品名</td>
+<td>232 条</td>
+</tr>
+<tr>
+<td>训练/测试商品名重叠</td>
+<td><strong>85 条</strong>（占 test 2.1%）</td>
+</tr>
+<tr>
+<td>同名不同类别</td>
+<td><strong>1 条</strong></td>
+</tr>
+</tbody>
+</table>
+<p>唯一冲突：</p>
+<pre><code>令德堂冷榨芒果汁1.5L → [&#39;冷藏即饮果汁&#39;, &#39;非冷藏即饮果汁&#39;]</code></pre>
+<p>「冷藏」与「非冷藏」是储存属性，同一商品名可归两类，属标注歧义。</p>
+<p>测试集有 85 条商品名与训练集完全相同（2.1%），
+评估时这部分等于送分，<strong>真实泛化能力会略低于报告数字</strong>。</p>
+<h2 id="六难点分析">六、难点分析</h2>
+<p>真正难的只有「果汁」这一族：</p>
+<pre><code>冷藏即饮果汁:   怡亿盛园冰杨梅汁370ml
+非冷藏即饮果汁: 佳纯杨枝甘露果汁480ml</code></pre>
+<p>两类文字特征几乎相同，区别在是否需要冷链——该信息<strong>大概率不在商品名里</strong>，
+构成精度的天然上限。</p>
+<h2 id="七建模建议">七、建模建议</h2>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>建议</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_len</code></td>
+<td><strong>32</strong></td>
+<td>P95 = 21，max = 34</td>
+</tr>
+<tr>
+<td>类别加权</td>
+<td><strong>暂不需要</strong></td>
+<td>不均衡仅 4.9:1</td>
+</tr>
+<tr>
+<td>基线</td>
+<td>关键词规则</td>
+<td>前 6 类命中率 &gt; 91%</td>
+</tr>
+<tr>
+<td>主模型</td>
+<td>BERT-base 微调</td>
+<td>短文本分类标准方案</td>
+</tr>
+<tr>
+<td>评估</td>
+<td>macro-F1 + 混淆矩阵</td>
+<td>关注果汁两类互错</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>由 <code>data_overview.py --report</code> 自动生成</em></p>
+</body>
+</html>

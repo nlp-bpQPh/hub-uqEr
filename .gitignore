@@ -1,18 +1,5 @@
-# Python 缓存
 __pycache__/
 *.py[cod]
-
-# macOS 系统文件
-.DS_Store
-
-# 模型权重与训练产物（可重新生成）
-*.pt
-*.bin
-
-# 来自 upstream/main 的其他规则
-苏新朋/week5/Qwen3-0.6B/
-苏新朋/week5/outputs/
-苏新朋/week5/sft_train/firefly-train-1.1M.jsonl
 .ipynb_checkpoints/
 .env
 .env.local

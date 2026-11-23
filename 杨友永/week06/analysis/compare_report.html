@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>文本分类方案对比报告</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="/tmp/style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">文本分类方案对比报告</h1>
+</header>
+<h1 id="文本分类方案对比报告">文本分类方案对比报告</h1>
+<blockquote>
+<p>数据：商品名 → 10 品类（train 14,397 / val 1,600 / test 4,003）
+硬件：RTX 4090（24 GB） 指标：验证集
+<strong>Macro-F1</strong>（各类等权）</p>
+</blockquote>
+<h2 id="一总榜">一、总榜</h2>
+<figure>
+<img src="figures/compare_f1.png" alt="Macro-F1 对比" />
+<figcaption aria-hidden="true">Macro-F1 对比</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>Macro-F1</th>
+<th>Accuracy</th>
+<th>训练耗时(s)</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BERT · CLS + FGM</strong></td>
+<td><strong>0.9901</strong></td>
+<td>0.9931</td>
+<td>113</td>
+<td>最佳</td>
+</tr>
+<tr>
+<td>BERT · CLS + Focal Loss</td>
+<td>0.9883</td>
+<td>0.9919</td>
+<td>70</td>
+<td></td>
+</tr>
+<tr>
+<td>BERT · Max 池化</td>
+<td>0.9875</td>
+<td>0.9919</td>
+<td>68</td>
+<td></td>
+</tr>
+<tr>
+<td>BERT · CLS 池化（基线）</td>
+<td>0.9871</td>
+<td>0.9912</td>
+<td>72</td>
+<td></td>
+</tr>
+<tr>
+<td>BERT · CLS+Mean 拼接</td>
+<td>0.9871</td>
+<td>0.9919</td>
+<td>69</td>
+<td></td>
+</tr>
+<tr>
+<td>BERT · CLS + Label Smoothing</td>
+<td>0.9870</td>
+<td>0.9912</td>
+<td>71</td>
+<td>无效果</td>
+</tr>
+<tr>
+<td>BERT · Mean 池化</td>
+<td>0.9849</td>
+<td>0.9906</td>
+<td>71</td>
+<td>最差</td>
+</tr>
+<tr>
+<td>Qwen3-0.6B · SFT 全参</td>
+<td>0.8393</td>
+<td>0.8781</td>
+<td>707</td>
+<td></td>
+</tr>
+<tr>
+<td>Qwen3-0.6B · LoRA</td>
+<td>0.8364</td>
+<td>0.8762</td>
+<td>340</td>
+<td>0.76% 参数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>差距：BERT 最佳（0.9901）比 LLM 最佳（0.8393）高 15.1
+个点。</strong> 换算成错误数：BERT 约 16/1600 条判错，LLM 约 258/1600
+条。</p>
+<h2 id="二多随机种子验证关键">二、多随机种子验证（关键）</h2>
+<p>单次运行的 0.1~0.3 个点差异<strong>可能只是噪声</strong>（1600
+条验证集上，0.1 点 = 1.6 条样本）。 所以对三个关键配置各跑了 3
+个种子：</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>seed 42</th>
+<th>seed 7</th>
+<th>seed 2024</th>
+<th>均值</th>
+<th>标准差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLS 基线</td>
+<td>0.9871</td>
+<td>0.9875</td>
+<td>0.9844</td>
+<td><strong>0.9863</strong></td>
+<td>0.0017</td>
+</tr>
+<tr>
+<td>Max 池化</td>
+<td>0.9875</td>
+<td>0.9848</td>
+<td>0.9845</td>
+<td><strong>0.9856</strong></td>
+<td>0.0017</td>
+</tr>
+<tr>
+<td>CLS + FGM</td>
+<td>0.9901</td>
+<td>0.9895</td>
+<td>0.9896</td>
+<td><strong>0.9897</strong></td>
+<td>0.0003</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论：</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>对比</th>
+<th>差值</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FGM − CLS</td>
+<td><strong>+0.0034</strong></td>
+<td>✅ <strong>真实提升</strong>（3 个种子全部优于基线，最差 FGM 0.9895
+&gt; 最好基线 0.9875）</td>
+</tr>
+<tr>
+<td>Max − CLS</td>
+<td>−0.0007</td>
+<td>❌ 无差异（远小于标准差 0.0017）</td>
+</tr>
+</tbody>
+</table>
+<p>FGM 不仅均值更高，<strong>标准差还小了 5 倍</strong>（0.0003 vs
+0.0017）——说明它让训练更稳定。</p>
+<h2 id="三各项分析">三、各项分析</h2>
+<h3 id="池化方式在饱和任务上几乎无差别">3.1
+池化方式：在饱和任务上几乎无差别</h3>
+<table>
+<thead>
+<tr>
+<th>池化</th>
+<th>Macro-F1</th>
+<th>相对基线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLS</td>
+<td>0.9871</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Max</td>
+<td>0.9875</td>
+<td>+0.0004</td>
+</tr>
+<tr>
+<td>CLS+Mean</td>
+<td>0.9871</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Mean</td>
+<td>0.9849</td>
+<td>−0.0022</td>
+</tr>
+</tbody>
+</table>
+<p>四种池化的差距最大只有 0.22
+个点，<strong>在噪声范围内</strong>（种子标准差 0.17）。</p>
+<p>原因：这个任务已经接近饱和（98.7%）。当模型几乎全对时， 「怎么把 BERT
+的隐状态压成一个向量」的差别就被淹没了。</p>
+<blockquote>
+<p>池化的价值通常体现在<strong>难任务</strong>上（长文本、细粒度情感、检索）。
+在简单分类任务上换池化，收益基本为零。</p>
+</blockquote>
+<h3 id="fgm-是唯一稳定有效的技巧">3.2 FGM 是唯一稳定有效的技巧</h3>
+<ul>
+<li>均值 +0.34 个点</li>
+<li>3/3 种子全部优于基线</li>
+<li>代价：训练时间 <strong>+57%</strong>（113s vs 72s）</li>
+</ul>
+<p>它为什么有效：FGM 在 embedding
+上加扰动，迫使模型不依赖单个词的精确表示。
+商品名里的品牌词、规格词（<code>500ml</code>、<code>180g</code>）是典型的「容易过拟合的局部特征」，
+FGM 正好削弱这类捷径。</p>
+<h3 id="focal-loss-轻微正向0.12">3.3 Focal Loss 轻微正向（+0.12）</h3>
+<p>单次运行
+0.9883，在种子噪声范围内（±0.17），<strong>不能算显著</strong>。</p>
+<p>任务本身不均衡程度只有 4.9:1，且各类都学到了（最低类 F1 也有
+0.95+）， Focal 想解决的「难样本学不会」问题在这里不存在。</p>
+<h3 id="label-smoothing-完全无效0.01">3.4 Label Smoothing
+完全无效（−0.01）</h3>
+<p>0.9870 vs 基线 0.9871，完全一样。</p>
+<p>原因同上：任务已饱和，模型本来就没有过度自信的空间； LS
+的作用是抑制过拟合，而这里没有明显过拟合（3 个 epoch 内 val
+一直在涨）。</p>
+<h3 id="lora-与全参-sft-几乎打平">3.5 LoRA 与全参 SFT 几乎打平</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>可训练参数</th>
+<th>Macro-F1</th>
+<th>耗时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全参 SFT</td>
+<td>596 M (100%)</td>
+<td>0.8393</td>
+<td>707 s</td>
+</tr>
+<tr>
+<td>LoRA (r=16)</td>
+<td><strong>4.6 M (0.76%)</strong></td>
+<td>0.8364</td>
+<td>340 s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>用 0.76% 的参数、一半的时间，只损失 0.29 个点。</strong></p>
+<p>这是 LoRA 的典型表现：在数据量不大（1.4 万条）、任务简单的场景下，
+低秩更新足以覆盖需要学习的增量。</p>
+<h2 id="四为什么-llm-输给-bert-15-个点">四、为什么 LLM 输给 BERT 15
+个点</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>原因</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>预训练目标不匹配</strong></td>
+<td>BERT 用 MLM，天然学到词的语义表示；Qwen3
+是自回归，擅长续写而非判别</td>
+</tr>
+<tr>
+<td><strong>输出空间被压缩</strong></td>
+<td>LLM 用「答案首 token 的 logits」做 10
+分类，等于只用了模型能力的一小部分</td>
+</tr>
+<tr>
+<td><strong>模型规模</strong></td>
+<td>0.6B 的判别能力远不如 110M 的 BERT 在它擅长的任务上</td>
+</tr>
+<tr>
+<td><strong>数据量</strong></td>
+<td>1.4 万条足够微调 BERT，但不足以重塑 0.6B LLM 的生成行为</td>
+</tr>
+<tr>
+<td><strong>任务性质</strong></td>
+<td>短文本、关键词特征强——这正是 BERT 的舒适区</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>换个任务（需要世界知识、需要推理），LLM 的优势就会显现。
+这个数据集恰好是「关键词匹配」，BERT 的最优场景。</p>
+</blockquote>
+<h2 id="五结论">五、结论</h2>
+<ol type="1">
+<li><strong>最优方案：BERT + CLS 池化 + FGM，Macro-F1 = 0.9897（3
+种子均值）</strong></li>
+<li><strong>池化方式在这个任务上无关紧要</strong>，别花时间调</li>
+<li><strong>FGM 是唯一值得开的技巧</strong>，+0.34 点、训练慢 57%</li>
+<li><strong>LoRA 性价比极高</strong>，0.76% 参数换 99.6% 的效果</li>
+<li><strong>LLM
+在此任务上不划算</strong>，除非任务需要推理或世界知识</li>
+</ol>
+<h2 id="六局限">六、局限</h2>
+<ul>
+<li>验证集只有 1,600 条，0.1 个点 = 1.6
+条样本，<strong>小差异不可靠</strong></li>
+<li>任务接近饱和（98.7%），天花板可能就在 99%
+附近——剩下的是果汁两类的标注歧义</li>
+<li>LLM 只跑了 1~2 个 epoch，未做超参搜索；加大数据量或换 prompt
+可能缩小差距</li>
+</ul>
+<hr />
+<p><em>数据与代码：<code>bert/</code>、<code>llm/</code>、<code>report.py</code></em></p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "run_id": "bert_cls_focal",
+  "family": "bert",
+  "config": {
+    "pooling": "cls",
+    "lr": 3e-05,
+    "epochs": 3,
+    "batch_size": 32,
+    "max_len": 32,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "max_grad_norm": 1.0,
+    "dropout": 0.1,
+    "label_smoothing": 0.0,
+    "focal_gamma": 2.0,
+    "fgm_eps": 0.0,
+    "seed": 42,
+    "eval_batch_size": 128
+  },
+  "loss": "focal",
+  "params": 102275338,
+  "best_epoch": 3,
+  "best_macro_f1": 0.9883,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.222,
+      "acc": 0.98,
+      "macro_f1": 0.9753,
+      "weighted_f1": 0.9799
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0264,
+      "acc": 0.9862,
+      "macro_f1": 0.9832,
+      "weighted_f1": 0.9863
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0101,
+      "acc": 0.9912,
+      "macro_f1": 0.9883,
+      "weighted_f1": 0.9912
+    }
+  ],
+  "train_s": 70.3,
+  "device": "cuda (NVIDIA GeForce RTX 4090) · torch.bfloat16 autocast"
+}

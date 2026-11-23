@@ -1,0 +1,49 @@
+{
+  "run_id": "seed_max_s7",
+  "family": "bert",
+  "config": {
+    "pooling": "max",
+    "lr": 3e-05,
+    "epochs": 3,
+    "batch_size": 32,
+    "max_len": 32,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "max_grad_norm": 1.0,
+    "dropout": 0.1,
+    "label_smoothing": 0.0,
+    "focal_gamma": 0.0,
+    "fgm_eps": 0.0,
+    "seed": 7,
+    "eval_batch_size": 128
+  },
+  "loss": "ce",
+  "params": 102275338,
+  "best_epoch": 3,
+  "best_macro_f1": 0.9848,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.4494,
+      "acc": 0.9775,
+      "macro_f1": 0.9716,
+      "weighted_f1": 0.9778
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0648,
+      "acc": 0.9844,
+      "macro_f1": 0.981,
+      "weighted_f1": 0.9844
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0305,
+      "acc": 0.9875,
+      "macro_f1": 0.9848,
+      "weighted_f1": 0.9874
+    }
+  ],
+  "train_s": 66.2,
+  "device": "cuda (NVIDIA GeForce RTX 4090) · torch.bfloat16 autocast"
+}
