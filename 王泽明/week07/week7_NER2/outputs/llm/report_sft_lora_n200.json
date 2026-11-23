@@ -1,0 +1,21 @@
+{
+  "tag": "sft_lora_n200",
+  "backend": "sft",
+  "ckpt_type": "lora",
+  "ckpt_dir": "E:\\Miku\\homework\\week7_NER\\outputs\\llm\\ckpt\\sft_adapter",
+  "model_path": "E:\\Miku\\homework\\pretrain_models\\Qwen2-0.5B-Instruct",
+  "n": 200,
+  "seed": 42,
+  "json_valid_rate": 100.0,
+  "parse_fail": 0,
+  "empty_reply": 0,
+  "repaired": 0,
+  "noise_stripped": 0,
+  "type_invalid": 1,
+  "role_invalid": 7,
+  "trigger_not_in_source": 4,
+  "arg_not_in_source": 34,
+  "latency_mean_s": 0.428,
+  "latency_p50_s": 0.411,
+  "total_s": 85.8
+}
