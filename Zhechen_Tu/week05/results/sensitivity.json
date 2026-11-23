@@ -1,0 +1,24 @@
+{
+  "reordered_sentence": {
+    "correct": 100,
+    "count": 243,
+    "by_task_correct": {
+      "mood": 27,
+      "place": 55,
+      "time": 18
+    },
+    "exact_match": 0.411522633744856,
+    "response_nll": 0.6611556714521971
+  },
+  "reworded_instruction": {
+    "correct": 29,
+    "count": 243,
+    "by_task_correct": {
+      "mood": 0,
+      "place": 19,
+      "time": 10
+    },
+    "exact_match": 0.11934156378600823,
+    "response_nll": 1.2972765224646792
+  }
+}

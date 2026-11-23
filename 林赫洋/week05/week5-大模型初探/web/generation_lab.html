@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文本生成与采样实验室</title>
+<style>
+  :root{
+    --navy:#1E3A5F; --teal:#2E86AB; --dark:#2D2D2D; --gray:#666666;
+    --code-bg:#F5F5F5; --border:#DEDEDE; --lt-teal:#EBF4FA;
+    --red:#C0392B; --green:#217B45; --orange:#D4720A; --purple:#6C4FA1;
+  }
+  *{box-sizing:border-box;}
+  body{background:#F0F2F5;color:var(--dark);margin:0;
+    font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",-apple-system,sans-serif;
+    font-size:14px;line-height:1.5;padding:14px 18px 34px;}
+  .wrap{max-width:1600px;margin:0 auto;}
+  .head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
+  .head h1{font-size:22px;color:var(--navy);margin:0;font-weight:700;letter-spacing:.5px;}
+  .head .sub{font-size:12.5px;color:var(--gray);}
+  .badge{margin-left:auto;font-size:11.5px;color:var(--navy);background:var(--lt-teal);
+    border:1px solid #CFE3EF;border-radius:20px;padding:3px 12px;white-space:nowrap;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;min-width:0;}
+  .card-h{padding:8px 13px;border-bottom:1px solid var(--border);font-size:13.5px;font-weight:700;
+    color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .card-h .hint{font-size:11.5px;color:var(--gray);font-weight:400;}
+  .card-b{padding:11px 13px;}
+
+  .bar{background:#fff;border:1px solid var(--border);border-left:4px solid var(--teal);
+    border-radius:8px;padding:9px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;margin-bottom:12px;}
+  .field{display:flex;align-items:center;gap:7px;}
+  .field>label{font-size:12.5px;color:var(--gray);white-space:nowrap;}
+  select{font-size:13px;padding:5px 8px;border:1px solid var(--border);border-radius:5px;background:#fff;color:var(--dark);}
+  input[type=range]{width:120px;accent-color:var(--teal);}
+  .val{font-family:Consolas,monospace;font-size:13px;font-weight:700;color:var(--teal);min-width:36px;text-align:right;display:inline-block;}
+  button{font-family:inherit;font-size:12.5px;padding:5px 12px;border-radius:5px;border:1px solid var(--border);
+    background:#fff;color:var(--dark);cursor:pointer;transition:.12s;white-space:nowrap;}
+  button:hover{background:var(--lt-teal);border-color:var(--teal);}
+  button.primary{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600;}
+  button.primary:hover{background:#162C49;}
+  button.on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600;}
+  .seg{display:flex;}
+  .seg button{border-radius:0;border-right-width:0;}
+  .seg button:first-child{border-radius:5px 0 0 5px;}
+  .seg button:last-child{border-radius:0 5px 5px 0;border-right-width:1px;}
+
+  .grid{display:grid;grid-template-columns:56fr 44fr;gap:12px;align-items:start;}
+  .col{display:flex;flex-direction:column;gap:12px;min-width:0;}
+
+  /* 生成结果 */
+  .seq{display:flex;flex-wrap:wrap;gap:5px;align-items:center;min-height:44px;}
+  .tok{border:1px solid var(--border);border-radius:5px;padding:3px 9px;font-size:18px;
+    font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;background:#fff;line-height:1.3;}
+  .tok.prompt{background:#EEF3F7;border-color:#C9D9E4;}
+  .tok.new{border-color:var(--orange);background:#FDF3E3;box-shadow:0 0 0 2px #F6D9B3 inset;}
+  .tok.eos{font-size:12px;font-family:Consolas,monospace;color:var(--gray);background:#F2F4F6;}
+  .meta{display:flex;gap:16px;font-size:11.5px;color:var(--gray);margin-top:6px;flex-wrap:wrap;}
+  .meta b{color:var(--navy);font-family:Consolas,monospace;}
+
+  /* 候选分布 */
+  .dist{display:flex;flex-direction:column;gap:5px;}
+  .row{display:flex;align-items:center;gap:9px;}
+  .row .w{width:56px;text-align:right;font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;
+    font-size:17px;color:var(--dark);white-space:nowrap;overflow:hidden;}
+  .row .track{flex:1;height:20px;background:#F0F3F6;border-radius:4px;position:relative;overflow:hidden;}
+  .row .fill{height:100%;border-radius:4px;transition:width .18s ease;}
+  .row .p{width:52px;text-align:right;font-family:Consolas,monospace;font-size:11.5px;color:var(--navy);}
+  .row.kept .fill{background:linear-gradient(90deg,#A8CBE0,var(--teal));}
+  .row.cut .fill{background:#D3DCE3;}
+  .row.cut .w,.row.cut .p{color:#9AA5AE;}
+  .row.chosen .track{box-shadow:0 0 0 2px #D4720A inset;}
+  .row.chosen .w{color:var(--orange);font-weight:700;}
+  .tag{font-size:10px;padding:1px 5px;border-radius:3px;background:#FDF3E3;color:var(--orange);margin-left:2px;}
+
+  /* 多次对比 */
+  .runs{display:flex;flex-direction:column;gap:5px;}
+  .run{display:flex;align-items:center;gap:8px;font-size:12.5px;}
+  .run .no{width:26px;color:var(--gray);font-family:Consolas,monospace;font-size:11px;}
+  .run .txt{flex:1;font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:16px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .run.same .txt{color:var(--gray);}
+
+  /* 累积条 */
+  .cum{display:flex;height:26px;border:1px solid var(--border);border-radius:5px;overflow:hidden;margin-top:4px;}
+  .cum .seg2{display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#fff;
+    font-family:Consolas,monospace;overflow:hidden;white-space:nowrap;}
+  .cutmark{position:relative;height:32px;margin-top:2px;font-size:10.5px;color:var(--orange);}
+  .cutmark .line{position:absolute;top:0;width:2px;height:12px;background:var(--orange);}
+  .cutmark .lab{position:absolute;top:13px;transform:translateX(-50%);white-space:nowrap;}
+
+  /* 温度三联图 */
+  .mini3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .mini3 .m{border:1px solid var(--border);border-radius:6px;padding:6px 7px;background:#FCFDFE;}
+  .mini3 .m .t{font-size:11px;color:var(--gray);text-align:center;margin-bottom:4px;font-family:Consolas,monospace;}
+  .mini3 .row2{display:flex;align-items:center;gap:4px;margin:2px 0;}
+  .mini3 .row2 .l{width:38px;text-align:right;font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:12.5px;white-space:nowrap;}
+  .mini3 .row2 .tr{flex:1;height:8px;background:#EEF1F4;border-radius:2px;overflow:hidden;}
+  .mini3 .row2 .fi{height:100%;background:linear-gradient(90deg,#A8CBE0,var(--teal));}
+  .mini3 .row2 .p{width:30px;font-family:Consolas,monospace;font-size:9px;color:var(--gray);text-align:right;}
+
+  table.cmp{width:100%;border-collapse:collapse;font-size:12px;}
+  table.cmp th,table.cmp td{border-bottom:1px solid #EDF1F4;padding:5px 6px;text-align:left;vertical-align:top;}
+  table.cmp th{color:var(--gray);font-weight:600;font-size:11.5px;}
+  table.cmp td b{color:var(--navy);}
+  .beam{display:flex;flex-direction:column;gap:6px;}
+  .brow{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:6px;padding:6px 9px;}
+  .brow.best{border-color:var(--green);background:#F4FAF6;}
+  .brow .s{font-family:Consolas,monospace;font-size:11px;color:var(--gray);width:64px;}
+  .brow .t{font-family:"KaiTi","STKaiti","Microsoft YaHei",sans-serif;font-size:16px;flex:1;}
+  .brow .sc{font-family:Consolas,monospace;font-size:11px;color:var(--navy);}
+  .tip{background:#F7FBFD;border:1px solid #D6E8F2;border-radius:6px;padding:7px 10px;font-size:12px;color:#2F5266;margin-top:8px;}
+  ul.take{margin:0;padding-left:18px;font-size:12.5px;color:#33444F;}
+  ul.take li{margin:3px 0;}
+  code{font-family:Consolas,monospace;font-size:11.5px;background:var(--code-bg);padding:1px 5px;border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>文本生成与采样实验室</h1>
+    <span class="sub">同一个概率分布：贪心必然复读、采样才有变化；温度改形状、top-k / top-p 切长尾</span>
+    <span class="badge">Week 5 · 文本生成</span>
+  </div>
+
+  <div class="bar">
+    <div class="field"><label>prompt</label>
+      <select id="prompt">
+        <option>今天天气</option>
+        <option>我想</option>
+        <option>深度学习</option>
+      </select>
+    </div>
+    <div class="field"><label>模式</label>
+      <div class="seg" id="segMode">
+        <button data-mode="greedy">贪心</button>
+        <button class="on" data-mode="sample">采样</button>
+      </div>
+    </div>
+    <div class="field"><label>T</label><input type="range" id="temp" min="0.1" max="2" step="0.1" value="0.7"><span class="val" id="tempV">0.7</span></div>
+    <div class="field"><label>top-k</label><input type="range" id="topk" min="1" max="8" step="1" value="3"><span class="val" id="topkV">3</span></div>
+    <div class="field"><label>top-p</label><input type="range" id="topp" min="0.3" max="1" step="0.05" value="0.9"><span class="val" id="toppV">0.90</span></div>
+    <div class="field"><label>速度</label><input type="range" id="speed" min="200" max="1000" step="20" value="520"><span class="val" id="speedV">520ms</span></div>
+    <button class="primary" id="play">▶ 播放</button>
+    <button id="stepBtn">单步</button>
+    <button id="reset">重置</button>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span>生成结果 <span class="hint" id="modeHint"></span></span>
+          <span class="hint">每步只出一个字，遇到 EOS 或到 14 个字停</span></div>
+        <div class="card-b">
+          <div class="seq" id="seq"></div>
+          <div class="meta">
+            <span>已生成 <b id="nTok">0</b> 个字</span>
+            <span>本步候选 <b id="nCand">0</b> 个</span>
+            <span>保留 <b id="nKeep">0</b> 个</span>
+            <span>选中概率 <b id="pSel">—</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>第 <b id="stepNo">0</b> 步的候选分布</span>
+          <span class="hint">条形长度 = 概率；蓝 = 保留，灰 = 被 top-k / top-p 切掉，橙框 = 选中（默认 k=3 便于看截断，工程常用 50~100）</span></div>
+        <div class="card-b"><div class="dist" id="dist"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>同一设置跑 5 次</span><span class="hint">看「确定性 vs 多样性」：贪心 5 次完全一样，高温采样每次不同</span></div>
+        <div class="card-b"><div class="runs" id="runs"></div></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-h"><span>Top-P 在做什么：按累积概率截断</span><span class="hint">从高到低累加，够 P 就停</span></div>
+        <div class="card-b">
+          <div class="cum" id="cum"></div>
+          <div class="cutmark" id="cutmark"></div>
+          <div class="tip" id="cumTip"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>温度怎么改形状：同一个 logits，三个 T</span><span class="hint">T↓ 更尖锐、T↑ 更平坦</span></div>
+        <div class="card-b">
+          <div class="mini3" id="tempCharts"></div>
+          <div class="tip" style="margin-top:8px">公式：<code>p_i = softmax(logits / T)</code> —— 温度只改变分布形状，不改变「有哪些候选」，也不挑选词。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>Beam Search（k = 2）</span><button id="beamBtn" style="padding:3px 10px;font-size:11.5px">跑一次</button></div>
+        <div class="card-b">
+          <div class="beam" id="beam"><div class="tip" style="margin:0">点「跑一次」：同时保留 2 条路径，按累积对数概率选最优。</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><span>三种解码方式对比</span></div>
+        <div class="card-b">
+          <table class="cmp">
+            <tr><th>方式</th><th>怎么选</th><th>特点</th></tr>
+            <tr><td><b>贪心</b></td><td>每步取 argmax</td><td>确定、可复现，但容易复读</td></tr>
+            <tr><td><b>采样</b></td><td>按概率抽签（T / top-k / top-p 约束）</td><td>多样，可调；T 越高越发散</td></tr>
+            <tr><td><b>Beam</b></td><td>保留 k 条路径，比累积概率</td><td>稳、偏平庸，开销 ×k</td></tr>
+          </table>
+          <ul class="take" style="margin-top:8px">
+            <li>参数只改「怎么选词」，不改模型本身。</li>
+            <li>事实类任务先降 T；创意任务再升 T + 放宽 top-p。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ============================================================================
+     文本生成与采样实验室 —— 课堂演示脚本
+     ----------------------------------------------------------------------------
+     ⚠ 先说清最容易被误会的一件事：
+       这个页面里**没有神经网络在推理**。下一个字是什么，全部来自下面那张手写的
+       TRANS 概率表（字典查表）。代码真正"算"的只有两件事：
+         1) 把这张概率表按温度 / top-k / top-p 重新整形（transform）
+         2) 按整形后的概率抽签（choose）
+       所以本页要讲的不是"模型多聪明"，而是"解码策略怎样改变输出"。
+       一句话：**概率表是假的，采样逻辑是真的。**
+
+     全页的主线就是语言模型的最小循环：
+         给前文 → 每个候选打分 → 选一个 → 拼回去当前文 → 再算
+     下面每个函数，都只是把这个循环拆开、画到屏幕上而已。
+     ============================================================================ */
+  const EOS = "⏹";
+  // 句末标记（End Of Sequence）。故意做成和普通字一样的"候选之一"，
+  // 是为了让"模型自己决定停"这件事在界面上看得见：抽中它，循环就结束。
+  // 字级 toy 模型：给定上一个字，给出下一个字的概率（写死，用来演示采样机制）
+  const TRANS = {
+    /* 表的结构：[上一个字] → [[下一个字, 概率], ...]，每行概率加起来是 1。
+       ⚠ 这不是从语料统计出来的，是人工编的，目的只是让示例句子念起来通顺。
+       真实语言模型里，"这一行"是一次 Transformer 前向的输出，长度等于整个词表
+       （几万到几十万），这里只留 2~5 个候选，方便在黑板上逐个念。
+       ⚠ 还有个重要局限：查表只用**紧邻的上一个字**（bigram），没有更长的前文。
+         真实的 GPT 会看整段前文，这正是它比这张表强的地方。 */
+    "气":[["真",.45],["不",.25],["很",.15],["有",.15]],
+    "真":[["好",.45],["热",.2],["冷",.15],["舒",.2]],
+    "不":[["错",.85],["冷",.15]],
+    "很":[["好",.5],["热",.25],["冷",.25]],
+    "有":[["点",.6],["趣",.4]],
+    "点":[["冷",.25],["热",.25],["闷",.2],["累",.2],["什",.1]],
+    "好":[["，",.4],["！",.3],["呀",.2],["。",.1]],
+    "，":[["适",.3],["记",.2],["我",.2],["出",.15],["散",.15]],
+    "适":[["合",.9],["记",.1]],
+    "合":[["出",.5],["散",.5]],
+    "出":[["门",.9]],
+    "门":[["散",.7],["。",.3]],
+    "散":[["步",.9]],
+    "步":[["。",.7],["！",.3]],
+    "。":[[EOS,.45],["明",.3],["我",.25]],
+    "！":[[EOS,.45],["明",.35],["真",.2]],
+    "明":[["天",.9]],
+    "天":[["气",.9]],
+    "我":[["们",.45],["想",.25],["去",.3]],
+    "们":[["去",.6],["一",.4]],
+    "一":[["起",.9]],
+    "起":[["去",.8],["走",.2]],
+    "去":[["散",.6],["出",.4]],
+    "走":[["吧",.8],["。",.2]],
+    "吧":[["。",.8],["！",.2]],
+    "想":[["出",.4],["睡",.35],["吃",.25]],
+    "睡":[["觉",.9]],
+    "觉":[["。",.6],["！",.4]],
+    "吃":[["点",.6],["饭",.4]],
+    "饭":[["，",.5],["。",.5]],
+    "什":[["么",.9]],
+    "么":[["呢",.6],["？",.4]],
+    "呢":[["？",.9],[EOS,.1]],
+    "？":[[EOS,.9],["今",.1]],
+    "今":[["天",.9]],
+    "热":[["，",.4],["！",.4],[EOS,.2]],
+    "冷":[["，",.4],["！",.4],[EOS,.2]],
+    "闷":[["，",.6],["！",.4]],
+    "累":[["，",.5],["。",.5]],
+    "错":[["，",.5],["！",.5]],
+    "呀":[["！",.6],["。",.4]],
+    "舒":[["服",.9]],
+    "服":[["，",.5],["！",.3],[EOS,.2]],
+    "记":[["得",.9]],
+    "得":[["带",.6],["喝",.4]],
+    "带":[["伞",.9]],
+    "伞":[["。",.8],["！",.2]],
+    "喝":[["水",.9]],
+    "水":[["。",.8],["！",.2]],
+    "再":[["来",.8],["说",.2]],
+    "来":[["。",.6],["！",.4]],
+    "说":[["。",.6],["！",.4]],
+    "度":[["学",.9]],
+    "学":[["习",.85],["会",.15]],
+    "会":[["。",.6],["！",.4]],
+    "习":[["真",.3],["很",.25],["不",.25],["太",.2]],
+    "太":[["难",.5],["有",.5]],
+    "难":[["，",.6],["！",.4]],
+    "趣":[["，",.5],["！",.5]],
+  };
+  // 最多生成 14 个字就强制收工。原因有二：
+  //   ① 课堂时间可控，一句 14 字足够看清贪心和采样的差别；
+  //   ② toy 表很容易走进环（比如 天气→气真→真好→好，或 天↔气 反复），
+  //      不设上限会一直转下去。真实生成靠 EOS 或 max_new_tokens 限长，道理一样。
+  const MAXLEN = 14;
+
+  // 整个页面的唯一状态。所有控件只改这里，然后调 reset()/step() 重画——不存第二份。
+  const state = {
+    prompt: "今天天气",
+    mode: "sample",
+    T: 0.7, k: 3, p: 0.9, speed: 520,
+    out: [],          // 已生成的字（末尾可能带一个 EOS 占位）
+    step: 0,          // 已走几步 = 已生成几个 token；后面还拿它当随机种子的一部分
+    playing: false,
+    timer: null,
+    lastDist: null,   // 当前步的分布（含处理结果），留给需要回看的逻辑
+  };
+
+  // 简写：省掉一遍遍写 document.getElementById
+  const $ = (id) => document.getElementById(id);
+
+  // ── 第 1 步：拿前文，查出「下一个字的概率表」 ─────────────────────────────
+  // 这就是"语言模型"对外唯一要做的事：输入前文，输出每个候选的分数。
+  // 真模型里这一次是 Transformer 前向；本页只是一次字典查表。
+  function distFor(prev){
+    // 还没生成任何字时，用 prompt 的**最后一个字**去查表。
+    // 因为表是 bigram 的、只看前一个字，所以换 prompt 时真正影响结果的只有末字——
+    // 这一点值得在课上专门点一句，学生常以为整个 prompt 都参与了计算。
+    const key = prev === null ? state.prompt.slice(-1) : prev;
+    let arr = TRANS[key];
+    // 表里没收录的字（句子走进死路时会出现）给个兜底分布，免得界面直接崩。
+    if (!arr) arr = [[EOS,.6],["。",.3],["！",.1]];
+    // 转成对象数组，方便后面往上挂 cut / pk 字段（原表本身不动）。
+    return arr.map(([w,p]) => ({ w, p }));
+  }
+
+  // ── 第 2 步：把分布"整形"成真正用来抽签的概率 ─────────────────────────────
+  // 顺序和工程实现一致：温度 → top-k → top-p → 重新归一化。
+  // 注意全程只改形状，不改"有哪些候选"（候选集合在第 1 步就定死了）。
+  function transform(cands){
+    // 温度：p^(1/T) 归一化（等价于 logits/T 的 softmax）
+    // 直觉：T<1 把大概率放大、小概率压扁 → 更尖 → 输出更保守；
+    //       T>1 把大家拉平 → 长尾也有机会 → 更发散、更容易胡说。
+    // 这里直接对概率取 1/T 次方再归一化，和"logits 除以 T 再 softmax"是同一个结果，
+    // 省掉了先取 log 再 softmax 的往返（数学上等价）。
+    const t = state.T;
+    let items = cands.map(c => ({ w: c.w, p: Math.pow(c.p, 1 / t), cut: false }));
+    // 归一化（保证和为 1）并**按概率从高到低排序**：后面的 top-k / top-p 全靠
+    // "从高到低"这个顺序，提前排好，后面就只剩"从第几个开始切"的问题。
+    const s = items.reduce((a,b)=>a+b.p,0);
+    items.forEach(i => i.p = i.p / s);
+    items.sort((a,b)=>b.p-a.p);
+
+    // top-k：只留概率最高的 k 个；超出的标 cut=true（图上画成灰色条）。
+    // 不直接从数组里删掉，是为了让"被切了哪些"在界面上还看得见——对比才有教学价值。
+    items.forEach((it, i) => { if (i >= state.k) it.cut = true; });
+
+    // top-p：对仍保留的候选从高到低累加，够 P 就截断
+    // 注意判断（cum >= P）放在累加之前：意思是"已经攒够 P 了，从下一个开始切"，
+    // 所以跨过阈值的那一个候选本身是保留的。这也是 top-p 与 top-k 的关键差别：
+    // top-k 切固定个数，top-p 切固定"概率质量"——候选分布很尖时可能只留 1 个，
+    // 很平时会留很多个，留几个是数据自己决定的。
+    let cum = 0;
+    for (const it of items){
+      if (it.cut) continue;
+      if (cum >= state.p) { it.cut = true; continue; }
+      cum += it.p;
+    }
+    // 兜底：万一全被切光（比如 P 调得极小），至少留概率最高的那个，
+    // 否则下一步没有候选可抽，整个生成就断了。
+    if (!items.some(i => !i.cut) && items.length) items[0].cut = false;
+
+    // 归一化保留部分：把留下的候选概率重新缩放成和为 1。
+    // 这一步不能省——被切掉的概率质量必须摊回给幸存者，否则抽签会"抽不满"。
+    // pk 就是 "probability (kept)"，即真正用于抽签的权重；cut 的 pk 记 0。
+    const keptSum = items.filter(i=>!i.cut).reduce((a,b)=>a+b.p,0) || 1;
+    items.forEach(i => { i.pk = i.cut ? 0 : i.p / keptSum; });
+    return items;
+  }
+
+  // ── 第 3 步：在整形后的分布上"选一个" ─────────────────────────────────────
+  // 两种选法就对应两种解码方式；注意 rand 是**一个数**（已经摇好的随机数），
+  // 不是函数——摇随机数这件事交给调用方，这样它才能用固定种子复现。
+  function choose(items, rand){
+    // 贪心 = 每步取 argmax。items 已按概率降序，所以第一个没被切的
+    // 就是概率最大的（可能不是全表最大，比如它正好被 top-p 切掉了）。
+    if (state.mode === "greedy"){
+      return items.find(i => !i.cut) || items[0];
+    }
+    // multinomial over kept
+    // 采样 = 轮盘赌：在 0~1 上随机落一个点，看它落在哪一段累积概率里。
+    // 概率大的候选占的段长，被砸中的机会自然大——这就是"按概率抽签"。
+    let r = rand, acc = 0;
+    for (const it of items){
+      if (it.cut) continue;
+      acc += it.pk;
+      if (r <= acc) return it;
+    }
+    // 浮点误差导致最后差一点点没落进任何一段时的兜底：退回最后一个保留项。
+    return items.filter(i=>!i.cut).pop() || items[0];
+  }
+
+  // ── 界面渲染：把 state 画成屏幕上的东西 ───────────────────────────────────
+  // 下面几个 render* 都是纯展示，不参与任何概率计算，改样式不会影响生成结果。
+  function renderSeq(){
+    const el = $("seq");
+    el.innerHTML = "";
+    // prompt 也拆成单字显示，和生成的字保持一致
+    // （顺便说明一件事：模型的输入单位是 token，这里一个汉字就是一个 token）
+    Array.from(state.prompt).forEach(ch => {
+      const p = document.createElement("span");
+      p.className = "tok prompt"; p.textContent = ch;
+      el.appendChild(p);
+    });
+    state.out.forEach((w, i) => {
+      const s = document.createElement("span");
+      // EOS 显示成 <EOS>：提示它是一个"结束信号"，不是真的标点符号。
+      if (w === EOS){ s.className = "tok eos"; s.textContent = "<EOS>"; }
+      else {
+        // 最后一个字加 new 类做高亮，让学生看清"这一步刚蹦出来的是哪个字"。
+        s.className = "tok" + (i === state.out.length - 1 ? " new" : "");
+        s.textContent = w;
+      }
+      el.appendChild(s);
+    });
+    // 只数真正生成的字，EOS 不算；否则"已生成 N 个字"会比肉眼数出来的多 1。
+    $("nTok").textContent = state.out.filter(w => w !== EOS).length;
+  }
+
+  function renderDist(items, chosen){
+    const box = $("dist");
+    box.innerHTML = "";
+    // 条形长度按"本步最大概率"归一化，而不是按绝对概率。
+    // 否则 top-1 常常 0.9，其他候选只剩一条细线，肉眼根本看不出 0.05 和 0.02 的差别。
+    // 代价是：不同步之间条长不能直接比（每步各归一化各的），课堂上要说一句。
+    const maxP = Math.max(...items.map(i=>i.p), 0.0001);
+    items.forEach(it => {
+      const row = document.createElement("div");
+      row.className = "row " + (it.cut ? "cut" : "kept") + (chosen && chosen.w === it.w ? " chosen" : "");
+      const w = document.createElement("div"); w.className = "w"; w.textContent = it.w === EOS ? "EOS" : it.w;
+      const track = document.createElement("div"); track.className = "track";
+      const fill = document.createElement("div"); fill.className = "fill";
+      // 至少给 2% 宽度：概率极小的候选也要留一条看得见的细线，否则学生会以为它不存在。
+      fill.style.width = Math.max(2, (it.p / maxP) * 100) + "%";
+      track.appendChild(fill);
+      const p = document.createElement("div"); p.className = "p"; p.textContent = it.p.toFixed(3);
+      row.appendChild(w); row.appendChild(track); row.appendChild(p);
+      if (it.cut){
+        const tg = document.createElement("span"); tg.className = "tag"; tg.textContent = "被截断";
+        row.appendChild(tg);
+      } else if (chosen && chosen.w === it.w){
+        const tg = document.createElement("span"); tg.className = "tag"; tg.textContent = "← 选中";
+        row.appendChild(tg);
+      }
+      box.appendChild(row);
+    });
+    $("nCand").textContent = items.length;
+    $("nKeep").textContent = items.filter(i=>!i.cut).length;
+    // 这里显示的是**原始概率 p**（不是重归一化后的 pk），所以"选中概率"显示 30%
+    // 是完全正常的：那是它在原分布里的真实概率，不是它被选中的机会。
+    $("pSel").textContent = chosen ? (chosen.p * 100).toFixed(1) + "%" : "—";
+  }
+
+  function renderCum(items){
+    const box = $("cum"), cm = $("cutmark");
+    box.innerHTML = ""; cm.innerHTML = "";
+    // 从深到浅的一串蓝色：排名越靠前颜色越深，让"高概率在前"这件事一眼可见。
+    // 候选比颜色多时，超出部分统一用最后那个最浅的颜色。
+    const colors = ["#1E3A5F","#2E86AB","#4FA3C4","#7FB6CC","#A8CBE0","#C7DCE8","#DCE9F0","#EDF3F6"];
+    let acc = 0;
+    items.forEach((it, i) => {
+      const d = document.createElement("div");
+      d.className = "seg2";
+      // 每段宽度 = 该候选的概率，所以整条累积条的总长恰好是 1.0（=100%）。
+      // 这就是 top-p 里那个"累积概率"的可视化本体。
+      d.style.width = (it.p * 100) + "%";
+      d.style.background = colors[Math.min(i, colors.length-1)];
+      d.title = (it.w === EOS ? "EOS" : it.w) + " " + it.p.toFixed(3);
+      // 太窄的段塞不下字就不写字（纯视觉判断，不是逻辑分支）；
+      // 想看具体数值可以悬停，title 里有完整概率。
+      if (it.p > 0.09) d.textContent = it.w === EOS ? "EOS" : it.w;
+      acc += it.p;
+      box.appendChild(d);
+    });
+    // 截断位置（靠右时改为右对齐，避免文字出框）
+    // 竖线标出 P 的位置：线左边的候选被保留，右边的被切掉——这就是 top-p 的全部动作。
+    const pos = state.p * 100;
+    const line = document.createElement("div"); line.className = "line"; line.style.left = pos + "%";
+    const lab = document.createElement("div"); lab.className = "lab"; lab.style.left = pos + "%";
+    if (pos > 80) lab.style.transform = "translateX(-100%)";
+    lab.textContent = "P = " + state.p.toFixed(2);
+    cm.appendChild(line); cm.appendChild(lab);
+    const kept = items.filter(i=>!i.cut);
+    $("cumTip").textContent = "保留 " + kept.length + " 个候选，累积概率 " + Math.min(1, acc).toFixed(2) + "（≥ P 即停）";
+  }
+
+  // 一个极简的确定性伪随机数生成器（线性同余 / LCG，Numerical Recipes 的经典常数）。
+  // 为什么不直接用 Math.random()？因为课堂上要说"刚才那个例子再来一遍"：
+  // 只要种子相同，生成的随机序列就完全相同，播放和单步、重放和第一次都能对上。
+  // 用真随机的话，同一个参数每次跑出来都不一样，讲着讲着就对不上了。
+  // （它只用于演示抽签，不是密码学安全的随机数。）
+  function randFor(seed){
+    let x = seed >>> 0;
+    return function(){ x = (x * 1664525 + 1013904223) >>> 0; return x / 4294967296; };
+  }
+
+  // 把"生成一整句"打包成一个函数：内部就是那条主循环（查表 → 整形 → 抽签 → 拼回），
+  // 只是不动界面。"同一设置跑 5 次"要连跑 5 遍，用这个最省事。
+  function generateOnce(maxLen, rand, greedy){
+    const out = [];
+    let prev = null;   // null 表示"还没有前文"，第一步用 prompt 末字查表
+    for (let i = 0; i < maxLen; i++){
+      const cands = distFor(prev);
+      const items = transform(cands);
+      let pick;
+      if (greedy){
+        // 贪心：直接取保留项里概率最大的。没有任何随机成分，
+        // 所以 5 次跑出来必然一模一样——这正是"确定性"要展示的东西。
+        pick = items.filter(x=>!x.cut).reduce((a,b)=>a.p>=b.p?a:b);
+      } else {
+        // 采样：轮盘赌抽一个（逻辑和 choose 里一样，这里为了不传 state 复制了一份）
+        let r = rand(), acc = 0; pick = null;
+        for (const it of items){
+          if (it.cut) continue;
+          acc += it.pk;
+          if (r <= acc){ pick = it; break; }
+        }
+        if (!pick) pick = items.filter(x=>!x.cut).pop() || items[0];
+      }
+      // 抽到 EOS 就收工。注意 EOS 不放进结果串里，因为它不是"生成的内容"。
+      if (pick.w === EOS) break;
+      out.push(pick.w);
+      // 把这一步选中的字当前文，下一轮接着算——自回归就是靠这一行闭环的。
+      prev = pick.w;
+    }
+    return out;
+  }
+
+  function renderRuns(){
+    const box = $("runs");
+    box.innerHTML = "";
+    // 5 个不同但**固定**的种子各跑一遍：种子不同 → 抽签路径不同 → 句子不同。
+    // 乘 7919（质数）只是为了让 1~5 这五个小种子在 LCG 里散得开一点。
+    for (let s = 1; s <= 5; s++){
+      const g = generateOnce(12, randFor(s * 7919), state.mode === "greedy");
+      const row = document.createElement("div");
+      // 贪心模式下 5 行内容必然相同，加 same 类把字变灰——视觉上直接告诉学生
+      // "这 5 次没有区别"，比只用嘴说要直观。
+      row.className = "run" + (state.mode === "greedy" ? " same" : "");
+      const no = document.createElement("div"); no.className = "no"; no.textContent = "#" + s;
+      const txt = document.createElement("div"); txt.className = "txt";
+      // 一句都没生成（第一步就抽到 EOS）时给个说明，避免显示成空白行。
+      txt.textContent = state.prompt + " " + (g.join("") || "（直接 EOS）");
+      row.appendChild(no); row.appendChild(txt);
+      box.appendChild(row);
+    }
+  }
+
+  // ★ 单步 = 语言模型的一整轮循环：查表 → 整形 → 抽签 → 拼回。
+  //   返回 true 表示还能继续，false 表示该停了（抽到 EOS 或到 MAXLEN），
+  //   播放中的定时器就是靠这个返回值判断要不要自己停。
+  function step(){
+    if (state.step >= MAXLEN) return false;
+    // 前文 = 刚生成的那个字；第一个字时用 null（交给 distFor 去取 prompt 末字）
+    const prev = state.out.length ? state.out[state.out.length - 1] : null;
+    const items = transform(distFor(prev));
+    // 用当前步序号 + 步数做种子，保证「播放」和「单步」结果一致
+    // （如果这里用 Math.random()，暂停后接着单步就会走出一条和播放时不同的句子，
+    //   老师没法把刚才那个例子复现出来。）
+    const rand = randFor(0x9e3779b9 ^ (state.step * 2654435761));
+    const pick = choose(items, rand());
+    state.step += 1;
+    // 把这一步的分布和选择结果存下来，后面要用（也方便课堂上回看）
+    state.lastDist = { items, pick };
+    // 抽到 EOS：仍然把 EOS 记进输出（界面上显示成 <EOS>，让学生看见"模型决定停了"），
+    // 然后立刻停表，不再往后续。
+    if (pick.w === EOS){
+      state.out.push(EOS);
+      renderSeq(); renderDist(items, pick); renderCum(items);
+      $("stepNo").textContent = state.step;
+      stop();
+      return false;
+    }
+    state.out.push(pick.w);
+    renderSeq(); renderDist(items, pick); renderCum(items);
+    $("stepNo").textContent = state.step;
+    if (state.step >= MAXLEN) stop();
+    return true;
+  }
+
+  // 重置：回到"一个字都还没生成"的状态。
+  // 注意这里会重新画一遍**初始分布**——用的是 prompt 末字查出来的表，
+  // 所以学生调温度 / top-k 滑块时，右上那张候选分布会立刻跟着变，能直接看到整形效果。
+  function reset(){
+    stop();
+    state.step = 0; state.out = []; state.lastDist = null;
+    renderSeq();
+    const items = transform(distFor(null));
+    renderDist(items, null); renderCum(items);
+    $("stepNo").textContent = 0;
+    renderRuns();
+    renderTempCharts();
+  }
+
+  // 播放 / 暂停。用 setInterval 每隔 speed 毫秒调一次 step，
+  // 做出"一个字一个字蹦出来"的效果；一旦 step 返回 false（EOS 或到上限）就自动停。
+  function play(){
+    if (state.playing){ stop(); return; }
+    // 上一句已经结束了（末尾是 EOS）就先清空重来，否则点了播放会一动不动。
+    if (state.out.length && state.out[state.out.length - 1] === EOS) reset();
+    state.playing = true;
+    $("play").textContent = "⏸ 暂停";
+    $("play").classList.remove("primary");
+    state.timer = setInterval(() => { if (!step()) stop(); }, state.speed);
+  }
+  function stop(){
+    state.playing = false;
+    clearInterval(state.timer); state.timer = null;
+    $("play").textContent = "▶ 播放";
+    $("play").classList.add("primary");
+  }
+
+  // ---------- 温度三联图 ----------
+  // 同一组原始概率，分别在 T=0.4 / 0.7 / 1.2 下的形状对比。
+  // 关键：这里**只做温度**，故意不加 top-k / top-p，把"温度单独的作用"讲干净。
+  function renderTempCharts(){
+    const box = $("tempCharts");
+    box.innerHTML = "";
+    [0.4, 0.7, 1.2].forEach(T => {
+      // 固定用 prompt 末字那一行做底，保证三张图用的是**同一个** logits/概率，
+      // 这样三条形状的差异才能全部归因到温度上。
+      const base = TRANS[state.prompt.slice(-1)] || [[EOS,.6],["。",.3],["！",.1]];
+      let items = base.map(([w, p]) => ({ w, p: Math.pow(p, 1 / T) }));
+      // 和 transform 里同一条公式：p^(1/T) 后重新归一化成和为 1。
+      const s = items.reduce((a, b) => a + b.p, 0);
+      items.forEach(i => i.p = i.p / s);
+      items.sort((a, b) => b.p - a.p);
+      const m = document.createElement("div"); m.className = "m";
+      const t = document.createElement("div"); t.className = "t"; t.textContent = "T = " + T.toFixed(1);
+      m.appendChild(t);
+      // 只画前 5 个：一张小卡片放不下更多，前 5 个也已经能看出尖/平的区别。
+      // 条形宽度用各自归一化后的 p（三张图各自满 100%），所以能横向比"谁更尖"。
+      items.slice(0, 5).forEach(it => {
+        const row = document.createElement("div"); row.className = "row2";
+        const l = document.createElement("div"); l.className = "l"; l.textContent = it.w;
+        const tr = document.createElement("div"); tr.className = "tr";
+        const fi = document.createElement("div"); fi.className = "fi"; fi.style.width = (it.p * 100) + "%";
+        tr.appendChild(fi);
+        const p = document.createElement("div"); p.className = "p"; p.textContent = (it.p * 100).toFixed(0) + "%";
+        row.appendChild(l); row.appendChild(tr); row.appendChild(p);
+        m.appendChild(row);
+      });
+      box.appendChild(m);
+    });
+  }
+
+  // ---------- Beam ----------
+  // ★ 束搜索：每一步同时保留得分最高的 k 条**半成品句子**（不是 k 个候选字）。
+  //   和贪心/采样的本质差别：贪心一旦选错就再也回不来，束搜索会把几条路一起带着走，
+  //   最后比总分挑最好的那条。
+  //   分数用**对数概率相加**，等于连乘概率再取 log：
+  //     - 连乘十几个小于 1 的数会迅速变成 1e-20 这种下溢值，取 log 后变成负数相加，
+  //       数值稳定得多；
+  //     - 而且 log 是单调的，比大小和比连乘完全等价。
+  function beamSearch(k, maxLen){
+    // 返回 [{tokens, score, done}]
+    // 初始只有一条空路径，分数 0（log(1) = 0）。
+    let beams = [{ tokens: [], score: 0, done: false, prev: null }];
+    const res = [];
+    for (let step = 0; step < maxLen; step++){
+      const cands = [];
+      for (const b of beams){
+        // 已经走到 EOS 的路径不再扩展，直接进结果池；
+        // 否则它会被继续"续写"下去，等于让模型说完 EOS 还硬接着说。
+        if (b.done){ res.push(b); continue; }
+        const items = transform(distFor(b.prev));
+        items.filter(i=>!i.cut).forEach(it => {
+          // 新路径分数 = 老路径分数 + log(这一步的概率)。
+          // 用 pk（重归一化后的概率）而不是 p，跟采样时的口径保持一致。
+          // Math.max(..., 1e-9) 是防 log(0) 变成 -Infinity 把整条路径搞坏。
+          const sc = b.score + Math.log(Math.max(it.pk, 1e-9));
+          // 抽到 EOS：这条路径到头了，记成一个完成态；EOS 本身不拼进 tokens。
+          if (it.w === EOS) res.push({ tokens: b.tokens, score: sc, done: true });
+          else cands.push({ tokens: b.tokens.concat(it.w), score: sc, done: false, prev: it.w });
+        });
+      }
+      // 所有路径的所有扩展一起排序，只留前 k 条——这就是"束"：
+      // 宽度固定为 k，所以计算量正好是贪心的 k 倍。
+      cands.sort((a,b)=>b.score-a.score);
+      beams = cands.slice(0, k);
+      if (!beams.length) break;   // 全灭（很少见），提前收工免得空转
+    }
+    // 跑满 maxLen 还没结束的路径也算结果（相当于被长度截断的答案）
+    beams.forEach(b => res.push(b));
+    // 完成的、被截断的混在一起按总分排序，取前 k 展示。
+    // 注意这里没有做长度归一化：log 概率是负数，所以这条比较天然偏向短句
+    // （长句要累加更多负项）——这也是束搜索输出常偏"平庸且短"的原因之一。
+    res.sort((a,b)=>b.score-a.score);
+    return res.slice(0, k);
+  }
+
+  function renderBeam(){
+    const box = $("beam");
+    box.innerHTML = "";
+    // k=2、最多看 7 步：够演示"两条路怎么比"，又不会让图太长。
+    const rs = beamSearch(2, 7);
+    rs.forEach((b, i) => {
+      const row = document.createElement("div");
+      // 第一名加 best 类（绿框），和"最优路径"的文字说明对应上。
+      row.className = "brow" + (i === 0 ? " best" : "");
+      const s = document.createElement("div"); s.className = "s"; s.textContent = "path " + (i+1);
+      const t = document.createElement("div"); t.className = "t";
+      // done 的路径补一个 <EOS>，说明它是自然结束的；没结束的用 … 标出"被 7 步截断了"。
+      t.textContent = (state.prompt + " " + b.tokens.join("")).trim() + (b.done ? " <EOS>" : " …");
+      const sc = document.createElement("div"); sc.className = "sc"; sc.textContent = "logp " + b.score.toFixed(2);
+      row.appendChild(s); row.appendChild(t); row.appendChild(sc);
+      box.appendChild(row);
+    });
+    const tip = document.createElement("div");
+    tip.className = "tip"; tip.style.marginTop = "8px";
+    tip.textContent = "两条路径按累积对数概率比较，绿色为最优；k 越大越稳，但计算量 ×k。";
+    box.appendChild(tip);
+  }
+
+  // ---------- 绑定 ----------
+  $("prompt").addEventListener("change", e => { state.prompt = e.target.value; reset(); });
+  document.querySelectorAll("#segMode button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("#segMode button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      state.mode = b.dataset.mode;
+      $("modeHint").textContent = state.mode === "greedy" ? "（每步取概率最大的词，结果完全确定）" : "（按概率抽签，参数见上方）";
+      reset();
+    });
+  });
+  $("temp").addEventListener("input", e => { state.T = +e.target.value; $("tempV").textContent = state.T.toFixed(1); reset(); });
+  $("topk").addEventListener("input", e => { state.k = +e.target.value; $("topkV").textContent = state.k; reset(); });
+  $("topp").addEventListener("input", e => { state.p = +e.target.value; $("toppV").textContent = state.p.toFixed(2); reset(); });
+  $("speed").addEventListener("input", e => { state.speed = +e.target.value; $("speedV").textContent = state.speed + "ms"; if (state.playing){ stop(); play(); } });
+  $("play").addEventListener("click", play);
+  $("stepBtn").addEventListener("click", () => { if (state.step >= MAXLEN || (state.out.length && state.out[state.out.length-1] === EOS)) reset(); step(); });
+  $("reset").addEventListener("click", reset);
+  $("beamBtn").addEventListener("click", renderBeam);
+
+  $("modeHint").textContent = "（按概率抽签，参数见上方）";
+  reset();
+})();
+</script>
+</body>
+</html>

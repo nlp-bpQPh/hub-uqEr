@@ -1,0 +1,40 @@
+{"instruction":"什么是过拟合？","response":"过拟合是模型在训练集上表现好，在新数据上表现差。可以用验证集、正则化和早停缓解。"}
+{"instruction":"如何判断过拟合？","response":"训练损失持续下降而验证损失上升，通常说明模型开始过拟合。"}
+{"instruction":"怎样缓解过拟合？","response":"可以增加数据、使用正则化和 Dropout，并根据验证集表现早停。"}
+{"instruction":"训练集有什么作用？","response":"训练集用于计算损失和梯度，模型通过它更新参数。"}
+{"instruction":"验证集有什么作用？","response":"验证集用于选择超参数和模型检查点，不能参与参数更新。"}
+{"instruction":"测试集有什么作用？","response":"测试集用于最终评估泛化能力，不应该反复用来调参。"}
+{"instruction":"交叉熵有什么作用？","response":"它衡量真实标签与预测分布的差异，是分类和语言模型常用的损失。"}
+{"instruction":"为什么交叉熵前不用 Softmax？","response":"CrossEntropyLoss 内部已经包含 LogSoftmax，提前做 Softmax 会重复计算。"}
+{"instruction":"什么是准确率？","response":"准确率是预测正确的样本数占总样本数的比例。"}
+{"instruction":"类别不均衡时能只看准确率吗？","response":"不能。还应查看精确率、召回率、宏平均 F1 和混淆矩阵。"}
+{"instruction":"什么是精确率？","response":"精确率表示预测为某类的样本中，真正属于该类的比例。"}
+{"instruction":"什么是召回率？","response":"召回率表示某类真实样本中，被模型成功找出的比例。"}
+{"instruction":"什么是因果掩码？","response":"它遮住未来位置，让当前位置只能关注自己和之前的内容。"}
+{"instruction":"因果掩码为什么重要？","response":"它防止训练时偷看下一个 token，使训练与自回归生成的可见范围一致。"}
+{"instruction":"掩码为什么填负无穷？","response":"Softmax 会对负无穷计算得到接近零的权重，从而屏蔽未来位置。"}
+{"instruction":"注意力中的 QKV 是什么？","response":"Q 表示查询，K 表示键，V 表示值。注意力用 Q 和 K 计算权重，再加权求和 V。"}
+{"instruction":"为什么注意力要除以根号维度？","response":"除以根号维度可以控制点积尺度，避免 Softmax 过早饱和。"}
+{"instruction":"位置编码有什么作用？","response":"自注意力本身不含顺序信息，位置编码让模型知道 token 的位置。"}
+{"instruction":"什么是下一 token 预测？","response":"模型根据当前及之前的 token，预测下一个 token 的词表分布。"}
+{"instruction":"一条序列为什么能训练多个位置？","response":"输入与目标错开一位后，序列每个有效位置都对应一次下一 token 预测。"}
+{"instruction":"什么是 SFT？","response":"SFT 是监督微调，使用指令和回答样本继续训练已有语言模型。"}
+{"instruction":"SFT 主要改变什么？","response":"SFT 主要让模型学习回答格式、对话行为和停止方式，而不是重新学习全部知识。"}
+{"instruction":"SFT 为什么要加载预训练权重？","response":"预训练权重已有语言能力，微调只需在此基础上学习指令遵循。"}
+{"instruction":"SFT 中的 Loss Mask 是什么？","response":"Loss Mask 把问题和 PAD 的标签设为负一百，只计算回答和 EOS 的损失。"}
+{"instruction":"为什么问题部分不计算损失？","response":"作业目标是学习如何回答，而不是把用户问题也当作需要生成的内容。"}
+{"instruction":"PAD 为什么不计算损失？","response":"PAD 只是对齐批内序列长度的填充符，不是真实文本，不应产生梯度。"}
+{"instruction":"EOS 在 SFT 中有什么作用？","response":"模型学习在回答结束处生成 EOS，推理时遇到它就停止。"}
+{"instruction":"为什么训练和推理要用同一模板？","response":"特殊标记和顺序是模型学到的对话协议，模板不一致会破坏输入分布。"}
+{"instruction":"什么是灾难性遗忘？","response":"微调过强可能破坏预训练已有能力，可以用更小学习率和更少轮次缓解。"}
+{"instruction":"验证损失下降就说明回答更好吗？","response":"不一定。还要检查生成样例的格式、内容、是否复读和是否正确停止。"}
+{"instruction":"什么是温度采样？","response":"温度调整 logits 的分布形状，低温更确定，高温更随机。"}
+{"instruction":"什么是 Top K 采样？","response":"Top K 只在概率最高的 K 个候选 token 中重新归一化并采样。"}
+{"instruction":"语言模型中的 PPL 是什么？","response":"PPL 是平均交叉熵的指数，越低通常表示模型对目标文本预测越好。"}
+{"instruction":"为什么 SFT 的 PPL 只统计回答 token？","response":"问题和 PAD 被 Loss Mask 排除，分母也必须只包含有效回答 token。"}
+{"instruction":"全为负一百的样本会怎样？","response":"它没有有效训练目标，可能导致损失无效，构造数据时必须避免。"}
+{"instruction":"预训练和 SFT 的数据有什么不同？","response":"预训练常用连续文本，SFT 使用带指令、回答和结束标记的完整样本。"}
+{"instruction":"SFT 能可靠注入大量新知识吗？","response":"不能。SFT 更适合学习行为和格式，知识主要依赖预训练或外部检索。"}
+{"instruction":"为什么要划分 SFT 验证集？","response":"验证集用于观察模型对未参与训练问答的拟合情况，并选择检查点。"}
+{"instruction":"小数据 SFT 能证明通用能力吗？","response":"不能。小数据实验只能验证训练流程，通用能力需要更大模型和系统评测。"}
+{"instruction":"生成时为什么要限制最大长度？","response":"最大长度是安全措施，防止模型没有生成 EOS 时无限循环。"}

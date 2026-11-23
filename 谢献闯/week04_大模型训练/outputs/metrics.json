@@ -1,0 +1,149 @@
+{
+  "split": "test",
+  "n_samples": 5994,
+  "accuracy": 0.995996,
+  "macro_f1": 0.995997,
+  "weighted_f1": 0.995996,
+  "macro_precision": 0.996009,
+  "macro_recall": 0.995996,
+  "loss": 0.023266,
+  "per_language": {
+    "zho": {
+      "name_zh": "中文",
+      "precision": 1.0,
+      "recall": 0.996,
+      "f1": 0.998,
+      "support": 500
+    },
+    "eng": {
+      "name_zh": "英语",
+      "precision": 0.9861,
+      "recall": 0.994,
+      "f1": 0.99,
+      "support": 500
+    },
+    "jpn": {
+      "name_zh": "日语",
+      "precision": 0.994,
+      "recall": 0.996,
+      "f1": 0.995,
+      "support": 500
+    },
+    "kor": {
+      "name_zh": "韩语",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 500
+    },
+    "fra": {
+      "name_zh": "法语",
+      "precision": 0.996,
+      "recall": 1.0,
+      "f1": 0.998,
+      "support": 497
+    },
+    "deu": {
+      "name_zh": "德语",
+      "precision": 0.996,
+      "recall": 0.992,
+      "f1": 0.994,
+      "support": 500
+    },
+    "spa": {
+      "name_zh": "西班牙语",
+      "precision": 0.998,
+      "recall": 0.988,
+      "f1": 0.993,
+      "support": 499
+    },
+    "rus": {
+      "name_zh": "俄语",
+      "precision": 0.996,
+      "recall": 1.0,
+      "f1": 0.998,
+      "support": 500
+    },
+    "ara": {
+      "name_zh": "阿拉伯语",
+      "precision": 1.0,
+      "recall": 0.996,
+      "f1": 0.998,
+      "support": 499
+    },
+    "por": {
+      "name_zh": "葡萄牙语",
+      "precision": 0.994,
+      "recall": 0.994,
+      "f1": 0.994,
+      "support": 499
+    },
+    "ita": {
+      "name_zh": "意大利语",
+      "precision": 0.994,
+      "recall": 0.998,
+      "f1": 0.996,
+      "support": 500
+    },
+    "tur": {
+      "name_zh": "土耳其语",
+      "precision": 0.998,
+      "recall": 0.998,
+      "f1": 0.998,
+      "support": 500
+    }
+  },
+  "confusion_pairs": [
+    {
+      "true": "zho",
+      "pred": "eng",
+      "count": 2
+    },
+    {
+      "true": "eng",
+      "pred": "ita",
+      "count": 2
+    },
+    {
+      "true": "spa",
+      "pred": "jpn",
+      "count": 2
+    },
+    {
+      "true": "por",
+      "pred": "deu",
+      "count": 2
+    },
+    {
+      "true": "eng",
+      "pred": "tur",
+      "count": 1
+    },
+    {
+      "true": "jpn",
+      "pred": "eng",
+      "count": 1
+    },
+    {
+      "true": "jpn",
+      "pred": "rus",
+      "count": 1
+    },
+    {
+      "true": "deu",
+      "pred": "eng",
+      "count": 1
+    },
+    {
+      "true": "deu",
+      "pred": "fra",
+      "count": 1
+    },
+    {
+      "true": "deu",
+      "pred": "rus",
+      "count": 1
+    }
+  ],
+  "n_errors": 24
+}

@@ -1,0 +1,35 @@
+{
+  "mode": "full",
+  "train_n": 3000,
+  "val_n": 200,
+  "dropped": 0,
+  "epochs": 3,
+  "lr": 2e-05,
+  "batch_size": 4,
+  "grad_accum": 4,
+  "grad_ckpt": true,
+  "max_len": 256,
+  "trainable": 494032768,
+  "total": 494032768,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.326,
+      "val_loss": 1.0887
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.8371,
+      "val_loss": 1.0706
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.7135,
+      "val_loss": 1.0906
+    }
+  ],
+  "best_epoch": 2,
+  "best_val_loss": 1.0706,
+  "train_s": 307.0,
+  "device": "cuda"
+}

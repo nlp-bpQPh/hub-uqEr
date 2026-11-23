@@ -1,1 +1,10 @@
-侯博渊/week06/experiments_thucnews/outputs/*.pt
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+.env.local
+.DS_Store
+.env.bak.*
+*.tar.gz
+*.log
+.vscode/

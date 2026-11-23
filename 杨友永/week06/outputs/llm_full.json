@@ -1,0 +1,35 @@
+{
+  "run_id": "llm_full",
+  "family": "llm",
+  "config": {
+    "mode": "full",
+    "lr": 2e-05,
+    "epochs": 1,
+    "batch_size": 4,
+    "max_len": 128,
+    "weight_decay": 0.0,
+    "warmup_ratio": 0.03,
+    "max_grad_norm": 1.0,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "seed": 42,
+    "eval_batch_size": 32,
+    "limit": null
+  },
+  "loss": "sft-ce",
+  "params": 596049920,
+  "trainable": 596049920,
+  "best_epoch": 1,
+  "best_macro_f1": 0.8393,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.0782,
+      "acc": 0.8781,
+      "macro_f1": 0.8393,
+      "weighted_f1": 0.8486
+    }
+  ],
+  "train_s": 706.9,
+  "device": "cuda (NVIDIA GeForce RTX 4090) · torch.bfloat16 autocast"
+}

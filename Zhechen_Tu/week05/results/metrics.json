@@ -1,0 +1,33 @@
+{
+  "base_sha256": "8410fd04d261b0e40cb7291a98f4302a460f1a4c9172b4d6a269ceed143f015d",
+  "device": "mps",
+  "seed": 20261112,
+  "epochs": 36,
+  "best_epoch": 30,
+  "best_val_nll": 6.766856254327038e-05,
+  "initial_val_nll": 3.3288892256345783,
+  "train_count": 1701,
+  "val_count": 243,
+  "base": {
+    "correct": 0,
+    "count": 243,
+    "by_task_correct": {
+      "mood": 0,
+      "place": 0,
+      "time": 0
+    },
+    "exact_match": 0.0,
+    "response_nll": 3.330576461850455
+  },
+  "sft": {
+    "correct": 243,
+    "count": 243,
+    "by_task_correct": {
+      "mood": 81,
+      "place": 81,
+      "time": 81
+    },
+    "exact_match": 1.0,
+    "response_nll": 5.059456274313032e-05
+  }
+}

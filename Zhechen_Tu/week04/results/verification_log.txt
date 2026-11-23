@@ -1,0 +1,5 @@
+PASS: source hash, train-only vocabulary, contiguous disjoint offsets, shifted targets.
+PASS: changing future input leaves earlier logits unchanged (causal mask).
+PASS: CPU-reloaded test NLL=1.855954, PPL=6.397799; every test target counted once; beats bigram baseline.
+PASS: seeded generation reproducible; correct length; empty/unknown prompt rejected.
+ALL CHECKS PASSED
