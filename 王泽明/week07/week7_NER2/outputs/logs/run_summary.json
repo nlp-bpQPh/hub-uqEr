@@ -1,0 +1,92 @@
+{
+  "note": "2026-11-23 chinese-roberta-wwm-ext 重训：5 个实验分 3 组（main / pipeline / ablation）执行，本表为合并汇总；total_s 为 5 条 elapsed_s 之和。pipeline 的耗时取子进程自报的 total_elapsed_s（训练+评测），其余为 run_experiments 墙钟耗时。",
+  "total_s": 12357.2,
+  "results": [
+    {
+      "name": "roberta_linear_256",
+      "group": "main",
+      "desc": "RoBERTa(12层)+Linear，max_len=256，3 epoch",
+      "cmd": [
+        "F:\\software\\Anaconda\\python.exe",
+        "bert/train.py",
+        "--decoder",
+        "linear",
+        "--max_len",
+        "256",
+        "--epochs",
+        "3",
+        "--run_name",
+        "roberta_linear_256"
+      ],
+      "status": "ok",
+      "elapsed_s": 517.7,
+      "log": "outputs\\logs\\run_roberta_linear_256.log"
+    },
+    {
+      "name": "roberta_crf_256",
+      "group": "main",
+      "desc": "RoBERTa(12层)+CRF，max_len=256，3 epoch（主线最佳）",
+      "cmd": [
+        "F:\\software\\Anaconda\\python.exe",
+        "bert/train.py",
+        "--decoder",
+        "crf",
+        "--max_len",
+        "256",
+        "--epochs",
+        "3",
+        "--run_name",
+        "roberta_crf_256"
+      ],
+      "status": "ok",
+      "elapsed_s": 1537.3,
+      "log": "outputs\\logs\\run_roberta_crf_256.log"
+    },
+    {
+      "name": "pipeline",
+      "group": "pipeline",
+      "desc": "两段式：检测器 + 13分类 + 13个类型条件论元专家",
+      "cmd": [
+        "F:\\software\\Anaconda\\python.exe",
+        "bert_pipeline/train.py",
+        "--arg_layers",
+        "0"
+      ],
+      "status": "ok",
+      "elapsed_s": 10008.5,
+      "log": "outputs\\logs\\run_pipeline.log"
+    },
+    {
+      "name": "roberta_linear_128",
+      "group": "ablation",
+      "desc": "消融：max_len=128（截断更多，看截断代价）",
+      "cmd": [
+        "F:\\software\\Anaconda\\python.exe",
+        "bert/train.py",
+        "--decoder",
+        "linear",
+        "--max_len",
+        "128",
+        "--epochs",
+        "3",
+        "--run_name",
+        "roberta_linear_128"
+      ],
+      "status": "ok",
+      "elapsed_s": 275.8,
+      "log": "outputs\\logs\\run_roberta_linear_128.log"
+    },
+    {
+      "name": "roberta_crf_256_hard",
+      "group": "ablation",
+      "desc": "消融：CRF 硬约束（解码期，复用 roberta_crf_256 权重）",
+      "cmd": [
+        "F:\\software\\Anaconda\\python.exe",
+        "bert/evaluate_hard_constraint.py"
+      ],
+      "status": "ok",
+      "elapsed_s": 17.9,
+      "log": "outputs\\logs\\run_roberta_crf_256_hard.log"
+    }
+  ]
+}

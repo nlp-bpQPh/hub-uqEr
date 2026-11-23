@@ -1,0 +1,5 @@
+﻿method,trigger_f1,argument_f1,event_f1,n_samples
+api_zero_n200,0.8212,0.6249,0.1008,200
+api_few_n200,0.8283,0.6599,0.101,200
+local_zero_n60,0.0303,0.0155,0.0,60
+sft_lora_n200,0.88,0.6367,0.12,200
