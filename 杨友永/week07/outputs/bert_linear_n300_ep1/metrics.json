@@ -1,0 +1,98 @@
+{
+  "run_id": "bert_linear_n300_ep1",
+  "model": "bert-base-chinese + linear",
+  "head": "linear",
+  "train_n": 300,
+  "val_n": 100,
+  "test_n": 100,
+  "epochs": 1,
+  "batch_size": 32,
+  "lr": 3e-05,
+  "head_lr_mult": 5.0,
+  "max_len": 128,
+  "params_m": 102.3,
+  "best_epoch": 1,
+  "best_val_f1": 0.0,
+  "train_seconds": 3.0,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.9382913380861282,
+      "val": {
+        "micro": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 142,
+          "token_acc": 0.9060004563084645
+        },
+        "per_type": {
+          "LOC": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 83
+          },
+          "ORG": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 34
+          },
+          "PER": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 25
+          }
+        }
+      },
+      "sec": 2.4
+    }
+  ],
+  "test": {
+    "micro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 134,
+      "token_acc": 0.9129774305555556
+    },
+    "per_type": {
+      "LOC": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 61
+      },
+      "ORG": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 38
+      },
+      "PER": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 35
+      }
+    }
+  }
+}
