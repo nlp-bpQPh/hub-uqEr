@@ -1,0 +1,8 @@
+硬约束已装载：禁止 153 个非法转移对、9 个非法起始标签
+硬约束解码后非法统计：非法开头 30 处 / 非法转移 2 处（含非法序列 32 句）
+样本数 353（缺预测 0 条）
+  trigger      P=0.0000 R=0.0000 F1=0.0000 (tp=0 fp=353 fn=353)
+  event_exact  P=0.0000 R=0.0000 F1=0.0000 (tp=0 fp=353 fn=353)
+  type_macro_f1 = 0.0919
+  n200 子集：trigger F1=0.0000 event F1=0.0000 → bert_crf_256_hard_mock_n200.json
+  指标已写入 → G:\workspace\information\ai\code7\outputs\metrics\disc\bert_crf_256_hard_mock.json

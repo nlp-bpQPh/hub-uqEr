@@ -1,0 +1,143 @@
+{
+  "num_samples": 353,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.6797,
+    "recall": 0.5892,
+    "f1": 0.6313,
+    "tp": 208,
+    "fp": 98,
+    "fn": 145
+  },
+  "event_exact": {
+    "precision": 0.6797,
+    "recall": 0.5892,
+    "f1": 0.6313,
+    "tp": 208,
+    "fp": 98,
+    "fn": 145
+  },
+  "per_type": {
+    "DDoS攻击": {
+      "precision": 0.9444,
+      "recall": 0.8947,
+      "f1": 0.9189,
+      "tp": 17,
+      "fp": 1,
+      "fn": 2
+    },
+    "供应链攻击": {
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "tp": 4,
+      "fp": 0,
+      "fn": 2
+    },
+    "勒索赎金": {
+      "precision": 1.0,
+      "recall": 0.5926,
+      "f1": 0.7442,
+      "tp": 16,
+      "fp": 0,
+      "fn": 11
+    },
+    "恶意软件": {
+      "precision": 0.9494,
+      "recall": 0.9375,
+      "f1": 0.9434,
+      "tp": 75,
+      "fp": 4,
+      "fn": 5
+    },
+    "数据泄露": {
+      "precision": 0.9242,
+      "recall": 0.9385,
+      "f1": 0.9313,
+      "tp": 61,
+      "fp": 5,
+      "fn": 4
+    },
+    "漏洞发现": {
+      "precision": 0.8718,
+      "recall": 0.7556,
+      "f1": 0.8095,
+      "tp": 34,
+      "fp": 5,
+      "fn": 11
+    },
+    "漏洞影响": {
+      "precision": 0.8333,
+      "recall": 0.3226,
+      "f1": 0.4651,
+      "tp": 10,
+      "fp": 2,
+      "fn": 21
+    },
+    "漏洞补丁": {
+      "precision": 0.9231,
+      "recall": 0.7742,
+      "f1": 0.8421,
+      "tp": 24,
+      "fp": 2,
+      "fn": 7
+    },
+    "网络钓鱼": {
+      "precision": 0.9348,
+      "recall": 0.8776,
+      "f1": 0.9053,
+      "tp": 43,
+      "fp": 3,
+      "fn": 6
+    }
+  },
+  "type_macro_f1": 0.8178,
+  "method": "bert_crf_256_hard",
+  "gold": "D:\\学习资料\\AI\\homework\\week7\\data\\processed\\dev_extract.jsonl",
+  "pred": "D:\\学习资料\\AI\\homework\\week7\\outputs\\disc\\pred_bert_crf_256_hard.jsonl",
+  "meta": {
+    "display_name": "BERT-12L+CRF",
+    "train_s": 91.5,
+    "params_m": 102.3,
+    "ms_per_sentence": 5.14,
+    "peak_gpu_mb": 1782.8,
+    "decoder": "crf",
+    "bert_layers": 12,
+    "max_len": 256,
+    "epochs": 3,
+    "lr": 2e-05,
+    "head_lr_mult": 5.0,
+    "batch_size": 32,
+    "grad_accum": 1,
+    "best_epoch": 3,
+    "inner_val_span_f1": 0.5447,
+    "num_labels": 19,
+    "illegal_dev": {
+      "illegal_start": 0,
+      "illegal_transition": 0,
+      "total_seqs": 353,
+      "illegal_seqs": 0,
+      "total_illegal": 0,
+      "illegal_seq_rate": 0.0,
+      "illegal_per_seq": 0.0
+    },
+    "illegal_train_pred": {
+      "illegal_start": 0,
+      "illegal_transition": 0,
+      "total_seqs": 1270,
+      "illegal_seqs": 0,
+      "total_illegal": 0,
+      "illegal_seq_rate": 0.0,
+      "illegal_per_seq": 0.0
+    },
+    "n_truncated": 0,
+    "hard_constraint": true,
+    "seed": 42,
+    "selection_note": "按 train 切出的 10% 内层验证集选 epoch；dev 未参与训练与选点"
+  },
+  "n200_summary": {
+    "trigger_f1": 0.629,
+    "event_f1": 0.629,
+    "num_samples": 200
+  }
+}

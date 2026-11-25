@@ -1,0 +1,41 @@
+{
+  "method": "bert_crf_256_mock",
+  "argv": [
+    "bert/evaluate.py",
+    "--ckpt",
+    "outputs/checkpoints/bert_crf_256_mock.pt",
+    "--run_name",
+    "bert_crf_256_mock",
+    "--data_dir",
+    "data/_mock",
+    "--device",
+    "cpu"
+  ],
+  "args": "Namespace(ckpt='outputs/checkpoints/bert_crf_256_mock.pt', run_name='bert_crf_256_mock', data_dir='data/_mock', split='dev', batch_size=32, train_sample=0, device='cpu')",
+  "env": {
+    "python": "3.12.16",
+    "platform": "Windows-10-10.0.19043-SP0",
+    "time": "2026-11-24 20:40:31",
+    "torch": "2.6.0+cpu",
+    "cuda_available": false,
+    "transformers": "4.55.0"
+  },
+  "runtime_s": 3.37,
+  "metrics": {
+    "trigger": 0.0,
+    "event_exact": 0.0
+  },
+  "type_macro_f1": 0.0833,
+  "illegal_dev": {
+    "illegal_start": 11,
+    "illegal_transition": 109,
+    "total_seqs": 20,
+    "illegal_seqs": 20,
+    "total_illegal": 120,
+    "illegal_seq_rate": 1.0,
+    "illegal_per_seq": 6.0
+  },
+  "inference_latency_ms": 162.06,
+  "ckpt": "outputs\\checkpoints\\bert_crf_256_mock.pt",
+  "notes": "纯评测：从 checkpoint 复评 dev（不训练）"
+}

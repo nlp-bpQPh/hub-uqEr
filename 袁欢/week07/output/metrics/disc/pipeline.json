@@ -1,0 +1,167 @@
+{
+  "num_samples": 353,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.4874,
+    "recall": 0.2748,
+    "f1": 0.3514,
+    "tp": 97,
+    "fp": 102,
+    "fn": 256
+  },
+  "event_exact": {
+    "precision": 0.4874,
+    "recall": 0.2748,
+    "f1": 0.3514,
+    "tp": 97,
+    "fp": 102,
+    "fn": 256
+  },
+  "per_type": {
+    "DDoS攻击": {
+      "precision": 0.8,
+      "recall": 0.4211,
+      "f1": 0.5517,
+      "tp": 8,
+      "fp": 2,
+      "fn": 11
+    },
+    "供应链攻击": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 6
+    },
+    "勒索赎金": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 27
+    },
+    "恶意软件": {
+      "precision": 0.8706,
+      "recall": 0.925,
+      "f1": 0.897,
+      "tp": 74,
+      "fp": 11,
+      "fn": 6
+    },
+    "数据泄露": {
+      "precision": 0.9649,
+      "recall": 0.8462,
+      "f1": 0.9016,
+      "tp": 55,
+      "fp": 2,
+      "fn": 10
+    },
+    "漏洞发现": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 45
+    },
+    "漏洞影响": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 31
+    },
+    "漏洞补丁": {
+      "precision": 0.8182,
+      "recall": 0.2903,
+      "f1": 0.4286,
+      "tp": 9,
+      "fp": 2,
+      "fn": 22
+    },
+    "网络钓鱼": {
+      "precision": 1.0,
+      "recall": 0.7347,
+      "f1": 0.8471,
+      "tp": 36,
+      "fp": 0,
+      "fn": 13
+    }
+  },
+  "type_macro_f1": 0.4029,
+  "method": "pipeline",
+  "gold": "D:\\学习资料\\AI\\homework\\week7\\data\\processed\\dev_extract.jsonl",
+  "pred": "D:\\学习资料\\AI\\homework\\week7\\outputs\\disc\\pred_pipeline.jsonl",
+  "meta": {
+    "display_name": "两段式流水线（类型→类型条件触发词）",
+    "train_s": 345.2,
+    "ms_per_sentence": 20.88,
+    "peak_gpu_mb": 1211.7,
+    "max_len": 256,
+    "arg_epochs": 3,
+    "pipeline_stages": 2,
+    "num_models": 11,
+    "diag": {
+      "n_type_wrong": 53,
+      "type_accuracy_on_dev_extract": 0.8499,
+      "n_arg_truncated": 0
+    },
+    "arg_experts": {
+      "DDoS攻击": {
+        "n_rows": 77,
+        "num_labels": 3,
+        "train_s": 2.7
+      },
+      "供应链攻击": {
+        "n_rows": 23,
+        "num_labels": 3,
+        "train_s": 1.1
+      },
+      "勒索赎金": {
+        "n_rows": 107,
+        "num_labels": 3,
+        "train_s": 2.5
+      },
+      "恶意软件": {
+        "n_rows": 320,
+        "num_labels": 3,
+        "train_s": 5.0
+      },
+      "数据泄露": {
+        "n_rows": 258,
+        "num_labels": 3,
+        "train_s": 5.0
+      },
+      "漏洞发现": {
+        "n_rows": 182,
+        "num_labels": 3,
+        "train_s": 4.0
+      },
+      "漏洞影响": {
+        "n_rows": 126,
+        "num_labels": 3,
+        "train_s": 3.6
+      },
+      "漏洞补丁": {
+        "n_rows": 122,
+        "num_labels": 3,
+        "train_s": 2.1
+      },
+      "网络钓鱼": {
+        "n_rows": 196,
+        "num_labels": 3,
+        "train_s": 3.4
+      },
+      "_total_train_s": 33.2
+    },
+    "note": "两段各跑一次；延迟约是单模型的 2 倍（见 meta.ms_per_sentence）"
+  },
+  "n200_summary": {
+    "trigger_f1": 0.3259,
+    "event_f1": 0.3259,
+    "num_samples": 200
+  }
+}

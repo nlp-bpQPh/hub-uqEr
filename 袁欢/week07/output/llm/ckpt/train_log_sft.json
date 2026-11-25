@@ -1,0 +1,45 @@
+{
+  "mode": "lora",
+  "args": {
+    "model_path": "D:\\学习资料\\AI\\homework\\pretrain_models\\Qwen3-0.6B",
+    "data_dir": "D:\\学习资料\\AI\\homework\\week7\\data\\processed",
+    "output_dir": "D:\\学习资料\\AI\\homework\\week7\\outputs\\llm\\ckpt",
+    "num_train": -1,
+    "epochs": 1,
+    "batch_size": 2,
+    "grad_accum": 8,
+    "lr": 0.0002,
+    "max_length": 1280,
+    "full_ft": false,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "dtype": "auto",
+    "grad_ckpt": false,
+    "seed": 42,
+    "log_every": 50,
+    "run_name": "llm_lora",
+    "max_steps": 0,
+    "val_size": 200,
+    "std_logits": false
+  },
+  "num_train": 1341,
+  "num_val": 70,
+  "prompt_truncated": 0,
+  "target_truncated": 0,
+  "optimizer_steps": 83,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.1026,
+      "val_loss": 0.0635,
+      "elapsed_s": 167.0,
+      "optimizer_steps": 83
+    }
+  ],
+  "best_val_loss": 0.0635,
+  "total_train_s": 170.8,
+  "trainable_params": 2293760,
+  "all_params": 598343680,
+  "gpu_peak_mem_gib": 3.76
+}

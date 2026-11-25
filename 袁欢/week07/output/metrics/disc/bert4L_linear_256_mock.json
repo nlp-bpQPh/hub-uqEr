@@ -1,0 +1,138 @@
+{
+  "num_samples": 20,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "fp": 20,
+    "fn": 20
+  },
+  "event_exact": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "fp": 20,
+    "fn": 20
+  },
+  "per_type": {
+    "DDoS攻击": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2
+    },
+    "供应链攻击": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "勒索赎金": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "恶意软件": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "tp": 1,
+      "fp": 1,
+      "fn": 1
+    },
+    "数据泄露": {
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "tp": 1,
+      "fp": 1,
+      "fn": 2
+    },
+    "漏洞发现": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2
+    },
+    "漏洞影响": {
+      "precision": 0.1,
+      "recall": 0.5,
+      "f1": 0.1667,
+      "tp": 1,
+      "fp": 9,
+      "fn": 1
+    },
+    "漏洞补丁": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 2,
+      "fn": 3
+    },
+    "网络钓鱼": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "type_macro_f1": 0.1185,
+  "method": "bert4L_linear_256_mock",
+  "gold": "G:\\workspace\\information\\ai\\code7\\data\\_mock\\dev_extract.jsonl",
+  "pred": "G:\\workspace\\information\\ai\\code7\\outputs\\disc\\pred_bert4L_linear_256_mock.jsonl",
+  "meta": {
+    "display_name": "BERT-4L+LINEAR",
+    "train_s": 9.3,
+    "params_m": 45.6,
+    "ms_per_sentence": 45.77,
+    "peak_gpu_mb": 0.0,
+    "decoder": "linear",
+    "bert_layers": 4,
+    "max_len": 256,
+    "epochs": 1,
+    "lr": 2e-05,
+    "head_lr_mult": 5.0,
+    "batch_size": 32,
+    "grad_accum": 1,
+    "best_epoch": 1,
+    "inner_val_span_f1": 0.0,
+    "num_labels": 19,
+    "illegal_dev": {
+      "illegal_start": 12,
+      "illegal_transition": 219,
+      "total_seqs": 20,
+      "illegal_seqs": 20,
+      "total_illegal": 231,
+      "illegal_seq_rate": 1.0,
+      "illegal_per_seq": 11.55
+    },
+    "illegal_train_pred": {
+      "illegal_start": 13,
+      "illegal_transition": 163,
+      "total_seqs": 18,
+      "illegal_seqs": 18,
+      "total_illegal": 176,
+      "illegal_seq_rate": 1.0,
+      "illegal_per_seq": 9.778
+    },
+    "n_truncated": 0,
+    "hard_constraint": false,
+    "seed": 42,
+    "selection_note": "按 train 切出的 10% 内层验证集选 epoch；dev 未参与训练与选点"
+  }
+}

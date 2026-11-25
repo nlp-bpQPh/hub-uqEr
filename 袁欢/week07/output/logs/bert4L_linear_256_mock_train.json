@@ -1,0 +1,90 @@
+{
+  "method": "bert4L_linear_256_mock",
+  "argv": [
+    "bert/train.py",
+    "--mock",
+    "--device",
+    "cpu",
+    "--epochs",
+    "1",
+    "--bert_layers",
+    "4",
+    "--decoder",
+    "linear"
+  ],
+  "args": {
+    "decoder": "linear",
+    "bert_path": "G:\\workspace\\information\\ai\\code7\\pretrain_models\\bert-base-chinese",
+    "bert_layers": 4,
+    "max_len": 256,
+    "epochs": 1,
+    "batch_size": 32,
+    "lr": 2e-05,
+    "head_lr_mult": 5.0,
+    "warmup_ratio": 0.1,
+    "grad_accum": 1,
+    "max_grad_norm": 1.0,
+    "weight_decay": 0.01,
+    "dropout": 0.1,
+    "inner_val": 0.1,
+    "hard_constraint": false,
+    "device": "cpu",
+    "log_every": 50,
+    "seed": 42,
+    "run_name": "bert4L_linear_256_mock",
+    "mock": true,
+    "data_dir": ""
+  },
+  "env": {
+    "python": "3.12.16",
+    "platform": "Windows-10-10.0.19043-SP0",
+    "time": "2026-11-24 19:27:28",
+    "torch": "2.6.0+cpu",
+    "cuda_available": false,
+    "transformers": "4.55.0"
+  },
+  "params": 45579283,
+  "log_every": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 3.064306,
+      "elapsed_s": 8.8,
+      "val": {
+        "inner_loss": 2.544031858444214,
+        "inner_span_f1": 0.0,
+        "dev_span_f1_monitor": 0.0
+      },
+      "best_so_far": -1.0
+    }
+  ],
+  "total_elapsed_s": 9.3,
+  "finished": true,
+  "best_epoch": 1,
+  "best_inner_val_span_f1": 0.0,
+  "dev_metrics": {
+    "trigger": 0.0,
+    "event_exact": 0.0
+  },
+  "inference_latency_ms": 45.77,
+  "peak_gpu_mb": 0.0,
+  "illegal_dev": {
+    "illegal_start": 12,
+    "illegal_transition": 219,
+    "total_seqs": 20,
+    "illegal_seqs": 20,
+    "total_illegal": 231,
+    "illegal_seq_rate": 1.0,
+    "illegal_per_seq": 11.55
+  },
+  "illegal_train_pred_sample": {
+    "illegal_start": 13,
+    "illegal_transition": 163,
+    "total_seqs": 18,
+    "illegal_seqs": 18,
+    "total_illegal": 176,
+    "illegal_seq_rate": 1.0,
+    "illegal_per_seq": 9.778
+  },
+  "notes": "BERT 序列标注（linear）训练过程"
+}

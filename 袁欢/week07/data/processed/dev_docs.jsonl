@@ -1,0 +1,353 @@
+{"id": "628b7e50e846a64a48a56433", "title": "", "text": "已将视频添加到播放列表：布里姆利谈“益百利”数据泄露，你需要做的事项以确保安全。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 22, "end": 26}, "args": []}]}
+{"id": "628c9cdee846a61c98e172db", "title": "", "text": "目前尚不清楚在数据库内容被删除和留下赎金之前，数据库被访问了多少次，这是针对保护不力的MongoDB数据库的其他攻击的症状。", "events": [{"type": "勒索赎金", "trigger": {"text": "赎金", "start": 18, "end": 20}, "args": []}]}
+{"id": "628b7e50e846a64a48a56578", "title": "", "text": "小心，不要打开可疑的电子邮件，不要成为网络钓鱼的受害者。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 19, "end": 23}, "args": []}]}
+{"id": "628b9345e846a68edc20206a", "title": "", "text": "2015年，TalkTalk公司经历了三次数据泄露，数百万用户的数据在网上泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 23, "end": 25}, "args": []}]}
+{"id": "628cb2dfe846a611e096e529", "title": "", "text": "在今天(9月14日)发布的更新中，这家日本公司证实，9月8日发生的事件是一次恶意软件攻击，影响了我们在EMEA(欧洲、中东和非洲)的部分销售和制造网络。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 38, "end": 42}, "args": []}]}
+{"id": "628b7e50e846a64a48a57015", "title": "", "text": "瑞典数据泄露82%因轮奸入狱的人是外国出生的。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 2, "end": 6}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e73", "title": "", "text": "Cisco写道，该漏洞(CVE-2017-3826)是由于NGA数据端口上监控的SCTP数据包验证不完整造成的。", "events": [{"type": "漏洞发现", "trigger": {"text": "写道", "start": 5, "end": 7}, "args": []}]}
+{"id": "628b7e50e846a64a48a56742", "title": "", "text": "你的小企业需要数据泄露保险吗?", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 7, "end": 11}, "args": []}]}
+{"id": "62831821e846a66a184aefa5", "title": "", "text": "IBM 2016年的一份报告显示，受损记录的数量减少了，但数据泄露的数量增加了，给医疗保健机构造成了运营、声誉和财务损失。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 29, "end": 33}, "args": []}]}
+{"id": "62873c8ae846a639385b91d8", "title": "", "text": "10月份，北林肯郡和古尔基金会也发生了类似的攻击，恶意软件被用来加密信托系统中的文件，并要求支付赎金才能再次访问这些文件。", "events": [{"type": "勒索赎金", "trigger": {"text": "要求", "start": 44, "end": 46}, "args": []}]}
+{"id": "628b7e50e846a64a48a56824", "title": "", "text": "Equifax首席执行官将在参议院听证会上就数据泄露作证。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 22, "end": 26}, "args": []}]}
+{"id": "628b7e50e846a64a48a5621e", "title": "", "text": "在安全建议中，Wireshark建议用户升级到3.4.4或3.2.12版本，这两个版本都已经打补丁来解决该问题。", "events": [{"type": "漏洞补丁", "trigger": {"text": "打补丁", "start": 46, "end": 49}, "args": []}]}
+{"id": "628b7e50e846a64a48a56263", "title": "", "text": "数千台电脑感染了加密货币挖掘软件，使用了与wannacry lililiputing相同的漏洞。", "events": [{"type": "恶意软件", "trigger": {"text": "感染", "start": 5, "end": 7}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1284", "title": "", "text": "安全公司zscaler警告称，伪装成安卓版“超级马里奥跑酷”的恶意软件现在正在互联网上蔓延，鼓励用户下载apk，最终感染设备并试图窃取金融信息。", "events": [{"type": "网络钓鱼", "trigger": {"text": "伪装成", "start": 15, "end": 18}, "args": []}]}
+{"id": "628b7e50e846a64a48a56868", "title": "", "text": "网络钓鱼诈骗甚至欺骗技术宅如何避免它们", "events": [{"type": "网络钓鱼", "trigger": {"text": "诈骗", "start": 4, "end": 6}, "args": []}]}
+{"id": "62873c8ae846a639385b91b0", "title": "", "text": "对于一些没有屈服于要求的受害者，FIN10升级了他们的操作，摧毁了关键的生产系统，并将窃取的数据泄露给记者，试图增加妥协的可见度，并迫使受害者付款。", "events": [{"type": "勒索赎金", "trigger": {"text": "迫使", "start": 66, "end": 68}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e97", "title": "", "text": "据称，该黑客组织在Snapchat的系统中发现了漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 21, "end": 23}, "args": []}]}
+{"id": "628b7e50e846a64a48a56573", "title": "", "text": "Docusign的客户电子邮件数据库在网络钓鱼诈骗后被黑客访问。", "events": [{"type": "网络钓鱼", "trigger": {"text": "诈骗", "start": 23, "end": 25}, "args": []}]}
+{"id": "628b7e50e846a64a48a56590", "title": "", "text": "恶意软件攻击利用韩文文字处理器传播恶意软件。", "events": [{"type": "恶意软件", "trigger": {"text": "传播", "start": 15, "end": 17}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1297", "title": "", "text": "此外，随着用户通过云服务进行协作和共享，这些恶意文件冒充pdf向共享用户“扇出”，形成二次传播向量。", "events": [{"type": "网络钓鱼", "trigger": {"text": "冒充", "start": 26, "end": 28}, "args": []}]}
+{"id": "62831821e846a66a184aef9d", "title": "", "text": "从这家彩票公司，GhostAdmin botmaster似乎窃取了一个包含姓名、出生日期、电话号码、电子邮件、地址、雇主信息等信息的数据库。", "events": [{"type": "数据泄露", "trigger": {"text": "窃取", "start": 30, "end": 32}, "args": []}]}
+{"id": "628b7e50e846a64a48a56327", "title": "", "text": "沃林福德男子承认在暗网络钓鱼计划中窃取比特币。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 10, "end": 14}, "args": []}]}
+{"id": "628b7e50e846a64a48a56789", "title": "", "text": "新的chrome黑客提示用户下载丢失的字体潜入恶意软件", "events": [{"type": "恶意软件", "trigger": {"text": "潜入", "start": 21, "end": 23}, "args": []}]}
+{"id": "6288f2e0e846a63ffcc402bc", "title": "", "text": "上周成为全球头条新闻的火眼事件，现在已经被证实是由SolarWinds猎户座软件中潜伏的木马病毒造成的供应链攻击。", "events": [{"type": "供应链攻击", "trigger": {"text": "供应链攻击", "start": 51, "end": 56}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad156", "title": "", "text": "作为微软每月周二补丁更新的一部分，Windows中的一个关键缺陷已经被修补，目前正在积极利用。", "events": [{"type": "漏洞补丁", "trigger": {"text": "补丁", "start": 8, "end": 10}, "args": []}]}
+{"id": "628b7e50e846a64a48a56485", "title": "", "text": "来自美国国税局的一些关于网络钓鱼的有用提示。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 12, "end": 16}, "args": []}]}
+{"id": "628b7e50e846a64a48a56823", "title": "", "text": "就在泄露事件发生后，威瑞森将收购雅虎的价格下调了3.5亿美元。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 2, "end": 4}, "args": []}]}
+{"id": "62831821e846a66a184aefa1", "title": "", "text": "泄露数据库中的信息包括信用卡详细信息、电子邮件地址、密码、姓名、家庭和企业地址、电话号码、电子邮件备份、VPN详细信息和凭证、内部KWIC备份等。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 0, "end": 2}, "args": []}]}
+{"id": "628b7e50e846a64a48a56546", "title": "", "text": "惠普和性能中心的发现远程堆缓冲区溢出漏洞", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 8, "end": 10}, "args": []}]}
+{"id": "628b7e50e846a64a48a56667", "title": "", "text": "头条新闻，MillerWilson在Twitter上发布了10个网络安全恶意软件信息步骤。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 36, "end": 40}, "args": []}]}
+{"id": "6289fc3ee846a6342847c100", "title": "", "text": "在这个问题被修复之前，就像这周的问题一样，攻击者可以远程地将脚本注入到发票中，从而导致劫持、网络钓鱼和重定向。", "events": [{"type": "漏洞影响", "trigger": {"text": "导致", "start": 41, "end": 43}, "args": []}]}
+{"id": "628b7e50e846a64a48a56576", "title": "", "text": "微软恶意软件扫描程序中存在一个疯狂的大漏洞，可以用来安装恶意软件。", "events": [{"type": "漏洞发现", "trigger": {"text": "扫描", "start": 6, "end": 8}, "args": []}]}
+{"id": "62873c8ae846a639385b91c6", "title": "", "text": "该部门表示，感染是在去年12月12日发现的，骗子要求支付4000美元的赎金来解锁文件。", "events": [{"type": "勒索赎金", "trigger": {"text": "赎金", "start": 35, "end": 37}, "args": []}]}
+{"id": "628b7e50e846a64a48a56226", "title": "", "text": "位于安大略省西姆科的互联网服务提供商KWIC Internet在收到salt Hash的通知后修复了Rsync的问题，但不清楚该公司的客户暴露了多长时间。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 47, "end": 49}, "args": []}]}
+{"id": "628b7e50e846a64a48a56899", "title": "", "text": "对3200多个独特的网络钓鱼工具的研究显示了欺诈者的内部工作原理。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 10, "end": 14}, "args": []}]}
+{"id": "62873c8ae846a639385b91df", "title": "", "text": "这些学校最终向匿名黑客支付了8500美元，以取回他们的IT系统。", "events": [{"type": "勒索赎金", "trigger": {"text": "支付", "start": 11, "end": 13}, "args": []}]}
+{"id": "628b7e50e846a64a48a56759", "title": "", "text": "Equifax的安全漏洞丑闻随着不可思议的否认而加剧", "events": [{"type": "漏洞影响", "trigger": {"text": "安全漏洞", "start": 8, "end": 12}, "args": []}]}
+{"id": "628b7e50e846a64a48a56844", "title": "", "text": "目标达到创纪录的1.85亿全州数据泄露和解。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 15, "end": 19}, "args": []}]}
+{"id": "62879f03e846a654b401978a", "title": "", "text": "该恶意软件要求获取222比特币，但不会遵守付款后解密文件的承诺。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 1, "end": 5}, "args": []}]}
+{"id": "628cb2dfe846a611e096e52b", "title": "", "text": "研究人员补充说，恶意软件将允许攻击者不受限制地访问公司网络和相关资源。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 8, "end": 12}, "args": []}]}
+{"id": "628b7e50e846a64a48a56901", "title": "", "text": "恶意软件网络通信提供了较好的预警信号。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 0, "end": 4}, "args": []}]}
+{"id": "628b7e50e846a64a48a56446", "title": "", "text": "希望匿名组织能停止玩游戏、黑客攻击和DDoS攻击，而应该开始做点别的", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 18, "end": 24}, "args": []}]}
+{"id": "628b7e50e846a64a48a56843", "title": "", "text": "危险的w2钓鱼骗局针对学校，餐馆，医院，部落团体其他人", "events": [{"type": "网络钓鱼", "trigger": {"text": "钓鱼骗局", "start": 5, "end": 9}, "args": []}]}
+{"id": "6289fc3ee846a6342847c10d", "title": "", "text": "霍尼韦尔开发的一个流行的基于web的SCADA系统存在一系列可远程利用的漏洞，这些漏洞很容易暴露密码，从而让攻击者得以进入脆弱的网络。", "events": [{"type": "漏洞影响", "trigger": {"text": "暴露", "start": 46, "end": 48}, "args": []}]}
+{"id": "62879f03e846a654b4019789", "title": "", "text": "赛门铁克的研究人员认为，这次攻击从6月持续到10月，受影响的系统多达50万个。恶意软件是通过华硕的自动更新功能发送的。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 39, "end": 43}, "args": []}]}
+{"id": "628b7e50e846a64a48a56490", "title": "", "text": "是如何使用DNS来对抗网络钓鱼电子邮件安全。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 11, "end": 15}, "args": []}]}
+{"id": "62831821e846a66a184aef82", "title": "", "text": "谷歌安全研究员Tavis Ormandy最近发现，Cloudflare泄露了大量敏感信息，包括从cookie、令牌到凭据等一切信息。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 35, "end": 37}, "args": []}]}
+{"id": "62831821e846a66a184aef3a", "title": "", "text": "据《高等教育纪事报》报道，美国国税局(IRS)表示，近10万纳税人的个人数据可能因其申请学生经济援助的工具被盗而泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 56, "end": 58}, "args": []}]}
+{"id": "62873c8ae846a639385b91ac", "title": "", "text": "例如，就在本月，邮件和航运服务公司Pitney Bowes证实，它受到了一次重大的勒索软件攻击，中断了客户访问其服务.", "events": [{"type": "勒索赎金", "trigger": {"text": "勒索软件", "start": 41, "end": 45}, "args": []}]}
+{"id": "628b7e50e846a64a48a56244", "title": "", "text": "Equifax老板因重大网络安全漏洞被罢免。", "events": [{"type": "漏洞发现", "trigger": {"text": "安全漏洞", "start": 14, "end": 18}, "args": []}]}
+{"id": "628b7e50e846a64a48a56350", "title": "", "text": "美国联邦调查局表示，俄罗斯黑客可能使用网络钓鱼攻击雅虎员工并侵入其账户。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 19, "end": 23}, "args": []}]}
+{"id": "628b7e50e846a64a48a56321", "title": "", "text": "一名涉嫌与人事管理局违规软件有关的日本男子被捕。", "events": [{"type": "恶意软件", "trigger": {"text": "违规软件", "start": 10, "end": 14}, "args": []}]}
+{"id": "629f52d2e846a6e5804f7c59", "title": "", "text": "网络安全公司Tenable的研究人员披露了该漏洞，该漏洞被分配为CVE-2018-1149。", "events": [{"type": "漏洞发现", "trigger": {"text": "披露", "start": 18, "end": 20}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e78", "title": "", "text": "西部数据My Cloud NAS设备在安全部门再次被发现存在缺陷，因为两组研究人员揭示了设备固件中的一些严重缺陷。", "events": [{"type": "漏洞发现", "trigger": {"text": "被发现", "start": 25, "end": 28}, "args": []}]}
+{"id": "628b7e50e846a64a48a56476", "title": "", "text": "BBC新闻，NSA恶意软件被“影子经纪人”黑客组织泄露。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 9, "end": 13}, "args": []}]}
+{"id": "62831821e846a66a184aef85", "title": "", "text": "暴露的数据包括姓名、社会保险号、出生日期、联系方式、医疗记录号码和/或临床信息。", "events": [{"type": "数据泄露", "trigger": {"text": "暴露的数据", "start": 0, "end": 5}, "args": []}]}
+{"id": "628b7e50e846a64a48a56740", "title": "", "text": "传统的反病毒程序是如何检测到恶意软件的？", "events": [{"type": "恶意软件", "trigger": {"text": "检测", "start": 11, "end": 13}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad162", "title": "", "text": "微软推出了安全更新，以修复影响Windows Defender和其他反恶意软件产品的关键远程代码执行缺陷。", "events": [{"type": "漏洞补丁", "trigger": {"text": "更新", "start": 7, "end": 9}, "args": []}]}
+{"id": "6288f2e0e846a63ffcc402b8", "title": "", "text": "全球网络安全主管部门发布警告，此前一家美国软件供应商遭受的供应链攻击被认为是导致上周“火眼”(FireEye)网络攻击的原因。", "events": [{"type": "供应链攻击", "trigger": {"text": "供应链攻击", "start": 29, "end": 34}, "args": []}]}
+{"id": "628b7e50e846a64a48a56249", "title": "", "text": "安全研究人员发现了两种新的Mac恶意软件。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 16, "end": 20}, "args": []}]}
+{"id": "62879f03e846a654b401975f", "title": "", "text": "Hummingbad是一种Android恶意软件，它可以在设备上建立一个持久的rootkit，安装欺诈性应用程序，只要稍加修改，就可以启动其他恶意活动，如安装键盘记录器、窃取凭据和绕过企业使用的加密电子邮件容器。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 20, "end": 24}, "args": []}]}
+{"id": "628a403ae846a67fe01f0efc", "title": "", "text": "他在大约一年前发现了这个漏洞，但直到现在才发现，因为Netgear在为受影响的设备推出固定固件方面进展缓慢。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 7, "end": 9}, "args": []}]}
+{"id": "628b7e50e846a64a48a56521", "title": "", "text": "FireEye混淆字符串解析器自动从恶意软件中提取混淆字符串。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 18, "end": 22}, "args": []}]}
+{"id": "628b7e50e846a64a48a56473", "title": "", "text": "从事情的表象来看，无论发生了什么，都不是特别复杂，即使是民主党全国委员会也没有得到充分的保护，波德斯塔成为了网络钓鱼的受害者。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 54, "end": 58}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e6b", "title": "", "text": "思科Talos公司的研究人员说到，存在漏洞的代码足以使系统受到攻击——web应用程序不需要实现文件上传就可以让攻击者利用这个漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "说到", "start": 14, "end": 16}, "args": []}]}
+{"id": "62831821e846a66a184aef65", "title": "", "text": "该组织说，网络情报中心的档案在未经授权的情况下在前美国政府黑客和承包商之间传播，其中一人向维基解密提供了部分档案。", "events": [{"type": "数据泄露", "trigger": {"text": "传播", "start": 37, "end": 39}, "args": []}]}
+{"id": "628e3853e846a6bf00dab8fc", "title": "", "text": "NASHOTAH村——该村最近向一名身份不明的黑客支付了2000美元赎金，以解密其计算机系统。11月底的一次黑客攻击暴露了一些居民的个人信息。", "events": [{"type": "勒索赎金", "trigger": {"text": "赎金", "start": 34, "end": 36}, "args": []}]}
+{"id": "628b7e50e846a64a48a56388", "title": "", "text": "在受到网络钓鱼攻击后，谷歌加强了安全政策。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 3, "end": 7}, "args": []}]}
+{"id": "628b7e50e846a64a48a56359", "title": "", "text": "微软ie浏览器漏洞在周二正式发布补丁前被修复。", "events": [{"type": "漏洞补丁", "trigger": {"text": "补丁", "start": 16, "end": 18}, "args": []}]}
+{"id": "6289fc3ee846a6342847c119", "title": "", "text": "利用该漏洞的攻击者可以通过向NGA数据端口监控的网络发送畸形的SCTP数据包来利用该漏洞。", "events": [{"type": "漏洞影响", "trigger": {"text": "利用", "start": 0, "end": 2}, "args": []}]}
+{"id": "628b7e50e846a64a48a56366", "title": "", "text": "英国恶意软件信息安全安全GCHQ警告称，大规模网络攻击将使wannacry相形见绌。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 2, "end": 6}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad159", "title": "", "text": "本月，微软修复了微软Windows、Internet Explorer、微软Edge、ChakraCore等系统的安全漏洞。NET Framework、Microsoft Exchange Server、Windows主机计算服务Shim以及Microsoft Office和Microsoft Office Services和Web应用程序。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 5, "end": 7}, "args": []}]}
+{"id": "62831821e846a66a184aef3f", "title": "", "text": "丽笙酒店集团(Radisson Hotel Group)证实，它遭遇了数据泄露，影响了“一小部分丽笙奖励会员”。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 35, "end": 39}, "args": []}]}
+{"id": "628b7e50e846a64a48a56892", "title": "", "text": "物联网设备被恶意软件故意破坏，也许这没关系。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 6, "end": 10}, "args": []}]}
+{"id": "628b7e50e846a64a48a56405", "title": "", "text": "很好的提醒，你的安卓手机上需要安装一个恶意软件扫描器。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 19, "end": 23}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1257", "title": "", "text": "谷歌用户今天受到了一场极其令人信服的网络钓鱼攻击，攻击者操纵了谷歌文档的合法第三方分享机制。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 18, "end": 22}, "args": []}]}
+{"id": "628b7e50e846a64a48a57019", "title": "", "text": "涉及cloudpets智能玩具的数据泄露引发了对互联网物联网安全的担忧.", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 16, "end": 20}, "args": []}]}
+{"id": "628b7e50e846a64a48a56785", "title": "", "text": "对bartNHS信托的网络攻击利用了零日漏洞.", "events": [{"type": "漏洞影响", "trigger": {"text": "零日漏洞", "start": 18, "end": 22}, "args": []}]}
+{"id": "62831821e846a66a184aef57", "title": "", "text": "国际田联表示，他们认为，在2月21日未经授权的远程访问其网络期间，攻击已经破坏了存储在国际田联服务器上的运动员治疗用药豁免(TUE)应用程序。", "events": [{"type": "数据泄露", "trigger": {"text": "破坏", "start": 37, "end": 39}, "args": []}]}
+{"id": "628ddbf5e846a681ac4633a4", "title": "", "text": "今年3月，在“影子经纪人”发布漏洞前几周，微软为其支持的系统发布了一个补丁。", "events": [{"type": "漏洞补丁", "trigger": {"text": "补丁", "start": 35, "end": 37}, "args": []}]}
+{"id": "6289fc3ee846a6342847c11e", "title": "", "text": "依赖混淆是指一种漏洞，攻击者可以通过使用同名的恶意公共包覆盖私有依赖包，在公司的网络中执行恶意软件。", "events": [{"type": "漏洞影响", "trigger": {"text": "可以", "start": 14, "end": 16}, "args": []}]}
+{"id": "628c83d8e846a67974705659", "title": "", "text": "根据警方的报告，一名冒充公司首席执行官斯科特·怀斯(Scott Wise)的人向一名工资账户员工发送了一封电子邮件。", "events": [{"type": "网络钓鱼", "trigger": {"text": "冒充", "start": 10, "end": 12}, "args": []}]}
+{"id": "628a403ae846a67fe01f0eb9", "title": "", "text": "Morgan还透露，他的公司(2016年1月)向Python团队和Oracle(2016年11月)通报了FTP协议注入漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "透露", "start": 7, "end": 9}, "args": []}]}
+{"id": "628b7e50e846a64a48a56986", "title": "", "text": "威瑞森(verizon)数据泄露的成本是出售董事会的数据安全。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 12, "end": 16}, "args": []}]}
+{"id": "628b7e50e846a64a48a56451", "title": "", "text": "第一个万亿富翁：联邦政府在逮捕涉嫌的俄罗斯黑客后，针对全球僵尸网络。", "events": [{"type": "DDoS攻击", "trigger": {"text": "僵尸网络", "start": 29, "end": 33}, "args": []}]}
+{"id": "628b7e50e846a64a48a56344", "title": "", "text": "Ccleaner软件显示严重的供应链安全问题。", "events": [{"type": "供应链攻击", "trigger": {"text": "供应链安全", "start": 15, "end": 20}, "args": []}]}
+{"id": "628b7e50e846a64a48a56440", "title": "", "text": "安森保险将支付1.15亿美元，这是有史以来最大的数据泄露和解金。", "events": [{"type": "勒索赎金", "trigger": {"text": "支付", "start": 5, "end": 7}, "args": []}]}
+{"id": "628b7e50e846a64a48a56910", "title": "", "text": "针对apache struts漏洞的攻击正在升温，敦促apache管理员立即升级。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 15, "end": 17}, "args": []}]}
+{"id": "628b7e50e846a64a48a56747", "title": "", "text": "脸书修补漏洞，允许任何图片被删除脸书的url内容", "events": [{"type": "漏洞补丁", "trigger": {"text": "修补", "start": 2, "end": 4}, "args": []}]}
+{"id": "628b7e50e846a64a48a56777", "title": "", "text": "据报道，美国国家安全局可能的泄密者仍在工作。", "events": [{"type": "数据泄露", "trigger": {"text": "泄密者", "start": 14, "end": 17}, "args": []}]}
+{"id": "628b7e50e846a64a48a56548", "title": "", "text": "窃取个人数据的恶意软件针对流行的安卓应用，如Instagram。", "events": [{"type": "数据泄露", "trigger": {"text": "窃取", "start": 0, "end": 2}, "args": []}]}
+{"id": "628b7e50e846a64a48a56895", "title": "", "text": "可能会劫持你2017年退税的网络钓鱼诱饵。", "events": [{"type": "网络钓鱼", "trigger": {"text": "诱饵", "start": 18, "end": 20}, "args": []}]}
+{"id": "628b7e50e846a64a48a56739", "title": "", "text": "当计算机被恶意软件分发链接渗透时，机器人会破坏设备", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 5, "end": 9}, "args": []}]}
+{"id": "628b7e50e846a64a48a56540", "title": "", "text": "黑客将恶意软件悄悄放入流行的PC软件CCleaner中。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 3, "end": 7}, "args": []}]}
+{"id": "628b7e50e846a64a48a561f5", "title": "", "text": "Steam的运营商Valve今天早些时候宣布修复了这个漏洞，但由于其平台上的月活跃用户超过1.25亿，这个漏洞可能会给成千上万的人以及Steam本身造成严重破坏。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 22, "end": 24}, "args": []}]}
+{"id": "628b7e50e846a64a48a56869", "title": "", "text": "危险的安卓恶意软件可以窃取40个零售银行社交媒体应用程序的登录数据", "events": [{"type": "数据泄露", "trigger": {"text": "窃取", "start": 11, "end": 13}, "args": []}]}
+{"id": "628b7e50e846a64a48a56557", "title": "", "text": "USB恶意软件涉及无文件攻击。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 3, "end": 7}, "args": []}]}
+{"id": "628b7e50e846a64a48a56209", "title": "", "text": "Cisco Talos的研究人员报告了在ntp-4.2.8p10中修复的一个漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 33, "end": 35}, "args": []}]}
+{"id": "628b7e50e846a64a48a56608", "title": "", "text": "提醒：司法部发现在特朗普大厦错误地植入了旨在模仿与俄罗斯关系的恶意软件。", "events": [{"type": "恶意软件", "trigger": {"text": "植入", "start": 17, "end": 19}, "args": []}]}
+{"id": "628b7e50e846a64a48a56437", "title": "", "text": "一次在线安全漏洞可能使银行损失1.75亿美元。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 6, "end": 8}, "args": []}]}
+{"id": "6288f2e0e846a63ffcc402b5", "title": "", "text": "一名安全研究人员详细介绍了他如何在一次新颖的软件供应链攻击中入侵苹果、微软、贝宝和其他主要科技公司的系统。", "events": [{"type": "供应链攻击", "trigger": {"text": "供应链攻击", "start": 24, "end": 29}, "args": []}]}
+{"id": "628b7e50e846a64a48a56903", "title": "", "text": "2016年企业ddos攻击状况信息图表", "events": [{"type": "DDoS攻击", "trigger": {"text": "ddos攻击", "start": 7, "end": 13}, "args": []}]}
+{"id": "628b7e50e846a64a48a56555", "title": "", "text": "比特币新闻，全球恶意软件运动正在影响比特币的价格。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 8, "end": 12}, "args": []}]}
+{"id": "628b7e50e846a64a48a56534", "title": "", "text": "来自区块链新闻的档案，区块链初创公司Nebulis准备解决DDoS问题。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS", "start": 29, "end": 33}, "args": []}]}
+{"id": "628b7e50e846a64a48a56917", "title": "", "text": "aringa在大规模数据泄露中需要超过2800万用户的数据", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 10, "end": 14}, "args": []}]}
+{"id": "628b7e50e846a64a48a56477", "title": "", "text": "两名俄罗斯间谍因2014年雅虎数据泄露被起诉，司法部披露。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 15, "end": 19}, "args": []}]}
+{"id": "62831821e846a66a184aef58", "title": "", "text": "近日，一家可上网的毛绒玩具制造商泄露了200多万份儿童和家长的录音，以及80多万个账户的电子邮件地址和密码数据。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 16, "end": 18}, "args": []}]}
+{"id": "628b7e50e846a64a48a56753", "title": "", "text": "恶意软件隐藏在清洁目标科技公司", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 0, "end": 4}, "args": []}]}
+{"id": "628cdc30e846a69a647f6997", "title": "", "text": "今天，我们注意到Windows 10 Mobile中存在一个非常奇怪的安全漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "注意到", "start": 5, "end": 8}, "args": []}]}
+{"id": "628b7e50e846a64a48a56488", "title": "", "text": "恶意软件水平达到历史最高点", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 0, "end": 4}, "args": []}]}
+{"id": "628c9cdee846a61c98e172d6", "title": "", "text": "黑客利用所谓的被盗电子邮件帐户和密码缓存作为杠杆，试图勒索这家世界上最有价值的公司。", "events": [{"type": "勒索赎金", "trigger": {"text": "勒索", "start": 27, "end": 29}, "args": []}]}
+{"id": "62831821e846a66a184aef50", "title": "", "text": "根据向美国卫生与人类服务部(DHS)报告的供应商数据，2015年有超过1.13亿个人健康记录遭到泄露，是2014年的9倍。", "events": [{"type": "数据泄露", "trigger": {"text": "遭到泄露", "start": 46, "end": 50}, "args": []}]}
+{"id": "628b7e50e846a64a48a56290", "title": "", "text": "BBC新闻恶意软件警告称，下一次网络攻击可能迫在眉睫", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 5, "end": 9}, "args": []}]}
+{"id": "628b7e50e846a64a48a56946", "title": "", "text": "我们的系统漏洞导致借记卡欺诈。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 5, "end": 7}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ee0", "title": "", "text": "谷歌安全研究人员Tavis Ormandy最近发现Chrome扩展中存在一个严重漏洞，使个人电脑极易受到攻击。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 23, "end": 25}, "args": []}]}
+{"id": "628a403ae846a67fe01f0eea", "title": "", "text": "Tripwire首席安全研究员Craig Young表示，虽然默认情况下，该漏洞不会直接允许来自互联网的适合Mirai等设备的攻击，但使用CSRF感染家庭网络上的设备是非常微不足道的。", "events": [{"type": "漏洞发现", "trigger": {"text": "表示", "start": 26, "end": 28}, "args": []}]}
+{"id": "628b7e50e846a64a48a57004", "title": "", "text": "有一个漏洞，我想报告，以保证用户的安全，如果可能的话，是一个电子邮件可以联系到。", "events": [{"type": "漏洞发现", "trigger": {"text": "报告", "start": 8, "end": 10}, "args": []}]}
+{"id": "628b7e50e846a64a48a56200", "title": "", "text": "该公司还解决了一个被追踪为CVE-2018-7429的拒绝服务(DoS)漏洞，攻击者可以通过向Splunkd发送特别制作的HTTP请求来利用该漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "解决", "start": 4, "end": 6}, "args": []}]}
+{"id": "628b7e50e846a64a48a56906", "title": "", "text": "网络安全专家表示，周五的攻击中使用的恶意软件是恶意的。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 18, "end": 22}, "args": []}]}
+{"id": "628b7e50e846a64a48a56404", "title": "", "text": "科技雷达报告称，Mac恶意软件正在以惊人的速度传播。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 11, "end": 15}, "args": []}]}
+{"id": "628b7e50e846a64a48a56435", "title": "", "text": "不要落入这些十大钓鱼邮件的陷阱。", "events": [{"type": "网络钓鱼", "trigger": {"text": "钓鱼邮件", "start": 8, "end": 12}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1295", "title": "", "text": "实际上，当用户单击图像时打开的虚假登录页面实际上是一个使用名为Data URI的方案创建的内联文件。", "events": [{"type": "网络钓鱼", "trigger": {"text": "虚假", "start": 15, "end": 17}, "args": []}]}
+{"id": "628b7e50e846a64a48a56570", "title": "", "text": "Equifax，三大主要信用报告公司之一，本周表示发生了重大数据泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 30, "end": 34}, "args": []}]}
+{"id": "628b7e50e846a64a48a56254", "title": "", "text": "网络犯罪客户服务分布式拒绝服务ddos攻击是最流行的工具之一。", "events": [{"type": "DDoS攻击", "trigger": {"text": "ddos攻击", "start": 15, "end": 21}, "args": []}]}
+{"id": "62831821e846a66a184aef4e", "title": "", "text": "英国发薪日贷款公司Wonga约27万名客户的个人和财务数据可能在数据泄露中被盗。", "events": [{"type": "数据泄露", "trigger": {"text": "被盗", "start": 37, "end": 39}, "args": []}]}
+{"id": "628b9345e846a68edc20207c", "title": "", "text": "GameStop的客户本周收到了违规通知警告，警告他们的个人和财务信息可能在九个月前就被泄露了。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 44, "end": 46}, "args": []}]}
+{"id": "628e3853e846a6bf00dab8ff", "title": "", "text": "格林菲尔德—汉考克健康公司星期四遭到网络攻击，一名黑客要求比特币放弃对医院部分计算机系统的控制。", "events": [{"type": "勒索赎金", "trigger": {"text": "要求", "start": 27, "end": 29}, "args": []}]}
+{"id": "62873c8ae846a639385b91de", "title": "", "text": "黑客控制了内部网和服务器，索要20比特币。", "events": [{"type": "勒索赎金", "trigger": {"text": "索要", "start": 13, "end": 15}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e81", "title": "", "text": "该漏洞由独立安全研究人员Istvan Toth发现，通过向web服务器发送畸形请求即可触发，并将设备凭据以明文形式暴露给攻击者。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 23, "end": 25}, "args": []}]}
+{"id": "628b7e50e846a64a48a56730", "title": "", "text": "让我们来谈谈blueborne最新的蓝牙漏洞。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 20, "end": 22}, "args": []}]}
+{"id": "628b7e50e846a64a48a56379", "title": "", "text": "由于一直收到这些钓鱼邮件，所以让特朗普的团队因此被取消资格。", "events": [{"type": "网络钓鱼", "trigger": {"text": "钓鱼邮件", "start": 8, "end": 12}, "args": []}]}
+{"id": "628b7e50e846a64a48a56269", "title": "", "text": "美国证券交易委员会宣布，数据泄露可以追溯到2016年urlu通过mrtrav信息安全。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 12, "end": 16}, "args": []}]}
+{"id": "628b7e50e846a64a48a56838", "title": "", "text": "在数据泄露事件发生前，Equifax曾游说政府放宽监管", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 1, "end": 5}, "args": []}]}
+{"id": "628b7e50e846a64a48a57035", "title": "", "text": "恶意软件不会消失，相信你的网络安全解决方案。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 0, "end": 4}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1277", "title": "", "text": "但潜在的受害者不是用自己的软件打开它，而是被敦促按照PDF文件中提供的链接打开它:如果他们这样做，他们将被重定向到一个网页，看起来好像只有用户用电子邮件凭据登录才能打开该文档。", "events": [{"type": "网络钓鱼", "trigger": {"text": "被敦促", "start": 21, "end": 24}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ef5", "title": "", "text": "周五，新闻媒体《卫报》报道称，一名密码学研究人员在WhatsApp的消息服务中发现了一个后门，可以调用Facebook和其他人拦截和读取加密消息。", "events": [{"type": "漏洞发现", "trigger": {"text": "报道", "start": 11, "end": 13}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad144", "title": "", "text": "ERPScan的人员表示，2018年，甲骨文修补了1119个漏洞，与去年2017年修补的漏洞数量相同。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修补", "start": 22, "end": 24}, "args": []}]}
+{"id": "62831821e846a66a184aef5c", "title": "", "text": "去年年底，一名波音(Boeing)员工将一份公司电子表格发给非波音公司的配偶时，无意中泄露了3.6万名同事的个人信息。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 43, "end": 45}, "args": []}]}
+{"id": "628b7e50e846a64a48a56513", "title": "", "text": "趋势科技发现了新的GnatSpy移动恶意软件家族。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 18, "end": 22}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ea8", "title": "", "text": "谷歌的一名研究人员周四分享了有关零日漏洞的细节，称苹果公司在最新发布的iOS 12.1.4版本中发现的一对iOS漏洞被黑客成功利用。", "events": [{"type": "漏洞发现", "trigger": {"text": "分享", "start": 11, "end": 13}, "args": []}]}
+{"id": "628b7e50e846a64a48a56632", "title": "", "text": "一些从事恶意软件研究和当地网络安全工作的人非常聪明，经常想知道为什么除了我之外没有人认识到这一点。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 4, "end": 8}, "args": []}]}
+{"id": "628b7e50e846a64a48a56827", "title": "", "text": "销售点恶意软件自2014年以来下降了93%。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 3, "end": 7}, "args": []}]}
+{"id": "628b7e50e846a64a48a57013", "title": "", "text": "他们没有说出数据泄露的来源，也许你应该等到发现它是什么，然后再承认你使用了被黑客入侵的服务。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 6, "end": 10}, "args": []}]}
+{"id": "628b7e50e846a64a48a56920", "title": "", "text": "Locky垃圾邮件看起来像图片，但它是VBS恶意软件，很容易欺骗没有更新安全工具的人。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 22, "end": 26}, "args": []}]}
+{"id": "62831821e846a66a184aef47", "title": "", "text": "几款消费级监控产品的制造商Retina-X Studios终于宣布，他们遭遇了数据泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 39, "end": 43}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e9f", "title": "", "text": "波兰安全专家david Golunski在WordPress密码重置机制中发现了一个零日机制，在某些情况下，攻击者可以获得密码重置链接。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 37, "end": 39}, "args": []}]}
+{"id": "628b7e50e846a64a48a56923", "title": "", "text": "评估威胁到您的文件，如恶意软件漏洞与我们先进的安全数据分析平台。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 15, "end": 17}, "args": []}]}
+{"id": "62879f03e846a654b401976a", "title": "", "text": "这种恶意软件类似于其他犯罪软件工具，但之前没有文档记录。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 2, "end": 6}, "args": []}]}
+{"id": "628cdc30e846a69a647f6994", "title": "", "text": "他说，tclinux变体包含Ribeiro发现的漏洞，特别是几个ASP文件，容易受到命令注入攻击。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 21, "end": 23}, "args": []}]}
+{"id": "6288f2e0e846a63ffcc402ba", "title": "", "text": "此前的软件供应链攻击包括，乌克兰政府使用NotPetya(一种早在2017年就存在的破坏性恶意软件)强制要求的m.e.c odoc税务和财务报告包受到感染。", "events": [{"type": "供应链攻击", "trigger": {"text": "供应链攻击", "start": 5, "end": 10}, "args": []}]}
+{"id": "628b7e50e846a64a48a56466", "title": "", "text": "快餐连锁品牌Arby承认数据泄露，克雷布斯安全博客报道。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 12, "end": 16}, "args": []}]}
+{"id": "62873c8ae846a639385b91e1", "title": "", "text": "2016年11月，旧金山公共交通系统Muni被黑客攻击，并要求支付7.3万美元的比特币赎金以取回加密数据。", "events": [{"type": "勒索赎金", "trigger": {"text": "要求", "start": 29, "end": 31}, "args": []}]}
+{"id": "628b7e50e846a64a48a56853", "title": "", "text": "2.5亿台Windows电脑被恶意软件感染，现在正在蔓延。", "events": [{"type": "恶意软件", "trigger": {"text": "感染", "start": 19, "end": 21}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad131", "title": "", "text": "今年3月，亚特兰大市遭到SamSam勒索软件的攻击，导致其法院系统瘫痪，水费无法支付，并迫使该市员工提交纸质报告。", "events": [{"type": "恶意软件", "trigger": {"text": "攻击", "start": 23, "end": 25}, "args": []}]}
+{"id": "628b7e50e846a64a48a56620", "title": "", "text": "安全分析师表示，DDoS攻击正在增加。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 8, "end": 14}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ea5", "title": "", "text": "上周，英特尔透露，其部分芯片存在严重的安全漏洞，可能导致数千台设备易受攻击。", "events": [{"type": "漏洞发现", "trigger": {"text": "透露", "start": 6, "end": 8}, "args": []}]}
+{"id": "628c83d8e846a6797470564d", "title": "", "text": "你可能听说过CEO骗局:鱼叉式网络钓鱼者冒充CEO向公司索取敏感信息。", "events": [{"type": "网络钓鱼", "trigger": {"text": "冒充", "start": 20, "end": 22}, "args": []}]}
+{"id": "62a02ad3e846a6386480b47b", "title": "", "text": "甲骨文发布了一项范围广泛的安全更新，以解决其各种企业产品中300多个CVE列出的漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "发布", "start": 3, "end": 5}, "args": []}]}
+{"id": "628b7e50e846a64a48a56266", "title": "", "text": "腾讯警告谷歌tensorflow用户ai平台存在漏洞。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 24, "end": 26}, "args": []}]}
+{"id": "628ccbb4e846a697e850189e", "title": "", "text": "该漏洞允许通过应用程序的主登录表单进行盲目的SQL注入。", "events": [{"type": "漏洞影响", "trigger": {"text": "允许", "start": 3, "end": 5}, "args": []}]}
+{"id": "628b7e50e846a64a48a56527", "title": "", "text": "它正在输掉拦截网络钓鱼的竞赛，真正的解决办法是的闭路加密数字签名电子邮件系统。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 7, "end": 11}, "args": []}]}
+{"id": "62873c8ae846a639385b91a9", "title": "", "text": "一旦支付赎金，黑客就会给受害者发送电子钥匙来解锁他们的加密文件，但如果在一定时间内没有支付赎金，被黑客攻击的文件就会永远丢失。", "events": [{"type": "勒索赎金", "trigger": {"text": "赎金", "start": 4, "end": 6}, "args": []}]}
+{"id": "628b7e50e846a64a48a56298", "title": "", "text": "难道你不认为安卓设备是唯一感染预装恶意软件网络安全的设备吗。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 17, "end": 21}, "args": []}]}
+{"id": "628b7e50e846a64a48a56418", "title": "", "text": "没有技能进行DDoS攻击，每个人都在审判中。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 6, "end": 12}, "args": []}]}
+{"id": "62831821e846a66a184aef67", "title": "", "text": "上周，HackRead独家报道了一家供应商在暗网市场上出售了超过100万个Gmail和雅虎账户。", "events": [{"type": "数据泄露", "trigger": {"text": "出售", "start": 27, "end": 29}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e80", "title": "", "text": "非常有趣的是，SecuriTeam今天透露了一个任意文件内容泄露漏洞的存在，它会影响旧版本的GoAhead web服务器。", "events": [{"type": "漏洞发现", "trigger": {"text": "透露", "start": 19, "end": 21}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ef9", "title": "", "text": "Recorded Future发现了影响ie浏览器的漏洞CVE-2016-0189的最多引用。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现了", "start": 15, "end": 18}, "args": []}]}
+{"id": "628b7e50e846a64a48a56784", "title": "", "text": "区块链将物联网安全漏洞转化为战略优势", "events": [{"type": "漏洞影响", "trigger": {"text": "安全漏洞", "start": 7, "end": 11}, "args": []}]}
+{"id": "62878f57e846a66474947c35", "title": "", "text": "推动DDoS攻击升级的是Mirai code的发布，它为黑客打开了大门，让他们可以创建自己的代码，以访问各种各样的物联网设备，这些设备被用作机器人，以发起大规模DDoS攻击。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 2, "end": 8}, "args": []}]}
+{"id": "628cb2dfe846a611e096e532", "title": "", "text": "6月10日，该勒索软件攻击了韩国网络提供商Nayana托管的153多台Linux服务器，锁定了3400多家网站。", "events": [{"type": "恶意软件", "trigger": {"text": "攻击", "start": 11, "end": 13}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ee5", "title": "", "text": "周二，电子商务公司Linio México的安全分析师Mohamed Baset发布了一段概念验证视频，展示了他所说的Facebook缺陷，攻击者可以访问Facebook服务器上的音频或视频文件并进行回放。", "events": [{"type": "漏洞发现", "trigger": {"text": "发布", "start": 40, "end": 42}, "args": []}]}
+{"id": "628b7e50e846a64a48a56508", "title": "", "text": "TrickBot在新一轮的网络钓鱼邮件中出现，表明这种僵尸网络恶意软件再次被使用。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 31, "end": 35}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e8b", "title": "", "text": "网络安全专家说，发起“勒索软件”攻击的不明身份的黑客利用了美国国家安全局发现的微软软件漏洞，国安局的文件在网上泄露时暴露了这个漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 36, "end": 38}, "args": []}]}
+{"id": "628b7e50e846a64a48a56664", "title": "", "text": "在Samba网络软件中发现了的严重远程代码执行漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 11, "end": 13}, "args": []}]}
+{"id": "628b7e50e846a64a48a56498", "title": "", "text": "企业将DDoS攻击归咎于竞争对手，工业破坏被认为是最有可能的原因。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 3, "end": 9}, "args": []}]}
+{"id": "628b7e50e846a64a48a56473", "title": "", "text": "微软在Office中消除了潜在的远程代码执行漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "消除", "start": 10, "end": 12}, "args": []}]}
+{"id": "628b7e50e846a64a48a56281", "title": "", "text": "Apache的struts漏洞危及公司网络服务器", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 13, "end": 15}, "args": []}]}
+{"id": "62831821e846a66a184aef96", "title": "", "text": "以色列移动取证公司Cellebrite宣布，他们在未经授权访问外部网络服务器后遭遇数据泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 41, "end": 45}, "args": []}]}
+{"id": "628b7e50e846a64a48a57012", "title": "", "text": "Windows内核中的漏洞可能会阻止安全软件识别恶意软件技术。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 11, "end": 13}, "args": []}]}
+{"id": "628ddbf5e846a681ac4633b0", "title": "", "text": "它上一次更新iTunes是在12月，修复了软件中的23个WebKit漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 18, "end": 20}, "args": []}]}
+{"id": "628a403ae846a67fe01f0eaa", "title": "", "text": "一个月后，一名研究人员发现，美泰生产的一个可联网的芭比娃娃存在漏洞，黑客可能会截取实时对话。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 11, "end": 13}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1285", "title": "", "text": "在过去的几年里，我们已经看到一种特定形式的商务电子邮件攻击利用了这一点，攻击者将电子邮件注入会话中，以欺骗受害者将钱转移到错误的帐户。", "events": [{"type": "网络钓鱼", "trigger": {"text": "欺骗", "start": 51, "end": 53}, "args": []}]}
+{"id": "628b7e50e846a64a48a56422", "title": "", "text": "为什么是网络安全？为什么现在？10种新兴的网络威胁，从DDoS攻击到勒索软件", "events": [{"type": "漏洞影响", "trigger": {"text": "威胁", "start": 23, "end": 25}, "args": []}]}
+{"id": "628b7e50e846a64a48a56258", "title": "", "text": "黑客在阻塞1000万台连接设备后终止恶意软件任务。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 18, "end": 22}, "args": []}]}
+{"id": "628c83d8e846a67974705647", "title": "", "text": "所谓的“钓鱼者网络钓鱼”(angler phishing)是一种相对较新的策略，黑帽子们会注册虚假的Twitter账户，伪装成客户支持账户。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 7, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a56682", "title": "", "text": "黑客在令人非常失望的数据泄露中窃取了数千名NHS员工的个人详细信息。", "events": [{"type": "数据泄露", "trigger": {"text": "窃取", "start": 15, "end": 17}, "args": []}]}
+{"id": "628b7e50e846a64a48a56898", "title": "", "text": "改进的nukebot恶意软件改变了目标，增加了功能。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 10, "end": 14}, "args": []}]}
+{"id": "62831821e846a66a184aef36", "title": "", "text": "奥兰治县女童子军的成员在本周收到通知，他们的个人信息可能已经暴露给了一个不知名的团体，该团体上个月进入了该组织的一个电子邮件账户。", "events": [{"type": "数据泄露", "trigger": {"text": "暴露", "start": 30, "end": 32}, "args": []}]}
+{"id": "628b7e50e846a64a48a56983", "title": "", "text": "该骗局将CEO欺诈与网络钓鱼和网络安全相结合。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 10, "end": 14}, "args": []}]}
+{"id": "629f52d2e846a6e5804f7c69", "title": "", "text": "就微软而言，它在周二发布的八月补丁中修复了Baloch在Edge浏览器中发现的漏洞（CVE-2018-8383）。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 18, "end": 20}, "args": []}]}
+{"id": "629f52d2e846a6e5804f7c5b", "title": "", "text": "本周早些时候，在Microsoft未能及时修补漏洞后，谷歌披露了MicrosoftEdge的一个缺陷。", "events": [{"type": "漏洞发现", "trigger": {"text": "披露", "start": 29, "end": 31}, "args": []}]}
+{"id": "628b7e50e846a64a48a56979", "title": "", "text": "情报安全服务每月阻止数十亿的垃圾邮件病毒网络钓鱼威胁。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 20, "end": 24}, "args": []}]}
+{"id": "628b7e50e846a64a48a57038", "title": "", "text": "在追捕俄罗斯最臭名昭著的黑客的过程中，想象一下，如果机器学习被注入恶意软件", "events": [{"type": "恶意软件", "trigger": {"text": "注入", "start": 31, "end": 33}, "args": []}]}
+{"id": "62831821e846a66a184aef89", "title": "", "text": "成功的网络钓鱼最终泄露了数十名员工的身份。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 9, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a56943", "title": "", "text": "不能让我的手机出厂重置来摆脱这个恶意软件，任何其他方法都可以摆脱安卓病毒。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 16, "end": 20}, "args": []}]}
+{"id": "628b7e50e846a64a48a56569", "title": "", "text": "网络安全公司追踪勒索软件的来源和目标。", "events": [{"type": "勒索赎金", "trigger": {"text": "勒索软件", "start": 8, "end": 12}, "args": []}]}
+{"id": "628ccbb4e846a697e850189f", "title": "", "text": "该漏洞CVE-2017-5638允许攻击者通过上传到Jakarta Multipart解析器组件的内容在服务器上执行命令，该组件部署在一些Struts安装中。", "events": [{"type": "漏洞影响", "trigger": {"text": "允许", "start": 16, "end": 18}, "args": []}]}
+{"id": "62873c8ae846a639385b91cc", "title": "", "text": "一旦受害者通过恶意链接或网络钓鱼活动感染了撒旦，受害者的文件就会被加密，攻击者就会指示受害者索要赎金。", "events": [{"type": "勒索赎金", "trigger": {"text": "赎金", "start": 48, "end": 50}, "args": []}]}
+{"id": "628cdc30e846a69a647f6988", "title": "", "text": "该公司创始人卡森·布洛克(Carson Block)本周表示，漏洞的根本原因在于需要对St. Jude植入物内部的固件进行更改。", "events": [{"type": "漏洞发现", "trigger": {"text": "表示", "start": 28, "end": 30}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e94", "title": "", "text": "该漏洞是由安全咨询公司DefenseCode的研究人员发现的，位于检索Vimeo上视频预览图像的功能中。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 27, "end": 29}, "args": []}]}
+{"id": "62831821e846a66a184aef6f", "title": "", "text": "印第安纳州印第安纳波利斯——Scotty’s Brewhouse的管理人员正在努力通知公司数千名员工有关电子邮件数据泄露的事件，该事件将员工的W-2表格泄露给了一个未知的嫌疑人。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 56, "end": 60}, "args": []}]}
+{"id": "62878f57e846a66474947c27", "title": "", "text": "荷兰警方表示，他们关闭了15个分布式拒绝服务(DDoS)平台，并逮捕了一名涉嫌对两家政府网站进行DDoS攻击的公民。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 48, "end": 54}, "args": []}]}
+{"id": "62831821e846a66a184aefa4", "title": "", "text": "根据网站上的可用数字，通过这四个门户网站泄露的Aadhaar数字估计在1.3亿到1.35亿之间。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 20, "end": 22}, "args": []}]}
+{"id": "62873c8ae846a639385b91cd", "title": "", "text": "据图书馆发言人珍·哈顿称，SLPL不打算支付约3.5万美元的赎金，即每台受感染电脑约50美元。", "events": [{"type": "勒索赎金", "trigger": {"text": "支付", "start": 20, "end": 22}, "args": []}]}
+{"id": "628c9cdee846a61c98e172e4", "title": "", "text": "这个概念可以概括为，如果你不支付，你的客人就无法进入他们的房间，这突显了勒索软件的战略转变。", "events": [{"type": "勒索赎金", "trigger": {"text": "支付", "start": 14, "end": 16}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ebc", "title": "", "text": "华为公司告诉我们，该漏洞最初是由Nicky(吴慧玉)报告给华为PSIRT的。", "events": [{"type": "漏洞发现", "trigger": {"text": "告诉", "start": 4, "end": 6}, "args": []}]}
+{"id": "628b7e50e846a64a48a56496", "title": "", "text": "OneLogin承认最近的安全漏洞非常严重。", "events": [{"type": "漏洞影响", "trigger": {"text": "安全漏洞", "start": 13, "end": 17}, "args": []}]}
+{"id": "628b7e50e846a64a48a56622", "title": "", "text": "现在是2017年，UPnP正在帮助黑帽运行银行恶意软件。", "events": [{"type": "恶意软件", "trigger": {"text": "运行", "start": 19, "end": 21}, "args": []}]}
+{"id": "628b7e50e846a64a48a56788", "title": "", "text": "infosecnews新的恶意软件利用地理城市朝鲜的兴趣欺骗受害者", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 13, "end": 17}, "args": []}]}
+{"id": "628b7e50e846a64a48a56724", "title": "", "text": "日立支付受到恶意软件攻击-印度时报", "events": [{"type": "恶意软件", "trigger": {"text": "攻击", "start": 10, "end": 12}, "args": []}]}
+{"id": "62873c8ae846a639385b91b5", "title": "", "text": "康涅狄格州一座城市支付了2000美元，以恢复其计算机系统在勒索软件攻击后的访问。", "events": [{"type": "勒索赎金", "trigger": {"text": "支付", "start": 9, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a56687", "title": "", "text": "微软Windows恶意软件扫描程序中存在一个非常糟糕的漏洞，可以用来安装恶意软件。", "events": [{"type": "漏洞发现", "trigger": {"text": "扫描", "start": 13, "end": 15}, "args": []}]}
+{"id": "628b7e50e846a64a48a56499", "title": "", "text": "尽管之前存在安全漏洞，大卫·彼得雷乌斯有望接替迈克尔·弗林成为国家安全顾问。", "events": [{"type": "漏洞影响", "trigger": {"text": "安全漏洞", "start": 6, "end": 10}, "args": []}]}
+{"id": "628b7e50e846a64a48a56614", "title": "", "text": "转推维基链接，英国记者应该问问GCHQ是否知道这个漏洞。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 25, "end": 27}, "args": []}]}
+{"id": "62873c8ae846a639385b91bd", "title": "", "text": "5月15日，沃特·迪士尼首席执行官鲍勃·伊格尔透露，黑客要求迪士尼支付一大笔比特币，以防止他们将一部当时尚未公开的电影泄露到网上。", "events": [{"type": "勒索赎金", "trigger": {"text": "要求", "start": 28, "end": 30}, "args": []}]}
+{"id": "628b9345e846a68edc202070", "title": "", "text": "早在今年1月，研究人员就发现了一个类似的应用程序，它窃取了Instagram的凭证，并将目标对准了土耳其用户。", "events": [{"type": "数据泄露", "trigger": {"text": "窃取了", "start": 26, "end": 29}, "args": []}]}
+{"id": "6289fc3ee846a6342847c113", "title": "", "text": "Cloudflare的问题是内存泄漏，影响了Uber、Fitbit、1Password和OKCupid等大品牌。", "events": [{"type": "漏洞影响", "trigger": {"text": "影响", "start": 19, "end": 21}, "args": []}]}
+{"id": "628b7e50e846a64a48a56857", "title": "", "text": "国会希望equifax公司回答有关全球大规模数据泄露的问题", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 22, "end": 26}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1249", "title": "", "text": "在Inazigram中，这13个应用程序通过网络钓鱼获取Instagram凭据，并将它们窃取到远程服务器。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 22, "end": 26}, "args": []}]}
+{"id": "628b7e50e846a64a48a56356", "title": "", "text": "艾可菲宣布数据泄露，影响1.43亿美国人。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 5, "end": 9}, "args": []}]}
+{"id": "62879f03e846a654b4019756", "title": "", "text": "迪·平托说:“‘灰能’恶意软件使用一种常见的感染方法:用被感染的文件发送钓鱼邮件。”", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 11, "end": 15}, "args": []}]}
+{"id": "62879f03e846a654b4019763", "title": "", "text": "恶意软件允许攻击者几乎完全控制受感染的设备，并从受感染的计算机中窃取机密信息。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 0, "end": 4}, "args": []}]}
+{"id": "628b7e50e846a64a48a56530", "title": "", "text": "优步的数据泄露，公司治理和文化的巨大失败。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 3, "end": 7}, "args": []}]}
+{"id": "628b7e50e846a64a48a57033", "title": "", "text": "行之有效的网络安全提示有效地打击复杂的ddos攻击", "events": [{"type": "DDoS攻击", "trigger": {"text": "ddos攻击", "start": 19, "end": 25}, "args": []}]}
+{"id": "628b7e50e846a64a48a56455", "title": "", "text": "头条新闻：数据泄露影响了俄克拉荷马州就业网站，新闻链接见底部", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 5, "end": 9}, "args": []}]}
+{"id": "62831821e846a66a184aef9b", "title": "", "text": "Shape报告称，在其2016年与零售、金融、旅游、政府和其他行业的合作中，该公司观察到数以百万计的证书被暴露，这些证书被用于证书填充攻击。", "events": [{"type": "数据泄露", "trigger": {"text": "被暴露", "start": 52, "end": 55}, "args": []}]}
+{"id": "628b7e50e846a64a48a56519", "title": "", "text": "蓝色博恩蓝牙漏洞补丁怎么样，目前还没有9月份的安全补丁发布时间。", "events": [{"type": "漏洞补丁", "trigger": {"text": "漏洞补丁", "start": 6, "end": 10}, "args": []}]}
+{"id": "628b7e50e846a64a48a56966", "title": "", "text": "注意，另一个银行邮件诈骗警告来自@actionfrauduk。", "events": [{"type": "网络钓鱼", "trigger": {"text": "诈骗", "start": 10, "end": 12}, "args": []}]}
+{"id": "628b7e50e846a64a48a56252", "title": "", "text": "西部数字my cloud 22119认证绕过漏洞黑客攻击网络安全。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 22, "end": 24}, "args": []}]}
+{"id": "628cb2dfe846a611e096e530", "title": "", "text": "安全研究人员发现了一种针对软件开发人员的苹果Mac恶意软件。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 25, "end": 29}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad118", "title": "", "text": "今年，骗子冒充美国国税局发送电子邮件，诱骗人们泄露敏感信息的网络钓鱼计划位居榜首。", "events": [{"type": "网络钓鱼", "trigger": {"text": "诱骗", "start": 19, "end": 21}, "args": []}]}
+{"id": "62873c8ae846a639385b91a6", "title": "", "text": "它们部署到受害者网络的很大一部分，导致基本系统和服务关闭，使目标设施别无选择，只能支付赎金。", "events": [{"type": "勒索赎金", "trigger": {"text": "赎金", "start": 43, "end": 45}, "args": []}]}
+{"id": "628ddbf5e846a681ac4633ae", "title": "", "text": "2016年11月8日，微软发布了Windows身份验证方法(MS16-137)的安全更新，其中包括3个cve:具体来说是CVE-2016-7237，这个修复应用于lsasrv.dll，它影响了LSASS服务。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 76, "end": 78}, "args": []}]}
+{"id": "6284ff53e846a60fe40c127b", "title": "", "text": "然后，攻击者试图通过钓鱼页面和伪装成苹果公司的社会工程短信获取受害者的苹果ID凭据。", "events": [{"type": "网络钓鱼", "trigger": {"text": "获取", "start": 29, "end": 31}, "args": []}]}
+{"id": "628c9cdee846a61c98e172d3", "title": "", "text": "这些自称为“土耳其犯罪家族”的黑客要求用价值7.5万美元的比特币或以太坊(另一种日益流行的加密货币)，或者价值10万美元的iTunes礼品卡来换取删除所谓的缓存数据。", "events": [{"type": "勒索赎金", "trigger": {"text": "要求", "start": 17, "end": 19}, "args": []}]}
+{"id": "628cb2dfe846a611e096e52a", "title": "", "text": "研究人员发现，Valak恶意软件加载器已经被改造成一种更隐蔽、更复杂的恶意软件，用于侦察和窃取信息。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 12, "end": 16}, "args": []}]}
+{"id": "628c9cdee846a61c98e172cb", "title": "", "text": "攻击者留下了一封勒索信，威胁要向公众发布专有的视频游戏源代码和其他数据集。", "events": [{"type": "勒索赎金", "trigger": {"text": "勒索信", "start": 8, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a56495", "title": "", "text": "基础设施问题显示了我们对 DNS、WDyn、DDoS攻击的依赖程度。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 22, "end": 28}, "args": []}]}
+{"id": "628b7e50e846a64a48a56669", "title": "", "text": "俄罗斯内政部拘留了通过网络钓鱼黑客攻击盗窃金钱的黑客团体。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 11, "end": 15}, "args": []}]}
+{"id": "628b7e50e846a64a48a56840", "title": "", "text": "网络侦察恶意软件在乌克兰窃听电脑", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 4, "end": 8}, "args": []}]}
+{"id": "628e3853e846a6bf00dab91f", "title": "", "text": "航空邮件今天发布了一个更新，为了修补安全研究人员所说的一个漏洞，这个漏洞可能会让恶意的第三方访问电子邮件数据库并读取用户的信息。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修补", "start": 16, "end": 18}, "args": []}]}
+{"id": "628b7e50e846a64a48a561e4", "title": "", "text": "如果我们与最新版本的` lsasrv.dll ` (v6.1.7601.23642)进行比较，我们可以看到通过更改` NegGetExpectedBufferLength `函数，漏洞已经被修复了。", "events": [{"type": "漏洞补丁", "trigger": {"text": "被修复", "start": 94, "end": 97}, "args": []}]}
+{"id": "628b7e50e846a64a48a56216", "title": "", "text": "它还修复了一个允许攻击者通过URL进行目录遍历攻击的路径遍历bug。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 2, "end": 4}, "args": []}]}
+{"id": "628b7e50e846a64a48a56278", "title": "", "text": "基于vega渗透测试的Linux Webapp漏洞扫描。", "events": [{"type": "漏洞发现", "trigger": {"text": "扫描", "start": 25, "end": 27}, "args": []}]}
+{"id": "628b7e50e846a64a48a5621b", "title": "", "text": "Adobe对Ormandy的报告做出了回应，称它已经发布了一个更新的扩展，以修复安全漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 38, "end": 40}, "args": []}]}
+{"id": "6284ff53e846a60fe40c127e", "title": "", "text": "SANS Internet风暴中心周三发布了一份警告，称有一场活跃的网络钓鱼活动利用PDF附件以一种新颖的手段从受害者那里获取电子邮件凭据。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 34, "end": 38}, "args": []}]}
+{"id": "628a403ae846a67fe01f0eaf", "title": "", "text": "根据Cerrudo和Apa的说法，一旦漏洞被利用，黑客就有可能控制机器人进行网络间谍活动，将机器人变成内部威胁，利用机器人暴露私人信息，或者在与人、业务操作或其他机器人交互时导致机器人执行不必要的操作。", "events": [{"type": "漏洞发现", "trigger": {"text": "根据", "start": 0, "end": 2}, "args": []}]}
+{"id": "62831821e846a66a184aefa7", "title": "", "text": "一名黑客从决斗网络(Dueling Network)窃取了数百万个账户，决斗网络是一款基于游戏王交换卡牌游戏的Flash游戏，现在已经不存在了。", "events": [{"type": "数据泄露", "trigger": {"text": "窃取", "start": 26, "end": 28}, "args": []}]}
+{"id": "62878f57e846a66474947c26", "title": "", "text": "根据2011年的起诉书(PDF)， DDoS攻击据称是为了抗议加州圣克鲁兹市对露营的新限制和定义，这些限制和定义被视为对该市无家可归人口的侮辱。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 18, "end": 24}, "args": []}]}
+{"id": "62873c8ae846a639385b91d0", "title": "", "text": "这个版本涉及的活动要求赎金0.085比特币，相当于目前的216美元，并威胁如果不支付赎金，将在96小时内删除这些文件", "events": [{"type": "勒索赎金", "trigger": {"text": "要求", "start": 9, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a56315", "title": "", "text": "采取最新的欧洲恶意软件攻击在新的视频博客显示如何进行防御", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 7, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a56565", "title": "", "text": "在网络钓鱼攻击之后，谷歌加强了OAuth政策。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 1, "end": 5}, "args": []}]}
+{"id": "628b7e50e846a64a48a56705", "title": "", "text": "据称黑客在NASA发生大规模泄露后劫持了无人机。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 14, "end": 16}, "args": []}]}
+{"id": "628b7e50e846a64a48a56510", "title": "", "text": "29%的组织因移动工作直接遭受了数据泄露或丢失。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 16, "end": 20}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad10f", "title": "", "text": "网络钓鱼活动针对的是英国每家主要银行的客户，网络犯罪分子在推特上冒充客户支持人员，试图窃取用户的网上银行凭据。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 0, "end": 4}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ec5", "title": "", "text": "然而，他也宣称利用了Xerox打印机的web管理界面中的一个未公开的远程命令执行（RCE）漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "宣称", "start": 5, "end": 7}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1269", "title": "", "text": "攻击通过告诉受害者该文档是在新版本的Word中创建的，从而诱使受害者允许执行这些文档中的宏，启用宏允许他们查看其内容。", "events": [{"type": "网络钓鱼", "trigger": {"text": "诱使", "start": 29, "end": 31}, "args": []}]}
+{"id": "628a403ae846a67fe01f0edb", "title": "", "text": "但根据开源安全公司Black Duck的数据，在2015年10月至2016年3月期间，该公司审计的200多个应用程序中，约有11%包含该漏洞，该漏洞导致缓冲区溢出，危及运行受影响版本的OpenSSL的客户端和服务器的数据。", "events": [{"type": "漏洞发现", "trigger": {"text": "根据", "start": 1, "end": 3}, "args": []}]}
+{"id": "6289fc3ee846a6342847c122", "title": "", "text": "第二个缺陷CVE-2017-6025是一个基于堆栈的缓冲区溢出，攻击者可以利用它来破坏应用程序或执行任意代码。", "events": [{"type": "漏洞影响", "trigger": {"text": "破坏", "start": 41, "end": 43}, "args": []}]}
+{"id": "628cdc30e846a69a647f697c", "title": "", "text": "在周二发表的一篇非常详细的博客文章中，发现该漏洞的谷歌零项目(Project Zero)研究员表示，该漏洞允许在完全更新的6P上仅通过Wi-Fi距离执行恶意代码，无需用户交互。", "events": [{"type": "漏洞发现", "trigger": {"text": "发表的", "start": 3, "end": 6}, "args": []}]}
+{"id": "628cb2dfe846a611e096e521", "title": "", "text": "波兰媒体上周报道称，波兰许多银行的IT安全团队最近一直在忙着搜索他们的系统，寻找一种特殊的恶意软件，此前几家未透露姓名的银行在他们的电脑上发现了这种病毒。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 45, "end": 49}, "args": []}]}
+{"id": "628b7e50e846a64a48a56807", "title": "", "text": "一个甚至没有系统恢复最近有大的恶意软件问题，认为它的文件污染。", "events": [{"type": "恶意软件", "trigger": {"text": "污染", "start": 28, "end": 30}, "args": []}]}
+{"id": "628c83d8e846a67974705657", "title": "", "text": "在2016年报告的大多数案件中，攻击者伪造了一封电子邮件，并冒充受害者组织的最高执行官或有直接权力的人。", "events": [{"type": "网络钓鱼", "trigger": {"text": "伪造", "start": 19, "end": 21}, "args": []}]}
+{"id": "628e3853e846a6bf00dab909", "title": "", "text": "据州长办公室称，周三，科罗拉多州交通部的一些电脑首次感染了勒索软件。", "events": [{"type": "恶意软件", "trigger": {"text": "感染了", "start": 26, "end": 29}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ed9", "title": "", "text": "最近在20万台设备中发现的“心脏出血”漏洞比这个数字显示的更为隐蔽。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 10, "end": 12}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad137", "title": "", "text": "Bright写道，该漏洞允许任何有能力在系统上运行代码的人将其权限提升到“系统”级别，即操作系统大多数部分使用的级别，也是Windows最接近全能超级用户的级别。", "events": [{"type": "漏洞影响", "trigger": {"text": "允许", "start": 12, "end": 14}, "args": []}]}
+{"id": "628b7e50e846a64a48a56218", "title": "", "text": "F5在4月1日得到问题通知后，修补了BIG-IP应用交付控制器(ADC)中的关键RCE漏洞以及一个已验证跨站脚本(XSS) bug。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修补", "start": 15, "end": 17}, "args": []}]}
+{"id": "628b7e50e846a64a48a56926", "title": "", "text": "当计算机被恶意软件渗透时，机器人会破坏设备。", "events": [{"type": "恶意软件", "trigger": {"text": "渗透", "start": 9, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a57003", "title": "", "text": "谷歌修改应用程序审查程序后的网络钓鱼攻击网址。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 14, "end": 18}, "args": []}]}
+{"id": "62a02ad3e846a6386480b47a", "title": "", "text": "Adobe 11月周二更新的补丁据称修复了导致信息泄露的众多漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "补丁", "start": 14, "end": 16}, "args": []}]}
+{"id": "628b7e50e846a64a48a56504", "title": "", "text": "一家总部位于巴黎的云网络服务提供商，昨天因大规模DDoS攻击而下线。", "events": [{"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 24, "end": 30}, "args": []}]}
+{"id": "62873c8ae846a639385b91d2", "title": "", "text": "去年，每家公司平均遭受四次勒索软件攻击，平均每次支付2500美元的赎金，并花费42小时来应对攻击。", "events": [{"type": "勒索赎金", "trigger": {"text": "支付", "start": 24, "end": 26}, "args": []}]}
+{"id": "628b7e50e846a64a48a56726", "title": "", "text": "黑客窃取了数千名NHS员工的个人信息，这是一次令人非常失望的数据泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "窃取", "start": 2, "end": 4}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ec3", "title": "", "text": "他们写道，我们在反病毒产品和企业中间盒中发现的许多漏洞——例如无法验证证书和公布已破解的密码——都是疏忽，而安全产品正在恶化而不是改善安全性的令人担忧趋势中的另一个数据点。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 20, "end": 22}, "args": []}]}
+{"id": "628b7e50e846a64a48a56589", "title": "", "text": "政府网络安全承包商在W2网络钓鱼诈骗中受到打击。", "events": [{"type": "网络钓鱼", "trigger": {"text": "诈骗", "start": 16, "end": 18}, "args": []}]}
+{"id": "628b7e50e846a64a48a561f4", "title": "", "text": "Valve的一位发言人表示，该漏洞已于周二中午被修复，但尚不清楚这扇门被黑客利用了多长时间。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 24, "end": 26}, "args": []}]}
+{"id": "62878f57e846a66474947c19", "title": "", "text": "DDoS攻击造成每秒有300万以上的报文被非法传输，导致正常用户的资源被阻断。", "events": [{"type": "DDoS攻击", "trigger": {"text": "造成", "start": 6, "end": 8}, "args": []}]}
+{"id": "628c83d8e846a67974705652", "title": "", "text": "一波网络攻击正以企业的财务部门为目标，通过社会工程和网络钓鱼活动，诱骗受害者下载窃取凭证的恶意软件和其他威胁。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 26, "end": 30}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ea4", "title": "", "text": "上周首次披露的英特尔(Intel Corp.)芯片的一个安全漏洞看起来比最初想象的要严重得多，因为黑客甚至可以在不需要密码的情况下劫持英特尔(Intel)处理器。", "events": [{"type": "漏洞发现", "trigger": {"text": "披露", "start": 4, "end": 6}, "args": []}]}
+{"id": "62879f03e846a654b4019794", "title": "", "text": "英国国家医疗服务系统数字部门表示，他们已经意识到巴兹被一种“病毒感染，影响了他们的it系统””.", "events": [{"type": "恶意软件", "trigger": {"text": "感染", "start": 32, "end": 34}, "args": []}]}
+{"id": "628b7e50e846a64a48a561f3", "title": "", "text": "在3月21日发布的最新固件版本中，QNAP修复的漏洞包括web用户界面中的3个命令注入漏洞，这些漏洞可以被利用，以管理用户的身份在有漏洞的设备上远程执行命令。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 21, "end": 23}, "args": []}]}
+{"id": "628cdc30e846a69a647f6990", "title": "", "text": "就在安全研究人员公开披露该漏洞几天后，F5的BIG-IP网络设备中的一个关键远程代码执行（RCE）漏洞正被广泛利用。", "events": [{"type": "漏洞发现", "trigger": {"text": "披露", "start": 10, "end": 12}, "args": []}]}
+{"id": "62879f03e846a654b401977c", "title": "", "text": "该恶意软件的工作原理是感染计算机，获得引导持久性，并与其命令和控制(C&C)服务器建立一个通信通道，即IRC通道。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 1, "end": 5}, "args": []}]}
+{"id": "628e3853e846a6bf00dab90a", "title": "", "text": "该恶意软件袭击了英国的电脑美国的卫生保健部门受到的打击尤其严重，对执行关键工作的系统造成了损害。", "events": [{"type": "恶意软件", "trigger": {"text": "袭击", "start": 5, "end": 7}, "args": []}]}
+{"id": "628cb2dfe846a611e096e52f", "title": "", "text": "勒索软件是一种恶意软件，它要么加密数据，要么(不太常见)锁定用户的设备。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 7, "end": 11}, "args": []}]}
+{"id": "6289fc3ee846a6342847c105", "title": "", "text": "这次破坏影响了大约19000名高标记蓝十字蓝盾成员。", "events": [{"type": "漏洞影响", "trigger": {"text": "影响", "start": 4, "end": 6}, "args": []}]}
+{"id": "628b7e50e846a64a48a56802", "title": "", "text": "当漏洞满足性能要求时被剥离。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 1, "end": 3}, "args": []}]}
+{"id": "628e3853e846a6bf00dab8fe", "title": "", "text": "他们让员工无法看到公司的任何数据，并要求31000个在线货币比特币来纠正问题。", "events": [{"type": "勒索赎金", "trigger": {"text": "要求", "start": 18, "end": 20}, "args": []}]}
+{"id": "628b7e50e846a64a48a56217", "title": "", "text": "韩华Techwin针对最近几年出现的各种智能相机网络管理界面漏洞，决定完全关闭本地管理面板，只允许用户通过智能手机应用程序和“我的智能相机云服务”访问。", "events": [{"type": "漏洞补丁", "trigger": {"text": "针对", "start": 9, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a56386", "title": "", "text": "朝鲜首次被正式认定应为去年5月的wannacry恶意软件攻击负责。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 24, "end": 28}, "args": []}]}
+{"id": "628b7e50e846a64a48a56725", "title": "", "text": "有没有其他人最近接到大量可疑的网络钓鱼电话，认为特朗普给了他们尽可能可疑的通行证", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 15, "end": 19}, "args": []}]}
+{"id": "628b7e50e846a64a48a56559", "title": "", "text": "微软下一次重大的Windows更新将使用AI来对抗恶意软件。·", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 25, "end": 29}, "args": []}]}
+{"id": "628b7e50e846a64a48a56882", "title": "", "text": "小心这个微软powerpoint黑客安装恶意软件不需要宏插件。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 20, "end": 24}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e92", "title": "", "text": "早在2013年1月，应用安全服务公司DefenseCode的研究人员就在一些Cisco Linksys(现在的Belkin)路由器的默认安装中发现了一个远程root访问漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 71, "end": 73}, "args": []}]}
+{"id": "628b7e50e846a64a48a56989", "title": "", "text": "新的Linux恶意软件劫持了一个供应商的物联网设备，利用cgi漏洞。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 31, "end": 33}, "args": []}]}
+{"id": "628b9345e846a68edc202087", "title": "", "text": "2015年，IBM将医疗保健列为受攻击最严重的行业，有超过1亿条记录被泄露，而在前一年，该行业甚至没有进入前五名。", "events": [{"type": "数据泄露", "trigger": {"text": "被泄露", "start": 34, "end": 37}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e9b", "title": "", "text": "安全研究员Alex Inführ指出，有一种方法可以通过触发嵌入在ODT文件中的事件来实现远程代码执行.", "events": [{"type": "漏洞发现", "trigger": {"text": "指出", "start": 16, "end": 18}, "args": []}]}
+{"id": "628b9345e846a68edc202078", "title": "", "text": "除了巴拉托夫之外，据称俄罗斯特工还雇佣了一名29岁的拉脱维亚人阿列克谢·贝兰(Aleksey Belan)，他实施了针对雅虎的主要黑客攻击，窃取了涉及5亿用户账户的数据库。", "events": [{"type": "数据泄露", "trigger": {"text": "窃取了", "start": 70, "end": 73}, "args": []}]}
+{"id": "628b7e50e846a64a48a57021", "title": "", "text": "企业将ddos攻击归咎于竞争对手，工业破坏被认为是背后最可能的原因。", "events": [{"type": "DDoS攻击", "trigger": {"text": "ddos攻击", "start": 3, "end": 9}, "args": []}]}
+{"id": "628b7e50e846a64a48a56214", "title": "", "text": "Qubes开发人员已经发布了Qubes 3.1和3.2的Xen补丁包，并重申他们打算在即将到来的Qubes 4.0中完全停止使用半虚拟化。", "events": [{"type": "漏洞补丁", "trigger": {"text": "补丁包", "start": 31, "end": 34}, "args": []}]}
+{"id": "6284ff53e846a60fe40c129d", "title": "", "text": "研究人员表示，一款伪装成电池应用程序的勒索软件进入了Play商店。", "events": [{"type": "网络钓鱼", "trigger": {"text": "伪装", "start": 9, "end": 11}, "args": []}]}
+{"id": "62831821e846a66a184aef40", "title": "", "text": "上周，英国航空公司透露，在9月份的攻击中，又有近20万名乘客的个人数据可能被黑客窃取，专家称这是英国有史以来最大的消费者数据泄露事件之一。", "events": [{"type": "数据泄露", "trigger": {"text": "窃取", "start": 40, "end": 42}, "args": []}]}
+{"id": "628b7e50e846a64a48a56477", "title": "", "text": "“Elfimeij”是一种新的Linux恶意软件正在野外传播，ESF实验室有限公司提醒您提高安全意识，注意网络安全。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 20, "end": 24}, "args": []}]}
+{"id": "62879f03e846a654b4019788", "title": "", "text": "在这次行动中，黑客通过两个文件分发恶意软件，分别是“nda -世界上第八所最难进入的大学。xls”和“NIA-selection-order-.xls”。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 17, "end": 21}, "args": []}]}
+{"id": "628a403ae846a67fe01f0ed4", "title": "", "text": "合作者的程序员西蒙·麦克维蒂(Simon McVittie)证实了研究员基里尔·特凯(Kirill Tkhai)的发现，他在1月26日披露了这个漏洞。", "events": [{"type": "漏洞发现", "trigger": {"text": "披露了", "start": 67, "end": 70}, "args": []}]}
+{"id": "628b7e50e846a64a48a56737", "title": "", "text": "可以隐藏在视线中的恶意软件正在增加", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 9, "end": 13}, "args": []}]}
+{"id": "6284ff53e846a60fe40c126f", "title": "", "text": "在很多情况下，诈骗者有印度口音，假装成TalkTalk的员工，并要求用户安装TeamViewer，以帮助客户解决技术问题或解决安全错误。", "events": [{"type": "网络钓鱼", "trigger": {"text": "假装", "start": 16, "end": 18}, "args": []}]}
+{"id": "62831821e846a66a184aef5b", "title": "", "text": "黑客似乎已经进入了一个暴露的CloudPets数据库，这些玩具——可以接收和发送来自儿童和父母的语音信息——涉及80多万用户账户的数据泄露。他在一篇博客文章中说，这些信息包含电子邮件地址和散列密码，他们甚至在1月份试图勒索这些信息。", "events": [{"type": "数据泄露", "trigger": {"text": "暴露", "start": 11, "end": 13}, "args": []}]}
+{"id": "628b7e50e846a64a48a56858", "title": "", "text": "网站恶意软件删除服务在moyle恶意软件防护服务", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 2, "end": 6}, "args": []}]}
+{"id": "628b7e50e846a64a48a56604", "title": "", "text": "数据窃取恶意软件Dimnie针对Windows上的开发者。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 4, "end": 8}, "args": []}]}
+{"id": "628b7e50e846a64a48a56685", "title": "", "text": "稍后学校发来电子邮件说，如果你看到关于申请工作的电子邮件，警告不要打开，这是一封网络钓鱼邮件", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 40, "end": 44}, "args": []}]}
+{"id": "628b7e50e846a64a48a56804", "title": "", "text": "Metacert将为slack推出加密货币钱包网络钓鱼保护。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 23, "end": 27}, "args": []}]}
+{"id": "628b7e50e846a64a48a56642", "title": "", "text": "中小型企业托管，率先向您的客户提供Quttera的网站恶意软件解决方案。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 27, "end": 31}, "args": []}]}
+{"id": "62873c8ae846a639385b91bf", "title": "", "text": "德州警方因拒绝向网络罪犯支付赎金而失去了8年的调查工作和所有证据。", "events": [{"type": "勒索赎金", "trigger": {"text": "支付", "start": 12, "end": 14}, "args": []}]}
+{"id": "628b7e50e846a64a48a56419", "title": "", "text": "加入我们在6月29日，了解消息网关和内容恶意软件分析如何阻止今天的高级电子邮件威胁。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 20, "end": 24}, "args": []}]}
+{"id": "62879f03e846a654b4019766", "title": "", "text": "在另一份报告中，网络安全研究人员认为，包括石油行业在内的工业设施的计算机控制系统每年至少会被非目标恶意软件感染3000次。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 49, "end": 53}, "args": []}]}
+{"id": "628cdc30e846a69a647f6979", "title": "", "text": "libpurple中发现了一个严重的漏洞，该库用于开发许多流行的即时通讯客户端，包括用于macOS平台的Pidgin和Adium。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现了", "start": 10, "end": 13}, "args": []}]}
+{"id": "628b7e50e846a64a48a56253", "title": "", "text": "谷歌chrome更新会使电脑感染恶意软件。", "events": [{"type": "恶意软件", "trigger": {"text": "感染", "start": 14, "end": 16}, "args": []}]}
+{"id": "628b7e50e846a64a48a56856", "title": "", "text": "在CWPSS免费电子书中了解网络钓鱼攻击如何成为网络罪犯的最爱", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 14, "end": 18}, "args": []}]}
+{"id": "628a403ae846a67fe01f0e93", "title": "", "text": "Qualys Security的安全研究人员发现了一个Linux漏洞，该漏洞可以被利用来获得root权限，并覆盖启用selinux系统的文件系统中的任何文件。", "events": [{"type": "漏洞发现", "trigger": {"text": "发现", "start": 22, "end": 24}, "args": []}]}
+{"id": "628b7e50e846a64a48a56536", "title": "", "text": "只是得说，你只是落入了网络钓鱼攻击的陷阱，故事结束，没有被钓鱼。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼攻击", "start": 11, "end": 17}, "args": []}]}
+{"id": "628b7e50e846a64a48a56728", "title": "", "text": "netgain企业管理器执行命令注入远程代码执行漏洞。", "events": [{"type": "漏洞影响", "trigger": {"text": "注入", "start": 16, "end": 18}, "args": []}]}
+{"id": "62873c8ae846a639385b91ab", "title": "", "text": "根据美国司法部昨天(6月9日)发布的新闻稿，在殖民管道公司的IT网络在5月初被入侵后，它通知联邦调查局，它已经支付了约75比特币(430万美元)的赎金要求。", "events": [{"type": "勒索赎金", "trigger": {"text": "赎金", "start": 73, "end": 75}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1259", "title": "", "text": "3日下午，针对谷歌账户的大规模网络钓鱼活动席卷了整个网络。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 15, "end": 19}, "args": []}]}
+{"id": "628b7e50e846a64a48a56403", "title": "", "text": "生物识别安全措施是否可能阻止了优步的数据泄露事件？", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 18, "end": 22}, "args": []}]}
+{"id": "629f52d2e846a6e5804f7c64", "title": "", "text": "早在去年10月，该公司就发布了一个安全补丁来修复一个关键的漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "补丁", "start": 19, "end": 21}, "args": []}]}
+{"id": "628b7e50e846a64a48a56881", "title": "", "text": "2014年，美国起诉雅虎账户泄露者。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 14, "end": 16}, "args": []}]}
+{"id": "629e1df4e846a6e7d8bad108", "title": "", "text": "屡获殊荣的烹饪工具公司OXO透露，该公司在过去两年中遭遇了数据泄露，可能泄露了客户和信用卡信息。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 31, "end": 33}, "args": []}]}
+{"id": "628b7e50e846a64a48a56911", "title": "", "text": "美国国会敦促优步就其试图隐瞒的数据泄露问题给出答案", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 15, "end": 19}, "args": []}]}
+{"id": "628b7e50e846a64a48a56735", "title": "", "text": "俄罗斯银行阿尔法称其受到DNS僵尸网络攻击", "events": [{"type": "DDoS攻击", "trigger": {"text": "网络攻击", "start": 17, "end": 21}, "args": []}]}
+{"id": "628b7e50e846a64a48a56904", "title": "", "text": "密码管理器onelogin受到数据泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 15, "end": 19}, "args": []}]}
+{"id": "628b7e50e846a64a48a57016", "title": "", "text": "新的恶意软件案件是对美国国家安全局的重大打击。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 2, "end": 6}, "args": []}]}
+{"id": "628b7e50e846a64a48a56409", "title": "", "text": "恶意软件测试与密码加密内容：如何安全地将危险内容转移到“突破点”。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 0, "end": 4}, "args": []}]}
+{"id": "628b7e50e846a64a48a56733", "title": "", "text": "新的无文件恶意软件使用DNS查询接收终端l命令", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 5, "end": 9}, "args": []}]}
+{"id": "628b9345e846a68edc20207a", "title": "", "text": "Polecat在10月30日和11月1日收到了Wizcase的数据泄露通知。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 33, "end": 35}, "args": []}]}
+{"id": "6288f2e0e846a63ffcc402b4", "title": "", "text": "就在安全研究人员披露该技术几天后，在野外发现了新的供应链攻击", "events": [{"type": "供应链攻击", "trigger": {"text": "供应链攻击", "start": 25, "end": 30}, "args": []}]}
+{"id": "628b7e50e846a64a48a561e5", "title": "", "text": "例如，ERRATICGOPHER的攻击是在Windows Vista发布之前解决的，而ETERNALCHAMPION是用另外两个之前披露的漏洞修复的。", "events": [{"type": "漏洞补丁", "trigger": {"text": "修复", "start": 71, "end": 73}, "args": []}]}
+{"id": "628b7e50e846a64a48a561ff", "title": "", "text": "然而，在2017-01-26T19:45Z，思科的官方安全顾问页面说:思科目前正在开发更新，以解决Firefox和Internet Explorer的这个漏洞。", "events": [{"type": "漏洞补丁", "trigger": {"text": "更新", "start": 43, "end": 45}, "args": []}]}
+{"id": "628ccbb4e846a697e850188c", "title": "", "text": "由于PROPFIND请求中的‘IF’标头验证不正确，Microsoft Internet Information Services（IIS）6.0易受零日缓冲区溢出漏洞（CVE-2017-7269）的攻击。", "events": [{"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 82, "end": 84}, "args": []}]}
+{"id": "6284ff53e846a60fe40c1254", "title": "", "text": "当涉及到网络钓鱼诈骗时，一般的概念是网络罪犯只会发送一个链接，诱骗用户使用他们的社交媒体或电子邮件凭据登录。", "events": [{"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 4, "end": 8}, "args": []}]}
+{"id": "628b7e50e846a64a48a56438", "title": "", "text": "这部剧是由那些连自己的恶意软件都保护不了的人带来的，美国国家安全局刚刚给自己颁了个奖，这不是编的。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 11, "end": 15}, "args": []}]}
+{"id": "628b7e50e846a64a48a56842", "title": "", "text": "Ccleaner恶意软件的目标是谷歌、微软和三星的内部网络。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 8, "end": 12}, "args": []}]}
+{"id": "628b7e50e846a64a48a56848", "title": "", "text": "首席执行官在hostingcon上谈论现代ddos攻击", "events": [{"type": "DDoS攻击", "trigger": {"text": "ddos攻击", "start": 21, "end": 27}, "args": []}]}
+{"id": "62879f03e846a654b401978d", "title": "", "text": "该恶意软件并没有从磁盘中清除数据，而是对其进行加密，并显示一条消息，要求提供222个比特币以恢复数据。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 1, "end": 5}, "args": []}]}
+{"id": "628b7e50e846a64a48a57026", "title": "", "text": "很好地抓住了mike，绝对是钓鱼邮件，域名ffxivs是今天早上首次注册的，但会欺骗很多人。", "events": [{"type": "网络钓鱼", "trigger": {"text": "钓鱼邮件", "start": 14, "end": 18}, "args": []}]}
+{"id": "62831821e846a66a184aefa6", "title": "", "text": "香港可能刚刚经历了有史以来最大规模的数据泄露事件，香港特别行政区(SAR) 370万选民的个人信息在两台笔记本电脑上被盗。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 18, "end": 22}, "args": []}]}
+{"id": "628b7e50e846a64a48a56756", "title": "", "text": "发薪日贷款机构wonga确认数据泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 14, "end": 18}, "args": []}]}
+{"id": "628b7e50e846a64a48a56562", "title": "", "text": "新型物联网恶意软件通过已知漏洞针对100个IP摄像头。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 5, "end": 9}, "args": []}]}
+{"id": "628b7e50e846a64a48a56389", "title": "", "text": "可观察性是量化ddos攻击安全网络攻击的必要条件。", "events": [{"type": "DDoS攻击", "trigger": {"text": "ddos攻击", "start": 7, "end": 13}, "args": []}]}
+{"id": "628b7e50e846a64a48a56376", "title": "", "text": "以下是上周一些最有趣的新闻和文章的概述:个人登录遭受数据泄露。", "events": [{"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 26, "end": 30}, "args": []}]}
+{"id": "628b7e50e846a64a48a56845", "title": "", "text": "不管他们可能会造成什么延误，但迟早这个安全漏洞的问题将会成为他们等待的叛国案。", "events": [{"type": "漏洞影响", "trigger": {"text": "安全漏洞", "start": 19, "end": 23}, "args": []}]}
+{"id": "62831821e846a66a184aef48", "title": "", "text": "本周末泄露即将播出的《女子监狱》第五季的黑客组织可能还获得了其他三十多部电视剧和电影的访问权限。", "events": [{"type": "数据泄露", "trigger": {"text": "泄露", "start": 3, "end": 5}, "args": []}]}
+{"id": "628b7e50e846a64a48a56574", "title": "", "text": "新的安卓恶意软件样本每10秒钟出现一次。", "events": [{"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 4, "end": 8}, "args": []}]}

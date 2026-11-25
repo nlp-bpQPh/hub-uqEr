@@ -1,0 +1,22 @@
+{
+  "seed": 42,
+  "sizes": {
+    "train_extract": 800,
+    "dev_extract": 300,
+    "dev_docs": 50
+  },
+  "stats": {
+    "train_extract": {
+      "full": 1411,
+      "sample": 800
+    },
+    "dev_extract": {
+      "full": 353,
+      "sample": 300
+    },
+    "dev_docs": {
+      "full": 353,
+      "sample": 50
+    }
+  }
+}

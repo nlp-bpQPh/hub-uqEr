@@ -1,0 +1,20 @@
+{"id": "628b7e50e846a64a48a56588", "sent_id": "s1125", "text": "DDoS攻击尝试在几个月内翻倍。", "event": {"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 0, "end": 6}, "args": []}}
+{"id": "628b7e50e846a64a48a56993", "sent_id": "s1539", "text": "Ddos攻击使卡塔尔半岛电视台网站瘫痪", "event": {"type": "DDoS攻击", "trigger": {"text": "Ddos攻击", "start": 0, "end": 6}, "args": []}}
+{"id": "628b7e50e846a64a48a56351", "sent_id": "s891", "text": "恶意软件Ccleaner显示了软件严重的供应链安全问题。", "event": {"type": "供应链攻击", "trigger": {"text": "供应链", "start": 20, "end": 23}, "args": []}}
+{"id": "6288f2e0e846a63ffcc402b9", "sent_id": "s375", "text": "目前仍在进行的“供应链攻击”可能早在2020年春季就已经开始。", "event": {"type": "供应链攻击", "trigger": {"text": "供应链攻击", "start": 8, "end": 13}, "args": []}}
+{"id": "628b7e50e846a64a48a56382", "sent_id": "s921", "text": "数据泄露的受害者被要求赎金。", "event": {"type": "勒索赎金", "trigger": {"text": "赎金", "start": 11, "end": 13}, "args": []}}
+{"id": "628b7e50e846a64a48a56992", "sent_id": "s1538", "text": "安卓勒索软件想要听你解锁代码。", "event": {"type": "勒索赎金", "trigger": {"text": "勒索软件", "start": 2, "end": 6}, "args": []}}
+{"id": "628b7e50e846a64a48a56893", "sent_id": "s1441", "text": "脸书信息当心恶意软件", "event": {"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 6, "end": 10}, "args": []}}
+{"id": "628b7e50e846a64a48a56791", "sent_id": "s1340", "text": "你检查过中情局的恶意软件了吗?", "event": {"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 8, "end": 12}, "args": []}}
+{"id": "628b7e50e846a64a48a56261", "sent_id": "s812", "text": "TB是你的数据泄露应对计划。", "event": {"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 5, "end": 9}, "args": []}}
+{"id": "628b7e50e846a64a48a57001", "sent_id": "s1547", "text": "老互惠银行的目标是数据泄露。", "event": {"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 9, "end": 13}, "args": []}}
+{"id": "628b7e50e846a64a48a57027", "sent_id": "s1572", "text": "报告997的web应用程序至少有一个漏洞", "event": {"type": "漏洞发现", "trigger": {"text": "报告", "start": 0, "end": 2}, "args": []}}
+{"id": "628b7e50e846a64a48a57039", "sent_id": "s1584", "text": "大华安全摄像头发现漏洞后敦促用户更新固件", "event": {"type": "漏洞发现", "trigger": {"text": "发现", "start": 7, "end": 9}, "args": []}}
+{"id": "628b7e50e846a64a48a56819", "sent_id": "s1368", "text": "我们的系统漏洞导致信用卡欺诈", "event": {"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 5, "end": 7}, "args": []}}
+{"id": "628b7e50e846a64a48a56650", "sent_id": "s1194", "text": "你的违规事件响应计划有漏洞吗？", "event": {"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 11, "end": 13}, "args": []}}
+{"id": "628b7e50e846a64a48a56809", "sent_id": "s1358", "text": "网络安全解决我们的漏洞", "event": {"type": "漏洞补丁", "trigger": {"text": "解决", "start": 4, "end": 6}, "args": []}}
+{"id": "628b7e50e846a64a48a56279", "sent_id": "s830", "text": "微软浏览器中的思科漏洞仍未修复。", "event": {"type": "漏洞补丁", "trigger": {"text": "未修复", "start": 12, "end": 15}, "args": []}}
+{"id": "628b7e50e846a64a48a56805", "sent_id": "s1354", "text": "如何发现网络钓鱼邮件。", "event": {"type": "网络钓鱼", "trigger": {"text": "邮件", "start": 8, "end": 10}, "args": []}}
+{"id": "628b7e50e846a64a48a56599", "sent_id": "s1136", "text": "雅虎黑客攻击教训：警惕网络钓鱼。", "event": {"type": "网络钓鱼", "trigger": {"text": "网络钓鱼", "start": 11, "end": 15}, "args": []}}
+{"id": "6289fc3ee846a6342847c0ff", "sent_id": "s1697", "text": "海姆达尔安全公司还声称，RIG试图利用Internet Explorer、Silverlight、Flash Player和Microsoft Edge中的8个漏洞之一，包括CVE-2015-8651 (CVSS分数:9.1)、CVE-2015-5122 (CVSS分数:10，影响近100个Flash版本)、CVE-2016-4117 (CVSS分数:10)、CVE-2016-7200和CVE-2016-7201 (CVSS分数:7.6，影响Microsoft Edge)、CVE-2016-3298 (CVSS分数:10)。3.6，影响Internet Explorer版本9,10,11)和CVE-2016-0034 (CVSS评分:9.3)。", "event": {"type": "漏洞影响", "trigger": {"text": "利用", "start": 17, "end": 19}, "args": []}}
+{"id": "6289fc3ee846a6342847c103", "sent_id": "s397", "text": "RIG利用了8个漏洞之一，包括CVE-2015-8651 (CVSS得分:9.1)、CVE-2015-5122 (CVSS得分:10，影响近100个Flash版本)、CVE-2016-4117 (CVSS得分:10)、CVE-2016-1019 (CVSS得分:10)、CVE-2016-7200和CVE-2016-7201 (CVSS得分:7.6，影响Microsoft Edge)、CVE-2016-3298 (CVSS得分:3.6，影响Internet Explorer版本9、10、11)和CVE-2016-0034 (CVSS得分:9.3)。", "event": {"type": "漏洞影响", "trigger": {"text": "利用", "start": 3, "end": 5}, "args": []}}

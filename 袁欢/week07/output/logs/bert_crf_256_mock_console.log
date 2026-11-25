@@ -1,0 +1,9 @@
+加载 bert_crf_256_mock.pt（epoch 1，内层验证 spanF1=0.0000，解码器=crf）
+样本数 20（缺预测 0 条）
+  trigger      P=0.0000 R=0.0000 F1=0.0000 (tp=0 fp=20 fn=20)
+  event_exact  P=0.0000 R=0.0000 F1=0.0000 (tp=0 fp=20 fn=20)
+  type_macro_f1 = 0.0833
+  n200 子集：trigger F1=0.0000 event F1=0.0000 → bert_crf_256_mock_n200.json
+  指标已写入 → G:\workspace\information\ai\code7\outputs\metrics\disc\bert_crf_256_mock.json
+
+非法统计（dev）：含非法序列 20 条（100.0%），非法转移 109 处 / 非法开头 11 处

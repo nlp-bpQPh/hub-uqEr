@@ -1,0 +1,58 @@
+{
+  "method": "llm_lora",
+  "argv": [
+    "llm_lora/train_sft.py",
+    "--full_ft"
+  ],
+  "args": {
+    "model_path": "D:\\学习资料\\AI\\homework\\pretrain_models\\Qwen3-0.6B",
+    "data_dir": "D:\\学习资料\\AI\\homework\\week7\\data\\processed",
+    "output_dir": "D:\\学习资料\\AI\\homework\\week7\\outputs\\llm\\ckpt",
+    "num_train": -1,
+    "epochs": 1,
+    "batch_size": 2,
+    "grad_accum": 8,
+    "lr": 2e-05,
+    "max_length": 1280,
+    "full_ft": true,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "dtype": "auto",
+    "grad_ckpt": false,
+    "seed": 42,
+    "log_every": 50,
+    "run_name": "llm_lora",
+    "max_steps": 0,
+    "val_size": 200,
+    "std_logits": false
+  },
+  "env": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "time": "2026-11-24 23:16:18",
+    "torch": "2.13.0+cu132",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "transformers": "5.22.2"
+  },
+  "params": 596049920,
+  "log_every": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.098402,
+      "elapsed_s": 963.3,
+      "val": {
+        "val_loss": 0.0695
+      },
+      "optimizer_steps": 83
+    }
+  ],
+  "total_elapsed_s": 968.8,
+  "finished": true,
+  "optimizer_steps": 83,
+  "best_val_loss": 0.06948648717430086,
+  "peak_gpu_mb": 7120.9,
+  "notes": "LoRA SFT（Qwen3-0.6B 生成式链路）"
+}

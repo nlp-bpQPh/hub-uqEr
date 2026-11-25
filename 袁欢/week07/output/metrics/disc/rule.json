@@ -1,0 +1,440 @@
+{
+  "num_samples": 353,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.5129,
+    "recall": 0.5071,
+    "f1": 0.51,
+    "tp": 179,
+    "fp": 170,
+    "fn": 174
+  },
+  "event_exact": {
+    "precision": 0.5129,
+    "recall": 0.5071,
+    "f1": 0.51,
+    "tp": 179,
+    "fp": 170,
+    "fn": 174
+  },
+  "per_type": {
+    "DDoS攻击": {
+      "precision": 0.9444,
+      "recall": 0.8947,
+      "f1": 0.9189,
+      "tp": 17,
+      "fp": 1,
+      "fn": 2
+    },
+    "供应链攻击": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "勒索赎金": {
+      "precision": 0.6207,
+      "recall": 0.6667,
+      "f1": 0.6429,
+      "tp": 18,
+      "fp": 11,
+      "fn": 9
+    },
+    "恶意软件": {
+      "precision": 0.8488,
+      "recall": 0.9125,
+      "f1": 0.8795,
+      "tp": 73,
+      "fp": 13,
+      "fn": 7
+    },
+    "数据泄露": {
+      "precision": 0.8966,
+      "recall": 0.8,
+      "f1": 0.8455,
+      "tp": 52,
+      "fp": 6,
+      "fn": 13
+    },
+    "漏洞发现": {
+      "precision": 0.5741,
+      "recall": 0.6889,
+      "f1": 0.6263,
+      "tp": 31,
+      "fp": 23,
+      "fn": 14
+    },
+    "漏洞影响": {
+      "precision": 0.4667,
+      "recall": 0.4516,
+      "f1": 0.459,
+      "tp": 14,
+      "fp": 16,
+      "fn": 17
+    },
+    "漏洞补丁": {
+      "precision": 1.0,
+      "recall": 0.6452,
+      "f1": 0.7843,
+      "tp": 20,
+      "fp": 0,
+      "fn": 11
+    },
+    "网络钓鱼": {
+      "precision": 0.8958,
+      "recall": 0.8776,
+      "f1": 0.8866,
+      "tp": 43,
+      "fp": 5,
+      "fn": 6
+    }
+  },
+  "type_macro_f1": 0.7826,
+  "method": "rule",
+  "gold": "G:\\workspace\\information\\ai\\code7\\data\\processed\\dev_extract.jsonl",
+  "pred": "G:\\workspace\\information\\ai\\code7\\outputs\\disc\\pred_rule.jsonl",
+  "meta": {
+    "display_name": "L0 规则（触发词词典）",
+    "train_s": 0,
+    "params_m": 0,
+    "ms_per_sentence": 0.027,
+    "num_triggers": 122,
+    "min_trigger_count": 2,
+    "note": "零训练基线；触发词从 train 统计 + 人工同义词（事件检测口径，无论元）"
+  },
+  "failure_analysis": {
+    "counts": {
+      "exact": 179,
+      "wrong_trigger": 95,
+      "wrong_type": 75,
+      "no_trigger": 4
+    },
+    "ratios": {
+      "exact": 0.5071,
+      "wrong_trigger": 0.2691,
+      "wrong_type": 0.2125,
+      "no_trigger": 0.0113
+    },
+    "trigger_hit_rate": 0.9887,
+    "examples": {
+      "exact": [
+        {
+          "text": "已将视频添加到播放列表：布里姆利谈“益百利”数据泄露，你需要做的事项以确保安全。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        },
+        {
+          "text": "目前尚不清楚在数据库内容被删除和留下赎金之前，数据库被访问了多少次，这是针对保护不力的MongoDB数据库的其他攻击的症状。",
+          "gold": {
+            "type": "勒索赎金",
+            "trigger": "赎金"
+          },
+          "pred": {
+            "type": "勒索赎金",
+            "trigger": "赎金"
+          }
+        },
+        {
+          "text": "小心，不要打开可疑的电子邮件，不要成为网络钓鱼的受害者。",
+          "gold": {
+            "type": "网络钓鱼",
+            "trigger": "网络钓鱼"
+          },
+          "pred": {
+            "type": "网络钓鱼",
+            "trigger": "网络钓鱼"
+          }
+        },
+        {
+          "text": "在今天(9月14日)发布的更新中，这家日本公司证实，9月8日发生的事件是一次恶意软件攻击，影响了我们在EMEA(欧洲、中东和非洲)的部分销售和制造网络。",
+          "gold": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          }
+        },
+        {
+          "text": "瑞典数据泄露82%因轮奸入狱的人是外国出生的。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        },
+        {
+          "text": "你的小企业需要数据泄露保险吗?",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        },
+        {
+          "text": "IBM 2016年的一份报告显示，受损记录的数量减少了，但数据泄露的数量增加了，给医疗保健机构造成了运营、声誉和财务损失。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        },
+        {
+          "text": "Equifax首席执行官将在参议院听证会上就数据泄露作证。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        }
+      ],
+      "wrong_trigger": [
+        {
+          "text": "2015年，TalkTalk公司经历了三次数据泄露，数百万用户的数据在网上泄露。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "泄露"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        },
+        {
+          "text": "在安全建议中，Wireshark建议用户升级到3.4.4或3.2.12版本，这两个版本都已经打补丁来解决该问题。",
+          "gold": {
+            "type": "漏洞补丁",
+            "trigger": "打补丁"
+          },
+          "pred": {
+            "type": "漏洞补丁",
+            "trigger": "补丁"
+          }
+        },
+        {
+          "text": "数千台电脑感染了加密货币挖掘软件，使用了与wannacry lililiputing相同的漏洞。",
+          "gold": {
+            "type": "恶意软件",
+            "trigger": "感染"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "感染了"
+          }
+        },
+        {
+          "text": "网络钓鱼诈骗甚至欺骗技术宅如何避免它们",
+          "gold": {
+            "type": "网络钓鱼",
+            "trigger": "诈骗"
+          },
+          "pred": {
+            "type": "网络钓鱼",
+            "trigger": "网络钓鱼"
+          }
+        },
+        {
+          "text": "据称，该黑客组织在Snapchat的系统中发现了漏洞。",
+          "gold": {
+            "type": "漏洞发现",
+            "trigger": "发现"
+          },
+          "pred": {
+            "type": "漏洞发现",
+            "trigger": "发现了"
+          }
+        },
+        {
+          "text": "Docusign的客户电子邮件数据库在网络钓鱼诈骗后被黑客访问。",
+          "gold": {
+            "type": "网络钓鱼",
+            "trigger": "诈骗"
+          },
+          "pred": {
+            "type": "网络钓鱼",
+            "trigger": "网络钓鱼"
+          }
+        },
+        {
+          "text": "恶意软件攻击利用韩文文字处理器传播恶意软件。",
+          "gold": {
+            "type": "恶意软件",
+            "trigger": "传播"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          }
+        },
+        {
+          "text": "新的chrome黑客提示用户下载丢失的字体潜入恶意软件",
+          "gold": {
+            "type": "恶意软件",
+            "trigger": "潜入"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          }
+        }
+      ],
+      "wrong_type": [
+        {
+          "text": "Cisco写道，该漏洞(CVE-2017-3826)是由于NGA数据端口上监控的SCTP数据包验证不完整造成的。",
+          "gold": {
+            "type": "漏洞发现",
+            "trigger": "写道"
+          },
+          "pred": {
+            "type": "漏洞影响",
+            "trigger": "漏洞"
+          }
+        },
+        {
+          "text": "10月份，北林肯郡和古尔基金会也发生了类似的攻击，恶意软件被用来加密信托系统中的文件，并要求支付赎金才能再次访问这些文件。",
+          "gold": {
+            "type": "勒索赎金",
+            "trigger": "要求"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          }
+        },
+        {
+          "text": "安全公司zscaler警告称，伪装成安卓版“超级马里奥跑酷”的恶意软件现在正在互联网上蔓延，鼓励用户下载apk，最终感染设备并试图窃取金融信息。",
+          "gold": {
+            "type": "网络钓鱼",
+            "trigger": "伪装成"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          }
+        },
+        {
+          "text": "对于一些没有屈服于要求的受害者，FIN10升级了他们的操作，摧毁了关键的生产系统，并将窃取的数据泄露给记者，试图增加妥协的可见度，并迫使受害者付款。",
+          "gold": {
+            "type": "勒索赎金",
+            "trigger": "迫使"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        },
+        {
+          "text": "在这个问题被修复之前，就像这周的问题一样，攻击者可以远程地将脚本注入到发票中，从而导致劫持、网络钓鱼和重定向。",
+          "gold": {
+            "type": "漏洞影响",
+            "trigger": "导致"
+          },
+          "pred": {
+            "type": "网络钓鱼",
+            "trigger": "网络钓鱼"
+          }
+        },
+        {
+          "text": "微软恶意软件扫描程序中存在一个疯狂的大漏洞，可以用来安装恶意软件。",
+          "gold": {
+            "type": "漏洞发现",
+            "trigger": "扫描"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          }
+        },
+        {
+          "text": "该部门表示，感染是在去年12月12日发现的，骗子要求支付4000美元的赎金来解锁文件。",
+          "gold": {
+            "type": "勒索赎金",
+            "trigger": "赎金"
+          },
+          "pred": {
+            "type": "漏洞发现",
+            "trigger": "表示"
+          }
+        },
+        {
+          "text": "Equifax的安全漏洞丑闻随着不可思议的否认而加剧",
+          "gold": {
+            "type": "漏洞影响",
+            "trigger": "安全漏洞"
+          },
+          "pred": {
+            "type": "漏洞发现",
+            "trigger": "安全漏洞"
+          }
+        }
+      ],
+      "no_trigger": [
+        {
+          "text": "一名涉嫌与人事管理局违规软件有关的日本男子被捕。",
+          "gold": {
+            "type": "恶意软件",
+            "trigger": "违规软件"
+          },
+          "pred": {
+            "type": null,
+            "trigger": ""
+          }
+        },
+        {
+          "text": "据报道，美国国家安全局可能的泄密者仍在工作。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "泄密者"
+          },
+          "pred": {
+            "type": null,
+            "trigger": ""
+          }
+        },
+        {
+          "text": "实际上，当用户单击图像时打开的虚假登录页面实际上是一个使用名为Data URI的方案创建的内联文件。",
+          "gold": {
+            "type": "网络钓鱼",
+            "trigger": "虚假"
+          },
+          "pred": {
+            "type": null,
+            "trigger": ""
+          }
+        },
+        {
+          "text": "上周，HackRead独家报道了一家供应商在暗网市场上出售了超过100万个Gmail和雅虎账户。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "出售"
+          },
+          "pred": {
+            "type": null,
+            "trigger": ""
+          }
+        }
+      ]
+    }
+  }
+}

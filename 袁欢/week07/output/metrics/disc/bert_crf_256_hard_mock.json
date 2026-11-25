@@ -1,0 +1,122 @@
+{
+  "num_samples": 353,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "fp": 353,
+    "fn": 353
+  },
+  "event_exact": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "tp": 0,
+    "fp": 353,
+    "fn": 353
+  },
+  "per_type": {
+    "DDoS攻击": {
+      "precision": 0.0357,
+      "recall": 0.0526,
+      "f1": 0.0426,
+      "tp": 1,
+      "fp": 27,
+      "fn": 18
+    },
+    "供应链攻击": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 9,
+      "fn": 6
+    },
+    "勒索赎金": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 27
+    },
+    "恶意软件": {
+      "precision": 0.3372,
+      "recall": 0.3625,
+      "f1": 0.3494,
+      "tp": 29,
+      "fp": 57,
+      "fn": 51
+    },
+    "数据泄露": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 65
+    },
+    "漏洞发现": {
+      "precision": 0.1053,
+      "recall": 0.2222,
+      "f1": 0.1429,
+      "tp": 10,
+      "fp": 85,
+      "fn": 35
+    },
+    "漏洞影响": {
+      "precision": 0.0426,
+      "recall": 0.0645,
+      "f1": 0.0513,
+      "tp": 2,
+      "fp": 45,
+      "fn": 29
+    },
+    "漏洞补丁": {
+      "precision": 0.1087,
+      "recall": 0.1613,
+      "f1": 0.1299,
+      "tp": 5,
+      "fp": 41,
+      "fn": 26
+    },
+    "网络钓鱼": {
+      "precision": 0.122,
+      "recall": 0.102,
+      "f1": 0.1111,
+      "tp": 5,
+      "fp": 36,
+      "fn": 44
+    }
+  },
+  "type_macro_f1": 0.0919,
+  "method": "bert_crf_256_hard_mock",
+  "gold": "G:\\workspace\\information\\ai\\code7\\data\\processed\\dev_extract.jsonl",
+  "pred": "G:\\workspace\\information\\ai\\code7\\outputs\\disc\\pred_bert_crf_256_hard_mock.jsonl",
+  "meta": {
+    "display_name": "BERT+CRF（解码期硬约束）",
+    "train_s": 0,
+    "ms_per_sentence": 117.11,
+    "decoder": "crf-hard",
+    "max_len": 256,
+    "illegal_dev": {
+      "illegal_start": 30,
+      "illegal_transition": 2,
+      "total_seqs": 353,
+      "illegal_seqs": 32,
+      "total_illegal": 32,
+      "illegal_seq_rate": 0.0907,
+      "illegal_per_seq": 0.091
+    },
+    "base_ckpt": "outputs\\checkpoints\\bert_crf_256_mock.pt",
+    "constraint_note": "解码期硬约束：训练好的转移矩阵里非法项 mask 成 -1e4 后重新维特比解码；不是带约束重新训练",
+    "note": "与 bert_crf_256（软约束）同 checkpoint、同 dev，唯一差别是解码是否硬约束"
+  },
+  "n200_summary": {
+    "trigger_f1": 0.0,
+    "event_f1": 0.0,
+    "num_samples": 200
+  }
+}

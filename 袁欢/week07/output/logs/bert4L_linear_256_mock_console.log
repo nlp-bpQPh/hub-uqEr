@@ -1,0 +1,15 @@
+epoch 1/1 | train_loss=3.0643 | inner_loss=2.5440 inner_spanF1=0.0000 | dev_spanF1(监控)=0.0000 | 9s
+  ★ 内层验证最优 → 保存 bert4L_linear_256_mock.pt
+加载最优 checkpoint（epoch 1，内层验证 spanF1=0.0000）
+dev 解码：20 句，其中没抽到触发词 0 句
+样本数 20（缺预测 0 条）
+  trigger      P=0.0000 R=0.0000 F1=0.0000 (tp=0 fp=20 fn=20)
+  event_exact  P=0.0000 R=0.0000 F1=0.0000 (tp=0 fp=20 fn=20)
+  type_macro_f1 = 0.1185
+  指标已写入 → G:\workspace\information\ai\code7\outputs\metrics\disc\bert4L_linear_256_mock.json
+
+【非法 BIO 统计（dev，模型原始输出）】
+  序列数 20：含非法序列 20 条（100.0%），其中非法开头 12 处、非法转移 219 处
+  训练集对照：含非法序列 18 条（100.0%）
+
+训练耗时 9s | 推理延迟 45.77 ms/句 | 峰值显存 0 MiB

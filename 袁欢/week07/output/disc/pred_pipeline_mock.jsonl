@@ -1,0 +1,20 @@
+{"id": "628b7e50e846a64a48a56903", "sent_id": "s1451", "events": [{"type": "漏洞影响", "trigger": {"text": "年", "start": 4, "end": 5}, "args": []}]}
+{"id": "628b7e50e846a64a48a56620", "sent_id": "s1157", "events": [{"type": "漏洞影响", "trigger": {"text": "全", "start": 1, "end": 2}, "args": []}]}
+{"id": "628b7e50e846a64a48a56344", "sent_id": "s885", "events": [{"type": "漏洞影响", "trigger": {"text": "供", "start": 15, "end": 16}, "args": []}]}
+{"id": "6288f2e0e846a63ffcc402b4", "sent_id": "s370", "events": [{"type": "漏洞影响", "trigger": {"text": "就在", "start": 0, "end": 2}, "args": []}]}
+{"id": "628b7e50e846a64a48a56569", "sent_id": "s1106", "events": [{"type": "勒索赎金", "trigger": {"text": "安全", "start": 2, "end": 4}, "args": []}]}
+{"id": "62873c8ae846a639385b91de", "sent_id": "s245", "events": []}
+{"id": "628b7e50e846a64a48a56488", "sent_id": "s1027", "events": [{"type": "漏洞影响", "trigger": {"text": "件", "start": 3, "end": 4}, "args": []}]}
+{"id": "628b7e50e846a64a48a56557", "sent_id": "s1094", "events": [{"type": "漏洞影响", "trigger": {"text": "文", "start": 10, "end": 11}, "args": []}]}
+{"id": "628b7e50e846a64a48a56742", "sent_id": "s1293", "events": [{"type": "数据泄露", "trigger": {"text": "你的", "start": 0, "end": 2}, "args": []}]}
+{"id": "628b7e50e846a64a48a56881", "sent_id": "s1429", "events": [{"type": "漏洞影响", "trigger": {"text": "年，", "start": 4, "end": 6}, "args": []}]}
+{"id": "628b7e50e846a64a48a56546", "sent_id": "s1083", "events": []}
+{"id": "628b7e50e846a64a48a56244", "sent_id": "s795", "events": [{"type": "漏洞影响", "trigger": {"text": "全", "start": 15, "end": 16}, "args": []}]}
+{"id": "628b7e50e846a64a48a56802", "sent_id": "s1351", "events": [{"type": "漏洞补丁", "trigger": {"text": "性", "start": 5, "end": 6}, "args": []}]}
+{"id": "628b7e50e846a64a48a56946", "sent_id": "s1492", "events": [{"type": "漏洞影响", "trigger": {"text": "们", "start": 1, "end": 2}, "args": []}]}
+{"id": "628b7e50e846a64a48a56359", "sent_id": "s899", "events": [{"type": "勒索赎金", "trigger": {"text": "洞", "start": 8, "end": 9}, "args": []}]}
+{"id": "628b7e50e846a64a48a56747", "sent_id": "s1298", "events": [{"type": "漏洞影响", "trigger": {"text": "书", "start": 1, "end": 2}, "args": []}]}
+{"id": "628b7e50e846a64a48a56435", "sent_id": "s964", "events": []}
+{"id": "628b7e50e846a64a48a56868", "sent_id": "s1416", "events": []}
+{"id": "629e1df4e846a6e7d8bad159", "sent_id": "s760", "events": [{"type": "漏洞影响", "trigger": {"text": "全", "start": 58, "end": 59}, "args": []}]}
+{"id": "62831821e846a66a184aef5b", "sent_id": "s37", "events": [{"type": "漏洞影响", "trigger": {"text": "进", "start": 6, "end": 7}, "args": []}]}

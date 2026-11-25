@@ -1,0 +1,106 @@
+{
+  "method": "bert_crf_256_mock",
+  "argv": [
+    "bert/train.py",
+    "--mock",
+    "--device",
+    "cpu"
+  ],
+  "args": {
+    "decoder": "crf",
+    "bert_path": "G:\\workspace\\information\\ai\\code7\\pretrain_models\\bert-base-chinese",
+    "bert_layers": 0,
+    "max_len": 256,
+    "epochs": 3,
+    "batch_size": 32,
+    "lr": 2e-05,
+    "head_lr_mult": 5.0,
+    "warmup_ratio": 0.1,
+    "grad_accum": 1,
+    "max_grad_norm": 1.0,
+    "weight_decay": 0.01,
+    "dropout": 0.1,
+    "inner_val": 0.1,
+    "hard_constraint": false,
+    "device": "cpu",
+    "log_every": 50,
+    "seed": 42,
+    "run_name": "bert_crf_256_mock",
+    "mock": true,
+    "data_dir": ""
+  },
+  "env": {
+    "python": "3.12.16",
+    "platform": "Windows-10-10.0.19043-SP0",
+    "time": "2026-11-24 20:24:34",
+    "torch": "2.6.0+cpu",
+    "cuda_available": false,
+    "transformers": "4.55.0"
+  },
+  "params": 102282658,
+  "log_every": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 91.314659,
+      "elapsed_s": 135.4,
+      "val": {
+        "inner_loss": 229.0382537841797,
+        "inner_span_f1": 0.0,
+        "dev_span_f1_monitor": 0.0
+      },
+      "best_so_far": -1.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 65.143997,
+      "elapsed_s": 121.1,
+      "val": {
+        "inner_loss": 146.21986389160156,
+        "inner_span_f1": 0.0,
+        "dev_span_f1_monitor": 0.0
+      },
+      "best_so_far": 0.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 50.101864,
+      "elapsed_s": 33.4,
+      "val": {
+        "inner_loss": 111.98347473144531,
+        "inner_span_f1": 0.0,
+        "dev_span_f1_monitor": 0.0
+      },
+      "best_so_far": 0.0
+    }
+  ],
+  "total_elapsed_s": 295.2,
+  "finished": true,
+  "best_epoch": 1,
+  "best_inner_val_span_f1": 0.0,
+  "dev_metrics": {
+    "trigger": 0.0,
+    "event_exact": 0.0
+  },
+  "inference_latency_ms": 207.49,
+  "peak_gpu_mb": 0.0,
+  "illegal_dev": {
+    "illegal_start": 11,
+    "illegal_transition": 109,
+    "total_seqs": 20,
+    "illegal_seqs": 20,
+    "total_illegal": 120,
+    "illegal_seq_rate": 1.0,
+    "illegal_per_seq": 6.0
+  },
+  "illegal_train_pred_sample": {
+    "illegal_start": 10,
+    "illegal_transition": 63,
+    "total_seqs": 18,
+    "illegal_seqs": 18,
+    "total_illegal": 73,
+    "illegal_seq_rate": 1.0,
+    "illegal_per_seq": 4.056
+  },
+  "notes": "BERT 序列标注（crf）训练过程"
+}

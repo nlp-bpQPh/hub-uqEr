@@ -1,0 +1,30 @@
+{
+  "method": "rule",
+  "argv": [
+    "rule/run_rule.py"
+  ],
+  "args": null,
+  "env": {
+    "python": "3.12.16",
+    "platform": "Windows-10-10.0.19043-SP0",
+    "time": "2026-11-24 20:18:43",
+    "torch": "2.6.0+cpu",
+    "cuda_available": false,
+    "transformers": "4.55.0"
+  },
+  "runtime_s": 1.44,
+  "metrics": {
+    "trigger": 0.51,
+    "event_exact": 0.51
+  },
+  "type_macro_f1": 0.7826,
+  "num_triggers": 122,
+  "trigger_hit_rate": 0.9887,
+  "failure_counts": {
+    "exact": 179,
+    "wrong_trigger": 95,
+    "wrong_type": 75,
+    "no_trigger": 4
+  },
+  "notes": "L0 规则基线（触发词词典）"
+}

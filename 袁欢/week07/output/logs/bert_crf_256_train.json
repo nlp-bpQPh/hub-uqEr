@@ -1,0 +1,104 @@
+{
+  "method": "bert_crf_256",
+  "argv": [
+    "bert/train.py"
+  ],
+  "args": {
+    "decoder": "crf",
+    "bert_path": "D:\\学习资料\\AI\\homework\\pretrain_models\\bert-base-chinese",
+    "bert_layers": 0,
+    "max_len": 256,
+    "epochs": 3,
+    "batch_size": 32,
+    "lr": 2e-05,
+    "head_lr_mult": 5.0,
+    "warmup_ratio": 0.1,
+    "grad_accum": 1,
+    "max_grad_norm": 1.0,
+    "weight_decay": 0.01,
+    "dropout": 0.1,
+    "inner_val": 0.1,
+    "hard_constraint": false,
+    "device": "",
+    "log_every": 50,
+    "seed": 42,
+    "run_name": "bert_crf_256",
+    "mock": false,
+    "data_dir": ""
+  },
+  "env": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "time": "2026-11-24 22:38:41",
+    "torch": "2.13.0+cu132",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "transformers": "5.22.2"
+  },
+  "params": 102282658,
+  "log_every": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 38.588368,
+      "elapsed_s": 31.0,
+      "val": {
+        "inner_loss": 11.15117950439453,
+        "inner_span_f1": 0.3113207547169811,
+        "dev_span_f1_monitor": 0.41742286751361163
+      },
+      "best_so_far": -1.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 7.918124,
+      "elapsed_s": 29.9,
+      "val": {
+        "inner_loss": 7.745596599578858,
+        "inner_span_f1": 0.4315352697095436,
+        "dev_span_f1_monitor": 0.5494505494505494
+      },
+      "best_so_far": 0.311321
+    },
+    {
+      "epoch": 3,
+      "train_loss": 5.395585,
+      "elapsed_s": 30.0,
+      "val": {
+        "inner_loss": 7.130030727386474,
+        "inner_span_f1": 0.48192771084337355,
+        "dev_span_f1_monitor": 0.5705521472392638
+      },
+      "best_so_far": 0.431535
+    }
+  ],
+  "total_elapsed_s": 91.8,
+  "finished": true,
+  "best_epoch": 3,
+  "best_inner_val_span_f1": 0.481928,
+  "dev_metrics": {
+    "trigger": 0.5706,
+    "event_exact": 0.5706
+  },
+  "inference_latency_ms": 5.19,
+  "peak_gpu_mb": 1875.8,
+  "illegal_dev": {
+    "illegal_start": 1,
+    "illegal_transition": 73,
+    "total_seqs": 353,
+    "illegal_seqs": 67,
+    "total_illegal": 74,
+    "illegal_seq_rate": 0.1898,
+    "illegal_per_seq": 0.21
+  },
+  "illegal_train_pred_sample": {
+    "illegal_start": 7,
+    "illegal_transition": 291,
+    "total_seqs": 1270,
+    "illegal_seqs": 257,
+    "total_illegal": 298,
+    "illegal_seq_rate": 0.2024,
+    "illegal_per_seq": 0.235
+  },
+  "notes": "BERT 序列标注（crf）训练过程"
+}

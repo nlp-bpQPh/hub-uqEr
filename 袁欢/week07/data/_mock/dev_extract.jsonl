@@ -1,0 +1,20 @@
+{"id": "628b7e50e846a64a48a56903", "sent_id": "s1451", "text": "2016年企业ddos攻击状况信息图表", "event": {"type": "DDoS攻击", "trigger": {"text": "ddos攻击", "start": 7, "end": 13}, "args": []}}
+{"id": "628b7e50e846a64a48a56620", "sent_id": "s1157", "text": "安全分析师表示，DDoS攻击正在增加。", "event": {"type": "DDoS攻击", "trigger": {"text": "DDoS攻击", "start": 8, "end": 14}, "args": []}}
+{"id": "628b7e50e846a64a48a56344", "sent_id": "s885", "text": "Ccleaner软件显示严重的供应链安全问题。", "event": {"type": "供应链攻击", "trigger": {"text": "供应链安全", "start": 15, "end": 20}, "args": []}}
+{"id": "6288f2e0e846a63ffcc402b4", "sent_id": "s370", "text": "就在安全研究人员披露该技术几天后，在野外发现了新的供应链攻击", "event": {"type": "供应链攻击", "trigger": {"text": "供应链攻击", "start": 25, "end": 30}, "args": []}}
+{"id": "628b7e50e846a64a48a56569", "sent_id": "s1106", "text": "网络安全公司追踪勒索软件的来源和目标。", "event": {"type": "勒索赎金", "trigger": {"text": "勒索软件", "start": 8, "end": 12}, "args": []}}
+{"id": "62873c8ae846a639385b91de", "sent_id": "s245", "text": "黑客控制了内部网和服务器，索要20比特币。", "event": {"type": "勒索赎金", "trigger": {"text": "索要", "start": 13, "end": 15}, "args": []}}
+{"id": "628b7e50e846a64a48a56488", "sent_id": "s1027", "text": "恶意软件水平达到历史最高点", "event": {"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 0, "end": 4}, "args": []}}
+{"id": "628b7e50e846a64a48a56557", "sent_id": "s1094", "text": "USB恶意软件涉及无文件攻击。", "event": {"type": "恶意软件", "trigger": {"text": "恶意软件", "start": 3, "end": 7}, "args": []}}
+{"id": "628b7e50e846a64a48a56742", "sent_id": "s1293", "text": "你的小企业需要数据泄露保险吗?", "event": {"type": "数据泄露", "trigger": {"text": "数据泄露", "start": 7, "end": 11}, "args": []}}
+{"id": "628b7e50e846a64a48a56881", "sent_id": "s1429", "text": "2014年，美国起诉雅虎账户泄露者。", "event": {"type": "数据泄露", "trigger": {"text": "泄露", "start": 14, "end": 16}, "args": []}}
+{"id": "628b7e50e846a64a48a56546", "sent_id": "s1083", "text": "惠普和性能中心的发现远程堆缓冲区溢出漏洞", "event": {"type": "漏洞发现", "trigger": {"text": "发现", "start": 8, "end": 10}, "args": []}}
+{"id": "628b7e50e846a64a48a56244", "sent_id": "s795", "text": "Equifax老板因重大网络安全漏洞被罢免。", "event": {"type": "漏洞发现", "trigger": {"text": "安全漏洞", "start": 14, "end": 18}, "args": []}}
+{"id": "628b7e50e846a64a48a56802", "sent_id": "s1351", "text": "当漏洞满足性能要求时被剥离。", "event": {"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 1, "end": 3}, "args": []}}
+{"id": "628b7e50e846a64a48a56946", "sent_id": "s1492", "text": "我们的系统漏洞导致借记卡欺诈。", "event": {"type": "漏洞影响", "trigger": {"text": "漏洞", "start": 5, "end": 7}, "args": []}}
+{"id": "628b7e50e846a64a48a56359", "sent_id": "s899", "text": "微软ie浏览器漏洞在周二正式发布补丁前被修复。", "event": {"type": "漏洞补丁", "trigger": {"text": "补丁", "start": 16, "end": 18}, "args": []}}
+{"id": "628b7e50e846a64a48a56747", "sent_id": "s1298", "text": "脸书修补漏洞，允许任何图片被删除脸书的url内容", "event": {"type": "漏洞补丁", "trigger": {"text": "修补", "start": 2, "end": 4}, "args": []}}
+{"id": "628b7e50e846a64a48a56435", "sent_id": "s964", "text": "不要落入这些十大钓鱼邮件的陷阱。", "event": {"type": "网络钓鱼", "trigger": {"text": "钓鱼邮件", "start": 8, "end": 12}, "args": []}}
+{"id": "628b7e50e846a64a48a56868", "sent_id": "s1416", "text": "网络钓鱼诈骗甚至欺骗技术宅如何避免它们", "event": {"type": "网络钓鱼", "trigger": {"text": "诈骗", "start": 4, "end": 6}, "args": []}}
+{"id": "629e1df4e846a6e7d8bad159", "sent_id": "s760", "text": "本月，微软修复了微软Windows、Internet Explorer、微软Edge、ChakraCore等系统的安全漏洞。NET Framework、Microsoft Exchange Server、Windows主机计算服务Shim以及Microsoft Office和Microsoft Office Services和Web应用程序。", "event": {"type": "漏洞补丁", "trigger": {"text": "修复", "start": 5, "end": 7}, "args": []}}
+{"id": "62831821e846a66a184aef5b", "sent_id": "s37", "text": "黑客似乎已经进入了一个暴露的CloudPets数据库，这些玩具——可以接收和发送来自儿童和父母的语音信息——涉及80多万用户账户的数据泄露。他在一篇博客文章中说，这些信息包含电子邮件地址和散列密码，他们甚至在1月份试图勒索这些信息。", "event": {"type": "数据泄露", "trigger": {"text": "暴露", "start": 11, "end": 13}, "args": []}}

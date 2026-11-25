@@ -1,0 +1,341 @@
+{
+  "num_samples": 20,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.5625,
+    "recall": 0.45,
+    "f1": 0.5,
+    "tp": 9,
+    "fp": 7,
+    "fn": 11
+  },
+  "event_exact": {
+    "precision": 0.5625,
+    "recall": 0.45,
+    "f1": 0.5,
+    "tp": 9,
+    "fp": 7,
+    "fn": 11
+  },
+  "per_type": {
+    "DDoS攻击": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "供应链攻击": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "勒索赎金": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "恶意软件": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "数据泄露": {
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "漏洞发现": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "漏洞影响": {
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "tp": 2,
+      "fp": 4,
+      "fn": 0
+    },
+    "漏洞补丁": {
+      "precision": 1.0,
+      "recall": 0.3333,
+      "f1": 0.5,
+      "tp": 1,
+      "fp": 0,
+      "fn": 2
+    },
+    "网络钓鱼": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "type_macro_f1": 0.6445,
+  "method": "rule_mock",
+  "gold": "G:\\workspace\\information\\ai\\code7\\data\\_mock\\dev_extract.jsonl",
+  "pred": "G:\\workspace\\information\\ai\\code7\\outputs\\disc\\pred_rule_mock.jsonl",
+  "meta": {
+    "display_name": "L0 规则（触发词词典）",
+    "train_s": 0,
+    "params_m": 0,
+    "ms_per_sentence": 0.01,
+    "num_triggers": 31,
+    "min_trigger_count": 2,
+    "note": "零训练基线；触发词从 train 统计 + 人工同义词（事件检测口径，无论元）"
+  },
+  "failure_analysis": {
+    "counts": {
+      "no_trigger": 4,
+      "exact": 9,
+      "wrong_type": 4,
+      "wrong_trigger": 3
+    },
+    "ratios": {
+      "no_trigger": 0.2,
+      "exact": 0.45,
+      "wrong_type": 0.2,
+      "wrong_trigger": 0.15
+    },
+    "trigger_hit_rate": 0.8,
+    "examples": {
+      "no_trigger": [
+        {
+          "text": "2016年企业ddos攻击状况信息图表",
+          "gold": {
+            "type": "DDoS攻击",
+            "trigger": "ddos攻击"
+          },
+          "pred": {
+            "type": null,
+            "trigger": ""
+          }
+        },
+        {
+          "text": "Ccleaner软件显示严重的供应链安全问题。",
+          "gold": {
+            "type": "供应链攻击",
+            "trigger": "供应链安全"
+          },
+          "pred": {
+            "type": null,
+            "trigger": ""
+          }
+        },
+        {
+          "text": "黑客控制了内部网和服务器，索要20比特币。",
+          "gold": {
+            "type": "勒索赎金",
+            "trigger": "索要"
+          },
+          "pred": {
+            "type": null,
+            "trigger": ""
+          }
+        },
+        {
+          "text": "2014年，美国起诉雅虎账户泄露者。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "泄露"
+          },
+          "pred": {
+            "type": null,
+            "trigger": ""
+          }
+        }
+      ],
+      "exact": [
+        {
+          "text": "安全分析师表示，DDoS攻击正在增加。",
+          "gold": {
+            "type": "DDoS攻击",
+            "trigger": "DDoS攻击"
+          },
+          "pred": {
+            "type": "DDoS攻击",
+            "trigger": "DDoS攻击"
+          }
+        },
+        {
+          "text": "就在安全研究人员披露该技术几天后，在野外发现了新的供应链攻击",
+          "gold": {
+            "type": "供应链攻击",
+            "trigger": "供应链攻击"
+          },
+          "pred": {
+            "type": "供应链攻击",
+            "trigger": "供应链攻击"
+          }
+        },
+        {
+          "text": "网络安全公司追踪勒索软件的来源和目标。",
+          "gold": {
+            "type": "勒索赎金",
+            "trigger": "勒索软件"
+          },
+          "pred": {
+            "type": "勒索赎金",
+            "trigger": "勒索软件"
+          }
+        },
+        {
+          "text": "恶意软件水平达到历史最高点",
+          "gold": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          }
+        },
+        {
+          "text": "USB恶意软件涉及无文件攻击。",
+          "gold": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          },
+          "pred": {
+            "type": "恶意软件",
+            "trigger": "恶意软件"
+          }
+        },
+        {
+          "text": "你的小企业需要数据泄露保险吗?",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        },
+        {
+          "text": "当漏洞满足性能要求时被剥离。",
+          "gold": {
+            "type": "漏洞影响",
+            "trigger": "漏洞"
+          },
+          "pred": {
+            "type": "漏洞影响",
+            "trigger": "漏洞"
+          }
+        },
+        {
+          "text": "我们的系统漏洞导致借记卡欺诈。",
+          "gold": {
+            "type": "漏洞影响",
+            "trigger": "漏洞"
+          },
+          "pred": {
+            "type": "漏洞影响",
+            "trigger": "漏洞"
+          }
+        }
+      ],
+      "wrong_type": [
+        {
+          "text": "惠普和性能中心的发现远程堆缓冲区溢出漏洞",
+          "gold": {
+            "type": "漏洞发现",
+            "trigger": "发现"
+          },
+          "pred": {
+            "type": "漏洞影响",
+            "trigger": "漏洞"
+          }
+        },
+        {
+          "text": "Equifax老板因重大网络安全漏洞被罢免。",
+          "gold": {
+            "type": "漏洞发现",
+            "trigger": "安全漏洞"
+          },
+          "pred": {
+            "type": "漏洞影响",
+            "trigger": "安全漏洞"
+          }
+        },
+        {
+          "text": "脸书修补漏洞，允许任何图片被删除脸书的url内容",
+          "gold": {
+            "type": "漏洞补丁",
+            "trigger": "修补"
+          },
+          "pred": {
+            "type": "漏洞影响",
+            "trigger": "漏洞"
+          }
+        },
+        {
+          "text": "本月，微软修复了微软Windows、Internet Explorer、微软Edge、ChakraCore等系统的安全漏洞。NET Framework、Microsoft Exchange Server、Windows主机计算服务Shim以及Microsoft Office和Microsoft Office Services和Web应用程序。",
+          "gold": {
+            "type": "漏洞补丁",
+            "trigger": "修复"
+          },
+          "pred": {
+            "type": "漏洞影响",
+            "trigger": "安全漏洞"
+          }
+        }
+      ],
+      "wrong_trigger": [
+        {
+          "text": "微软ie浏览器漏洞在周二正式发布补丁前被修复。",
+          "gold": {
+            "type": "漏洞补丁",
+            "trigger": "补丁"
+          },
+          "pred": {
+            "type": "漏洞补丁",
+            "trigger": "发布补丁"
+          }
+        },
+        {
+          "text": "网络钓鱼诈骗甚至欺骗技术宅如何避免它们",
+          "gold": {
+            "type": "网络钓鱼",
+            "trigger": "诈骗"
+          },
+          "pred": {
+            "type": "网络钓鱼",
+            "trigger": "网络钓鱼"
+          }
+        },
+        {
+          "text": "黑客似乎已经进入了一个暴露的CloudPets数据库，这些玩具——可以接收和发送来自儿童和父母的语音信息——涉及80多万用户账户的数据泄露。他在一篇博客文章中说，这些信息包含电子邮件地址和散列密码，他们甚至在1月份试图勒索这些信息。",
+          "gold": {
+            "type": "数据泄露",
+            "trigger": "暴露"
+          },
+          "pred": {
+            "type": "数据泄露",
+            "trigger": "数据泄露"
+          }
+        }
+      ]
+    }
+  }
+}

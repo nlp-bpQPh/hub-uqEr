@@ -1,0 +1,14 @@
+触发词词典：31 条（自动 4 + 人工 29，含去重）
+推理完成：20 句，耗时 0.00s（0.010 ms/句，纯 CPU）
+样本数 20（缺预测 0 条）
+  trigger      P=0.5625 R=0.4500 F1=0.5000 (tp=9 fp=7 fn=11)
+  event_exact  P=0.5625 R=0.4500 F1=0.5000 (tp=9 fp=7 fn=11)
+  type_macro_f1 = 0.6445
+  指标已写入 → G:\workspace\information\ai\code7\outputs\metrics\disc\rule_mock.json
+
+【规则基线失败分析】
+  exact              9 条 (45.0%)
+  no_trigger         4 条 (20.0%)
+  wrong_type         4 条 (20.0%)
+  wrong_trigger      3 条 (15.0%)
+  触发词命中率（整句有事件的比例）：80.0%

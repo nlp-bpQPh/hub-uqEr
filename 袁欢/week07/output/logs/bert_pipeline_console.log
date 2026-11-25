@@ -1,0 +1,40 @@
+
+(a) 训练事件类型 9 分类器...
+  [pipe_type.pt] epoch 1/2 loss=1.5887
+  [pipe_type.pt] epoch 2/2 loss=0.6902
+
+(b) 训练 9 个类型条件触发词专家（依次训练，训完即释放显存）...
+  [arg:DDoS攻击] 77 句 × 3 epoch loss=0.6346
+  [arg:供应链攻击] 23 句 × 3 epoch loss=1.0216
+  [arg:勒索赎金] 107 句 × 3 epoch loss=0.2503
+  [arg:恶意软件] 320 句 × 3 epoch loss=0.1263
+  [arg:数据泄露] 258 句 × 3 epoch loss=0.1403
+  [arg:漏洞发现] 182 句 × 3 epoch loss=0.1689
+  [arg:漏洞影响] 126 句 × 3 epoch loss=0.2780
+  [arg:漏洞补丁] 122 句 × 3 epoch loss=0.3953
+  [arg:网络钓鱼] 196 句 × 3 epoch loss=0.2411
+
+组合两段 → dev_extract 端到端评测...
+   诊断：类型判错 53 句 / dev_extract 上类型准确率 0.8499
+样本数 353（缺预测 0 条）
+  trigger      P=0.4874 R=0.2748 F1=0.3514 (tp=97 fp=102 fn=256)
+  event_exact  P=0.4874 R=0.2748 F1=0.3514 (tp=97 fp=102 fn=256)
+  type_macro_f1 = 0.4029
+  n200 子集：trigger F1=0.3259 event F1=0.3259 → pipeline_n200.json
+  指标已写入 → D:\学习资料\AI\homework\week7\outputs\metrics\disc\pipeline.json
+
+上界分析：类型用金标（隔离出「类型判错」造成的损失）...
+样本数 353（缺预测 0 条）
+  trigger      P=0.5000 R=0.2776 F1=0.3570 (tp=98 fp=98 fn=255)
+  event_exact  P=0.5000 R=0.2776 F1=0.3570 (tp=98 fp=98 fn=255)
+  type_macro_f1 = 0.5560
+  n200 子集：trigger F1=0.3302 event F1=0.3302 → pipeline_oracle_type_n200.json
+  指标已写入 → D:\学习资料\AI\homework\week7\outputs\metrics\disc\pipeline_oracle_type.json
+
+======================================================================
+方法                          trigger F1    event F1
+----------------------------------------------------------------------
+流水线（端到端）                        0.3514      0.3514
+流水线（类型金标上界）                     0.3570      0.3570
+======================================================================
+总耗时 345s，延迟 20.88 ms/句

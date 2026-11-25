@@ -1,0 +1,132 @@
+{
+  "num_samples": 353,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.5,
+    "recall": 0.3428,
+    "f1": 0.4067,
+    "tp": 121,
+    "fp": 121,
+    "fn": 232
+  },
+  "event_exact": {
+    "precision": 0.5,
+    "recall": 0.3428,
+    "f1": 0.4067,
+    "tp": 121,
+    "fp": 121,
+    "fn": 232
+  },
+  "per_type": {
+    "DDoS攻击": {
+      "precision": 0.8947,
+      "recall": 0.8947,
+      "f1": 0.8947,
+      "tp": 17,
+      "fp": 2,
+      "fn": 2
+    },
+    "供应链攻击": {
+      "precision": 1.0,
+      "recall": 0.1667,
+      "f1": 0.2857,
+      "tp": 1,
+      "fp": 0,
+      "fn": 5
+    },
+    "勒索赎金": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 27
+    },
+    "恶意软件": {
+      "precision": 0.878,
+      "recall": 0.9,
+      "f1": 0.8889,
+      "tp": 72,
+      "fp": 10,
+      "fn": 8
+    },
+    "数据泄露": {
+      "precision": 0.8413,
+      "recall": 0.8154,
+      "f1": 0.8281,
+      "tp": 53,
+      "fp": 10,
+      "fn": 12
+    },
+    "漏洞发现": {
+      "precision": 0.8182,
+      "recall": 0.2,
+      "f1": 0.3214,
+      "tp": 9,
+      "fp": 2,
+      "fn": 36
+    },
+    "漏洞影响": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 31
+    },
+    "漏洞补丁": {
+      "precision": 0.8846,
+      "recall": 0.7419,
+      "f1": 0.807,
+      "tp": 23,
+      "fp": 3,
+      "fn": 8
+    },
+    "网络钓鱼": {
+      "precision": 0.925,
+      "recall": 0.7551,
+      "f1": 0.8315,
+      "tp": 37,
+      "fp": 3,
+      "fn": 12
+    }
+  },
+  "type_macro_f1": 0.5397,
+  "method": "bilstm_linear",
+  "gold": "D:\\学习资料\\AI\\homework\\week7\\data\\processed\\dev_extract.jsonl",
+  "pred": "D:\\学习资料\\AI\\homework\\week7\\outputs\\disc\\pred_bilstm_linear.jsonl",
+  "meta": {
+    "display_name": "BiLSTM-CRF（Linear）",
+    "train_s": 5.2,
+    "params_m": 1.01,
+    "ms_per_sentence": 0.25,
+    "peak_gpu_mb": 150.2,
+    "decoder": "linear",
+    "epochs": 5,
+    "max_len": 256,
+    "emb_dim": 128,
+    "hidden": 256,
+    "lr": 0.001,
+    "best_epoch": 5,
+    "inner_val_span_f1": 0.3391,
+    "num_labels": 19,
+    "vocab_size": 1657,
+    "illegal_dev": {
+      "illegal_start": 2,
+      "illegal_transition": 92,
+      "total_seqs": 353,
+      "illegal_seqs": 88,
+      "total_illegal": 94,
+      "illegal_seq_rate": 0.2493,
+      "illegal_per_seq": 0.266
+    },
+    "n_truncated": 0,
+    "pretrained": false,
+    "seed": 42
+  },
+  "n200_summary": {
+    "trigger_f1": 0.3988,
+    "event_f1": 0.3988,
+    "num_samples": 200
+  }
+}

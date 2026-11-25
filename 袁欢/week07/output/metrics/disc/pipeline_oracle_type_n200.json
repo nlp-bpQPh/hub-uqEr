@@ -1,0 +1,98 @@
+{
+  "num_samples": 200,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.4522,
+    "recall": 0.26,
+    "f1": 0.3302,
+    "tp": 52,
+    "fp": 63,
+    "fn": 148
+  },
+  "event_exact": {
+    "precision": 0.4522,
+    "recall": 0.26,
+    "f1": 0.3302,
+    "tp": 52,
+    "fp": 63,
+    "fn": 148
+  },
+  "per_type": {
+    "DDoS攻击": {
+      "precision": 1.0,
+      "recall": 0.8182,
+      "f1": 0.9,
+      "tp": 9,
+      "fp": 0,
+      "fn": 2
+    },
+    "供应链攻击": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "勒索赎金": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 16
+    },
+    "恶意软件": {
+      "precision": 1.0,
+      "recall": 0.9767,
+      "f1": 0.9882,
+      "tp": 42,
+      "fp": 0,
+      "fn": 1
+    },
+    "数据泄露": {
+      "precision": 1.0,
+      "recall": 0.8649,
+      "f1": 0.9275,
+      "tp": 32,
+      "fp": 0,
+      "fn": 5
+    },
+    "漏洞发现": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 24
+    },
+    "漏洞影响": {
+      "precision": 1.0,
+      "recall": 0.0476,
+      "f1": 0.0909,
+      "tp": 1,
+      "fp": 0,
+      "fn": 20
+    },
+    "漏洞补丁": {
+      "precision": 1.0,
+      "recall": 0.3125,
+      "f1": 0.4762,
+      "tp": 5,
+      "fp": 0,
+      "fn": 11
+    },
+    "网络钓鱼": {
+      "precision": 1.0,
+      "recall": 0.7857,
+      "f1": 0.88,
+      "tp": 22,
+      "fp": 0,
+      "fn": 6
+    }
+  },
+  "type_macro_f1": 0.5848,
+  "method": "pipeline_oracle_type",
+  "gold": "D:\\学习资料\\AI\\homework\\week7\\outputs\\llm\\gold_n200.jsonl",
+  "note": "投影到 llm-extract 固定的 dev 200 条抽样（seed=42），用于跨链路同批对比"
+}

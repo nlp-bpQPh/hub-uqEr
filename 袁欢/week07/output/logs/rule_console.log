@@ -1,0 +1,14 @@
+触发词词典：122 条（自动 105 + 人工 29，含去重）
+推理完成：353 句，耗时 0.01s（0.027 ms/句，纯 CPU）
+样本数 353（缺预测 0 条）
+  trigger      P=0.5129 R=0.5071 F1=0.5100 (tp=179 fp=170 fn=174)
+  event_exact  P=0.5129 R=0.5071 F1=0.5100 (tp=179 fp=170 fn=174)
+  type_macro_f1 = 0.7826
+  指标已写入 → G:\workspace\information\ai\code7\outputs\metrics\disc\rule.json
+
+【规则基线失败分析】
+  exact            179 条 (50.7%)
+  wrong_trigger     95 条 (26.9%)
+  wrong_type        75 条 (21.2%)
+  no_trigger         4 条 (1.1%)
+  触发词命中率（整句有事件的比例）：98.9%

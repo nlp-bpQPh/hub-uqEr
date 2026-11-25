@@ -1,0 +1,2 @@
+Epoch 1/1 | train_loss=0.0984 val_loss=0.0695 | 963s（11.61s/step）
+  ✓ 完整模型已保存 → D:\学习资料\AI\homework\week7\outputs\llm\ckpt\sft_full_ckpt

@@ -1,0 +1,16 @@
+epoch 1/5 | train_loss=89.8568 | inner_loss=406.0307 inner_spanF1=0.0000 | 2s
+  ★ 内层验证最优 → 保存 bilstm_crf_mock.pt
+epoch 2/5 | train_loss=89.8239 | inner_loss=405.5822 inner_spanF1=0.0000 | 2s
+epoch 3/5 | train_loss=89.9066 | inner_loss=404.9077 inner_spanF1=0.0000 | 1s
+epoch 4/5 | train_loss=89.6817 | inner_loss=404.0121 inner_spanF1=0.0000 | 2s
+epoch 5/5 | train_loss=89.5131 | inner_loss=402.8913 inner_spanF1=0.0000 | 2s
+样本数 20（缺预测 0 条）
+  trigger      P=0.0000 R=0.0000 F1=0.0000 (tp=0 fp=20 fn=20)
+  event_exact  P=0.0000 R=0.0000 F1=0.0000 (tp=0 fp=20 fn=20)
+  type_macro_f1 = 0.0370
+  指标已写入 → G:\workspace\information\ai\code7\outputs\metrics\disc\bilstm_crf_mock.json
+
+【非法 BIO 统计（dev，模型原始输出）】
+  序列数 20：含非法序列 20 条（100.0%），非法开头 6 处 / 非法转移 167 处
+
+训练耗时 9s | 延迟 3.25 ms/句

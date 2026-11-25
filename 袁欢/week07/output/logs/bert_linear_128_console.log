@@ -1,0 +1,20 @@
+epoch 1/3 | train_loss=0.8835 | inner_loss=0.2549 inner_spanF1=0.2647 | dev_spanF1(监控)=0.3321 | 24s
+  ★ 内层验证最优 → 保存 bert_linear_128.pt
+epoch 2/3 | train_loss=0.1872 | inner_loss=0.1766 inner_spanF1=0.3967 | dev_spanF1(监控)=0.5429 | 24s
+  ★ 内层验证最优 → 保存 bert_linear_128.pt
+epoch 3/3 | train_loss=0.1269 | inner_loss=0.1625 inner_spanF1=0.4274 | dev_spanF1(监控)=0.5611 | 24s
+  ★ 内层验证最优 → 保存 bert_linear_128.pt
+加载最优 checkpoint（epoch 3，内层验证 spanF1=0.4274）
+dev 解码：353 句，其中没抽到触发词 68 句
+样本数 353（缺预测 0 条）
+  trigger      P=0.6281 R=0.5071 F1=0.5611 (tp=179 fp=106 fn=174)
+  event_exact  P=0.6281 R=0.5071 F1=0.5611 (tp=179 fp=106 fn=174)
+  type_macro_f1 = 0.7436
+  n200 子集：trigger F1=0.5359 event F1=0.5359 → bert_linear_128_n200.json
+  指标已写入 → D:\学习资料\AI\homework\week7\outputs\metrics\disc\bert_linear_128.json
+
+【非法 BIO 统计（dev，模型原始输出）】
+  序列数 353：含非法序列 72 条（20.4%），其中非法开头 1 处、非法转移 79 处
+  训练集对照：含非法序列 277 条（21.8%）
+
+训练耗时 74s | 推理延迟 4.44 ms/句 | 峰值显存 1773 MiB
