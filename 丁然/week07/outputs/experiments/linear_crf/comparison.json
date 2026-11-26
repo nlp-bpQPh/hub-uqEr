@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-11-26T21:20:35",
+  "best_method": "crf",
+  "best_metric": "selection_score",
+  "training_args": {
+    "methods": [
+      "linear",
+      "crf"
+    ],
+    "max_length": null,
+    "batch_size": null,
+    "epochs": null,
+    "seed": null,
+    "smoke": false
+  },
+  "results": [
+    {
+      "method": "linear",
+      "status": "success",
+      "duration_seconds": 284.409060957958,
+      "result_dir": "/Users/dingran/python_project/github_woke/hub-uqEr/丁然/week07/outputs/experiments/linear_crf/linear",
+      "error": null,
+      "meta": {
+        "decoder": "linear",
+        "model_path": "~/Downloads/模型/bert/bert-base-chinese",
+        "max_length": 256,
+        "epochs": 1,
+        "batch_size": 16,
+        "learning_rate": 2e-05,
+        "freeze_layers": 8,
+        "num_labels": 149,
+        "train_size": 5171,
+        "val_size": 576
+      },
+      "metrics": {
+        "event_type_accuracy": 0.6631944444444444,
+        "type_accuracy": 0.6631944444444444,
+        "type_macro_f1": 0.5346316908479725,
+        "trigger_exact_match": 0.546875,
+        "trigger_precision": 0.7806004618937644,
+        "trigger_recall": 0.5868055555555556,
+        "trigger_f1": 0.6699702675916749,
+        "arg_exact_match": 0.04513888888888889,
+        "arg_precision": 0.37576821773485514,
+        "arg_recall": 0.3348982785602504,
+        "arg_f1": 0.3541580471659082,
+        "event_exact_match": 0.04513888888888889,
+        "selection_score": 0.5030438063982574,
+        "loss": 0.39371423257721794
+      }
+    },
+    {
+      "method": "crf",
+      "status": "success",
+      "duration_seconds": 520.1805531249847,
+      "result_dir": "/Users/dingran/python_project/github_woke/hub-uqEr/丁然/week07/outputs/experiments/linear_crf/crf",
+      "error": null,
+      "meta": {
+        "decoder": "crf",
+        "model_path": "~/Downloads/模型/bert/bert-base-chinese",
+        "max_length": 256,
+        "epochs": 1,
+        "batch_size": 16,
+        "learning_rate": 2e-05,
+        "freeze_layers": 8,
+        "num_labels": 149,
+        "train_size": 5171,
+        "val_size": 576
+      },
+      "metrics": {
+        "event_type_accuracy": 0.65625,
+        "type_accuracy": 0.65625,
+        "type_macro_f1": 0.528151917564243,
+        "trigger_exact_match": 0.5503472222222222,
+        "trigger_precision": 0.7985781990521327,
+        "trigger_recall": 0.5850694444444444,
+        "trigger_f1": 0.6753507014028055,
+        "arg_exact_match": 0.050347222222222224,
+        "arg_precision": 0.3946395563770795,
+        "arg_recall": 0.33411580594679186,
+        "arg_f1": 0.361864406779661,
+        "event_exact_match": 0.050347222222222224,
+        "selection_score": 0.5057965484019789,
+        "loss": 54.701907051934135
+      }
+    }
+  ]
+}

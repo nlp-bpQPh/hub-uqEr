@@ -1,0 +1,11 @@
+{
+  "stage": 2,
+  "task": "conditioned_event_extraction",
+  "decoder": "linear",
+  "model_path": "~/Downloads/模型/bert/bert-base-chinese",
+  "max_length": 256,
+  "num_labels": 125,
+  "train_rows": 5151,
+  "val_rows": 596,
+  "freeze_layers": 8
+}

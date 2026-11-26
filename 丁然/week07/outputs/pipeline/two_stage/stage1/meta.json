@@ -1,0 +1,26 @@
+{
+  "stage": 1,
+  "task": "multi_label_event_detection",
+  "model_path": "~/Downloads/模型/bert/bert-base-chinese",
+  "max_length": 256,
+  "threshold": 0.4,
+  "event_types": [
+    "解除质押",
+    "股份回购",
+    "股东减持",
+    "亏损",
+    "中标",
+    "高管变动",
+    "企业破产",
+    "股东增持",
+    "被约谈",
+    "企业收购",
+    "公司上市",
+    "企业融资",
+    "质押"
+  ],
+  "train_rows": 29524,
+  "val_rows": 3270,
+  "train_articles": 6342,
+  "val_articles": 705
+}

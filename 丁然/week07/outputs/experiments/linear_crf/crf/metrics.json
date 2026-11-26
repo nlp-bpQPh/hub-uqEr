@@ -1,0 +1,16 @@
+{
+  "event_type_accuracy": 0.65625,
+  "type_accuracy": 0.65625,
+  "type_macro_f1": 0.528151917564243,
+  "trigger_exact_match": 0.5503472222222222,
+  "trigger_precision": 0.7985781990521327,
+  "trigger_recall": 0.5850694444444444,
+  "trigger_f1": 0.6753507014028055,
+  "arg_exact_match": 0.050347222222222224,
+  "arg_precision": 0.3946395563770795,
+  "arg_recall": 0.33411580594679186,
+  "arg_f1": 0.361864406779661,
+  "event_exact_match": 0.050347222222222224,
+  "selection_score": 0.5057965484019789,
+  "loss": 54.701907051934135
+}
