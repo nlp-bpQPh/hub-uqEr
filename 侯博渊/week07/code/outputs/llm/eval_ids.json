@@ -1,0 +1,272 @@
+{
+  "seed": 42,
+  "rule": "sort by (id,sent_id) then random.Random(seed).shuffle, take prefix",
+  "ids": {
+    "n3": [
+      {
+        "id": "e990a0a5d056c840f505cd909a0aa66f",
+        "sent_id": "s1104"
+      },
+      {
+        "id": "5a50963a3db4f92ebe2a110cbf8cf5db",
+        "sent_id": "s1381"
+      },
+      {
+        "id": "2646c127961607b3e79d01cbaaf7e45f",
+        "sent_id": "s191"
+      }
+    ],
+    "n2": [
+      {
+        "id": "e990a0a5d056c840f505cd909a0aa66f",
+        "sent_id": "s1104"
+      },
+      {
+        "id": "5a50963a3db4f92ebe2a110cbf8cf5db",
+        "sent_id": "s1381"
+      }
+    ],
+    "n60": [
+      {
+        "id": "e990a0a5d056c840f505cd909a0aa66f",
+        "sent_id": "s1104"
+      },
+      {
+        "id": "5a50963a3db4f92ebe2a110cbf8cf5db",
+        "sent_id": "s1381"
+      },
+      {
+        "id": "2646c127961607b3e79d01cbaaf7e45f",
+        "sent_id": "s191"
+      },
+      {
+        "id": "cbb31dc9eb6c3b667d28bddd18b450cc",
+        "sent_id": "s951"
+      },
+      {
+        "id": "0ecaf5c6dfa230f99ef29a14943b87f8",
+        "sent_id": "s1259"
+      },
+      {
+        "id": "5f1aadac6bf3e67ce3e48a3324f30180",
+        "sent_id": "s1317"
+      },
+      {
+        "id": "9890404c9bfbd6d32bd088842c6eb993",
+        "sent_id": "s290"
+      },
+      {
+        "id": "a27ea8319263d08f27e12c19ae3f25c5",
+        "sent_id": "s1354"
+      },
+      {
+        "id": "80e647c132e99708f2074bd9402bffd0",
+        "sent_id": "s1371"
+      },
+      {
+        "id": "6092867300bd4340c3f730d4c947b3f6",
+        "sent_id": "s1067"
+      },
+      {
+        "id": "9f71cfda2896410a78e49491e9e95f4a",
+        "sent_id": "s632"
+      },
+      {
+        "id": "02e0a01a4715911dfd6e0e601356ce14",
+        "sent_id": "s1070"
+      },
+      {
+        "id": "bcc6b20986b6d181daac0bf2f8beac60",
+        "sent_id": "s83"
+      },
+      {
+        "id": "c51d930f9aa449f0651271791a7e8327",
+        "sent_id": "s45"
+      },
+      {
+        "id": "3eef899d6284bb0baf5e0b029c349bae",
+        "sent_id": "s1242"
+      },
+      {
+        "id": "dadf054c5d08263844585259b5686288",
+        "sent_id": "s922"
+      },
+      {
+        "id": "a04f7fdc74917628642611ce26339c31",
+        "sent_id": "s1369"
+      },
+      {
+        "id": "34f86003b105fcef3d338693a2d09343",
+        "sent_id": "s780"
+      },
+      {
+        "id": "5921a3c15d9f0297c836fd0c7cfd00f9",
+        "sent_id": "s332"
+      },
+      {
+        "id": "1cc0ce508c2315c265f38dc1bd632f9e",
+        "sent_id": "s835"
+      },
+      {
+        "id": "ab0fba75b712d1939504367fb291af6e",
+        "sent_id": "s808"
+      },
+      {
+        "id": "464abc5bbfced17b76ea85b6ff85c5d3",
+        "sent_id": "s176"
+      },
+      {
+        "id": "9d9c544538946b3269bdc25c1ab376e3",
+        "sent_id": "s313"
+      },
+      {
+        "id": "1a541eb11ffa8d79374040f6b7d7e6f4",
+        "sent_id": "s1385"
+      },
+      {
+        "id": "51737f6712bf9fca4cbeb62a4d439999",
+        "sent_id": "s77"
+      },
+      {
+        "id": "5bf3e9e3c106fc473d6d6b1775ff5f00",
+        "sent_id": "s560"
+      },
+      {
+        "id": "4ca295629a1b9b54e6b614644f95a3f0",
+        "sent_id": "s1305"
+      },
+      {
+        "id": "8138f1355535eaf1051362411423a8a0",
+        "sent_id": "s185"
+      },
+      {
+        "id": "8ba207d01df4acb93dbfdb7405a4bfcc",
+        "sent_id": "s47"
+      },
+      {
+        "id": "d645e73f97ebcf0dfb83b858d8e427bd",
+        "sent_id": "s235"
+      },
+      {
+        "id": "3e47874d4534b129d678180a60a2c7d3",
+        "sent_id": "s1241"
+      },
+      {
+        "id": "ec6255c3d75f2d93381b960a24bc61d1",
+        "sent_id": "s1341"
+      },
+      {
+        "id": "59554449ce56d74ac192d102efd4e9c6",
+        "sent_id": "s1329"
+      },
+      {
+        "id": "8cb07ec01e5871def25d7757dbcb91ff",
+        "sent_id": "s777"
+      },
+      {
+        "id": "becf633fddd06f2414280097339c8365",
+        "sent_id": "s266"
+      },
+      {
+        "id": "ab3fee8642af76a215f191dbc6c75c7f",
+        "sent_id": "s1109"
+      },
+      {
+        "id": "82b6ad461f6675ed7c8141540ed3a3f9",
+        "sent_id": "s279"
+      },
+      {
+        "id": "e9e235dea9c7d297978c2df50406e67e",
+        "sent_id": "s48"
+      },
+      {
+        "id": "cf2b10f373d8ee01745de041401aa256",
+        "sent_id": "s1036"
+      },
+      {
+        "id": "9ba8ba0a875064362000823c657e1304",
+        "sent_id": "s430"
+      },
+      {
+        "id": "ae8214b1dde70da87c047c364da9e299",
+        "sent_id": "s1343"
+      },
+      {
+        "id": "b6058738258f87ed4f64519331dfdfc2",
+        "sent_id": "s214"
+      },
+      {
+        "id": "87bab2020222b45a933ec7088fc10d9d",
+        "sent_id": "s770"
+      },
+      {
+        "id": "aa52ed8f32aa6895c1818cd2eb855e1b",
+        "sent_id": "s339"
+      },
+      {
+        "id": "8eb3357f953f8531a7ccf8fb3b4aaac5",
+        "sent_id": "s288"
+      },
+      {
+        "id": "c9b2ba0000439d0d4556673a2be62994",
+        "sent_id": "s307"
+      },
+      {
+        "id": "6f679817ad13339b0352adbc5912de3a",
+        "sent_id": "s900"
+      },
+      {
+        "id": "f649647141ad11ca7c7d1dbc86719fd2",
+        "sent_id": "s1334"
+      },
+      {
+        "id": "8bb71afb10e5a93005282ddf1900dd0f",
+        "sent_id": "s1285"
+      },
+      {
+        "id": "88dc93d0cd6859ded9ef5904266c28ce",
+        "sent_id": "s1224"
+      },
+      {
+        "id": "cc392d53878436d0ba3bd9e4430a76b8",
+        "sent_id": "s651"
+      },
+      {
+        "id": "49ce812431bc8cd91a5c1d56c80f57e4",
+        "sent_id": "s215"
+      },
+      {
+        "id": "d768bbc2af0963d9dfb1a8b66b31af01",
+        "sent_id": "s1123"
+      },
+      {
+        "id": "e957ccb21141699cb7ce9ba925125d17",
+        "sent_id": "s431"
+      },
+      {
+        "id": "466676578bc9f1e4cca84f37878a5a31",
+        "sent_id": "s283"
+      },
+      {
+        "id": "1da277faf0cd7f607cf28eca38488b3f",
+        "sent_id": "s217"
+      },
+      {
+        "id": "0810c1f8919763c54bfb9929cdca8203",
+        "sent_id": "s365"
+      },
+      {
+        "id": "ee888a5919069514d968afc70f653a24",
+        "sent_id": "s1391"
+      },
+      {
+        "id": "0c1f9455bdaa4b348425b7fbc928aff8",
+        "sent_id": "s268"
+      },
+      {
+        "id": "6e5e29396b4bb01dfa8330e0b17d715c",
+        "sent_id": "s843"
+      }
+    ]
+  }
+}

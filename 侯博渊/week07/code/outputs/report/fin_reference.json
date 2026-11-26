@@ -1,0 +1,21 @@
+{
+  "dataset": "DuEE-Fin (课程原数据集, dev 930 句)",
+  "note": "数字来自课程 NOTES_discriminative.md / NOTES_llm.md 的实测记录（GPU, 12 层 BERT, 3 epoch）；仅作『同方法家族、不同数据集』对照，训练预算与本作业不同，不能当同配方复现。",
+  "methods": {
+    "rule": {"trigger_f1": 0.6168, "argument_f1": 0.1740, "event_f1": 0.0161, "type_macro_f1": 0.8118, "train_s": 0, "ms_per_sentence": 0.72},
+    "bilstm_crf": {"trigger_f1": 0.8165, "argument_f1": 0.4634, "event_f1": 0.0885, "type_macro_f1": 0.7306, "train_s": 1520, "ms_per_sentence": 21.17},
+    "bert_linear": {"trigger_f1": 0.8293, "argument_f1": 0.5630, "event_f1": 0.1564, "type_macro_f1": 0.7654, "train_s": 637, "ms_per_sentence": 12.26},
+    "bert_crf": {"trigger_f1": 0.8320, "argument_f1": 0.5815, "event_f1": 0.1697, "type_macro_f1": 0.7741, "train_s": 2742, "ms_per_sentence": 40.92},
+    "bert_crf_hard": {"trigger_f1": 0.8464, "argument_f1": 0.6566, "event_f1": 0.2177, "type_macro_f1": 0.7506, "train_s": 0, "ms_per_sentence": 40.92},
+    "pipeline": {"trigger_f1": 0.6769, "argument_f1": 0.3690, "event_f1": 0.0957, "type_macro_f1": 0.5619, "train_s": 1377.5, "ms_per_sentence": 49.87},
+    "llm_api_zero_n200": {"trigger_f1": 0.7789, "argument_f1": 0.5224, "event_f1": 0.0402, "type_macro_f1": 0.9281, "ms_per_sentence": 3620},
+    "llm_api_few_n200": {"trigger_f1": 0.8321, "argument_f1": 0.5395, "event_f1": 0.0852, "type_macro_f1": 0.9384, "ms_per_sentence": 4090},
+    "llm_local_zero_n60": {"trigger_f1": 0.4068, "argument_f1": 0.1167, "event_f1": 0.0000, "type_macro_f1": 0.6074, "ms_per_sentence": 5320},
+    "llm_lora_n200": {"trigger_f1": 0.9000, "argument_f1": 0.6971, "event_f1": 0.1850, "type_macro_f1": 0.7862, "ms_per_sentence": 5430}
+  },
+  "dataset_stats": {
+    "train_extract": 5747, "dev_extract": 930, "event_types": 13, "role_slots": 92,
+    "union_roles": 61, "mean_sentence_len": 163.9, "p50_sentence_len": 161,
+    "negative_sentence_rate": 0.779, "multi_event_doc_rate": 0.29
+  }
+}

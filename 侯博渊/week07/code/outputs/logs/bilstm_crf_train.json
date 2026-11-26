@@ -1,0 +1,105 @@
+{
+  "method": "bilstm_crf",
+  "argv": [
+    "bilstm_crf/train.py",
+    "--decoder",
+    "crf",
+    "--epochs",
+    "3",
+    "--max_len",
+    "160",
+    "--batch_size",
+    "32",
+    "--device",
+    "cpu",
+    "--run_name",
+    "bilstm_crf",
+    "--log_every",
+    "100"
+  ],
+  "args": {
+    "decoder": "crf",
+    "max_len": 160,
+    "epochs": 3,
+    "batch_size": 32,
+    "emb_dim": 128,
+    "hidden": 256,
+    "num_layers": 1,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "dropout": 0.3,
+    "max_grad_norm": 5.0,
+    "warmup_steps": 100,
+    "inner_val": 0.1,
+    "hard_constraint": false,
+    "device": "cpu",
+    "log_every": 100,
+    "seed": 42,
+    "run_name": "bilstm_crf",
+    "mock": false,
+    "data_dir": ""
+  },
+  "env": {
+    "python": "3.13.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "time": "2026-11-25 21:57:31",
+    "torch": "2.11.0+cpu",
+    "cuda_available": false,
+    "transformers": "4.55.0"
+  },
+  "params": 1295740,
+  "log_every": 100,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 114.077606,
+      "elapsed_s": 127.6,
+      "val": {
+        "inner_loss": 59.43463916778565,
+        "inner_span_f1": 0.12326388888888888
+      },
+      "best_so_far": -1.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 46.88746,
+      "elapsed_s": 164.4,
+      "val": {
+        "inner_loss": 33.41387605667114,
+        "inner_span_f1": 0.38845654993514916
+      },
+      "best_so_far": 0.123264
+    },
+    {
+      "epoch": 3,
+      "train_loss": 30.498256,
+      "elapsed_s": 179.9,
+      "val": {
+        "inner_loss": 24.726624774932862,
+        "inner_span_f1": 0.48135997614076953
+      },
+      "best_so_far": 0.388457
+    }
+  ],
+  "total_elapsed_s": 475.5,
+  "finished": true,
+  "best_epoch": 3,
+  "best_inner_val_span_f1": 0.48136,
+  "dev_metrics": {
+    "trigger": 0.7838,
+    "argument": 0.3419,
+    "event_exact": 0.1167
+  },
+  "inference_latency_ms": 5.87,
+  "peak_gpu_mb": 0.0,
+  "illegal_dev": {
+    "illegal_start": 80,
+    "illegal_transition": 350,
+    "total_seqs": 793,
+    "illegal_seqs": 338,
+    "total_illegal": 430,
+    "illegal_seq_rate": 0.4262,
+    "illegal_per_seq": 0.542
+  },
+  "notes": "BiLSTM-CRF（字符级，无预训练）训练过程"
+}

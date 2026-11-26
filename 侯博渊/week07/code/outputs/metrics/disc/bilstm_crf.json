@@ -1,0 +1,417 @@
+{
+  "num_samples": 793,
+  "missing_predictions": 0,
+  "trigger": {
+    "precision": 0.8599,
+    "recall": 0.7201,
+    "f1": 0.7838,
+    "tp": 571,
+    "fp": 93,
+    "fn": 222
+  },
+  "argument": {
+    "precision": 0.4231,
+    "recall": 0.2868,
+    "f1": 0.3419,
+    "tp": 473,
+    "fp": 645,
+    "fn": 1176
+  },
+  "event_exact": {
+    "precision": 0.128,
+    "recall": 0.1072,
+    "f1": 0.1167,
+    "tp": 85,
+    "fp": 579,
+    "fn": 708
+  },
+  "per_type": {
+    "产品行为-上映": {
+      "precision": 1.0,
+      "recall": 0.7353,
+      "f1": 0.8475,
+      "tp": 25,
+      "fp": 0,
+      "fn": 9
+    },
+    "产品行为-发布": {
+      "precision": 0.9844,
+      "recall": 0.863,
+      "f1": 0.9197,
+      "tp": 126,
+      "fp": 2,
+      "fn": 20
+    },
+    "产品行为-召回": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 35,
+      "fp": 0,
+      "fn": 0
+    },
+    "人生-死亡": {
+      "precision": 0.9455,
+      "recall": 0.7647,
+      "f1": 0.8455,
+      "tp": 52,
+      "fp": 3,
+      "fn": 16
+    },
+    "人生-离婚": {
+      "precision": 0.9615,
+      "recall": 1.0,
+      "f1": 0.9804,
+      "tp": 25,
+      "fp": 1,
+      "fn": 0
+    },
+    "人生-结婚": {
+      "precision": 1.0,
+      "recall": 0.8846,
+      "f1": 0.9388,
+      "tp": 23,
+      "fp": 0,
+      "fn": 3
+    },
+    "司法行为-拘捕": {
+      "precision": 0.9733,
+      "recall": 0.9241,
+      "f1": 0.9481,
+      "tp": 73,
+      "fp": 2,
+      "fn": 6
+    },
+    "司法行为-约谈": {
+      "precision": 0.9677,
+      "recall": 1.0,
+      "f1": 0.9836,
+      "tp": 30,
+      "fp": 1,
+      "fn": 0
+    },
+    "灾害/意外-车祸": {
+      "precision": 0.8889,
+      "recall": 0.3636,
+      "f1": 0.5161,
+      "tp": 8,
+      "fp": 1,
+      "fn": 14
+    },
+    "竞赛行为-夺冠": {
+      "precision": 0.7778,
+      "recall": 0.6774,
+      "f1": 0.7241,
+      "tp": 21,
+      "fp": 6,
+      "fn": 10
+    },
+    "竞赛行为-胜负": {
+      "precision": 0.9783,
+      "recall": 0.6081,
+      "f1": 0.75,
+      "tp": 90,
+      "fp": 2,
+      "fn": 58
+    },
+    "组织关系-加盟": {
+      "precision": 0.9524,
+      "recall": 0.6897,
+      "f1": 0.8,
+      "tp": 20,
+      "fp": 1,
+      "fn": 9
+    },
+    "组织关系-辞/离职": {
+      "precision": 0.9836,
+      "recall": 0.8824,
+      "f1": 0.9302,
+      "tp": 60,
+      "fp": 1,
+      "fn": 8
+    },
+    "组织行为-开幕": {
+      "precision": 0.8387,
+      "recall": 0.963,
+      "f1": 0.8966,
+      "tp": 26,
+      "fp": 5,
+      "fn": 1
+    },
+    "财经/交易-涨停": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 25,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "per_role": {
+    "上映影视": {
+      "precision": 0.6087,
+      "recall": 0.4,
+      "f1": 0.4828,
+      "tp": 14,
+      "fp": 9,
+      "fn": 21
+    },
+    "上映方": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "冠军": {
+      "precision": 0.5,
+      "recall": 0.0333,
+      "f1": 0.0625,
+      "tp": 1,
+      "fp": 1,
+      "fn": 29
+    },
+    "加盟者": {
+      "precision": 0.4375,
+      "recall": 0.2414,
+      "f1": 0.3111,
+      "tp": 7,
+      "fp": 9,
+      "fn": 22
+    },
+    "原所属组织": {
+      "precision": 0.413,
+      "recall": 0.3276,
+      "f1": 0.3654,
+      "tp": 19,
+      "fp": 27,
+      "fn": 39
+    },
+    "发布产品": {
+      "precision": 0.3119,
+      "recall": 0.2282,
+      "f1": 0.2636,
+      "tp": 34,
+      "fp": 75,
+      "fn": 115
+    },
+    "发布方": {
+      "precision": 0.3924,
+      "recall": 0.369,
+      "f1": 0.3804,
+      "tp": 31,
+      "fp": 48,
+      "fn": 53
+    },
+    "受伤人数": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4
+    },
+    "召回内容": {
+      "precision": 0.2903,
+      "recall": 0.2647,
+      "f1": 0.2769,
+      "tp": 9,
+      "fp": 22,
+      "fn": 25
+    },
+    "召回方": {
+      "precision": 0.4545,
+      "recall": 0.3448,
+      "f1": 0.3922,
+      "tp": 10,
+      "fp": 12,
+      "fn": 19
+    },
+    "地点": {
+      "precision": 0.2778,
+      "recall": 0.1754,
+      "f1": 0.2151,
+      "tp": 10,
+      "fp": 26,
+      "fn": 47
+    },
+    "夺冠赛事": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 23
+    },
+    "所加盟组织": {
+      "precision": 0.6154,
+      "recall": 0.2759,
+      "f1": 0.381,
+      "tp": 8,
+      "fp": 5,
+      "fn": 21
+    },
+    "拘捕者": {
+      "precision": 0.4167,
+      "recall": 0.3846,
+      "f1": 0.4,
+      "tp": 15,
+      "fp": 21,
+      "fn": 24
+    },
+    "时间": {
+      "precision": 0.6234,
+      "recall": 0.507,
+      "f1": 0.5592,
+      "tp": 144,
+      "fp": 87,
+      "fn": 140
+    },
+    "死亡人数": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "死者": {
+      "precision": 0.2564,
+      "recall": 0.1786,
+      "f1": 0.2105,
+      "tp": 10,
+      "fp": 29,
+      "fn": 46
+    },
+    "死者年龄": {
+      "precision": 0.5294,
+      "recall": 0.4737,
+      "f1": 0.5,
+      "tp": 9,
+      "fp": 8,
+      "fn": 10
+    },
+    "活动名称": {
+      "precision": 0.3214,
+      "recall": 0.3333,
+      "f1": 0.3273,
+      "tp": 9,
+      "fp": 19,
+      "fn": 18
+    },
+    "涨停股票": {
+      "precision": 0.375,
+      "recall": 0.2308,
+      "f1": 0.2857,
+      "tp": 6,
+      "fp": 10,
+      "fn": 20
+    },
+    "离婚双方": {
+      "precision": 0.56,
+      "recall": 0.3415,
+      "f1": 0.4242,
+      "tp": 14,
+      "fp": 11,
+      "fn": 27
+    },
+    "离职者": {
+      "precision": 0.1944,
+      "recall": 0.1029,
+      "f1": 0.1346,
+      "tp": 7,
+      "fp": 29,
+      "fn": 61
+    },
+    "约谈发起方": {
+      "precision": 0.4375,
+      "recall": 0.3043,
+      "f1": 0.359,
+      "tp": 7,
+      "fp": 9,
+      "fn": 16
+    },
+    "约谈对象": {
+      "precision": 0.4545,
+      "recall": 0.3448,
+      "f1": 0.3922,
+      "tp": 10,
+      "fp": 12,
+      "fn": 19
+    },
+    "结婚双方": {
+      "precision": 0.4706,
+      "recall": 0.1778,
+      "f1": 0.2581,
+      "tp": 8,
+      "fp": 9,
+      "fn": 37
+    },
+    "胜者": {
+      "precision": 0.5283,
+      "recall": 0.2059,
+      "f1": 0.2963,
+      "tp": 28,
+      "fp": 25,
+      "fn": 108
+    },
+    "被拘捕者": {
+      "precision": 0.2381,
+      "recall": 0.1974,
+      "f1": 0.2158,
+      "tp": 15,
+      "fp": 48,
+      "fn": 61
+    },
+    "败者": {
+      "precision": 0.3086,
+      "recall": 0.188,
+      "f1": 0.2336,
+      "tp": 25,
+      "fp": 56,
+      "fn": 108
+    },
+    "赛事名称": {
+      "precision": 0.4035,
+      "recall": 0.2771,
+      "f1": 0.3286,
+      "tp": 23,
+      "fp": 34,
+      "fn": 60
+    }
+  },
+  "type_macro_f1": 0.872,
+  "method": "bilstm_crf",
+  "gold": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\data\\processed\\dev_extract.jsonl",
+  "pred": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\disc\\pred_bilstm_crf.jsonl",
+  "meta": {
+    "display_name": "BiLSTM-CRF（CRF）",
+    "train_s": 475.5,
+    "params_m": 1.3,
+    "ms_per_sentence": 5.87,
+    "peak_gpu_mb": 0.0,
+    "decoder": "crf",
+    "epochs": 3,
+    "max_len": 160,
+    "emb_dim": 128,
+    "hidden": 256,
+    "lr": 0.001,
+    "best_epoch": 3,
+    "inner_val_span_f1": 0.4814,
+    "num_labels": 89,
+    "vocab_size": 3527,
+    "illegal_dev": {
+      "illegal_start": 80,
+      "illegal_transition": 350,
+      "total_seqs": 793,
+      "illegal_seqs": 338,
+      "total_illegal": 430,
+      "illegal_seq_rate": 0.4262,
+      "illegal_per_seq": 0.542
+    },
+    "n_truncated": 34,
+    "pretrained": false,
+    "seed": 42
+  }
+}
