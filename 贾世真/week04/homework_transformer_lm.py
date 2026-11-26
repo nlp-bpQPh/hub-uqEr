@@ -248,9 +248,9 @@ def main():
     random.seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    ckpt = torch.load(args.save, map_location=device) if args.prompt else None
-    if args.prompt and ckpt is None and not glob.glob(args.corpus):
+    if args.prompt and not glob.glob(args.save):
         raise FileNotFoundError("续写模式需要已训练的模型文件（--save 指向）")
+    ckpt = torch.load(args.save, map_location=device) if args.prompt else None
 
     if args.prompt and ckpt is not None:
         char2idx = ckpt["char2idx"]

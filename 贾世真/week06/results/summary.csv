@@ -1,0 +1,5 @@
+﻿method,accuracy,macro_f1,weighted_f1,used_classes,fit_seconds,eval_seconds
+rule,0.108,0.0463,0.0487,12,0.0,0.0
+tfidf,0.426,0.4,0.427,14,0.14,0.0
+rbt3_frozen,0.366,0.342,0.3671,15,22.44,0.0
+rbt3_finetuned,0.466,0.4501,0.4653,15,216.75,0.0

@@ -1,0 +1,5 @@
+# 模型权重太大（819MB），不进 git：换机器时按 说明.md 把三个模型放进 models/
+models/
+outputs/
+__pycache__/
+*.pyc

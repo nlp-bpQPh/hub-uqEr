@@ -1,0 +1,5 @@
+{
+  "experiment": "zero_shot",
+  "shots_per_class": 0,
+  "scoring": "constrained_next_token"
+}

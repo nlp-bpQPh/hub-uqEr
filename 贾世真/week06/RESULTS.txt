@@ -1,0 +1,65 @@
+第六周作业：更换预训练模型后的分类方法对比实验
+
+一、实验变更
+原课程预训练模型：bert-base-chinese（12 层）
+本作业预训练模型：hfl/rbt3（3 层轻量中文 BERT）
+数据集不变：TNEWS 15 类中文新闻标题。
+
+二、统一实验口径
+1. 从 53,360 条训练数据中用 seed=42 抽取 3,000 条，保留原类别分布。
+2. 原验证集 10,000 条，剔除与训练集整句完全重复的 1,099 条，剩 8,901 条。
+3. 从去重验证集中用同一个 seed=42 抽取同一批 500 条，供四种方法评测。
+4. 所有方法共用同一组 train/eval 位置，结果保存于 results/split.json。
+5. 指标统一为 Accuracy、Macro-F1、Weighted-F1、per-class Recall、混淆矩阵。
+6. 结果产出环境：dl-env 容器（PyTorch 2.6.0+cpu，5 线程，无 GPU）；该环境已于 2026-11-17 迁移至本地 macOS，本地复现方式见「六、复现」。
+
+三、实际结果
+方法                         Accuracy    Macro-F1    Weighted-F1   拟合/训练时间
+关键词规则                    0.1080      0.0463      0.0487        约 0 秒
+TF-IDF + LinearSVC           0.4260      0.4000      0.4270        0.14 秒
+RBT3 冻结特征 + LinearSVC     0.3660      0.3420      0.3671        22.44 秒
+RBT3 全参数微调               0.4660      0.4501      0.4653        216.75 秒
+
+RBT3 微调训练过程：
+epoch 1：train_loss=2.2127，val_accuracy=0.4440，val_macro_f1=0.4223
+epoch 2：train_loss=1.4889，val_accuracy=0.4660，val_macro_f1=0.4501
+最佳模型：epoch 2，可训练参数 38,488,335。
+
+四、结论
+1. 本次小样本实验中，RBT3 全参数微调效果最好，Macro-F1 比 TF-IDF 高 0.0501（5.01 个百分点）。
+2. RBT3 冻结特征只有 0.3420，低于 TF-IDF 的 0.4000，说明通用预训练表示不能直接替代任务训练；微调让表示适配 15 类新闻标签后才取得优势。
+3. TF-IDF 训练极快且效果不弱，仍是资源受限、需要快速重训时的有效基线。RBT3 微调带来约 5 个点的 Macro-F1 提升，但需要更多计算和时间。
+4. 规则法大量样本回退到多数类“科技”，Macro-F1 仅 0.0463，不能覆盖标题中未显式出现类别名的情况。
+5. 主要混淆仍集中在“财经↔科技”“国际↔军事”，说明短标题缺少实体和上下文、类别边界重叠是共同瓶颈，仅换模型不能消除。
+6. 微调后“故事”Recall 从 TF-IDF 的 0.2353 提升到 0.5294，但“财经”Recall 降至 0.2407；不能只看总分，还需结合类别加权和业务误推/漏推成本调整。
+
+五、实验边界
+1. 本次是 3,000 条训练、500 条验证的小样本对照，不与原课程全量训练结果直接混比。
+2. 验证集中的“证券”只有 3 条，其单类 Recall 波动很大，不据此下稳定结论。
+3. clean-500 来自去重验证集，不是独立测试集；当前结果用于方法比较，不代表生产上线指标。
+4. RBT3 冻结路线与微调路线分类器/损失设计不同，不是严格的单一变量消融；主表用于工程方法对比。
+5. 时间来自 CPU 环境，只用于本次相对比较，不能直接外推到 GPU 或生产服务延迟。
+
+六、复现
+cd ~/ai-course/workspace/hub-uqEr/贾世真/week06
+# 本地环境：~/ai-course/.venv（Python 3.12，依赖已装齐）；其他环境先执行
+python3 -m pip install -r requirements.txt
+python3 homework_classifier_compare.py --download-only
+python3 homework_classifier_compare.py --train-size 3000 --eval-size 500 --epochs 2 --batch-size 16 --output-dir results
+
+冒烟：
+python3 homework_classifier_compare.py --train-size 150 --eval-size 30 --epochs 1 --max-steps 2 --batch-size 8 --output-dir results_smoke
+
+七、产物
+homework_classifier_compare.py：完整实验代码。
+requirements.txt：依赖。
+data/：TNEWS 数据。
+pretrain_models/rbt3/：更换后的预训练模型（由 --download-only 自动下载，不入库）。
+results/summary.csv：四路指标表。
+results/summary.json：配置、数据分布、per-class Recall 与混淆矩阵。
+results/predictions.jsonl：四路各 500 条逐条预测。
+results/split.json：可复现的数据抽样位置。
+results/train_log.json：逐轮训练日志。
+results/comparison.png：Accuracy 与 Macro-F1 对比图。
+results/rbt3_finetuned.pt：最佳 RBT3 微调权重（约 150MB，未随仓库提交，按「六、复现」命令训练即可再生）。
+RESULTS.txt：本结果说明。

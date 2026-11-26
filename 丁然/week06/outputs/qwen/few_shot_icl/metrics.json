@@ -1,0 +1,9 @@
+{
+  "accuracy": 0.474,
+  "macro_f1": 0.4819370351579094,
+  "weighted_f1": 0.48127736810416816,
+  "invalid_predictions": 0,
+  "invalid_rate": 0.0,
+  "samples": 500,
+  "demonstrations": 15
+}

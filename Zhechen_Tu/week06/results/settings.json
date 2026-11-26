@@ -1,0 +1,15 @@
+{
+  "device": "mps",
+  "epochs": 10,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "tfidf_feature_seconds": 0.7464197080116719,
+  "neural_feature_seconds": 0.3145370000274852,
+  "context": 100,
+  "vocab": 15000,
+  "split_seed": 20261118,
+  "majority_baseline_accuracy": 0.25
+}

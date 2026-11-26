@@ -1,0 +1,10 @@
+{
+  "pooling": "cls",
+  "max_length": 48,
+  "num_labels": 15,
+  "model_path": "~/Downloads/模型/bert/bert-base-chinese",
+  "loss": "ce",
+  "fgm": false,
+  "warmup_ratio": 0.1,
+  "epochs": 1
+}

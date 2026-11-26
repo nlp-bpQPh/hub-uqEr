@@ -1,0 +1,12 @@
+PASS: split-ID hashes, class balance, normalized exact-text deduplication, no split overlap.
+PASS: NaiveBayes seed=0 CPU reload reproduces all 7600 predictions and metrics.
+PASS: LogisticRegression seed=0 CPU reload reproduces all 7600 predictions and metrics.
+PASS: LinearSVM seed=0 CPU reload reproduces all 7600 predictions and metrics.
+PASS: MeanPool seed=17 CPU reload reproduces all 7600 predictions and metrics.
+PASS: MeanPool seed=29 CPU reload reproduces all 7600 predictions and metrics.
+PASS: MeanPool seed=43 CPU reload reproduces all 7600 predictions and metrics.
+PASS: TextCNN seed=17 CPU reload reproduces all 7600 predictions and metrics.
+PASS: TextCNN seed=29 CPU reload reproduces all 7600 predictions and metrics.
+PASS: TextCNN seed=43 CPU reload reproduces all 7600 predictions and metrics.
+PASS: CPU end-to-end inference timing recorded for all five methods (median of 3).
+ALL CHECKS PASSED
