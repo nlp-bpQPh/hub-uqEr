@@ -1,0 +1,7 @@
+# week07 交付范围（见 outputs/README.md 第 1.1 节）
+
+# 模型权重：可自行训练生成，不入库
+outputs/llm/ckpt/
+
+# 模型原始输出：体积大、含未处理文本，不入库
+outputs/llm/**/raw_*.jsonl
