@@ -1,0 +1,84 @@
+{
+  "method": {
+    "name": "rules_regex_geometry",
+    "description": "Keyword/format rules plus OCR-box proximity heuristics; no training.",
+    "split": "official zh.val"
+  },
+  "metrics": {
+    "documents": 50,
+    "blocks": 3629,
+    "block_accuracy": 0.5304491595480849,
+    "document_all_blocks_exact": 0.0,
+    "macro_f1_all_four_classes": 0.4764334667097133,
+    "entity_micro": {
+      "precision": 0.6661585365853658,
+      "recall": 0.5744331252053895,
+      "f1": 0.6169048879477678,
+      "tp": 1748,
+      "fp": 876,
+      "fn": 1295
+    },
+    "per_class": {
+      "other": {
+        "precision": 0.1761194029850746,
+        "recall": 0.30204778156996587,
+        "f1": 0.22250157133878062,
+        "tp": 177,
+        "fp": 828,
+        "fn": 409
+      },
+      "header": {
+        "precision": 0.40540540540540543,
+        "recall": 0.5172413793103449,
+        "f1": 0.4545454545454546,
+        "tp": 30,
+        "fp": 44,
+        "fn": 28
+      },
+      "question": {
+        "precision": 0.786472148541114,
+        "recall": 0.47326416600159615,
+        "f1": 0.5909317389138017,
+        "tp": 593,
+        "fp": 161,
+        "fn": 660
+      },
+      "answer": {
+        "precision": 0.626391982182628,
+        "recall": 0.6495381062355658,
+        "f1": 0.6377551020408163,
+        "tp": 1125,
+        "fp": 671,
+        "fn": 607
+      }
+    },
+    "confusion_matrix": {
+      "other": {
+        "other": 177,
+        "header": 23,
+        "question": 138,
+        "answer": 248
+      },
+      "header": {
+        "other": 15,
+        "header": 30,
+        "question": 4,
+        "answer": 9
+      },
+      "question": {
+        "other": 239,
+        "header": 7,
+        "question": 593,
+        "answer": 414
+      },
+      "answer": {
+        "other": 574,
+        "header": 14,
+        "question": 19,
+        "answer": 1125
+      }
+    },
+    "link_pairs_evaluated": false,
+    "note": "Scores classify the supplied OCR blocks; XFUND question-answer links are retained but not scored."
+  }
+}

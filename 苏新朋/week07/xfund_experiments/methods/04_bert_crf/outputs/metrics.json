@@ -1,0 +1,92 @@
+{
+  "method": {
+    "name": "bert_crf",
+    "model": "D:\\BaiduNetdiskDownload\\大模型学习\\week7\\week07\\xfund_experiments\\models\\bert-base-chinese",
+    "bert_layers": 4,
+    "decoder": "crf",
+    "training_documents": 119,
+    "inner_validation_documents": 30,
+    "official_split": "zh.val",
+    "seed": 42,
+    "epochs_requested": 2,
+    "best_inner_macro_f1": 0.6112109540785121,
+    "note": "Block-level labels are scored. XFUND key-answer relation links are retained but not scored."
+  },
+  "metrics": {
+    "documents": 50,
+    "blocks": 3629,
+    "block_accuracy": 0.756131165610361,
+    "document_all_blocks_exact": 0.0,
+    "macro_f1_all_four_classes": 0.6668817173761763,
+    "entity_micro": {
+      "precision": 0.7859111791730474,
+      "recall": 0.8432467959250739,
+      "f1": 0.8135700697526949,
+      "tp": 2566,
+      "fp": 699,
+      "fn": 477
+    },
+    "per_class": {
+      "other": {
+        "precision": 0.489010989010989,
+        "recall": 0.3037542662116041,
+        "f1": 0.3747368421052632,
+        "tp": 178,
+        "fp": 186,
+        "fn": 408
+      },
+      "header": {
+        "precision": 0.7906976744186046,
+        "recall": 0.5862068965517241,
+        "f1": 0.6732673267326732,
+        "tp": 34,
+        "fp": 9,
+        "fn": 24
+      },
+      "question": {
+        "precision": 0.7268188302425107,
+        "recall": 0.8132482043096568,
+        "f1": 0.7676082862523542,
+        "tp": 1019,
+        "fp": 383,
+        "fn": 234
+      },
+      "answer": {
+        "precision": 0.8313186813186814,
+        "recall": 0.8735565819861432,
+        "f1": 0.8519144144144144,
+        "tp": 1513,
+        "fp": 307,
+        "fn": 219
+      }
+    },
+    "confusion_matrix": {
+      "other": {
+        "other": 178,
+        "header": 4,
+        "question": 234,
+        "answer": 170
+      },
+      "header": {
+        "other": 5,
+        "header": 34,
+        "question": 10,
+        "answer": 9
+      },
+      "question": {
+        "other": 104,
+        "header": 2,
+        "question": 1019,
+        "answer": 128
+      },
+      "answer": {
+        "other": 77,
+        "header": 3,
+        "question": 139,
+        "answer": 1513
+      }
+    },
+    "link_pairs_evaluated": false,
+    "note": "Scores classify the supplied OCR blocks; XFUND question-answer links are retained but not scored."
+  }
+}

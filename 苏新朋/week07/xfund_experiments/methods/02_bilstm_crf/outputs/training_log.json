@@ -1,0 +1,35 @@
+{
+  "method": "bilstm_crf",
+  "seed": 42,
+  "device": "cpu",
+  "fit_documents": 119,
+  "inner_validation_documents": 30,
+  "official_validation_documents": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 264.58869415283203,
+      "inner_macro_f1": 0.3394046535256908,
+      "inner_entity_micro_f1": 0.6195388349514563,
+      "epoch_seconds": 4.077166318893433
+    },
+    {
+      "epoch": 2,
+      "train_loss": 176.73176361083983,
+      "inner_macro_f1": 0.4282789083008068,
+      "inner_entity_micro_f1": 0.6786056923568917,
+      "epoch_seconds": 3.9433977603912354
+    },
+    {
+      "epoch": 3,
+      "train_loss": 145.2772166442871,
+      "inner_macro_f1": 0.5644238656331204,
+      "inner_entity_micro_f1": 0.7014218009478672,
+      "epoch_seconds": 3.7521913051605225
+    }
+  ],
+  "total_seconds": 11.791048765182495,
+  "model_name": "character BiLSTM initialized from scratch",
+  "max_chars_per_chunk": 240,
+  "max_length": null
+}

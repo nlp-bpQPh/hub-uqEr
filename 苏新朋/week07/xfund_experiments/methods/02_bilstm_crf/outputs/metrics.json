@@ -1,0 +1,91 @@
+{
+  "method": {
+    "name": "bilstm_crf",
+    "model": "character BiLSTM initialized from scratch",
+    "decoder": "crf",
+    "training_documents": 119,
+    "inner_validation_documents": 30,
+    "official_split": "zh.val",
+    "seed": 42,
+    "epochs_requested": 3,
+    "best_inner_macro_f1": 0.5644238656331204,
+    "note": "Block-level labels are scored. XFUND key-answer relation links are retained but not scored."
+  },
+  "metrics": {
+    "documents": 50,
+    "blocks": 3629,
+    "block_accuracy": 0.6913750344447506,
+    "document_all_blocks_exact": 0.0,
+    "macro_f1_all_four_classes": 0.5783505590810953,
+    "entity_micro": {
+      "precision": 0.744874715261959,
+      "recall": 0.7522182057180414,
+      "f1": 0.7485284499672988,
+      "tp": 2289,
+      "fp": 784,
+      "fn": 754
+    },
+    "per_class": {
+      "other": {
+        "precision": 0.39568345323741005,
+        "recall": 0.37542662116040953,
+        "f1": 0.38528896672504376,
+        "tp": 220,
+        "fp": 336,
+        "fn": 366
+      },
+      "header": {
+        "precision": 0.85,
+        "recall": 0.29310344827586204,
+        "f1": 0.4358974358974359,
+        "tp": 17,
+        "fp": 3,
+        "fn": 41
+      },
+      "question": {
+        "precision": 0.6688644688644688,
+        "recall": 0.7286512370311253,
+        "f1": 0.6974789915966385,
+        "tp": 913,
+        "fp": 452,
+        "fn": 340
+      },
+      "answer": {
+        "precision": 0.8050947867298578,
+        "recall": 0.7846420323325635,
+        "f1": 0.7947368421052631,
+        "tp": 1359,
+        "fp": 329,
+        "fn": 373
+      }
+    },
+    "confusion_matrix": {
+      "other": {
+        "other": 220,
+        "header": 2,
+        "question": 218,
+        "answer": 146
+      },
+      "header": {
+        "other": 19,
+        "header": 17,
+        "question": 12,
+        "answer": 10
+      },
+      "question": {
+        "other": 166,
+        "header": 1,
+        "question": 913,
+        "answer": 173
+      },
+      "answer": {
+        "other": 151,
+        "header": 0,
+        "question": 222,
+        "answer": 1359
+      }
+    },
+    "link_pairs_evaluated": false,
+    "note": "Scores classify the supplied OCR blocks; XFUND question-answer links are retained but not scored."
+  }
+}

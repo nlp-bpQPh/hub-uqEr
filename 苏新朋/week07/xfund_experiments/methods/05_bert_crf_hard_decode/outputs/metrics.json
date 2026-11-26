@@ -1,0 +1,88 @@
+{
+  "method": {
+    "name": "bert_crf_hard_bio",
+    "checkpoint": "D:\\BaiduNetdiskDownload\\大模型学习\\week7\\week07\\xfund_experiments\\methods\\04_bert_crf\\outputs\\best.pt",
+    "decoder_constraint": "hard BIO",
+    "bert_layers": 4,
+    "official_split": "zh.val",
+    "training_reused": true,
+    "note": "Same checkpoint; only decode-time BIO constraints change. Block labels scored; relation links not scored."
+  },
+  "metrics": {
+    "documents": 50,
+    "blocks": 3629,
+    "block_accuracy": 0.7671534858087627,
+    "document_all_blocks_exact": 0.0,
+    "macro_f1_all_four_classes": 0.6710793003305568,
+    "entity_micro": {
+      "precision": 0.7998766574159729,
+      "recall": 0.8524482418665791,
+      "f1": 0.82532612153993,
+      "tp": 2594,
+      "fp": 649,
+      "fn": 449
+    },
+    "per_class": {
+      "other": {
+        "precision": 0.49222797927461137,
+        "recall": 0.3242320819112628,
+        "f1": 0.3909465020576132,
+        "tp": 190,
+        "fp": 196,
+        "fn": 396
+      },
+      "header": {
+        "precision": 0.8823529411764706,
+        "recall": 0.5172413793103449,
+        "f1": 0.6521739130434783,
+        "tp": 30,
+        "fp": 4,
+        "fn": 28
+      },
+      "question": {
+        "precision": 0.7541353383458647,
+        "recall": 0.8004788507581804,
+        "f1": 0.7766163375919474,
+        "tp": 1003,
+        "fp": 327,
+        "fn": 250
+      },
+      "answer": {
+        "precision": 0.8307610431080362,
+        "recall": 0.901270207852194,
+        "f1": 0.8645804486291887,
+        "tp": 1561,
+        "fp": 318,
+        "fn": 171
+      }
+    },
+    "confusion_matrix": {
+      "other": {
+        "other": 190,
+        "header": 3,
+        "question": 224,
+        "answer": 169
+      },
+      "header": {
+        "other": 5,
+        "header": 30,
+        "question": 12,
+        "answer": 11
+      },
+      "question": {
+        "other": 112,
+        "header": 0,
+        "question": 1003,
+        "answer": 138
+      },
+      "answer": {
+        "other": 79,
+        "header": 1,
+        "question": 91,
+        "answer": 1561
+      }
+    },
+    "link_pairs_evaluated": false,
+    "note": "Scores classify the supplied OCR blocks; XFUND question-answer links are retained but not scored."
+  }
+}

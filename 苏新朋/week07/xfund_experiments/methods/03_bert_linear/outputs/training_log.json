@@ -1,0 +1,29 @@
+{
+  "method": "bert_linear",
+  "seed": 42,
+  "device": "cpu",
+  "fit_documents": 119,
+  "inner_validation_documents": 30,
+  "official_validation_documents": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 1.1997579698627059,
+      "inner_macro_f1": 0.4422191464599944,
+      "inner_entity_micro_f1": 0.6969086021505376,
+      "epoch_seconds": 50.2626838684082
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7485599562123015,
+      "inner_macro_f1": 0.6088120856553183,
+      "inner_entity_micro_f1": 0.7858958068614994,
+      "epoch_seconds": 48.4992561340332
+    }
+  ],
+  "total_seconds": 99.11531090736389,
+  "model_name": "D:\\BaiduNetdiskDownload\\大模型学习\\week7\\week07\\xfund_experiments\\models\\bert-base-chinese",
+  "bert_layers": 4,
+  "max_chars_per_chunk": 160,
+  "max_length": 176
+}
