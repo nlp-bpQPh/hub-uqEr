@@ -421,7 +421,7 @@ epoch 2: val_acc=0.5588 val_f1=0.5474
   epoch 3 step 600/834 loss=0.9256
   epoch 3 step 800/834 loss=0.8223
 epoch 3: val_acc=0.5651 val_f1=0.5573
-最佳 val Macro-F1 = 0.5573 → D:\AI\week6\outputs\bert_ckpt.pt
+最佳 val Macro-F1 = 0.5573 → D:/AI/week6/outputs/bert_ckpt.pt
 2.修改池化：
 python bert.py --pool mean
 python bert.py --pool max

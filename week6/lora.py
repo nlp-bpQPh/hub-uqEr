@@ -261,13 +261,21 @@ if __name__ == "__main__":
 #python lora.py --num_train 5000 --epochs 2 --batch_size 4 --grad_accum 4 --lora_r 8 --lora_alpha 16 --max_length 128
 """
 trainable params: 2,293,760 || all params: 598,343,680 || trainable%: 0.3834
-  epoch 1 0/1250 loss=1.7402
-  epoch 1 100/1250 loss=0.5445
-  epoch 1 200/1250 loss=1.0236
-  epoch 1 300/1250 loss=1.1017
-  epoch 1 400/1250 loss=0.8454
-  epoch 1 500/1250 loss=0.3612
-  epoch 1 600/1250 loss=0.5630
-  epoch 1 700/1250 loss=0.4207
-  epoch 1 800/1250 loss=1.3396
+  epoch 1 0/1250 loss=1.3971
+  epoch 1 100/1250 loss=1.5050
+  epoch 1 200/1250 loss=1.3241
+  epoch 1 300/1250 loss=0.4489
+  epoch 1 400/1250 loss=0.6367
+  epoch 1 500/1250 loss=0.5617
+  epoch 1 600/1250 loss=0.7598
+  epoch 1 700/1250 loss=0.8780
+  epoch 1 800/1250 loss=1.0750
+  epoch 1 900/1250 loss=0.6272
+  epoch 1 1000/1250 loss=0.6218
+  epoch 1 1100/1250 loss=0.5959
+  epoch 1 1200/1250 loss=1.0482
+epoch 1: train_loss=0.7977 val_loss=0.7314
+  epoch 2 0/1250 loss=0.8328
+  epoch 2 100/1250 loss=0.4656
+  epoch 2 200/1250 loss=0.6337
 """
