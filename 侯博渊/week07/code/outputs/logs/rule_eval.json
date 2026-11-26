@@ -1,0 +1,35 @@
+{
+  "method": "rule",
+  "argv": [
+    "rule/run_rule.py",
+    "--name",
+    "rule"
+  ],
+  "args": null,
+  "env": {
+    "python": "3.13.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "time": "2026-11-25 21:18:45",
+    "torch": "2.11.0+cpu",
+    "cuda_available": false,
+    "transformers": "4.55.0"
+  },
+  "runtime_s": 12.33,
+  "metrics": {
+    "trigger": 0.715,
+    "argument": 0.1196,
+    "event_exact": 0.0191
+  },
+  "type_macro_f1": 0.8418,
+  "num_triggers": 237,
+  "trigger_hit_rate": 0.9823,
+  "failure_counts": {
+    "arg_spurious": 442,
+    "wrong_type": 116,
+    "arg_missing": 104,
+    "exact": 15,
+    "wrong_trigger": 102,
+    "no_trigger": 14
+  },
+  "notes": "L0 规则基线（触发词词典 + 正则 + jieba 词性）"
+}

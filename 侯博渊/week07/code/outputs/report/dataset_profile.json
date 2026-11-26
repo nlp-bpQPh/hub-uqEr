@@ -1,0 +1,16 @@
+{
+  "fin": {
+    "train": 5747,
+    "types": 13,
+    "mean_len": 163.8667130676875,
+    "p50_len": 161,
+    "roles": 61
+  },
+  "duee10": {
+    "train_single": 10354,
+    "types_seen": 65,
+    "mean_len": 53.94340351554955,
+    "p50_len": 35,
+    "roles": 121
+  }
+}

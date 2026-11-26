@@ -1,0 +1,130 @@
+{
+  "methods": [
+    {
+      "key": "rule",
+      "name": "规则（词典+正则+词性）",
+      "kind": "rule",
+      "trigger": 0.715,
+      "argument": 0.1196,
+      "event": 0.0191,
+      "type_macro": 0.8418,
+      "train_s": 0,
+      "params_m": 0,
+      "ms": 5.804,
+      "n": 793,
+      "illegal": null,
+      "illegal_seq_rate": null,
+      "pred": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\disc\\pred_rule.jsonl",
+      "metrics_path": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\metrics\\disc\\rule.json"
+    },
+    {
+      "key": "bilstm_crf",
+      "name": "BiLSTM-CRF（字符级）",
+      "kind": "disc",
+      "trigger": 0.7838,
+      "argument": 0.3419,
+      "event": 0.1167,
+      "type_macro": 0.872,
+      "train_s": 475.5,
+      "params_m": 1.3,
+      "ms": 5.87,
+      "n": 793,
+      "illegal": 430,
+      "illegal_seq_rate": 0.4262,
+      "pred": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\disc\\pred_bilstm_crf.jsonl",
+      "metrics_path": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\metrics\\disc\\bilstm_crf.json"
+    },
+    {
+      "key": "berttiny_linear",
+      "name": "BERT-tiny+Linear",
+      "kind": "disc",
+      "trigger": 0.7437,
+      "argument": 0.332,
+      "event": 0.1121,
+      "type_macro": 0.8564,
+      "train_s": 1419.9,
+      "params_m": 8.8,
+      "ms": 14.64,
+      "n": 793,
+      "illegal": 1331,
+      "illegal_seq_rate": 0.739,
+      "pred": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\disc\\pred_berttiny_linear.jsonl",
+      "metrics_path": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\metrics\\disc\\berttiny_linear.json"
+    },
+    {
+      "key": "llm_zero",
+      "name": "本地 Qwen3-0.6B zero-shot",
+      "kind": "llm",
+      "trigger": 0.2667,
+      "argument": 0.0316,
+      "event": 0.0,
+      "type_macro": 0.4712,
+      "train_s": 0,
+      "params_m": 0,
+      "ms": 28.123,
+      "n": 60,
+      "illegal": null,
+      "illegal_seq_rate": null,
+      "pred": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\llm\\pred_local_zero.jsonl",
+      "metrics_path": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\metrics\\llm\\local_zero.json",
+      "json_valid": 100.0,
+      "tokens": 42131
+    },
+    {
+      "key": "llm_few",
+      "name": "本地 Qwen3-0.6B few-shot",
+      "kind": "llm",
+      "trigger": 0.3761,
+      "argument": 0.1449,
+      "event": 0.0513,
+      "type_macro": 0.393,
+      "train_s": 0,
+      "params_m": 0,
+      "ms": 39.912,
+      "n": 60,
+      "illegal": null,
+      "illegal_seq_rate": null,
+      "pred": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\llm\\pred_local_few.jsonl",
+      "metrics_path": "E:\\python\\第七周 抽取任务\\hw_duee10\\code\\outputs\\metrics\\llm\\local_few.json",
+      "json_valid": 95.0,
+      "tokens": 68284
+    }
+  ],
+  "subset": {
+    "rule": {
+      "trigger": 0.7797,
+      "argument": 0.1161,
+      "event": 0.0,
+      "n": 60,
+      "missing": 0
+    },
+    "bilstm_crf": {
+      "trigger": 0.7407,
+      "argument": 0.3024,
+      "event": 0.0926,
+      "n": 60,
+      "missing": 0
+    },
+    "berttiny_linear": {
+      "trigger": 0.7636,
+      "argument": 0.3588,
+      "event": 0.1091,
+      "n": 60,
+      "missing": 0
+    },
+    "llm_zero": {
+      "trigger": 0.2667,
+      "argument": 0.0316,
+      "event": 0.0,
+      "n": 60,
+      "missing": 0
+    },
+    "llm_few": {
+      "trigger": 0.3761,
+      "argument": 0.1449,
+      "event": 0.0513,
+      "n": 60,
+      "missing": 0
+    }
+  }
+}
