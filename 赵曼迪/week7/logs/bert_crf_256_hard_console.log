@@ -1,0 +1,72 @@
+  epoch 1 step 50/162 loss=638.2708
+  epoch 1 step 100/162 loss=504.2245
+  epoch 1 step 150/162 loss=403.0142
+epoch 1/12 | train_loss=385.3787 | inner_loss=144.5127 inner_spanF1=0.0000 | dev_spanF1(监控)=0.0000 | 686s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 2 step 50/162 loss=119.6786
+  epoch 2 step 100/162 loss=97.2860
+  epoch 2 step 150/162 loss=81.6469
+epoch 2/12 | train_loss=78.7397 | inner_loss=36.5819 inner_spanF1=0.0006 | dev_spanF1(监控)=0.0004 | 680s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 3 step 50/162 loss=35.9189
+  epoch 3 step 100/162 loss=32.2849
+  epoch 3 step 150/162 loss=29.5110
+epoch 3/12 | train_loss=28.9087 | inner_loss=17.3426 inner_spanF1=0.5798 | dev_spanF1(监控)=0.5837 | 681s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 4 step 50/162 loss=17.8537
+  epoch 4 step 100/162 loss=16.3752
+  epoch 4 step 150/162 loss=15.2462
+epoch 4/12 | train_loss=15.0695 | inner_loss=9.0438 inner_spanF1=0.6858 | dev_spanF1(监控)=0.7035 | 680s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 5 step 50/162 loss=10.3879
+  epoch 5 step 100/162 loss=9.5667
+  epoch 5 step 150/162 loss=8.9222
+epoch 5/12 | train_loss=8.8308 | inner_loss=6.9159 inner_spanF1=0.7084 | dev_spanF1(监控)=0.7197 | 742s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 6 step 50/162 loss=6.6450
+  epoch 6 step 100/162 loss=5.9742
+  epoch 6 step 150/162 loss=5.6563
+epoch 6/12 | train_loss=5.5667 | inner_loss=3.9373 inner_spanF1=0.7311 | dev_spanF1(监控)=0.7511 | 740s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 7 step 50/162 loss=3.3789
+  epoch 7 step 100/162 loss=3.2174
+  epoch 7 step 150/162 loss=3.0545
+epoch 7/12 | train_loss=3.0334 | inner_loss=1.6677 inner_spanF1=0.7461 | dev_spanF1(监控)=0.7635 | 738s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 8 step 50/162 loss=1.6941
+  epoch 8 step 100/162 loss=1.5003
+  epoch 8 step 150/162 loss=1.2136
+epoch 8/12 | train_loss=1.1310 | inner_loss=-0.0138 inner_spanF1=0.7554 | dev_spanF1(监控)=0.7722 | 743s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 9 step 50/162 loss=-0.2024
+  epoch 9 step 100/162 loss=-0.4164
+  epoch 9 step 150/162 loss=-0.5278
+epoch 9/12 | train_loss=-0.5771 | inner_loss=-1.1983 inner_spanF1=0.7599 | dev_spanF1(监控)=0.7806 | 735s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 10 step 50/162 loss=-1.5901
+  epoch 10 step 100/162 loss=-1.7082
+  epoch 10 step 150/162 loss=-1.7652
+epoch 10/12 | train_loss=-1.7911 | inner_loss=-1.9352 inner_spanF1=0.7598 | dev_spanF1(监控)=0.7787 | 740s
+  epoch 11 step 50/162 loss=-2.5115
+  epoch 11 step 100/162 loss=-2.5832
+  epoch 11 step 150/162 loss=-2.6951
+epoch 11/12 | train_loss=-2.7033 | inner_loss=-2.5574 inner_spanF1=0.7635 | dev_spanF1(监控)=0.7843 | 742s
+  ★ 内层验证最优 → 保存 bert_crf_256_hard.pt
+  epoch 12 step 50/162 loss=-3.2040
+  epoch 12 step 100/162 loss=-3.0962
+  epoch 12 step 150/162 loss=-3.1167
+epoch 12/12 | train_loss=-3.1531 | inner_loss=-2.6645 inner_spanF1=0.7611 | dev_spanF1(监控)=0.7833 | 745s
+加载最优 checkpoint（epoch 11，内层验证 spanF1=0.7635）
+dev 解码：930 句，其中没抽到触发词 24 句
+样本数 930（缺预测 0 条）
+  trigger      P=0.9194 R=0.8957 F1=0.9074 (tp=833 fp=73 fn=97)
+  argument     P=0.7314 R=0.7312 F1=0.7313 (tp=3014 fp=1107 fn=1108)
+  event_exact  P=0.3013 R=0.2935 F1=0.2974 (tp=273 fp=633 fn=657)
+  type_macro_f1 = 0.9286
+  指标已写入 → /root/autodl-tmp/week7/outputs/metrics/disc/bert_crf_256_hard.json
+
+【非法 BIO 统计（dev，模型原始输出）】
+  序列数 930：含非法序列 91 条（9.8%），其中非法开头 26 处、非法转移 135 处
+  训练集对照：含非法序列 494 条（9.6%）
+
+训练耗时 8674s | 推理延迟 9.78 ms/句 | 峰值显存 1851 MiB

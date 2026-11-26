@@ -1,0 +1,20 @@
+Epoch 1/12 | train_loss=0.2566 val_loss=0.1868 | 348s（1.01s/step）
+  ✓ LoRA adapter已保存 → /root/autodl-tmp/week7/outputs/llm/ckpt/sft_adapter
+Epoch 2/12 | train_loss=0.1648 val_loss=0.1525 | 349s（0.50s/step）
+  ✓ LoRA adapter已保存 → /root/autodl-tmp/week7/outputs/llm/ckpt/sft_adapter
+Epoch 3/12 | train_loss=0.1408 val_loss=0.1412 | 349s（0.34s/step）
+  ✓ LoRA adapter已保存 → /root/autodl-tmp/week7/outputs/llm/ckpt/sft_adapter
+Epoch 4/12 | train_loss=0.1240 val_loss=0.1293 | 349s（0.25s/step）
+  ✓ LoRA adapter已保存 → /root/autodl-tmp/week7/outputs/llm/ckpt/sft_adapter
+Epoch 5/12 | train_loss=0.1136 val_loss=0.1270 | 349s（0.20s/step）
+  ✓ LoRA adapter已保存 → /root/autodl-tmp/week7/outputs/llm/ckpt/sft_adapter
+Epoch 6/12 | train_loss=0.1053 val_loss=0.1248 | 348s（0.17s/step）
+  ✓ LoRA adapter已保存 → /root/autodl-tmp/week7/outputs/llm/ckpt/sft_adapter
+Epoch 7/12 | train_loss=0.0980 val_loss=0.1254 | 348s（0.14s/step）
+Epoch 8/12 | train_loss=0.0924 val_loss=0.1307 | 349s（0.13s/step）
+Epoch 9/12 | train_loss=0.0871 val_loss=0.1247 | 347s（0.11s/step）
+  ✓ LoRA adapter已保存 → /root/autodl-tmp/week7/outputs/llm/ckpt/sft_adapter
+Epoch 10/12 | train_loss=0.0821 val_loss=0.1302 | 348s（0.10s/step）
+Epoch 11/12 | train_loss=0.0783 val_loss=0.1221 | 349s（0.09s/step）
+  ✓ LoRA adapter已保存 → /root/autodl-tmp/week7/outputs/llm/ckpt/sft_adapter
+Epoch 12/12 | train_loss=0.0747 val_loss=0.1371 | 348s（0.08s/step）

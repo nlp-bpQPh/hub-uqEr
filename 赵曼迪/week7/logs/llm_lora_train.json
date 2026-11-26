@@ -1,0 +1,156 @@
+{
+  "method": "llm_lora",
+  "argv": [
+    "llm_sft_lora.py"
+  ],
+  "args": {
+    "model_path": "/root/autodl-tmp/week7/pretrain_models/Qwen3-0.6B",
+    "data_dir": "/root/autodl-tmp/week7/data/processed",
+    "output_dir": "/root/autodl-tmp/week7/outputs/llm/ckpt",
+    "num_train": -1,
+    "epochs": 12,
+    "batch_size": 4,
+    "grad_accum": 4,
+    "lr": 0.0002,
+    "max_length": 2048,
+    "full_ft": false,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "dtype": "auto",
+    "grad_ckpt": false,
+    "seed": 42,
+    "log_every": 50,
+    "run_name": "llm_lora",
+    "max_steps": 0,
+    "val_size": 200,
+    "std_logits": false
+  },
+  "env": {
+    "python": "3.10.8",
+    "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+    "time": "2026-11-26 10:19:10",
+    "torch": "2.14.1+cu130",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4090 D",
+    "transformers": "5.20.2"
+  },
+  "params": 2293760,
+  "log_every": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.256552,
+      "elapsed_s": 348.3,
+      "val": {
+        "val_loss": 0.1868
+      },
+      "optimizer_steps": 346
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.164843,
+      "elapsed_s": 348.9,
+      "val": {
+        "val_loss": 0.1525
+      },
+      "optimizer_steps": 692
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.140844,
+      "elapsed_s": 349.0,
+      "val": {
+        "val_loss": 0.1412
+      },
+      "optimizer_steps": 1038
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.124035,
+      "elapsed_s": 348.6,
+      "val": {
+        "val_loss": 0.1293
+      },
+      "optimizer_steps": 1384
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.113561,
+      "elapsed_s": 348.8,
+      "val": {
+        "val_loss": 0.127
+      },
+      "optimizer_steps": 1730
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.105305,
+      "elapsed_s": 348.3,
+      "val": {
+        "val_loss": 0.1248
+      },
+      "optimizer_steps": 2076
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.098008,
+      "elapsed_s": 348.0,
+      "val": {
+        "val_loss": 0.1254
+      },
+      "optimizer_steps": 2422
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.092379,
+      "elapsed_s": 348.8,
+      "val": {
+        "val_loss": 0.1307
+      },
+      "optimizer_steps": 2768
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.087088,
+      "elapsed_s": 346.9,
+      "val": {
+        "val_loss": 0.1247
+      },
+      "optimizer_steps": 3114
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.082077,
+      "elapsed_s": 347.9,
+      "val": {
+        "val_loss": 0.1302
+      },
+      "optimizer_steps": 3460
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.078277,
+      "elapsed_s": 348.6,
+      "val": {
+        "val_loss": 0.1221
+      },
+      "optimizer_steps": 3806
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.074731,
+      "elapsed_s": 347.7,
+      "val": {
+        "val_loss": 0.1371
+      },
+      "optimizer_steps": 4152
+    }
+  ],
+  "total_elapsed_s": 4236.1,
+  "finished": true,
+  "optimizer_steps": 4152,
+  "best_val_loss": 0.12212689041041655,
+  "peak_gpu_mb": 19658.5,
+  "notes": "LoRA SFT（Qwen3-0.6B 生成式链路）"
+}
