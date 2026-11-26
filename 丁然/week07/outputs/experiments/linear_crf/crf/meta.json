@@ -1,0 +1,12 @@
+{
+  "decoder": "crf",
+  "model_path": "~/Downloads/模型/bert/bert-base-chinese",
+  "max_length": 256,
+  "epochs": 1,
+  "batch_size": 16,
+  "learning_rate": 2e-05,
+  "freeze_layers": 8,
+  "num_labels": 149,
+  "train_size": 5171,
+  "val_size": 576
+}

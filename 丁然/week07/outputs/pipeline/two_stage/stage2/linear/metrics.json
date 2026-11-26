@@ -1,0 +1,13 @@
+{
+  "trigger_precision": 0.7603174603174603,
+  "trigger_recall": 0.8036912751677853,
+  "trigger_f1": 0.7814029363784666,
+  "trigger_exact_match": 0.6929530201342282,
+  "arg_precision": 0.37873523280055593,
+  "arg_recall": 0.42930287514769594,
+  "arg_f1": 0.402436773121654,
+  "arg_exact_match": 0.04194630872483222,
+  "event_exact_match": 0.03859060402684564,
+  "selection_score": 0.5161266220986978,
+  "loss": 0.32028455483286006
+}

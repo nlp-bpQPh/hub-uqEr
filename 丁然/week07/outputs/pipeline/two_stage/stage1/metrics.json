@@ -1,0 +1,11 @@
+{
+  "has_event_accuracy": 0.9113149847094801,
+  "has_event_precision": 0.8197424892703863,
+  "has_event_recall": 0.7774762550881954,
+  "has_event_f1": 0.7980501392757661,
+  "type_micro_f1": 0.7752142386288727,
+  "type_macro_f1": 0.7414185355949143,
+  "subset_accuracy": 0.9,
+  "loss": 0.022784942390342938,
+  "threshold": 0.4
+}

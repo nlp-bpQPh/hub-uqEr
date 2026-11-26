@@ -1,0 +1,24 @@
+{
+  "samples": 596,
+  "stage1_type_subset_accuracy": 0.7164429530201343,
+  "stage1_gold_type_recall": 0.7466442953020134,
+  "stage1_average_predicted_types": 0.7885906040268457,
+  "stage2_gold_type": {
+    "trigger_precision": 0.8281535648994516,
+    "trigger_recall": 0.7600671140939598,
+    "trigger_f1": 0.7926509186351706,
+    "arg_precision": 0.37873523280055593,
+    "arg_recall": 0.42930287514769594,
+    "arg_f1": 0.402436773121654,
+    "event_exact_match": 0.03859060402684564
+  },
+  "pipeline_end_to_end": {
+    "trigger_precision": 0.8628841607565012,
+    "trigger_recall": 0.6124161073825504,
+    "trigger_f1": 0.7163886162904808,
+    "arg_precision": 0.38868832731648617,
+    "arg_recall": 0.3816463174478141,
+    "arg_f1": 0.3851351351351351,
+    "event_exact_match": 0.026845637583892617
+  }
+}

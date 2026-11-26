@@ -1,0 +1,98 @@
+{
+  "run_name": "two_stage",
+  "stage1": {
+    "has_event_accuracy": 0.9113149847094801,
+    "has_event_precision": 0.8197424892703863,
+    "has_event_recall": 0.7774762550881954,
+    "has_event_f1": 0.7980501392757661,
+    "type_micro_f1": 0.7752142386288727,
+    "type_macro_f1": 0.7414185355949143,
+    "subset_accuracy": 0.9,
+    "loss": 0.022784942390342938,
+    "threshold": 0.4
+  },
+  "pipelines": [
+    {
+      "method": "pipeline_linear",
+      "duration_seconds": 285.18211266596336,
+      "stage2_metrics": {
+        "trigger_precision": 0.7603174603174603,
+        "trigger_recall": 0.8036912751677853,
+        "trigger_f1": 0.7814029363784666,
+        "trigger_exact_match": 0.6929530201342282,
+        "arg_precision": 0.37873523280055593,
+        "arg_recall": 0.42930287514769594,
+        "arg_f1": 0.402436773121654,
+        "arg_exact_match": 0.04194630872483222,
+        "event_exact_match": 0.03859060402684564,
+        "selection_score": 0.5161266220986978,
+        "loss": 0.32028455483286006
+      },
+      "end_to_end_metrics": {
+        "samples": 596,
+        "stage1_type_subset_accuracy": 0.7164429530201343,
+        "stage1_gold_type_recall": 0.7466442953020134,
+        "stage1_average_predicted_types": 0.7885906040268457,
+        "stage2_gold_type": {
+          "trigger_precision": 0.8281535648994516,
+          "trigger_recall": 0.7600671140939598,
+          "trigger_f1": 0.7926509186351706,
+          "arg_precision": 0.37873523280055593,
+          "arg_recall": 0.42930287514769594,
+          "arg_f1": 0.402436773121654,
+          "event_exact_match": 0.03859060402684564
+        },
+        "pipeline_end_to_end": {
+          "trigger_precision": 0.8628841607565012,
+          "trigger_recall": 0.6124161073825504,
+          "trigger_f1": 0.7163886162904808,
+          "arg_precision": 0.38868832731648617,
+          "arg_recall": 0.3816463174478141,
+          "arg_f1": 0.3851351351351351,
+          "event_exact_match": 0.026845637583892617
+        }
+      }
+    },
+    {
+      "method": "pipeline_crf",
+      "duration_seconds": 548.2784477920504,
+      "stage2_metrics": {
+        "trigger_precision": 0.768370607028754,
+        "trigger_recall": 0.8070469798657718,
+        "trigger_f1": 0.7872340425531915,
+        "trigger_exact_match": 0.7013422818791947,
+        "arg_precision": 0.3792387543252595,
+        "arg_recall": 0.4316660102402521,
+        "arg_f1": 0.40375759808436174,
+        "arg_exact_match": 0.0436241610738255,
+        "event_exact_match": 0.040268456375838924,
+        "selection_score": 0.5188005314250106,
+        "loss": 45.407607429905944
+      },
+      "end_to_end_metrics": {
+        "samples": 596,
+        "stage1_type_subset_accuracy": 0.7164429530201343,
+        "stage1_gold_type_recall": 0.7466442953020134,
+        "stage1_average_predicted_types": 0.7885906040268457,
+        "stage2_gold_type": {
+          "trigger_precision": 0.8333333333333334,
+          "trigger_recall": 0.7634228187919463,
+          "trigger_f1": 0.7968476357267952,
+          "arg_precision": 0.3792387543252595,
+          "arg_recall": 0.4316660102402521,
+          "arg_f1": 0.40375759808436174,
+          "event_exact_match": 0.040268456375838924
+        },
+        "pipeline_end_to_end": {
+          "trigger_precision": 0.8676122931442081,
+          "trigger_recall": 0.6157718120805369,
+          "trigger_f1": 0.7203140333660452,
+          "arg_precision": 0.39,
+          "arg_recall": 0.3840094525403702,
+          "arg_f1": 0.38698154395713436,
+          "event_exact_match": 0.028523489932885907
+        }
+      }
+    }
+  ]
+}
