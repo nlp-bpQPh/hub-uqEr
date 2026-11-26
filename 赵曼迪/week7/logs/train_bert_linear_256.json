@@ -1,0 +1,98 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 2.943147,
+    "inner_val_loss": 1.371664,
+    "inner_val_span_f1": 0.0,
+    "dev_span_f1_monitor": 0.0,
+    "elapsed_s": 92.1
+  },
+  {
+    "epoch": 2,
+    "train_loss": 1.038084,
+    "inner_val_loss": 0.715348,
+    "inner_val_span_f1": 0.058055,
+    "dev_span_f1_monitor": 0.061137,
+    "elapsed_s": 91.0
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.587525,
+    "inner_val_loss": 0.435264,
+    "inner_val_span_f1": 0.411935,
+    "dev_span_f1_monitor": 0.421717,
+    "elapsed_s": 90.9
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.381447,
+    "inner_val_loss": 0.310299,
+    "inner_val_span_f1": 0.552587,
+    "dev_span_f1_monitor": 0.560008,
+    "elapsed_s": 90.9
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.284738,
+    "inner_val_loss": 0.256073,
+    "inner_val_span_f1": 0.600767,
+    "dev_span_f1_monitor": 0.61775,
+    "elapsed_s": 90.8
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.236538,
+    "inner_val_loss": 0.237311,
+    "inner_val_span_f1": 0.633284,
+    "dev_span_f1_monitor": 0.650461,
+    "elapsed_s": 90.8
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.20689,
+    "inner_val_loss": 0.228697,
+    "inner_val_span_f1": 0.652816,
+    "dev_span_f1_monitor": 0.672352,
+    "elapsed_s": 90.9
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.187068,
+    "inner_val_loss": 0.216247,
+    "inner_val_span_f1": 0.668964,
+    "dev_span_f1_monitor": 0.682253,
+    "elapsed_s": 91.6
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.172299,
+    "inner_val_loss": 0.209628,
+    "inner_val_span_f1": 0.678271,
+    "dev_span_f1_monitor": 0.693763,
+    "elapsed_s": 91.3
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.160914,
+    "inner_val_loss": 0.208959,
+    "inner_val_span_f1": 0.681892,
+    "dev_span_f1_monitor": 0.695797,
+    "elapsed_s": 91.4
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.155538,
+    "inner_val_loss": 0.209329,
+    "inner_val_span_f1": 0.685089,
+    "dev_span_f1_monitor": 0.698634,
+    "elapsed_s": 90.9
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.150052,
+    "inner_val_loss": 0.209102,
+    "inner_val_span_f1": 0.686036,
+    "dev_span_f1_monitor": 0.703096,
+    "elapsed_s": 91.0
+  }
+]
