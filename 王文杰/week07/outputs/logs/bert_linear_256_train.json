@@ -1,0 +1,113 @@
+{
+  "method": "bert_linear_256",
+  "argv": [
+    "bert/train.py",
+    "--decoder",
+    "linear",
+    "--max_len",
+    "256",
+    "--epochs",
+    "3",
+    "--run_name",
+    "bert_linear_256"
+  ],
+  "args": {
+    "decoder": "linear",
+    "bert_path": "/root/pretrain_models/bert-base-chinese",
+    "bert_layers": 0,
+    "max_len": 256,
+    "epochs": 3,
+    "batch_size": 32,
+    "lr": 2e-05,
+    "head_lr_mult": 5.0,
+    "warmup_ratio": 0.1,
+    "grad_accum": 1,
+    "max_grad_norm": 1.0,
+    "weight_decay": 0.01,
+    "dropout": 0.1,
+    "inner_val": 0.1,
+    "hard_constraint": false,
+    "device": "",
+    "log_every": 50,
+    "seed": 42,
+    "run_name": "bert_linear_256",
+    "mock": false,
+    "data_dir": ""
+  },
+  "env": {
+    "python": "3.12.11",
+    "platform": "Linux-5.15.0-113-generic-x86_64-with-glibc2.35",
+    "time": "2026-11-26 13:55:06",
+    "torch": "2.13.0+cu132",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "transformers": "5.5.3"
+  },
+  "params": 102382229,
+  "log_every": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 1.339174,
+      "elapsed_s": 32.7,
+      "val": {
+        "inner_loss": 0.4417361699872547,
+        "inner_span_f1": 0.39838187702265376,
+        "dev_span_f1_monitor": 0.4110472734603367
+      },
+      "best_so_far": -1.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.349612,
+      "elapsed_s": 32.0,
+      "val": {
+        "inner_loss": 0.2657213318679068,
+        "inner_span_f1": 0.600986740672217,
+        "dev_span_f1_monitor": 0.5999619192688499
+      },
+      "best_so_far": 0.398382
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.251751,
+      "elapsed_s": 32.2,
+      "val": {
+        "inner_loss": 0.24251380231645372,
+        "inner_span_f1": 0.6310160427807486,
+        "dev_span_f1_monitor": 0.644561112646219
+      },
+      "best_so_far": 0.600987
+    }
+  ],
+  "total_elapsed_s": 103.4,
+  "finished": true,
+  "best_epoch": 3,
+  "best_inner_val_span_f1": 0.631016,
+  "dev_metrics": {
+    "trigger": 0.8313,
+    "argument": 0.5611,
+    "event_exact": 0.1665
+  },
+  "inference_latency_ms": 2.12,
+  "peak_gpu_mb": 1841.6,
+  "illegal_dev": {
+    "illegal_start": 0,
+    "illegal_transition": 1472,
+    "total_seqs": 930,
+    "illegal_seqs": 614,
+    "total_illegal": 1472,
+    "illegal_seq_rate": 0.6602,
+    "illegal_per_seq": 1.583
+  },
+  "illegal_train_pred_sample": {
+    "illegal_start": 9,
+    "illegal_transition": 8485,
+    "total_seqs": 5173,
+    "illegal_seqs": 3479,
+    "total_illegal": 8494,
+    "illegal_seq_rate": 0.6725,
+    "illegal_per_seq": 1.642
+  },
+  "notes": "BERT 序列标注（linear）训练过程"
+}

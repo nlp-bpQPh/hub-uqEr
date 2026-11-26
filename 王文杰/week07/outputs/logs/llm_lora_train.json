@@ -1,0 +1,61 @@
+{
+  "method": "llm_lora",
+  "argv": [
+    "llm_lora/train_sft.py",
+    "--epochs",
+    "1",
+    "--num_train",
+    "-1"
+  ],
+  "args": {
+    "model_path": "/root/pretrain_models/Qwen3-0.6B",
+    "data_dir": "/root/code/data/processed",
+    "output_dir": "/root/code/outputs/llm/ckpt",
+    "num_train": -1,
+    "epochs": 1,
+    "batch_size": 2,
+    "grad_accum": 8,
+    "lr": 0.0002,
+    "max_length": 1280,
+    "full_ft": false,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "dtype": "auto",
+    "grad_ckpt": false,
+    "seed": 42,
+    "log_every": 50,
+    "run_name": "llm_lora",
+    "max_steps": 0,
+    "val_size": 200,
+    "std_logits": false
+  },
+  "env": {
+    "python": "3.12.11",
+    "platform": "Linux-5.15.0-113-generic-x86_64-with-glibc2.35",
+    "time": "2026-11-22 10:18:47",
+    "torch": "2.13.0+cu132",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "transformers": "5.5.3"
+  },
+  "params": 2293760,
+  "log_every": 50,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.091471,
+      "elapsed_s": 453.0,
+      "val": {
+        "val_loss": 0.0688
+      },
+      "optimizer_steps": 346
+    }
+  ],
+  "total_elapsed_s": 459.0,
+  "finished": true,
+  "optimizer_steps": 346,
+  "best_val_loss": 0.06881782264676818,
+  "peak_gpu_mb": 8756.0,
+  "notes": "LoRA SFT（Qwen3-0.6B 生成式链路）"
+}

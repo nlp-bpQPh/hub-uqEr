@@ -1,0 +1,79 @@
+{
+  "method": "bert_pipeline",
+  "argv": [
+    "bert_pipeline/train.py"
+  ],
+  "args": {
+    "bert_path": "/root/pretrain_models/bert-base-chinese",
+    "cls_epochs": 2,
+    "detect_limit": 0,
+    "cls_lr": 2e-05,
+    "cls_batch_size": 64,
+    "cls_max_len": 192,
+    "arg_epochs": 3,
+    "arg_lr": 3e-05,
+    "arg_batch_size": 32,
+    "max_len": 256,
+    "arg_layers": 4,
+    "dropout": 0.1,
+    "device": "",
+    "seed": 42,
+    "skip_train": false,
+    "log_every": 50,
+    "only_experts": false,
+    "mock": false,
+    "data_dir": ""
+  },
+  "env": {
+    "python": "3.12.11",
+    "platform": "Linux-5.15.0-113-generic-x86_64-with-glibc2.35",
+    "time": "2026-11-26 14:02:43",
+    "torch": "2.13.0+cu132",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "transformers": "5.5.3"
+  },
+  "params": null,
+  "log_every": 50,
+  "epochs": [
+    {
+      "epoch": 3,
+      "train_loss": 0.0,
+      "elapsed_s": 44.6,
+      "val": {
+        "中标": 5.2,
+        "亏损": 4.5,
+        "企业收购": 5.1,
+        "企业破产": 1.5,
+        "企业融资": 3.3,
+        "公司上市": 2.7,
+        "股东减持": 4.0,
+        "股东增持": 1.4,
+        "股份回购": 6.7,
+        "被约谈": 0.7,
+        "解除质押": 2.1,
+        "质押": 3.0,
+        "高管变动": 2.6
+      },
+      "stage": "13_argument_experts"
+    }
+  ],
+  "total_elapsed_s": 312.9,
+  "finished": true,
+  "diag": {
+    "n_detect_dropped": 160,
+    "n_type_wrong": 29,
+    "type_accuracy_on_dev_extract": 0.9688,
+    "n_arg_truncated": 107
+  },
+  "dev_metrics": {
+    "trigger": 0.5822,
+    "argument": 0.2306,
+    "event_exact": 0.0326
+  },
+  "inference_latency_ms": 8.1,
+  "peak_gpu_mb": 2384.8,
+  "pipeline_stages": 3,
+  "num_models": 16,
+  "notes": "两段式：检测器 + 13 分类 + 13 个类型条件论元专家"
+}
