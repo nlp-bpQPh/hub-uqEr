@@ -1,0 +1,64 @@
+{
+  "system": "Windows-11-10.0.22631-SP0",
+  "python": "3.13.11",
+  "torch_threads": 4,
+  "versions": {
+    "torch": "2.8.0",
+    "transformers": "4.57.6",
+    "spacy": "3.8.11",
+    "en-core-web-sm": "3.8.0",
+    "numpy": "2.5.5",
+    "pyarrow": "22.0.0"
+  },
+  "distilbert": {
+    "model": "dslim/distilbert-NER",
+    "revision": "dfa2838a127384aabb82ed7719e16dab84c42a2a",
+    "aggregation": "first",
+    "stride": 64,
+    "batch_size": 16,
+    "files_sha256": {
+      "config.json": "50c882556c3e52ce6112a5685c260030118f7a278261f4f3f0020dd9cf533957",
+      "model.safetensors": "235ecd699f650ca36513b122d11ce5a80339be1388f06c33c2278368b99914e1",
+      "tokenizer.json": "cb26b43c98e8266ae3e99c2a583cf8315d73b33a17e6b20b4df7ff1f22392d34",
+      "tokenizer_config.json": "691492f0a7e19d8dbfe3faa984eb5cba80237c54b2d54cbd264d478d83dddb0d",
+      "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "vocab.txt": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+    }
+  },
+  "gazetteer": {
+    "entries": 4622,
+    "fit_seconds": 0.017144599987659603
+  },
+  "timing": {
+    "gazetteer": {
+      "conll": {
+        "seconds": 0.05505500000435859,
+        "records": 3453
+      },
+      "wnut": {
+        "seconds": 0.027191400004085153,
+        "records": 1287
+      }
+    },
+    "spacy": {
+      "conll": {
+        "seconds": 7.66829299996607,
+        "records": 3453
+      },
+      "wnut": {
+        "seconds": 3.4260415000026114,
+        "records": 1287
+      }
+    },
+    "distilbert": {
+      "conll": {
+        "seconds": 52.11144060001243,
+        "records": 3453
+      },
+      "wnut": {
+        "seconds": 35.46217730001081,
+        "records": 1287
+      }
+    }
+  }
+}
