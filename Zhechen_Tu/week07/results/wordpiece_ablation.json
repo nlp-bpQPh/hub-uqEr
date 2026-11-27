@@ -1,0 +1,51 @@
+{
+  "aggregation": "simple",
+  "full": {
+    "conll": {
+      "records": 3453,
+      "tp": 1847,
+      "fp": 4248,
+      "fn": 1438,
+      "precision": 0.3030352748154225,
+      "recall": 0.5622526636225267,
+      "f1": 0.393816631130064,
+      "error_counts": {
+        "false_negative": {
+          "boundary_and_type": 21,
+          "no_overlap": 144,
+          "boundary_only": 1270,
+          "type_only": 3
+        },
+        "false_positive": {
+          "boundary_and_type": 65,
+          "boundary_only": 3728,
+          "no_overlap": 452,
+          "type_only": 3
+        }
+      }
+    },
+    "wnut": {
+      "records": 1287,
+      "tp": 167,
+      "fp": 735,
+      "fn": 412,
+      "precision": 0.18514412416851442,
+      "recall": 0.28842832469775476,
+      "f1": 0.22552329507089805,
+      "error_counts": {
+        "false_negative": {
+          "boundary_only": 164,
+          "no_overlap": 237,
+          "type_only": 3,
+          "boundary_and_type": 8
+        },
+        "false_positive": {
+          "boundary_only": 403,
+          "no_overlap": 307,
+          "type_only": 3,
+          "boundary_and_type": 22
+        }
+      }
+    }
+  }
+}

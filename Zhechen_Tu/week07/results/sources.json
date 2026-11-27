@@ -1,0 +1,19 @@
+{
+  "conll_train": {
+    "url": "https://huggingface.co/datasets/lhoestq/conll2003/resolve/2aecdeb6176d9b2b1ae7c8672e1d4ff48566747c/default/train/0000.parquet",
+    "sha256": "1575a56575c18a59590ffc22d31bd43a3ee28fe989b5e0f160059970e87af9ec",
+    "records": 14041,
+    "source_rows": 14041
+  },
+  "conll_test": {
+    "url": "https://huggingface.co/datasets/lhoestq/conll2003/resolve/2aecdeb6176d9b2b1ae7c8672e1d4ff48566747c/default/test/0000.parquet",
+    "sha256": "5a6901d09abe098a8924aaed56a89ebb7997be1e94dce488ad8c907d058b8131",
+    "records": 3453,
+    "source_rows": 3453
+  },
+  "wnut_test": {
+    "url": "https://raw.githubusercontent.com/leondz/emerging_entities_17/e52a2d2a71ac1a051ca2d532eef28653c5c02603/emerging.test.annotated",
+    "sha256": "2aa79b764e56ec9264a1b30fdd9b70195bd00ff400b62edd8f399d5f13c178f0",
+    "records": 1287
+  }
+}

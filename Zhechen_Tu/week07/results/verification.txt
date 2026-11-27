@@ -1,0 +1,5 @@
+PASS: hand-checked Unicode offsets, strict scoring, and invalid API output handling
+PASS: conll source hash, aligned sample, local baseline replay and all metric counts; exact test records also in CoNLL train=126
+PASS: wnut source hash, aligned sample, local baseline replay and all metric counts; exact test records also in CoNLL train=0
+PASS: model file hashes and 64 fresh spaCy/DistilBERT predictions across both datasets
+PASS: replayed all 24 cached HTTP responses and recovered all 96 grounded predictions
